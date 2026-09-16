@@ -11,7 +11,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://therocketfarm.com/">
-<meta property="og:title" content="Rocket Farm — Built for the people building the future.">
+<meta property="og:title" content="Rocket Farm — A field full of people looking up.">
 <meta property="og:description" content="17 full-hookup RV spaces in development in Kaplan, Louisiana. Monthly from $650 plus metered electric. Workforce basecamp, launch-viewing destination, sportsman's gateway.">
 <meta property="og:site_name" content="Rocket Farm">
 <meta property="og:image" content="https://therocketfarm.com/og.png">
@@ -110,8 +110,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @media (min-width:600px){.nav .btn{padding:.85rem 1.5rem;font-size:.95rem}}
 .cta-short{display:inline}.cta-long{display:none}
 @media (min-width:480px){.cta-short{display:none}.cta-long{display:inline}}
-.wordmark{display:flex;align-items:center;gap:.6rem;font-size:clamp(.88rem,3.4vw,1.02rem);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;flex:none}
-.wordmark svg{width:22px;height:22px;flex:none}
+.wordmark{display:flex;align-items:center;gap:.62rem;
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(.76rem,3vw,.94rem);letter-spacing:.2em;
+  text-transform:uppercase;text-decoration:none;flex:none;white-space:nowrap}
+.wordmark svg{width:17px;height:24px;flex:none}
 .nav-links{display:none;gap:1.75rem;align-items:center}
 .nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--cream)}
@@ -142,15 +145,86 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   animation:twinkle 7s ease-in-out infinite alternate;
 }
 @keyframes twinkle{from{opacity:.55}to{opacity:.95}}
-.trail{position:absolute;z-index:-2;right:-4%;top:-6%;width:min(70vw,640px);height:auto;opacity:.6}
-.trail-path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.8s cubic-bezier(.3,.7,.2,1) .25s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.spark{opacity:0;animation:pop .6s ease-out 2.6s forwards}
-@keyframes pop{to{opacity:1}}
+/* ---- Launch: rises from behind the treeline on a loop ----
+   Sits at z-index -2 so the dark horizon (-1) occludes the pad, which is
+   what makes it read as a real liftoff. Only transform and opacity are
+   animated, so it stays on the compositor. */
+/* The rocket occupies the top 66% of a 120x560 viewBox, so its base sits
+   0.34 x (width x 4.667) = 1.59 x width above the element's bottom edge.
+   Offsetting by that keeps the engines planted on the treeline at any size
+   instead of floating above it. */
+.launch{--rw:clamp(58px,7.4vw,102px);
+  position:absolute;z-index:-2;right:9%;width:var(--rw);
+  bottom:calc(30px - 1.587 * var(--rw));pointer-events:none}
+@media (max-width:760px){.launch{--rw:64px;right:5%;opacity:.85;
+  bottom:calc(18px - 1.587 * var(--rw))}}
+/* On the narrowest phones the copy column reaches the right gutter, so the
+   vehicle moves to the edge rather than sitting under the buttons. */
+@media (max-width:400px){.launch{--rw:56px;right:-4%}}
+
+.launch-rise{will-change:transform;animation:rf-rise 13s linear infinite}
+.launch-rise svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* accelerating climb, faked with keyframe spacing so easing stays linear */
+@keyframes rf-rise{
+  0%    {transform:translateY(0)}
+  11%   {transform:translateY(0)}
+  15%   {transform:translateY(-1.2vh)}
+  23%   {transform:translateY(-6vh)}
+  32%   {transform:translateY(-17vh)}
+  41%   {transform:translateY(-36vh)}
+  50%   {transform:translateY(-66vh)}
+  57%   {transform:translateY(-108vh)}
+  62%   {transform:translateY(-155vh)}
+  100%  {transform:translateY(-155vh)}
+}
+
+/* plume grows downward out of the engine skirt */
+.rf-plume{transform-box:fill-box;transform-origin:50% 0%;opacity:0;
+  animation:rf-plume 13s linear infinite}
+@keyframes rf-plume{
+  0%,9%  {opacity:0;transform:scale(.55,.15)}
+  11%    {opacity:1;transform:scale(1,.7)}
+  15%    {opacity:1;transform:scale(1.08,1.7)}
+  50%    {opacity:1;transform:scale(1,2.2)}
+  60%    {opacity:1;transform:scale(.9,2.2)}
+  63%    {opacity:0;transform:scale(.9,2.2)}
+  100%   {opacity:0}
+}
+/* engine flicker rides on opacity so it does not fight the scale above */
+.rf-core{animation:rf-flicker .13s steps(2,end) infinite}
+@keyframes rf-flicker{from{opacity:.98}to{opacity:.72}}
+
+/* ignition cloud at the pad */
+.launch-smoke{--sw:clamp(150px,20vw,260px);
+  position:absolute;z-index:-2;right:calc(9% + 60px - var(--sw) / 2);
+  bottom:calc(14px - var(--sw) / 2);
+  width:var(--sw);aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 62%,rgba(244,239,230,.5),rgba(244,239,230,.16) 42%,transparent 70%);
+  opacity:0;will-change:transform,opacity;animation:rf-smoke 13s linear infinite}
+@media (max-width:760px){.launch-smoke{--sw:150px;right:calc(4% + 41px - var(--sw) / 2)}}
+@keyframes rf-smoke{
+  0%,9%  {opacity:0;transform:scale(.35)}
+  14%    {opacity:.62;transform:scale(1)}
+  34%    {opacity:.4;transform:scale(1.45) translateY(-5%)}
+  60%    {opacity:0;transform:scale(1.85) translateY(-11%)}
+  100%   {opacity:0}
+}
+
+/* Reduced motion: hold it on the pad, engines lit, nothing moving. */
+@media (prefers-reduced-motion:reduce){
+  .rf-plume{opacity:.92;transform:scale(1,1.25)}
+  .launch-smoke{opacity:.3;transform:scale(1)}
+}
 .horizon{position:absolute;left:0;right:0;bottom:-1px;z-index:-1;width:100%;height:auto}
 
 .hero-copy{max-width:790px}
 .hero h1{font-size:var(--h1);margin:1.1rem 0 0;text-wrap:balance}
+.tagline{font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.15rem,2.5vw,1.6rem);letter-spacing:-.01em;line-height:1.3;
+  margin-top:1.15rem;max-width:26ch;
+  background:linear-gradient(100deg,var(--amber),var(--sunset));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);margin-top:1.4rem;max-width:62ch}
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;list-style:none;padding:0}
 .tags li{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .95rem;background:rgba(244,239,230,.04)}
@@ -388,10 +462,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 <header>
   <nav class="wrap nav" aria-label="Primary">
     <a class="wordmark" href="#top">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M50 8c11 13 16 28 16 43l-9 8H43l-9-8c0-15 5-30 16-43z" fill="#f5a524"/>
-        <path d="M43 61h14l-7 27-7-27z" fill="#e8623c"/>
-        <path d="M34 54l-12 10 12 2M66 54l12 10-12 2" fill="#f5a524" opacity=".75"/>
+      <svg viewBox="0 0 24 34" aria-hidden="true">
+        <path d="M12 1.6c2.1 4.4 3.1 7.7 3.1 10.9V25H8.9V12.5c0-3.2 1-6.5 3.1-10.9z" fill="#f4efe6"/>
+        <path d="M8.9 19.6 6.1 26.4l2.8-1.7zm6.2 0 2.8 6.8-2.8-1.7z" fill="#f4efe6" opacity=".55"/>
+        <path d="M10.3 25h3.4L12 32.4z" fill="#f5a524"/>
       </svg>
       Rocket&nbsp;Farm
     </a>
@@ -415,20 +489,44 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="sky" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
 
-    <svg class="trail" viewBox="0 0 600 420" aria-hidden="true">
-      <defs>
-        <linearGradient id="tg" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#e8623c" stop-opacity="0"/>
-          <stop offset=".55" stop-color="#e8623c" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#f5a524" stop-opacity=".95"/>
-        </linearGradient>
-      </defs>
-      <path class="trail-path" pathLength="1" d="M20 400C150 360 330 250 470 70" stroke="url(#tg)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <g class="spark">
-        <circle cx="470" cy="70" r="5" fill="#ffd79a"/>
-        <circle cx="470" cy="70" r="16" fill="#f5a524" opacity=".18"/>
-      </g>
-    </svg>
+    <div class="launch-smoke" aria-hidden="true"></div>
+    <div class="launch" aria-hidden="true">
+      <div class="launch-rise">
+        <svg viewBox="0 0 120 560" role="presentation">
+          <defs>
+            <linearGradient id="rfBody" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"   stop-color="#8e99ad"/>
+              <stop offset=".34" stop-color="#e9eef6"/>
+              <stop offset=".62" stop-color="#c2ccdc"/>
+              <stop offset="1"   stop-color="#79839a"/>
+            </linearGradient>
+            <linearGradient id="rfFlame" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0"   stop-color="#fff6dc"/>
+              <stop offset=".22" stop-color="#f5a524"/>
+              <stop offset=".62" stop-color="#e8623c"/>
+              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- plume first so the engine skirt overlaps its mouth -->
+          <g class="rf-plume">
+            <path d="M45 366 C49 418 53 452 60 502 C67 452 71 418 75 366 Z" fill="url(#rfFlame)"/>
+            <path class="rf-core" d="M52 366 C55 400 57 422 60 448 C63 422 65 400 68 366 Z" fill="#fff4d6"/>
+          </g>
+
+          <!-- vehicle -->
+          <path d="M60 8 C76 50 84 82 84 114 L84 352 L36 352 L36 114 C36 82 44 50 60 8 Z" fill="url(#rfBody)"/>
+          <path d="M60 8 C50 44 36 84 36 114 L36 352 L50 352 L50 114 C50 84 55 44 60 8 Z" fill="#ffffff" opacity=".13"/>
+          <path d="M36 130 L17 170 L36 162 Z" fill="#ccd5e4"/>
+          <path d="M84 130 L103 170 L84 162 Z" fill="#9aa5ba"/>
+          <path d="M36 296 L9 368 L36 346 Z" fill="#ccd5e4"/>
+          <path d="M84 296 L111 368 L84 346 Z" fill="#9aa5ba"/>
+          <path d="M38 352 L82 352 L77 372 L43 372 Z" fill="#69738a"/>
+          <rect x="52" y="196" width="16" height="4" rx="2" fill="#69738a" opacity=".5"/>
+          <rect x="52" y="246" width="16" height="4" rx="2" fill="#69738a" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
 
     <svg class="horizon" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 96c60-10 92 6 140 2s78-22 128-16 74 26 126 22 86-26 140-22 92 30 148 26 90-30 146-26 84 26 138 24 92-24 146-18 108 18 128 22 92 10 200 6v60H0z" fill="#05080f"/>
@@ -438,10 +536,12 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
      <div class="hero-copy">
       <p class="eyebrow">Kaplan, Louisiana &nbsp;·&nbsp; Vermilion Parish</p>
       <h1>Seventeen spaces. Thirty miles from the pad.</h1>
+      <p class="tagline">A field full of people looking up.</p>
       <p class="lede">
-        Rocket Farm is a full-hookup RV park taking shape on Farmer Road — built for the crews
-        putting up Louisiana's launch campus, the people coming to watch it fly, and everyone
-        who was already here for the redfish and the ducks.
+        Park the camper, put the chairs out, and watch it climb alongside a whole field of
+        people who drove out for the same thing. Rocket Farm is a full-hookup RV park taking
+        shape on Farmer Road — for the families chasing launch day, the crews building the
+        launch campus, and everyone who was already here for the redfish and the ducks.
       </p>
       <ul class="tags">
         <li>Stay</li>
@@ -912,13 +1012,14 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="foot-top">
       <div class="foot-col">
         <a class="wordmark" href="#top" style="margin-bottom:1rem">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <path d="M50 8c11 13 16 28 16 43l-9 8H43l-9-8c0-15 5-30 16-43z" fill="#f5a524"/>
-            <path d="M43 61h14l-7 27-7-27z" fill="#e8623c"/>
+          <svg viewBox="0 0 24 34" aria-hidden="true">
+            <path d="M12 1.6c2.1 4.4 3.1 7.7 3.1 10.9V25H8.9V12.5c0-3.2 1-6.5 3.1-10.9z" fill="#f4efe6"/>
+            <path d="M8.9 19.6 6.1 26.4l2.8-1.7zm6.2 0 2.8 6.8-2.8-1.7z" fill="#f4efe6" opacity=".55"/>
+            <path d="M10.3 25h3.4L12 32.4z" fill="#f5a524"/>
           </svg>
           Rocket&nbsp;Farm
         </a>
-        <p>Stay. Watch. Explore.<br>A family-owned campground in development in Vermilion Parish, Louisiana.</p>
+        <p>A field full of people looking up.<br>A family-owned campground in development in Vermilion Parish, Louisiana.</p>
       </div>
 
       <div class="foot-col">

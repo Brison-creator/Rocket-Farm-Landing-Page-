@@ -22,9 +22,25 @@ from fontTools.pens.transformPen import TransformPen
 from fontTools.misc.transform import Transform
 
 FONT = FONT_ENV or os.path.join(HERE, "sg-bold.ttf")
+FONT_LIGHT = os.environ.get("RF_FONT_LIGHT") or os.path.join(HERE, "sg-light.ttf")
 _f = TTFont(FONT)
 _gs, _cmap = _f.getGlyphSet(), _f.getBestCmap()
 _upem, _hmtx = _f["head"].unitsPerEm, _f["hmtx"]
+
+# The light face is loaded lazily so the rest of the kit still builds without it.
+_LIGHT = {}
+def _use_light(on):
+    """Swap the active glyph source between the bold and light faces."""
+    global _gs, _cmap, _upem, _hmtx
+    if on:
+        if not _LIGHT:
+            lf = TTFont(FONT_LIGHT)
+            _LIGHT.update(gs=lf.getGlyphSet(), cmap=lf.getBestCmap(),
+                          upem=lf["head"].unitsPerEm, hmtx=lf["hmtx"])
+        _gs, _cmap, _upem, _hmtx = _LIGHT["gs"], _LIGHT["cmap"], _LIGHT["upem"], _LIGHT["hmtx"]
+    else:
+        _gs, _cmap = _f.getGlyphSet(), _f.getBestCmap()
+        _upem, _hmtx = _f["head"].unitsPerEm, _f["hmtx"]
 
 # ---------------------------------------------------------------- type helpers
 def _g(ch):  return _cmap[ord(ch)]
@@ -335,6 +351,49 @@ def scrubbed(mode="dark"):
     o.append(f'<path d="{tp("ROCKET FARM · KAPLAN, LOUISIANA", 30, C, 706, 0.17, anchor="middle")}" fill="{ink}"/>')
     return svg(W, H, "  " + "\n  ".join(o))
 
+# ============================================================== AEROSPACE MARK
+def slender(scale=1.0, ox=0.0, oy=0.0, ink="INK"):
+    """Tall, thin launch vehicle — the silhouette the site hero uses."""
+    body = ("M0,-152 C7,-120 11,-96 11,-72 L11,0 L-11,0 L-11,-72 "
+            "C-11,-96 -7,-120 0,-152 Z")
+    fwdL, fwdR = "M-11,-106 L-18,-86 L-11,-90 Z", "M11,-106 L18,-86 L11,-90 Z"
+    aftL, aftR = "M-11,-26 L-21,4 L-11,-3 Z",     "M11,-26 L21,4 L11,-3 Z"
+    skirt = "M-11,0 L11,0 L9,9 L-9,9 Z"
+    d = " ".join([body, fwdL, fwdR, aftL, aftR, skirt])
+    return (f'<path d="{d}" fill="{ink}" fill-rule="evenodd" '
+            f'transform="translate({ox},{oy}) scale({scale})"/>')
+
+def aero(mode="light", stacked=False):
+    """Minimal, wide-tracked, monochrome — the modern aerospace register.
+    Light weight and open letterspacing, no gradient, no outline."""
+    ink = CREAM if mode == "light" else NAVY
+    TRACK, SUB = 0.30, 0.34
+    if stacked:
+        W, H = 700, 420
+        C = 350
+        o = [slender(0.92, C, 196).replace("INK", ink)]
+        _use_light(True)
+        name = tp("ROCKET FARM", 62, C, 300, TRACK, anchor="middle")
+        nw = tw("ROCKET FARM", 62, TRACK)
+        sub = tp("A FIELD FULL OF PEOPLE LOOKING UP", 17, C, 372, SUB, anchor="middle")
+        _use_light(False)
+        o += [f'<path d="{name}" fill="{ink}"/>',
+              f'<path d="M{C - nw/2:.0f},330 h{nw:.0f}" stroke="{ink}" stroke-width="1.1" opacity=".55"/>',
+              f'<path d="{sub}" fill="{ink}" opacity=".72"/>']
+        return svg(W, H, "  " + "\n  ".join(o))
+
+    W, H = 1240, 250
+    o = [slender(0.72, 72, 186).replace("INK", ink)]
+    _use_light(True)
+    name = tp("ROCKET FARM", 68, 148, 128, TRACK)
+    nw = tw("ROCKET FARM", 68, TRACK)
+    sub = tp("A FIELD FULL OF PEOPLE LOOKING UP", 17, 150, 186, SUB)
+    _use_light(False)
+    o += [f'<path d="{name}" fill="{ink}"/>',
+          f'<path d="M148,154 h{nw:.0f}" stroke="{ink}" stroke-width="1.1" opacity=".55"/>',
+          f'<path d="{sub}" fill="{ink}" opacity=".72"/>']
+    return svg(W, H, "  " + "\n  ".join(o))
+
 # ===================================================================== output
 FILES = {
     "rocket-farm-patch.svg":            patch("color"),
@@ -351,6 +410,9 @@ FILES = {
     "rocket-farm-backprint-light.svg":  backprint("light"),
     "rocket-farm-tee-scrubbed-dark.svg":  scrubbed("dark"),
     "rocket-farm-tee-scrubbed-light.svg": scrubbed("light"),
+    "rocket-farm-aero-light.svg":        aero("light"),
+    "rocket-farm-aero-dark.svg":         aero("dark"),
+    "rocket-farm-aero-stacked.svg":      aero("light", stacked=True),
 }
 
 if __name__ == "__main__":
