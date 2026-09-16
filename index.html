@@ -7,11 +7,20 @@
 <meta name="description" content="Rocket Farm is a 17-space full-hookup RV park in development in Kaplan, Louisiana — thirty miles north of the state's new launch campus. Monthly spaces from $650, nightly from $55. See every lot and its rate.">
 <meta name="theme-color" content="#070b18">
 
+<link rel="canonical" href="https://therocketfarm.com/">
+
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://therocketfarm.com/">
 <meta property="og:title" content="Rocket Farm — Built for the people building the future.">
 <meta property="og:description" content="17 full-hookup RV spaces in development in Kaplan, Louisiana. Monthly from $650 plus metered electric. Workforce basecamp, launch-viewing destination, sportsman's gateway.">
 <meta property="og:site_name" content="Rocket Farm">
+<meta property="og:image" content="https://therocketfarm.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rocket Farm — seventeen full-hookup RV spaces in Kaplan, Louisiana.">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://therocketfarm.com/og.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070b18'/%3E%3Cpath d='M50 18c9 10 13 22 13 34l-7 6H44l-7-6c0-12 4-24 13-34z' fill='%23f5a524'/%3E%3Cpath d='M44 62h12l-6 20-6-20z' fill='%23e8623c'/%3E%3C/svg%3E">
 
@@ -340,6 +349,38 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 .disclaimer p{font-size:.78rem;color:rgba(244,239,230,.38);line-height:1.6;max-width:92ch}
 .copyright{margin-top:1.4rem;font-size:.8rem;color:var(--faint)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Campground",
+  "name": "Rocket Farm",
+  "url": "https://therocketfarm.com/",
+  "image": "https://therocketfarm.com/og.png",
+  "description": "A 17-space full-hookup RV park in development in Kaplan, Louisiana, about thirty miles north of the state's planned launch campus. Monthly spaces from $650 plus metered electric, nightly from $55.",
+  "slogan": "Stay. Watch. Explore.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10729 Farmer Road",
+    "addressLocality": "Kaplan",
+    "addressRegion": "LA",
+    "postalCode": "70548",
+    "addressCountry": "US"
+  },
+  "email": "hello@therocketfarm.com",
+  "priceRange": "$55-$700",
+  "currenciesAccepted": "USD",
+  "isAccessibleForFree": false,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Full hookups (water, sewer, metered electric)", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Pull-through sites", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "50-amp service", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "30-amp service", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Gated entrance", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Fire ring and picnic table", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Monthly rates available", "value": true }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -794,8 +835,8 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
              - set:  <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true">
              - delete the form-handling block in the <script> at the bottom
 
-          Also: replace hello@rocketfarm.example below and in the footer
-          with your real business email address.
+          Also: hello@therocketfarm.com must be a mailbox that actually
+          receives mail, or waitlist submissions will go nowhere.
           ============================================================
         -->
         <form id="waitlist-form" novalidate>
@@ -887,8 +928,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 
       <div class="foot-col">
         <h4>Get in touch</h4>
-        <!-- TODO: replace with your real business email -->
-        <a href="mailto:hello@rocketfarm.example">hello@rocketfarm.example</a>
+        <a href="mailto:hello@therocketfarm.com">hello@therocketfarm.com</a>
         <a href="#lots">See every space &amp; rate</a>
         <a href="#waitlist">Join the waitlist</a>
       </div>
@@ -1116,7 +1156,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
      attribute, not the "name" input. */
   var $ = function (id) { return document.getElementById(id); };
 
-  var TO = 'hello@rocketfarm.example'; // TODO: your real business email
+  var TO = 'hello@therocketfarm.com'; // must be a live mailbox
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();

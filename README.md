@@ -91,13 +91,69 @@ Two things need your real details. Both are marked `TODO` in `index.html`.
    With either one, delete the form-handling block at the end of the `<script>` —
    it calls `preventDefault()` and would stop the real submission.
 
-## Deploying on GitHub Pages
+## Deploying to therocketfarm.com
 
-Settings → Pages → Source: *Deploy from a branch* → branch `main`, folder `/ (root)`.
-The page goes live at `https://<user>.github.io/<repo>/` within a minute or two.
+The repo already contains everything the deploy needs:
 
-To use a custom domain, add a `CNAME` file containing just the domain
-(e.g. `rocketfarm.com`), then point the DNS at GitHub Pages.
+| File          | Purpose                                                        |
+|---------------|----------------------------------------------------------------|
+| `index.html`  | the page                                                       |
+| `og.png`      | 1200×630 link preview image (referenced by absolute URL)        |
+| `CNAME`       | tells GitHub Pages to serve the site at `therocketfarm.com`      |
+| `robots.txt`  | allows crawling, points at the sitemap                          |
+| `sitemap.xml` | one entry, the homepage                                         |
+
+### 1. Turn on Pages
+
+Settings → Pages → Source: *Deploy from a branch* → folder `/ (root)`, and pick
+the branch this code is on. Because the `CNAME` file is committed, GitHub sets
+the custom domain automatically; tick **Enforce HTTPS** once the certificate is
+issued (usually a few minutes, sometimes up to an hour).
+
+### 2. Point the DNS
+
+For the apex domain `therocketfarm.com`, create four `A` records and four
+`AAAA` records at your registrar, all on the root (`@`):
+
+```
+A     @   185.199.108.153
+A     @   185.199.109.153
+A     @   185.199.110.153
+A     @   185.199.111.153
+AAAA  @   2606:50c0:8000::153
+AAAA  @   2606:50c0:8001::153
+AAAA  @   2606:50c0:8002::153
+AAAA  @   2606:50c0:8003::153
+```
+
+And so `www` works too:
+
+```
+CNAME www brison-creator.github.io.
+```
+
+Verify those addresses against GitHub's current documentation before you commit
+to them — GitHub has changed its Pages IPs before:
+<https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site>
+
+DNS can take anywhere from a few minutes to a couple of hours to propagate.
+
+### 3. Make sure the mailbox exists
+
+The page sends waitlist enquiries to **hello@therocketfarm.com**, in the footer
+link and in the form script. If that mailbox does not receive mail yet, create
+it (or a forwarder) before you share the link, or enquiries will bounce.
+
+## Search and social
+
+- `<link rel="canonical">`, `og:url`, `og:image` and `twitter:image` all use
+  absolute `https://therocketfarm.com/` URLs — Open Graph requires absolute
+  paths, so these must be updated if the domain ever changes.
+- `og.png` is generated, not hand-drawn. To regenerate it after a copy change,
+  re-render a 1200×630 card and overwrite the file; nothing else references it.
+- A JSON-LD `Campground` block in `<head>` carries the address, price range and
+  amenities for local search results. Keep its `email`, `priceRange` and address
+  in step with the page if you change them.
 
 ## Accessibility and robustness
 
