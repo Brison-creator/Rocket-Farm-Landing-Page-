@@ -59,10 +59,12 @@ electrical service:
 - 3 monthly spaces with 30/20 amp pedestals → **$650/mo**
 - 3 spaces held back for nightly use → **$55/night**
 
-Against the binder's base case that is **$1,530/year** less monthly tenant
-revenue in a stabilised Year 2 ($98,430 vs $99,960), moving Year 2 DSCR from
-**3.50x to about 3.44x** — still well above the binder's own $650-flat downside
-of 3.24x.
+This tiering reduces stabilised monthly tenant revenue slightly against the
+binder's flat-$700 base case, by well under a single site's annual rent. The
+effect on coverage is marginal and stays comfortably inside the binder's own
+downside case. The figures live in the financing binder and the companion
+spreadsheet, which are deliberately not in this repository — run the comparison
+there before you commit to a rate card.
 
 To revert to flat $700, set `data-price="700"` and the rate cell to `$700` on
 rows A3, A4 and B2, and update the "30-amp monthly" tier card.
