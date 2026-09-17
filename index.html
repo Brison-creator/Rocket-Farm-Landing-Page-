@@ -11,7 +11,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://therocketfarm.com/">
-<meta property="og:title" content="Rocket Farm — A field full of people looking up.">
+<meta property="og:title" content="Rocket Farm — Built for the people building the future.">
 <meta property="og:description" content="17 full-hookup RV spaces in development in Kaplan, Louisiana. Monthly from $650 plus metered electric. Workforce basecamp, launch-viewing destination, sportsman's gateway.">
 <meta property="og:site_name" content="Rocket Farm">
 <meta property="og:image" content="https://therocketfarm.com/og.png">
@@ -145,6 +145,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   animation:twinkle 7s ease-in-out infinite alternate;
 }
 @keyframes twinkle{from{opacity:.55}to{opacity:.95}}
+/* second, denser layer on a different beat so the sky shimmers rather than
+   pulsing as one sheet */
+.stars2{position:absolute;inset:0;z-index:-2;opacity:.7;
+  background-image:
+    radial-gradient(1.7px 1.7px at 5% 12%,rgba(244,239,230,.95),transparent),
+    radial-gradient(1.2px 1.2px at 16% 26%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1.4px 1.4px at 23% 44%,rgba(255,236,200,.8),transparent),
+    radial-gradient(1.1px 1.1px at 31% 16%,rgba(244,239,230,.65),transparent),
+    radial-gradient(1.9px 1.9px at 44% 34%,rgba(244,239,230,.98),transparent),
+    radial-gradient(1.2px 1.2px at 52% 22%,rgba(200,222,255,.75),transparent),
+    radial-gradient(1.5px 1.5px at 61% 8%,rgba(244,239,230,.85),transparent),
+    radial-gradient(1.1px 1.1px at 66% 41%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.8px 1.8px at 74% 24%,rgba(255,236,200,.9),transparent),
+    radial-gradient(1.2px 1.2px at 81% 45%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1.6px 1.6px at 88% 9%,rgba(244,239,230,.88),transparent),
+    radial-gradient(1.3px 1.3px at 95% 29%,rgba(200,222,255,.78),transparent),
+    radial-gradient(1.1px 1.1px at 10% 38%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.4px 1.4px at 38% 6%,rgba(244,239,230,.8),transparent);
+  animation:twinkle2 4.3s ease-in-out .9s infinite alternate}
+@keyframes twinkle2{from{opacity:.32}to{opacity:.9}}
 /* ---- Launch: rises from behind the treeline on a loop ----
    Sits at z-index -2 so the dark horizon (-1) occludes the pad, which is
    what makes it read as a real liftoff. Only transform and opacity are
@@ -153,61 +173,111 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    0.34 x (width x 4.667) = 1.59 x width above the element's bottom edge.
    Offsetting by that keeps the engines planted on the treeline at any size
    instead of floating above it. */
-.launch{--rw:clamp(58px,7.4vw,102px);
-  position:absolute;z-index:-2;right:9%;width:var(--rw);
-  bottom:calc(30px - 1.587 * var(--rw));pointer-events:none}
-@media (max-width:760px){.launch{--rw:64px;right:5%;opacity:.85;
+/* Sits behind the copy and hazed back — it is thirty miles off, so reading it
+   through atmosphere is truer than a crisp foreground object anyway. The veil
+   below keeps the type legible over it. */
+.launch{--rw:clamp(74px,9.5vw,140px);
+  position:absolute;z-index:-2;left:calc(53% - var(--rw) / 2);width:var(--rw);
+  bottom:calc(30px - 1.587 * var(--rw));pointer-events:none;opacity:.5}
+@media (max-width:760px){.launch{--rw:96px;left:calc(58% - var(--rw) / 2);opacity:.4;
   bottom:calc(18px - 1.587 * var(--rw))}}
-/* On the narrowest phones the copy column reaches the right gutter, so the
-   vehicle moves to the edge rather than sitting under the buttons. */
-@media (max-width:400px){.launch{--rw:56px;right:-4%}}
 
-.launch-rise{will-change:transform;animation:rf-rise 13s linear infinite}
+/* Moon and Mars sit above the veil so they stay crisp while the veil still
+   knocks the vehicle back behind the type. */
+.sky-bodies{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.moon{position:absolute;top:5%;right:6%;width:clamp(62px,8vw,112px);height:auto;
+  filter:drop-shadow(0 0 26px rgba(244,239,230,.22))}
+.mars{position:absolute;top:26%;right:23%;width:clamp(22px,2.8vw,42px);height:auto;
+  filter:drop-shadow(0 0 14px rgba(232,98,60,.35))}
+@media (max-width:760px){
+  /* Phones run the copy full-width, so there is no margin the bodies can sit
+     in safely. Drop them behind the veil and let it haze them instead — the
+     alternative is type sitting on a lit moon. */
+  .sky-bodies{z-index:-2}
+  .moon{top:1.2%;right:4%;width:58px}
+  .mars{top:8%;right:32%;width:22px}
+  .hero-copy{text-shadow:0 1px 14px rgba(7,11,24,.6)}
+}
+
+/* veil: protects the type where it sits, thins out to the right */
+.hero-veil{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(7,11,24,.94) 0%,rgba(7,11,24,.86) 34%,
+    rgba(7,11,24,.6) 58%,rgba(7,11,24,.2) 80%,transparent 100%)}
+@media (max-width:760px){
+  .hero-veil{background:linear-gradient(180deg,rgba(7,11,24,.82) 0%,
+    rgba(7,11,24,.8) 46%,rgba(7,11,24,.58) 74%,rgba(7,11,24,.3) 100%)}
+}
+
+.launch-rise{will-change:transform;animation:rf-rise 22s linear infinite}
 .launch-rise svg{width:100%;height:auto;display:block;overflow:visible}
 
 /* accelerating climb, faked with keyframe spacing so easing stays linear */
 @keyframes rf-rise{
   0%    {transform:translateY(0)}
-  11%   {transform:translateY(0)}
-  15%   {transform:translateY(-1.2vh)}
-  23%   {transform:translateY(-6vh)}
-  32%   {transform:translateY(-17vh)}
-  41%   {transform:translateY(-36vh)}
-  50%   {transform:translateY(-66vh)}
-  57%   {transform:translateY(-108vh)}
-  62%   {transform:translateY(-155vh)}
-  100%  {transform:translateY(-155vh)}
+  14%   {transform:translateY(0)}
+  19%   {transform:translateY(-.8vh)}
+  27%   {transform:translateY(-4vh)}
+  38%   {transform:translateY(-12vh)}
+  49%   {transform:translateY(-26vh)}
+  60%   {transform:translateY(-48vh)}
+  70%   {transform:translateY(-82vh)}
+  78%   {transform:translateY(-125vh)}
+  84%   {transform:translateY(-170vh)}
+  100%  {transform:translateY(-170vh)}
 }
 
 /* plume grows downward out of the engine skirt */
 .rf-plume{transform-box:fill-box;transform-origin:50% 0%;opacity:0;
-  animation:rf-plume 13s linear infinite}
+  animation:rf-plume 22s linear infinite}
 @keyframes rf-plume{
-  0%,9%  {opacity:0;transform:scale(.55,.15)}
-  11%    {opacity:1;transform:scale(1,.7)}
-  15%    {opacity:1;transform:scale(1.08,1.7)}
-  50%    {opacity:1;transform:scale(1,2.2)}
-  60%    {opacity:1;transform:scale(.9,2.2)}
-  63%    {opacity:0;transform:scale(.9,2.2)}
+  0%,11% {opacity:0;transform:scale(.5,.12)}
+  14%    {opacity:1;transform:scale(1,.65)}
+  19%    {opacity:1;transform:scale(1.08,1.6)}
+  60%    {opacity:1;transform:scale(1,2.3)}
+  80%    {opacity:1;transform:scale(.88,2.3)}
+  85%    {opacity:0;transform:scale(.88,2.3)}
   100%   {opacity:0}
 }
 /* engine flicker rides on opacity so it does not fight the scale above */
-.rf-core{animation:rf-flicker .13s steps(2,end) infinite}
-@keyframes rf-flicker{from{opacity:.98}to{opacity:.72}}
+.rf-core{animation:rf-flicker .16s steps(2,end) infinite}
+@keyframes rf-flicker{from{opacity:.98}to{opacity:.74}}
+
+/* rolling smoke column: three billows on staggered delays */
+.rf-smokecol{position:absolute;z-index:-2;left:calc(53% - 150px);bottom:-40px;
+  width:300px;height:340px;pointer-events:none;opacity:.75}
+@media (max-width:760px){.rf-smokecol{left:calc(58% - 105px);width:210px;height:250px;opacity:.55}}
+.rf-puff{position:absolute;bottom:0;border-radius:50%;
+  background:radial-gradient(circle at 46% 58%,rgba(244,239,230,.42),rgba(226,220,208,.18) 46%,transparent 72%);
+  will-change:transform,opacity;opacity:0;animation:rf-puff 22s linear infinite}
+.rf-puff.a{left:14%;width:46%;aspect-ratio:1;animation-delay:0s}
+.rf-puff.b{left:38%;width:54%;aspect-ratio:1;animation-delay:1.1s}
+.rf-puff.c{left:2%;width:40%;aspect-ratio:1;animation-delay:2.2s}
+@keyframes rf-puff{
+  0%,12%  {opacity:0;transform:translate3d(0,10%,0) scale(.3)}
+  18%     {opacity:.62;transform:translate3d(0,-4%,0) scale(.72)}
+  34%     {opacity:.46;transform:translate3d(6%,-32%,0) scale(1.15)}
+  54%     {opacity:.26;transform:translate3d(14%,-68%,0) scale(1.6)}
+  74%     {opacity:0;transform:translate3d(22%,-104%,0) scale(2)}
+  100%    {opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .rf-puff{opacity:.3;transform:translate3d(0,-6%,0) scale(.9)}
+}
 
 /* ignition cloud at the pad */
 .launch-smoke{--sw:clamp(150px,20vw,260px);
-  position:absolute;z-index:-2;right:calc(9% + 60px - var(--sw) / 2);
+  position:absolute;z-index:-2;left:calc(53% - var(--sw) / 2);
   bottom:calc(14px - var(--sw) / 2);
   width:var(--sw);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:radial-gradient(circle at 50% 62%,rgba(244,239,230,.5),rgba(244,239,230,.16) 42%,transparent 70%);
-  opacity:0;will-change:transform,opacity;animation:rf-smoke 13s linear infinite}
-@media (max-width:760px){.launch-smoke{--sw:150px;right:calc(4% + 41px - var(--sw) / 2)}}
+  opacity:0;will-change:transform,opacity;animation:rf-smoke 22s linear infinite}
+@media (max-width:760px){.launch-smoke{--sw:190px;left:calc(58% - var(--sw) / 2)}}
 @keyframes rf-smoke{
-  0%,9%  {opacity:0;transform:scale(.35)}
-  14%    {opacity:.62;transform:scale(1)}
-  34%    {opacity:.4;transform:scale(1.45) translateY(-5%)}
-  60%    {opacity:0;transform:scale(1.85) translateY(-11%)}
+  0%,11% {opacity:0;transform:scale(.3)}
+  17%    {opacity:.7;transform:scale(1)}
+  38%    {opacity:.5;transform:scale(1.5) translateY(-4%)}
+  62%    {opacity:.26;transform:scale(2) translateY(-9%)}
+  82%    {opacity:0;transform:scale(2.4) translateY(-14%)}
   100%   {opacity:0}
 }
 
@@ -222,7 +292,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .hero h1{font-size:var(--h1);margin:1.1rem 0 0;text-wrap:balance}
 .tagline{font-family:var(--font-display);font-weight:500;
   font-size:clamp(1.15rem,2.5vw,1.6rem);letter-spacing:-.01em;line-height:1.3;
-  margin-top:1.15rem;max-width:26ch;
+  margin-top:1.15rem;max-width:34ch;text-wrap:balance;
   background:linear-gradient(100deg,var(--amber),var(--sunset));
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);margin-top:1.4rem;max-width:62ch}
@@ -379,6 +449,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 
 /* ---------- Location ---------- */
 .loc{display:grid;gap:clamp(1.5rem,4vw,3rem);grid-template-columns:1fr;align-items:start}
+.loc>*{min-width:0}
 @media (min-width:900px){.loc{grid-template-columns:1.05fr .95fr}}
 .loc-list{list-style:none;margin:0;padding:0;display:grid;gap:1.1rem}
 .loc-list li{padding-left:1.4rem;position:relative;color:var(--muted)}
@@ -388,6 +459,22 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .dist-card h3{font-size:1.05rem;margin-bottom:1rem}
 .dist-row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px dashed var(--line);font-size:.93rem}
 .dist-row:last-of-type{border-bottom:0}
+.addr{font-family:var(--font-display);font-weight:500;font-size:1.05rem;line-height:1.45;
+  color:var(--cream);margin-bottom:1.2rem}
+.dir-btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
+.dir-btns .btn{padding:.72rem 1.15rem;font-size:.88rem;
+  white-space:normal;text-align:center;flex:1 1 auto;min-width:0}
+.dir-label{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 .7rem}
+.dir-from{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.6rem}
+.dir-from a{font-size:.85rem;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line-strong);border-radius:999px;padding:.4rem .8rem;
+  transition:color .15s ease,border-color .15s ease,background .15s ease}
+.dir-from a:hover{color:var(--night);background:var(--amber);border-color:transparent}
+.gate-note{margin-top:1.3rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.gate-note strong{display:block;font-family:var(--font-display);font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.gate-note span{font-size:.9rem;color:var(--muted)}
 .dist-row span{color:var(--muted)}
 .dist-row b{font-family:var(--font-display);white-space:nowrap}
 
@@ -440,7 +527,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     "postalCode": "70548",
     "addressCountry": "US"
   },
-  "email": "hello@therocketfarm.com",
+  "email": "stay@therocketfarm.com",
   "priceRange": "$55-$700",
   "currenciesAccepted": "USD",
   "isAccessibleForFree": false,
@@ -475,6 +562,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <a href="#pricing">Pricing</a>
       <a href="#phases">What's planned</a>
       <a href="#location">Location</a>
+      <a href="#directions">Directions</a>
     </div>
     <a class="btn btn-primary" href="#waitlist">
       <span class="cta-long">Join the waitlist</span><span class="cta-short">Waitlist</span>
@@ -488,8 +576,12 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="hero" id="top">
     <div class="sky" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
+    <div class="stars2" aria-hidden="true"></div>
 
     <div class="launch-smoke" aria-hidden="true"></div>
+    <div class="rf-smokecol" aria-hidden="true">
+      <div class="rf-puff a"></div><div class="rf-puff b"></div><div class="rf-puff c"></div>
+    </div>
     <div class="launch" aria-hidden="true">
       <div class="launch-rise">
         <svg viewBox="0 0 120 560" role="presentation">
@@ -514,18 +606,89 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
             <path class="rf-core" d="M52 366 C55 400 57 422 60 448 C63 422 65 400 68 366 Z" fill="#fff4d6"/>
           </g>
 
-          <!-- vehicle -->
-          <path d="M60 8 C76 50 84 82 84 114 L84 352 L36 352 L36 114 C36 82 44 50 60 8 Z" fill="url(#rfBody)"/>
-          <path d="M60 8 C50 44 36 84 36 114 L36 352 L50 352 L50 114 C50 84 55 44 60 8 Z" fill="#ffffff" opacity=".13"/>
-          <path d="M36 130 L17 170 L36 162 Z" fill="#ccd5e4"/>
-          <path d="M84 130 L103 170 L84 162 Z" fill="#9aa5ba"/>
-          <path d="M36 296 L9 368 L36 346 Z" fill="#ccd5e4"/>
-          <path d="M84 296 L111 368 L84 346 Z" fill="#9aa5ba"/>
-          <path d="M38 352 L82 352 L77 372 L43 372 Z" fill="#69738a"/>
-          <rect x="52" y="196" width="16" height="4" rx="2" fill="#69738a" opacity=".5"/>
-          <rect x="52" y="246" width="16" height="4" rx="2" fill="#69738a" opacity=".5"/>
+          <!-- vehicle: stainless barrel, welded rings, aft engine bay -->
+          <path d="M36 300 L8 372 L36 350 Z" fill="#9aa5ba"/>
+          <path d="M84 300 L112 372 L84 350 Z" fill="#79839a"/>
+          <path d="M60 8 C76 50 84 82 84 114 L84 356 L36 356 L36 114 C36 82 44 50 60 8 Z" fill="url(#rfBody)"/>
+          <!-- specular band -->
+          <path d="M49 96 C49 74 53 44 60 16 C63 44 65 74 65 96 L65 356 L49 356 Z"
+                fill="#ffffff" opacity=".22"/>
+          <!-- weld rings down the barrel -->
+          <g stroke="#6d7789" stroke-width="1.4" opacity=".4">
+            <path d="M37 150h46M37 184h46M37 218h46M37 252h46M37 286h46M37 320h46"/>
+          </g>
+          <!-- aft engine bay, darker -->
+          <path d="M36 330 L84 330 L84 356 L36 356 Z" fill="#59637a" opacity=".85"/>
+          <!-- forward flaps -->
+          <path d="M36 122 L16 164 L36 156 Z" fill="#aeb9cb"/>
+          <path d="M84 122 L104 164 L84 156 Z" fill="#8b95aa"/>
+          <!-- skirt + three bells -->
+          <path d="M38 356 L82 356 L78 374 L42 374 Z" fill="#4e5668"/>
+          <g fill="#3c4353">
+            <path d="M44 374 h10 l2 10 h-14 Z"/>
+            <path d="M55 374 h10 l2 10 h-14 Z"/>
+            <path d="M66 374 h10 l2 10 h-14 Z"/>
+          </g>
+          <!-- markings -->
+          <rect x="54" y="196" width="12" height="3" rx="1.5" fill="#5d6779" opacity=".7"/>
+          <rect x="50" y="60" width="4" height="22" rx="2" fill="#ffffff" opacity=".18"/>
         </svg>
       </div>
+    </div>
+
+    <div class="hero-veil" aria-hidden="true"></div>
+
+    <div class="sky-bodies" aria-hidden="true">
+      <!-- Moon, with a small base on the terminator -->
+      <svg class="moon" viewBox="0 0 120 120">
+        <defs>
+          <radialGradient id="mnG" cx=".36" cy=".32" r=".82">
+            <stop offset="0" stop-color="#f3f0e6"/>
+            <stop offset=".58" stop-color="#d9d5c7"/>
+            <stop offset="1" stop-color="#a7a396"/>
+          </radialGradient>
+          <clipPath id="mnClip"><circle cx="60" cy="60" r="50"/></clipPath>
+        </defs>
+        <circle cx="60" cy="60" r="50" fill="url(#mnG)"/>
+        <g clip-path="url(#mnClip)" fill="#9b9789" opacity=".42">
+          <circle cx="44" cy="48" r="9"/><circle cx="72" cy="38" r="5.5"/>
+          <circle cx="80" cy="66" r="11"/><circle cx="52" cy="80" r="6.5"/>
+          <circle cx="34" cy="68" r="4"/><circle cx="64" cy="58" r="3"/>
+        </g>
+        <!-- terminator: limb falls away to the lower right -->
+        <g clip-path="url(#mnClip)">
+          <ellipse cx="86" cy="76" rx="52" ry="52" fill="#0b1226" opacity=".26"/>
+        </g>
+        <!-- the base: two habs, a mast and lit windows -->
+        <g>
+          <path d="M38 40a8 8 0 0 1 16 0z" fill="#59564e"/>
+          <path d="M56 41a5.5 5.5 0 0 1 11 0z" fill="#4e4b44"/>
+          <rect x="53" y="38" width="5" height="3" fill="#59564e"/>
+          <path d="M45.4 40V28" stroke="#59564e" stroke-width="1.6"/>
+          <circle cx="45.4" cy="26.6" r="1.9" fill="#f5a524"/>
+          <circle cx="43" cy="37" r="1.1" fill="#ffd79a"/>
+          <circle cx="48" cy="37" r="1.1" fill="#ffd79a"/>
+          <circle cx="60.5" cy="38.6" r="1" fill="#ffd79a"/>
+        </g>
+      </svg>
+
+      <!-- Mars -->
+      <svg class="mars" viewBox="0 0 100 100">
+        <defs>
+          <radialGradient id="mrG" cx=".38" cy=".33" r=".8">
+            <stop offset="0" stop-color="#ef8452"/>
+            <stop offset=".55" stop-color="#cf5c34"/>
+            <stop offset="1" stop-color="#963d22"/>
+          </radialGradient>
+          <clipPath id="mrClip"><circle cx="50" cy="50" r="42"/></clipPath>
+        </defs>
+        <circle cx="50" cy="50" r="42" fill="url(#mrG)"/>
+        <g clip-path="url(#mrClip)">
+          <path d="M22 58c10-7 20-3 29 2s18 4 27-3c-6 16-22 26-40 22-9-2-15-9-16-21z" fill="#8c3520" opacity=".45"/>
+          <ellipse cx="50" cy="13" rx="17" ry="7" fill="#f6efe2" opacity=".85"/>
+          <ellipse cx="72" cy="66" rx="34" ry="34" fill="#0b1226" opacity=".22"/>
+        </g>
+      </svg>
     </div>
 
     <svg class="horizon" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
@@ -536,12 +699,13 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
      <div class="hero-copy">
       <p class="eyebrow">Kaplan, Louisiana &nbsp;·&nbsp; Vermilion Parish</p>
       <h1>Seventeen spaces. Thirty miles from the pad.</h1>
-      <p class="tagline">A field full of people looking up.</p>
+      <p class="tagline">Built for the people building the future.</p>
       <p class="lede">
-        Park the camper, put the chairs out, and watch it climb alongside a whole field of
-        people who drove out for the same thing. Rocket Farm is a full-hookup RV park taking
-        shape on Farmer Road — for the families chasing launch day, the crews building the
-        launch campus, and everyone who was already here for the redfish and the ducks.
+        Right now this is about the crews. Rocket Farm is a full-hookup RV park taking shape
+        on Farmer Road — level pull-through pads you can park a rig on and leave, power
+        metered so you pay for what you burn, and a real town five minutes out. Built first
+        for the people putting up Louisiana's launch campus, and ready for the families and
+        launch watchers when the pads go hot.
       </p>
       <ul class="tags">
         <li>Stay</li>
@@ -573,8 +737,8 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Who it's for</p>
-        <h2>Three kinds of people pull in off Farmer Road.</h2>
-        <p>The park is laid out to serve all three without any of them getting in each other's way — long-term crews on monthly spaces, short-stay visitors on the flexible ones, and folks here for the water and the marsh.</p>
+        <h2>Crews first. Everybody else welcome.</h2>
+        <p>Fourteen of the seventeen spaces are set aside for people working in the area on a monthly basis — that is who this park is for today. The three flexible spaces handle launch weeks, fishing trips and family stays without ever taking a space out from under someone who lives here.</p>
       </div>
 
       <div class="cards reveal">
@@ -583,7 +747,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
             <svg viewBox="0 0 24 24"><path d="M2 17h20M4 17V9l6-4 6 4v8M9 17v-4h3v4"/><circle cx="17.5" cy="19" r="2"/><circle cx="6.5" cy="19" r="2"/></svg>
           </div>
           <h3>Crews &amp; contractors</h3>
-          <p>Monthly spaces for craft labor, supervisors, vendors and relocating employees — level pull-through pads you can park a rig on and leave it, ten minutes from a real grocery store instead of an hour.</p>
+          <p>Monthly spaces for craft labor, supervisors, vendors and relocating employees. Level pull-through pads you park once and leave. Power metered per space, so a bunkhouse rig and a single-unit trailer don't pay the same bill. Gated and quiet, because a night shift has to sleep in the daytime.</p>
           <div class="note">14 monthly spaces · from $650 + electric</div>
         </article>
 
@@ -898,14 +1062,45 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
           <li><b>Acadiana, for real.</b> Rice fields, crawfish ponds and the kind of quiet you can hear. Lafayette is an easy drive for an airport or a night out.</li>
         </ul>
 
-        <aside class="dist-card">
-          <h3>Roughly how far</h3>
-          <div class="dist-row"><span>Kaplan</span><b>5 min</b></div>
-          <div class="dist-row"><span>Planned launch campus</span><b>~30 mi</b></div>
-          <div class="dist-row"><span>Abbeville</span><b>~15 mi</b></div>
-          <div class="dist-row"><span>Lafayette</span><b>~35 mi</b></div>
-          <div class="dist-row"><span>Gulf &amp; coastal launches</span><b>~30 mi</b></div>
-          <p class="privacy" style="margin-top:1.2rem">Approximate driving estimates, given to help you plan.</p>
+        <aside class="dist-card" id="directions">
+          <h3>Getting to the gate</h3>
+          <p class="addr">10729 Farmer Road<br>Kaplan, Louisiana 70548</p>
+
+          <div class="dir-btns">
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548"
+               target="_blank" rel="noopener">Directions &amp; drive time</a>
+            <a class="btn btn-ghost" href="https://maps.apple.com/?daddr=10729+Farmer+Road,+Kaplan,+LA+70548&amp;dirflg=d"
+               target="_blank" rel="noopener">Apple&nbsp;Maps</a>
+          </div>
+
+          <p class="dir-label">Driving from</p>
+          <div class="dir-from">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Kaplan%2C+LA&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Kaplan</a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Abbeville%2C+LA&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Abbeville</a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Lafayette%2C+LA&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Lafayette</a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Lake+Charles%2C+LA&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Lake Charles</a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Baton+Rouge%2C+LA&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Baton Rouge</a>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;origin=Houston%2C+TX&amp;destination=10729+Farmer+Road%2C+Kaplan%2C+LA+70548" target="_blank" rel="noopener">Houston</a>
+          </div>
+
+          <p class="dir-label">Roughly how far</p>
+          <div class="dist-row"><span>Kaplan</span><b>~5 mi</b></div>
+          <div class="dist-row"><span>Abbeville</span><b>~15 mi · 20 min</b></div>
+          <div class="dist-row"><span>Lafayette</span><b>~30 mi · 40 min</b></div>
+          <div class="dist-row"><span>Lake Charles</span><b>~70 mi · 1 hr 15</b></div>
+          <div class="dist-row"><span>Planned launch campus</span><b>~30 mi south</b></div>
+          <p class="privacy" style="margin-top:1rem">
+            Distances and times are approximate and offered only for planning — tap
+            <em>Directions</em> above for a live time from wherever you are. Road access to the
+            launch site is set by others and may change.
+          </p>
+
+          <div class="gate-note">
+            <strong>At the gate</strong>
+            <span>The entrance sits mid-way along our Farmer Road frontage, on the west side of
+            the property — one gated drive over a culvert, with the sign at the road. Farmer
+            Road is a parish road, so take it slow past the neighbours.</span>
+          </div>
         </aside>
       </div>
     </div>
@@ -935,7 +1130,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
              - set:  <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true">
              - delete the form-handling block in the <script> at the bottom
 
-          Also: hello@therocketfarm.com must be a mailbox that actually
+          Also: stay@therocketfarm.com must be a mailbox that actually
           receives mail, or waitlist submissions will go nowhere.
           ============================================================
         -->
@@ -1025,11 +1220,12 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <div class="foot-col">
         <h4>Visit</h4>
         <p>10729 Farmer Road<br>Kaplan, LA 70548</p>
+        <a href="#directions" style="margin-top:.6rem">Directions to the gate &rarr;</a>
       </div>
 
       <div class="foot-col">
         <h4>Get in touch</h4>
-        <a href="mailto:hello@therocketfarm.com">hello@therocketfarm.com</a>
+        <a href="mailto:stay@therocketfarm.com">stay@therocketfarm.com</a>
         <a href="#lots">See every space &amp; rate</a>
         <a href="#waitlist">Join the waitlist</a>
       </div>
@@ -1257,7 +1453,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
      attribute, not the "name" input. */
   var $ = function (id) { return document.getElementById(id); };
 
-  var TO = 'hello@therocketfarm.com'; // must be a live mailbox
+  var TO = 'stay@therocketfarm.com'; // must be a live mailbox
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();

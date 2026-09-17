@@ -69,29 +69,36 @@ there before you commit to a rate card.
 To revert to flat $700, set `data-price="700"` and the rate cell to `$700` on
 rows A3, A4 and B2, and update the "30-amp monthly" tier card.
 
-## Before you publish
+## Contact address
 
-Two things need your real details. Both are marked `TODO` in `index.html`.
+The site uses a single address, **stay@therocketfarm.com**, in three places:
+the footer link, the `TO` variable in the form script, and the `email` field of
+the JSON-LD block. Change all three together if it ever moves.
 
-1. **Email address.** Replace `hello@rocketfarm.example` in two places — the
-   footer link and the `TO` variable in the script at the bottom.
+It must be a live mailbox or a forwarder, or waitlist enquiries bounce.
+Namecheap's free email forwarding (Domain tab → Redirect Email) covers it; the
+MX and SPF records are already in place. Setting a **catch-all** forwarder as
+well is worth the extra minute, so mail to `hello@`, `info@` or a typo still
+reaches you instead of bouncing.
 
-2. **The waitlist form.** As written, submitting opens a pre-filled email in the
-   visitor's mail app. That works, but it loses people who don't have mail set
-   up. To collect submissions properly, pick one:
+## The waitlist form
 
-   **Formspree** (free tier, works on any host)
-   ```html
-   <form id="waitlist-form" action="https://formspree.io/f/YOUR_ID" method="POST">
-   ```
+As written, submitting opens a pre-filled email in the visitor's mail app. That
+works, but it loses anyone without mail set up. To collect submissions properly,
+pick one:
 
-   **Netlify Forms** (if you host on Netlify)
-   ```html
-   <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true">
-   ```
+**Formspree** (free tier, works on any host)
+```html
+<form id="waitlist-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+```
 
-   With either one, delete the form-handling block at the end of the `<script>` —
-   it calls `preventDefault()` and would stop the real submission.
+**Netlify Forms** (if you host on Netlify)
+```html
+<form id="waitlist-form" name="waitlist" method="POST" data-netlify="true">
+```
+
+With either one, delete the form-handling block at the end of the `<script>` —
+it calls `preventDefault()` and would stop the real submission.
 
 ## Deploying to therocketfarm.com
 
@@ -142,9 +149,30 @@ DNS can take anywhere from a few minutes to a couple of hours to propagate.
 
 ### 3. Make sure the mailbox exists
 
-The page sends waitlist enquiries to **hello@therocketfarm.com**, in the footer
+The page sends waitlist enquiries to **stay@therocketfarm.com**, in the footer
 link and in the form script. If that mailbox does not receive mail yet, create
 it (or a forwarder) before you share the link, or enquiries will bounce.
+
+## Directions
+
+The Location section links out to the visitor's own maps app rather than
+embedding a map, using the documented Google Maps `api=1` URL scheme and an
+Apple Maps `daddr` link. That returns a **live** drive time from wherever the
+visitor actually is, needs no API key, and adds no third-party tracking to the
+page. The "Driving from" chips pre-fill an origin so the route opens ready.
+
+The distances and times printed beside them are approximate planning figures,
+labelled as such on the page.
+
+**Two things to check before you promote the directions:**
+
+1. `10729 Farmer Road` is not in OpenStreetMap, and a new rural parcel is often
+   missing or mis-pinned in Google Maps too. Open the Directions link yourself
+   and confirm it lands at the right gate. If it does not, create a Google
+   Business Profile for the park — that gives you a verified pin you control.
+2. Once the entrance is surveyed and staked, send the coordinates and they can
+   be dropped straight into the links, which removes the geocoding guesswork
+   entirely.
 
 ## Search and social
 
