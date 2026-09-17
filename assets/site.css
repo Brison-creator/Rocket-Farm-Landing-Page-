@@ -1020,6 +1020,13 @@ header.open .nav-toggle .x{display:block}
 .corp-cta{margin-top:1.4rem}
 @media (max-width:600px){.corp-cta .btn{width:100%;white-space:normal;text-align:center}}
 
+/* ---------- Town photo ---------- */
+.town-photo{margin:1.4rem 0 0;max-width:360px}
+.town-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line-strong);display:block}
+.town-photo figcaption{font-size:.85rem;color:var(--faint);margin-top:.6rem}
+.town-photo figcaption a{color:var(--amber)}
+.loc-list+.dir-btns{margin-top:1.4rem}
+
 /* ---------- Sub-page heads ---------- */
 .head h1{font-size:clamp(2rem,5vw,3.3rem);margin-top:.9rem;text-wrap:balance}
 .more{margin-top:clamp(1.6rem,3vw,2.4rem);display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center}
