@@ -397,6 +397,80 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   .sat-train,.sat-one,.fireflies,.nebula{animation:none;opacity:0}
 }
 
+/* ---------- The saucer ----------
+   One 48s loop: zip in from the right, hover, dart to the top-left, hover,
+   dart back over the farm, hover with the beam down, then out. Only
+   transform and opacity animate; the lights chase with stepped opacity. */
+.ufo{position:absolute;z-index:-2;top:0;left:0;width:clamp(64px,7.5vw,118px);pointer-events:none;opacity:0;
+  will-change:transform;animation:rf-ufo 48s cubic-bezier(.65,0,.35,1) infinite;animation-delay:6s}
+.ufo svg{width:100%;height:auto;display:block;overflow:visible}
+.ufo-glow{animation:rf-ufo-glow 1.8s ease-in-out infinite alternate}
+@keyframes rf-ufo-glow{from{opacity:.55}to{opacity:1}}
+.ufo-lights circle{fill:#dff4ff;opacity:.25;animation:rf-ufo-light 1.6s steps(1) infinite}
+.ufo-lights circle:nth-child(1){animation-delay:0s}   .ufo-lights circle:nth-child(2){animation-delay:.2s}
+.ufo-lights circle:nth-child(3){animation-delay:.4s}  .ufo-lights circle:nth-child(4){animation-delay:.6s}
+.ufo-lights circle:nth-child(5){animation-delay:.8s}  .ufo-lights circle:nth-child(6){animation-delay:1s}
+.ufo-lights circle:nth-child(7){animation-delay:1.2s} .ufo-lights circle:nth-child(8){animation-delay:1.4s}
+@keyframes rf-ufo-light{0%{opacity:1}12.5%{opacity:.25}100%{opacity:.25}}
+/* x in vw so it scales with the sky, y in px so it never dips into the copy */
+@keyframes rf-ufo{
+  0%   {opacity:0;transform:translate3d(108vw,60px,0) rotate(-8deg) scale(.7)}
+  2%   {opacity:1}
+  7%   {transform:translate3d(72vw,44px,0) rotate(3deg) scale(1)}
+  9%   {transform:translate3d(72vw,52px,0) rotate(-2deg) scale(1)}
+  11%  {transform:translate3d(72vw,44px,0) rotate(2deg) scale(1)}
+  13%  {transform:translate3d(72vw,50px,0) rotate(0deg) scale(1)}
+  15%  {transform:translate3d(72vw,44px,0) rotate(-14deg) scale(1)}
+  21%  {transform:translate3d(26vw,14px,0) rotate(6deg) scale(.8)}
+  23%  {transform:translate3d(26vw,20px,0) rotate(-3deg) scale(.8)}
+  25%  {transform:translate3d(26vw,14px,0) rotate(3deg) scale(.8)}
+  27%  {transform:translate3d(26vw,18px,0) rotate(0deg) scale(.8)}
+  29%  {transform:translate3d(26vw,14px,0) rotate(16deg) scale(.8)}
+  36%  {transform:translate3d(84vw,250px,0) rotate(-3deg) scale(1.15)}
+  38%  {transform:translate3d(84vw,258px,0) rotate(2deg) scale(1.15)}
+  40%  {transform:translate3d(84vw,250px,0) rotate(-2deg) scale(1.15)}
+  50%  {transform:translate3d(84vw,254px,0) rotate(1deg) scale(1.15)}
+  52%  {transform:translate3d(84vw,250px,0) rotate(0deg) scale(1.15)}
+  54%  {opacity:1;transform:translate3d(84vw,236px,0) rotate(-20deg) scale(1.15)}
+  59%  {opacity:0;transform:translate3d(-14vw,-40px,0) rotate(-6deg) scale(.6)}
+  100% {opacity:0;transform:translate3d(-14vw,-40px,0) rotate(-6deg) scale(.6)}}
+
+/* beam and the field below the hover spot; both keyed to the same 48s loop */
+.ufo-scene{position:absolute;z-index:-1;left:84vw;bottom:0;width:0;height:100%;pointer-events:none}
+.ufo-beam{position:absolute;left:0;bottom:0;width:160px;height:calc(100% - 290px);translate:calc(-50% + clamp(32px,3.75vw,59px)) 0;
+  clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);opacity:0;transform-origin:50% 0;
+  background:linear-gradient(180deg,rgba(214,242,255,.95) 0%,rgba(140,210,255,.55) 35%,rgba(120,195,255,.22) 75%,rgba(120,195,255,.10) 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 70%,transparent 100%);
+  animation:rf-beam 48s linear infinite;animation-delay:6s}
+@keyframes rf-beam{0%,38%{opacity:0;transform:scaleY(.2)}40%{opacity:.72;transform:scaleY(1)}50%{opacity:.72;transform:scaleY(1)}52%,100%{opacity:0;transform:scaleY(.2)}}
+.ufo-cow{position:absolute;left:0;bottom:14px;width:34px;translate:calc(-50% + clamp(32px,3.75vw,59px)) 0;fill:#1b2438;stroke:rgba(190,225,255,.55);stroke-width:.8;overflow:visible;
+  animation:rf-cow 48s ease-in-out infinite;animation-delay:6s}
+@keyframes rf-cow{
+  0%,40%  {opacity:1;transform:translateY(0) rotate(0)}
+  41.5%   {transform:translateY(-10px) rotate(-10deg)}
+  49.5%   {opacity:1;transform:translateY(-420px) rotate(380deg) scale(.55)}
+  50.5%,88% {opacity:0;transform:translateY(-520px) rotate(400deg) scale(.4)}
+  92%     {opacity:0;transform:translateY(-40px) rotate(0)}
+  96%,100%{opacity:1;transform:translateY(0) rotate(0)}}
+/* narrow desktops: the headline can reach the hover spot, so no beam there */
+@media (max-width:1199px){.ufo-beam,.ufo-cow{display:none}}
+/* phones: top band only, small, no hover down over the copy */
+@media (max-width:760px){
+  .ufo{width:52px;animation-name:rf-ufo-m;animation-duration:36s}
+  @keyframes rf-ufo-m{
+    0%   {opacity:0;transform:translate3d(104vw,26px,0) rotate(-8deg) scale(.8)}
+    3%   {opacity:1}
+    12%  {transform:translate3d(58vw,18px,0) rotate(2deg) scale(1)}
+    16%  {transform:translate3d(58vw,24px,0) rotate(-2deg) scale(1)}
+    20%  {transform:translate3d(58vw,18px,0) rotate(12deg) scale(1)}
+    30%  {transform:translate3d(14vw,8px,0) rotate(-4deg) scale(.85)}
+    34%  {transform:translate3d(14vw,14px,0) rotate(3deg) scale(.85)}
+    38%  {opacity:1;transform:translate3d(14vw,8px,0) rotate(-18deg) scale(.85)}
+    44%  {opacity:0;transform:translate3d(-30vw,-20px,0) rotate(-6deg) scale(.5)}
+    100% {opacity:0;transform:translate3d(-30vw,-20px,0) rotate(-6deg) scale(.5)}}
+}
+@media (prefers-reduced-motion:reduce){.ufo,.ufo-scene{display:none}}
+
 /* meteors: thin streaks on long, offset cycles */
 /* Meteors stay in the top band of the sky, on a shallow path. A bright streak
    crossing the headline reads as a rendering glitch and drops the contrast
