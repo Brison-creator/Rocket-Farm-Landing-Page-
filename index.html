@@ -537,12 +537,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .soon{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1rem;
   font-family:var(--font-display);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--amber);border:1px solid rgba(245,165,36,.45);border-radius:999px;padding:.42rem .9rem .42rem .7rem;
-  background:rgba(245,165,36,.08)}
+  background:rgba(7,11,24,.92);max-width:100%;white-space:nowrap}
+.soon-long{display:inline}.soon-short{display:none}
+/* phones: a shorter label so the pill stays one line and clear of the Moon,
+   and Mars lifts above the pill's row */
+@media (max-width:760px){
+  .soon-long{display:none}.soon-short{display:inline}
+  .mars{top:.3%}
+}
 .soon-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);
   animation:rf-soon 1.8s ease-in-out infinite alternate}
 @keyframes rf-soon{from{opacity:.45}to{opacity:1}}
 .fine{font-size:.78rem;line-height:1.55;color:var(--faint);max-width:60ch}
-.fine a{color:var(--amber)}
+.fine a{color:var(--amber);position:relative}
+/* small-print links keep their size but get a 44px hit area on phones */
+@media (max-width:760px){.fine a::before{content:"";position:absolute;inset:-15px -6px}}
 .hero-fine{margin-top:1.1rem}
 
 /* ---------- Stat strip ---------- */
@@ -1165,7 +1174,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 
     <div class="wrap">
      <div class="hero-copy">
-      <p class="soon"><span class="soon-dot" aria-hidden="true"></span>Coming soon &middot; Phase 1 targeted 2027</p>
+      <p class="soon"><span class="soon-dot" aria-hidden="true"></span><span class="soon-long">Coming soon &middot; Phase 1 targeted 2027</span><span class="soon-short">Coming soon &middot; 2027</span></p>
       <h1>Bring your camper. Stay thirty miles from the pad.</h1>
       <p class="tagline">Full-hookup RV park in Kaplan, Louisiana — built for the people building the future.</p>
       <p class="lede">
