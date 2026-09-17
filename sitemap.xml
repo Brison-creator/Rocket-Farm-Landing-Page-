@@ -11,4 +11,10 @@
       <image:title>Rocket Farm — RV park in Kaplan, Louisiana</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://therocketfarm.com/policies/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

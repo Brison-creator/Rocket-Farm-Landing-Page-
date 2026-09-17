@@ -123,6 +123,22 @@ pick one:
 With either one, delete the form-handling block at the end of the `<script>` —
 it calls `preventDefault()` and would stop the real submission.
 
+## Park rules page (`policies/index.html`)
+
+`https://therocketfarm.com/policies/` is the Master Rules, Policies & Monthly
+Site Agreement rendered as a web page, with a section index, key-terms tiles
+and a print stylesheet (the "Print or save as PDF" link gives a clean
+black-on-white copy). It is generated from the Word document: the occupant
+information block, the signature page and the internal "review with counsel"
+note are left out on purpose, and the page says the signed copy at check-in
+controls. To update the rules, edit the Word document and re-run the generator
+(`build_policies.py`, kept outside the repo) or edit the HTML directly; keep the
+`Updated` date and the sitemap `lastmod` in step.
+
+The document is still marked as an owner working draft. Have Louisiana counsel
+look at the $55-per-day late penalty, the five-day removal rule and the
+occupancy classification before the first occupant signs.
+
 ## Deploying to therocketfarm.com
 
 The repo already contains everything the deploy needs:
