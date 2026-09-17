@@ -192,7 +192,7 @@ main{position:relative}
 .top .lede{color:var(--muted);margin-top:1.1rem;max-width:58ch;font-size:clamp(1rem,1.2vw,1.12rem)}
 .top .meta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.82rem;color:var(--faint)}
 .top .meta a{color:var(--amber)}
-@media (max-width:760px){.top .meta a{min-height:44px;display:inline-flex;align-items:center}}
+@media (max-width:760px){.top .meta{flex-direction:column;gap:.1rem;align-items:flex-start}.top .meta a{min-height:44px;display:inline-flex;align-items:center}}
 .deal{margin-top:clamp(1.6rem,3vw,2.4rem);border:1px solid rgba(245,165,36,.45);border-radius:var(--radius);padding:1.1rem 1.25rem;
   background:linear-gradient(180deg,rgba(245,165,36,.10),rgba(245,165,36,.03));font-family:var(--font-display);font-weight:700;
   font-size:clamp(.95rem,1.5vw,1.12rem);letter-spacing:.01em;line-height:1.4;max-width:70ch}
@@ -244,6 +244,8 @@ main{position:relative}
 .sec .example{font-size:.9rem;color:var(--faint);border:1px dashed var(--line-strong);border-radius:10px;padding:.7rem .95rem}
 .sec .example b{color:var(--muted);font-weight:600}
 .sec .signoff{margin-top:1.6rem;font-size:.9rem;border-top:1px dashed var(--line-strong);padding-top:1.1rem}
+.sec .signoff a{color:var(--amber);position:relative}
+@media (max-width:760px){.sec .signoff a::before{content:"";position:absolute;inset:-14px -4px}}
 .closing{margin-top:clamp(2.5rem,5vw,4rem);border:1px solid var(--line-strong);border-radius:var(--radius-lg);padding:clamp(1.4rem,3vw,2.2rem);
   background:linear-gradient(180deg,rgba(245,165,36,.07),rgba(244,239,230,.02));font-family:var(--font-display);font-weight:700;
   font-size:clamp(1rem,1.8vw,1.3rem);letter-spacing:.01em;line-height:1.45;text-wrap:balance}
@@ -312,19 +314,19 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <p class="eyebrow">Park rules &amp; policies</p>
       <h1>The rules of the park.</h1>
-      <p class="lede">Plain English, the same for everyone, written for a working RV park thirty miles from a launch pad. This is the master rules document and the monthly site agreement every occupant signs at check-in.</p>
-      <p class="meta"><span>Rocket Farm LLC &middot; 10729 Farmer Road, Kaplan, LA 70548</span><span>Updated September 17, 2026</span><a href="#" onclick="window.print();return false">Print or save as PDF</a></p>
+      <p class="lede">Plain English, the same for everyone, written for a working RV park thirty miles from a launch pad. This is the master rules document and the monthly site agreement every occupant signs at check-in, written to Louisiana law.</p>
+      <p class="meta"><span>Rocket Farm LLC &middot; 10729 Farmer Road, Kaplan, LA 70548</span><span>Updated September 17, 2026</span><a href="#" onclick="window.print();return false">Print or save as PDF</a><a href="Rocket_Farm_LLC_Master_Rules_and_Monthly_Site_Agreement.docx" download>Download the agreement (Word)</a></p>
 
       <div class="deal"><b>The basic deal</b>PAY ON THE 1ST. KEEP YOUR SITE CLEAN. RESPECT YOUR NEIGHBORS. FOLLOW SAFETY RULES. FIVE DAYS UNPAID WITH NO APPROVED PLAN MEANS IT IS TIME TO GO.</div>
 
       <div class="facts" aria-label="Key terms at a glance">
         <div class="fact"><b>Due the 1st</b><span>Rent, in full. Late on the 2nd, no grace period.</span></div>
-        <div class="fact"><b>$55 / day</b><span>Late-payment penalty from the 2nd, on top of rent.</span></div>
-        <div class="fact"><b>5 days</b><span>Unpaid with no approved plan means time to go.</span></div>
+        <div class="fact"><b>$50 + $10/day</b><span>Late charges from the 2nd, capped at 20% of rent.</span></div>
+        <div class="fact"><b>5 days</b><span>Unpaid with no approved plan and the agreement ends.</span></div>
         <div class="fact"><b>10 PM – 7 AM</b><span>Quiet hours, every night, launch or no launch.</span></div>
       </div>
 
-      <p class="notice">Rocket Farm is under development. These rules are the planned terms for opening and may be revised before the first occupant signs. The version you sign at check-in is the one that governs your stay.</p>
+      <p class="notice">Rocket Farm is under development. These rules are the planned terms for opening and may be revised before the first occupant signs. The version you sign at check-in is the one that governs your stay. Nothing here waives any right that Louisiana law says cannot be waived.</p>
     </div>
   </section>
 
@@ -332,295 +334,293 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <nav class="toc" aria-label="Sections">
       <h2>Sections</h2>
       <ol>
-<li><a href="#s1"><span class="num">1</span>Monthly Occupancy, Renewal, Rent &amp; Nonpayment</a></li>
-<li><a href="#s2"><span class="num">2</span>Reservations, Launches &amp; Guest Access</a></li>
-<li><a href="#s3"><span class="num">3</span>Conduct, Noise &amp; Disruption</a></li>
-<li><a href="#s4"><span class="num">4</span>Site Cleanliness &amp; Property Care</a></li>
-<li><a href="#s5"><span class="num">5</span>Equal Access &amp; Non-Discrimination</a></li>
-<li><a href="#s6"><span class="num">6</span>Property Improvement &amp; Ongoing Development Notice</a></li>
-<li><a href="#s7"><span class="num">7</span>Electrical Service &amp; Power Outage Action Plan</a></li>
-<li><a href="#s8"><span class="num">8</span>Water Service, Leaks &amp; Outage Policy</a></li>
-<li><a href="#s9"><span class="num">9</span>Pets, Children, Fire, Alcohol, Weapons &amp; Drones</a></li>
-<li><a href="#s10"><span class="num">10</span>Weather, Emergencies &amp; Natural Conditions</a></li>
-<li><a href="#s11"><span class="num">11</span>Stay at Your Own Risk - Louisiana Marsh Safety Notice</a></li>
-<li><a href="#s12"><span class="num">12</span>Property, Damage, Personal Belongings &amp; Restricted Areas</a></li>
-<li><a href="#s13"><span class="num">13</span>Management Authority, Enforcement &amp; Legal Compliance</a></li>
+<li><a href="#s1"><span class="num">1</span>What This Agreement Is</a></li>
+<li><a href="#s2"><span class="num">2</span>Term, Rent, Deposits &amp; Nonpayment</a></li>
+<li><a href="#s3"><span class="num">3</span>Reservations, Launches &amp; Guest Access</a></li>
+<li><a href="#s4"><span class="num">4</span>Conduct, Noise &amp; Disruption</a></li>
+<li><a href="#s5"><span class="num">5</span>Site Cleanliness &amp; Property Care</a></li>
+<li><a href="#s6"><span class="num">6</span>Equal Access &amp; Non-Discrimination</a></li>
+<li><a href="#s7"><span class="num">7</span>Ongoing Development Notice</a></li>
+<li><a href="#s8"><span class="num">8</span>Electrical Service &amp; Outage Plan</a></li>
+<li><a href="#s9"><span class="num">9</span>Water Service, Leaks &amp; Outages</a></li>
+<li><a href="#s10"><span class="num">10</span>Pets, Children, Fire, Alcohol, Weapons &amp; Drones</a></li>
+<li><a href="#s11"><span class="num">11</span>Weather, Hurricanes &amp; Evacuation</a></li>
+<li><a href="#s12"><span class="num">12</span>Marsh Country Safety Notice</a></li>
+<li><a href="#s13"><span class="num">13</span>Damage, Belongings, Entry, Enforcement &amp; Legal Terms</a></li>
 <li><a href="#s14"><span class="num">14</span>Occupant Acknowledgment</a></li>
       </ol>
       <a class="btn btn-ghost print" href="#" onclick="window.print();return false">Print or save as PDF</a>
     </nav>
 
     <article class="doc">
-<p>This document governs use and occupancy of Rocket Farm LLC property. It applies to registered occupants and, where relevant, their household members, children, visitors, invitees, contractors, pets, vehicles, RVs, and personal property. The registered occupant is responsible for making sure everyone they bring onto the property follows these rules.</p>
-<p>Rocket Farm LLC may adopt reasonable temporary safety or operational rules when conditions require them. Nothing in this agreement is intended to waive any right or obligation that cannot lawfully be waived.</p>
-<section class="sec" id="s1"><h2><span class="num">1</span>Monthly Occupancy, Renewal, Rent &amp; Nonpayment</h2>
-<h3 id="s1-1"><span class="num">1.1</span>Month-to-Month Occupancy</h3>
-<p>Occupancy is offered on a month-to-month basis. Each monthly occupancy period is a separate calendar-month period. Unless Rocket Farm LLC has accepted renewal for the next month, the current occupancy period ends at 11:59 PM on the last calendar day of the month.</p>
-<p>Renewal does not create a guaranteed long-term right to occupy any particular site. Rocket Farm LLC may decline future renewal subject to applicable law and any required notice.</p>
-<h3 id="s1-2"><span class="num">1.2</span>Agreed Departure Date and Checkout Time</h3>
+<p>This document is the agreement between Rocket Farm LLC ("Rocket Farm," "we," "us") and the registered occupant named on the signature page ("you"). It governs use and occupancy of Rocket Farm property at 10729 Farmer Road, Kaplan, Louisiana 70548. It applies to you and, where relevant, to your household members, children, visitors, invitees, contractors, pets, vehicles, RVs and personal property. You are responsible for making sure everyone you bring onto the property follows these rules.</p>
+<p>Rocket Farm may adopt reasonable temporary safety or operational rules when conditions require them. Nothing in this agreement waives any right or obligation that cannot lawfully be waived, and every provision is intended to apply only to the extent Louisiana law permits.</p>
+<section class="sec" id="s1"><h2><span class="num">1</span>What This Agreement Is</h2>
+<h3 id="s1-1"><span class="num">1.1</span>What You Are Renting</h3>
+<p>You are renting the use of a numbered RV site (the "Site") and the utility connections at that Site, together with the non-exclusive right to use the roads, common areas and amenities Rocket Farm opens to occupants. You own the RV. Rocket Farm does not lease you a dwelling; it leases you the ground, the pad and the hookups your dwelling sits on.</p>
+<h3 id="s1-2"><span class="num">1.2</span>How Louisiana Law Treats This Agreement</h3>
+<p>A monthly Site occupancy is a month-to-month lease of the Site under Title IX of the Louisiana Civil Code. A nightly, weekly or event stay of less than thirty days is a transient guest arrangement, not a lease, and may be ended by Rocket Farm at any time for a violation of these rules, with a refund of any unused prepaid nights only where Rocket Farm ends the stay for a reason other than your conduct. Rocket Farm will use the procedures Louisiana law requires to recover possession of a Site and will never use force, lockouts or utility shutoffs to remove an occupant except as the law allows.</p>
+<h3 id="s1-3"><span class="num">1.3</span>Who May Live on the Site</h3>
+<p>Only the people listed on the signature page may occupy the Site. A visitor who stays more than fourteen nights in any thirty-day period is an occupant and must be added in writing, subject to Rocket Farm's approval and any occupancy limit. You may not sublet the Site, assign this agreement, rent out your RV, or let anyone else occupy the Site in your absence.</p>
+<h3 id="s1-4"><span class="num">1.4</span>RV Standards</h3>
+<ul>
+<li>The RV must be a self-contained recreational vehicle in road-worthy condition, with a current registration and current liability insurance, and must remain capable of being moved off the Site on 24 hours' notice.</li>
+<li>One RV and up to two passenger vehicles per Site. Boats, trailers and extra vehicles need written approval and a designated place to sit.</li>
+<li>No permanent or semi-permanent structures: no decks, fences, skirting fixed to the ground, sheds, plumbing changes or electrical changes without written approval. Approved additions become part of the Site unless Rocket Farm asks you to remove them at departure.</li>
+<li>Sewer connections must be made with a sealed, threaded or doughnut-style fitting. Open or leaking sewer connections are a health hazard and will be corrected at your expense.</li>
+</ul>
+<h3 id="s1-5"><span class="num">1.5</span>Insurance</h3>
+<p>You must keep liability insurance on the RV and on every vehicle you bring onto the property for the whole stay and show proof at check-in and on request. Rocket Farm strongly recommends comprehensive coverage for wind, hail, flood, fire and theft. Rocket Farm's insurance does not cover your RV, your vehicles or your belongings.</p>
+</section>
+<section class="sec" id="s2"><h2><span class="num">2</span>Term, Rent, Deposits &amp; Nonpayment</h2>
+<h3 id="s2-1"><span class="num">2.1</span>Month-to-Month Occupancy</h3>
+<p>Occupancy is month to month. Each monthly period is a separate calendar-month period. Unless Rocket Farm has accepted renewal for the next month, the current period ends at 11:59 PM on the last calendar day of the month. Renewal does not create a long-term right to any particular Site, and Rocket Farm may decline to renew subject to the notice this agreement and Louisiana law require.</p>
+<h3 id="s2-2"><span class="num">2.2</span>Agreed Departure Date</h3>
 <p class="callout">AGREED DEPARTURE DATE: THE LAST CALENDAR DAY OF EACH MONTH. AGREED CHECKOUT TIME: 11:59 PM.</p>
-<p>The occupant specifically agrees that the departure date for each monthly occupancy period is the last calendar day of that month at 11:59 PM unless the next monthly period has been renewed and accepted by Rocket Farm LLC.</p>
-<p class="example"><b>Example.</b> A September occupancy period has an agreed departure date of September 30 at 11:59 PM. If October renewal is accepted, the new agreed departure date becomes October 31 at 11:59 PM.</p>
-<h3 id="s1-3"><span class="num">1.3</span>Rent Due Date</h3>
+<p>You specifically agree that the departure date for each monthly period is the last calendar day of that month at 11:59 PM unless the next monthly period has been renewed and accepted by Rocket Farm.</p>
+<p class="example"><b>Example.</b> A September occupancy has an agreed departure date of September 30 at 11:59 PM. If October renewal is accepted, the new agreed departure date is October 31 at 11:59 PM.</p>
+<h3 id="s2-3"><span class="num">2.3</span>Rent Due Date</h3>
 <p class="callout">MONTHLY RENT IS DUE IN FULL ON THE 1ST. THERE IS NO GRACE PERIOD. IT IS LATE ON THE 2ND.</p>
-<p>Payment must be received and successfully processed by Rocket Farm LLC no later than 11:59 PM on the 1st. A payment that is declined, returned, reversed, disputed, charged back, or otherwise not successfully collected is not considered paid.</p>
-<p>No reminder, invoice, telephone call, text message, email, or other demand is required before the account becomes delinquent.</p>
-<h3 id="s1-4"><span class="num">1.4</span>$55 Per Day Late-Payment Penalty</h3>
-<p>Beginning at 12:00 AM on the 2nd, a $55.00 per calendar day late-payment penalty will be assessed for each calendar day the required monthly rent remains unpaid, to the extent permitted by applicable law.</p>
+<p>Rent must be received and successfully processed by Rocket Farm no later than 11:59 PM on the 1st. A payment that is declined, returned, reversed, disputed, charged back or otherwise not collected is not a payment. No reminder, invoice, call, text, email or other demand is required before the account is delinquent.</p>
+<h3 id="s2-4"><span class="num">2.4</span>Late Charges</h3>
+<p>Rent that is not paid in full by 11:59 PM on the 1st incurs an initial late charge of $50.00 on the 2nd, plus $10.00 for each further calendar day the rent remains unpaid beginning on the 3rd. Total late charges for any one month are capped at twenty percent (20%) of that month's rent. You and Rocket Farm agree that these charges are a reasonable estimate of the administrative cost, collection effort and lost use of funds that a late payment causes, that the actual amount would be hard to prove, and that they are stipulated damages under Louisiana Civil Code article 2005 and not a penalty.</p>
 <ul>
-<li>The $55.00 penalty is in addition to the full monthly rent.</li>
-<li>It is not rent and does not replace the monthly rent.</li>
-<li>It does not convert the site to a $55-per-day rental.</li>
-<li>It does not reduce or satisfy any future month's rent.</li>
-<li>It does not purchase another day of occupancy or prevent enforcement of a default.</li>
+<li>Late charges are in addition to the full monthly rent, not a substitute for it.</li>
+<li>Late charges do not buy additional days of occupancy, do not convert the Site to a daily rental, do not reduce any later month's rent, and do not prevent enforcement of a default.</li>
+<li>A returned or reversed payment also incurs the bank's actual returned-item cost.</li>
 </ul>
-<p class="example"><b>Example.</b> If the monthly rent remains unpaid for ten calendar days after becoming delinquent, the full monthly rent remains due plus $550.00 in accumulated late-payment penalties, subject to applicable law.</p>
-<h3 id="s1-5"><span class="num">1.5</span>Each New Month Is a Separate Obligation</h3>
-<p>Late-payment penalties, rent, utilities, damages, or other balances from one month do not count toward the next month. If a new month begins while prior amounts remain unpaid, the new month's full rent is still separately due.</p>
-<h3 id="s1-6"><span class="num">1.6</span>Five-Day Nonpayment Rule</h3>
-<p class="callout">FIVE CONSECUTIVE DAYS UNPAID + NO WRITTEN PAYMENT PLAN APPROVED BY ROCKET FARM LLC = MATERIAL DEFAULT AND TIME TO VACATE.</p>
-<p>Because rent becomes delinquent on the 2nd, the five delinquent days are:</p>
+<p class="example"><b>Example.</b> Rent of $700 unpaid for ten days after the 1st owes the full $700 plus $50 for the 2nd and $10 a day for the 3rd through the 11th, $140 in all, which is the 20% cap. The charges stop growing there; the default does not.</p>
+<h3 id="s2-5"><span class="num">2.5</span>Each Month Is a Separate Obligation</h3>
+<p>Rent, late charges, utilities, damages and other balances from one month do not roll into the next. If a new month begins while prior amounts remain unpaid, the new month's full rent is separately due on the 1st. Payments are applied first to the oldest charges other than rent, then to the oldest rent.</p>
+<h3 id="s2-6"><span class="num">2.6</span>Five-Day Nonpayment Rule</h3>
+<p class="callout">FIVE CONSECUTIVE DAYS UNPAID WITH NO WRITTEN PAYMENT PLAN APPROVED BY ROCKET FARM IS A MATERIAL DEFAULT. THE AGREEMENT ENDS AND IT IS TIME TO GO.</p>
+<p>Because rent is delinquent on the 2nd, the five delinquent days are the 2nd through the 6th. If the rent remains unpaid at 11:59 PM on the 6th and no written payment plan has been approved, this agreement terminates by its own terms at that moment without any further notice, your right to occupy the Site ends, and you must vacate and completely surrender the Site by 11:59 PM on the 7th.</p>
+<h3 id="s2-7"><span class="num">2.7</span>Waiver of Notice to Vacate</h3>
+<p>Louisiana law ordinarily requires a lessor to deliver a written notice to vacate and wait five days before filing suit for possession, unless the lease waives that notice. You expressly waive the notice to vacate and the five-day waiting period under Louisiana Code of Civil Procedure article 4701 for every termination under this agreement, including termination for nonpayment under Section 2.6 and termination for a rule violation under Section 13. Rocket Farm may file a rule for possession immediately upon termination. You initial this waiver separately on the signature page. Nothing in this section authorizes self-help removal; Rocket Farm will obtain a judgment of possession before an occupant is removed against his or her will.</p>
+<h3 id="s2-8"><span class="num">2.8</span>Payment Plans, Partial Payments and Reinstatement</h3>
+<p>Rocket Farm is not required to offer or accept a payment plan. A plan exists only when Rocket Farm approves it in writing with exact amounts and dates. "I will have it Friday" is not a plan. Missing any payment under an approved plan is a default of the plan and of this agreement.</p>
+<p>Rocket Farm is not required to accept partial payment. Unless Rocket Farm agrees otherwise in writing, a partial payment does not cure a delinquency, stop late charges, create a plan, extend the occupancy period, or waive Rocket Farm's right to possession, and Rocket Farm may accept a partial payment and still proceed for possession. After termination, tendering money does not reinstate this agreement unless Rocket Farm agrees in writing. Accepting a late payment, partial payment, waived charge or extension once does not obligate Rocket Farm to do it again.</p>
+<h3 id="s2-9"><span class="num">2.9</span>Security Deposit</h3>
+<p>A refundable security deposit in the amount shown on the signature page is due at check-in. Rocket Farm holds it as security for unpaid rent, utilities, late charges, damage beyond ordinary wear, cleanup, removal and disposal costs, and any other amount you owe under this agreement. Rocket Farm will return the deposit, less itemized deductions, within thirty days after you completely surrender the Site and give Rocket Farm a forwarding address in writing, as Louisiana Revised Statutes 9:3251 through 9:3254 require. The deposit is not your last month's rent and may not be applied to rent while you occupy the Site.</p>
+<h3 id="s2-10"><span class="num">2.10</span>Reservation Deposit</h3>
+<p>A $250 reservation deposit paid before opening holds a specific Site and is credited to your first month's rent when you check in. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the Site you reserved, the reservation deposit is refunded in full. The reservation deposit is separate from the security deposit.</p>
+<h3 id="s2-11"><span class="num">2.11</span>Electricity and Other Utilities</h3>
+<p>Electricity is metered at each Site and billed to you at the same rate per kilowatt-hour Rocket Farm pays its utility, with no markup, plus any per-meter charge the utility imposes, prorated. Electric charges for a month are due with the next month's rent and are treated as rent for every purpose in this agreement, including late charges and the five-day rule. Water, sewer and trash service are included in the monthly rate. Propane is your responsibility.</p>
+<h3 id="s2-12"><span class="num">2.12</span>Rent Changes and Ending the Agreement</h3>
 <ul>
-<li>2nd - Day 1</li>
-<li>3rd - Day 2</li>
-<li>4th - Day 3</li>
-<li>5th - Day 4</li>
-<li>6th - Day 5</li>
+<li>Rocket Farm may change the monthly rent or these rules on at least thirty days' written notice, effective on the first day of a month.</li>
+<li>Either party may end a month-to-month occupancy without cause by written notice delivered at least ten calendar days before the end of the current month, as Louisiana Civil Code article 2728 provides. The occupancy then ends at 11:59 PM on the last day of that month.</li>
+<li>Rocket Farm may end the occupancy for cause under Sections 2.6 and 13 without waiting for the end of the month.</li>
 </ul>
-<p>If the account remains unresolved after the fifth delinquent day, Rocket Farm LLC may begin termination and all lawful notice, removal, eviction, collection, or other procedures available under the agreement and Louisiana law beginning on the 7th.</p>
-<p>The daily late-payment penalty does not buy extra days and does not create permission to remain delinquent.</p>
-<h3 id="s1-7"><span class="num">1.7</span>Payment Plans</h3>
-<p>Rocket Farm LLC is not required to offer or accept a payment plan. A payment plan exists only when Rocket Farm LLC expressly approves it in writing. Statements such as “I will have it Friday,” “my check is coming,” or “give me a few more days” do not create a payment plan.</p>
-<p>An approved plan may state exact payment amounts and deadlines. Failure to comply with any required payment under an approved plan is a default of that plan.</p>
-<h3 id="s1-8"><span class="num">1.8</span>Partial Payments</h3>
-<p>Rocket Farm LLC is not required to accept partial payment. Unless Rocket Farm LLC expressly agrees otherwise in writing, a partial payment does not cure the delinquency, stop the daily penalty, create a payment plan, extend the occupancy period, or waive Rocket Farm LLC's right to recover possession.</p>
-<h3 id="s1-9"><span class="num">1.9</span>No Automatic Reinstatement or Waiver</h3>
-<p>Once Rocket Farm LLC has terminated an occupant's right to continued occupancy, tendering money does not automatically reinstate the agreement except as required by law. Acceptance of a late payment, partial payment, waived charge, extension, or other accommodation on one occasion does not require Rocket Farm LLC to provide the same accommodation again.</p>
-<h3 id="s1-10"><span class="num">1.10</span>Complete Surrender of the Site</h3>
-<p>A site is not fully vacated simply because the occupant personally leaves. Complete surrender requires removal of the RV, camper, motorhome, trailer, vehicles, boats, equipment, outdoor furniture, personal belongings, pets, and other property brought onto the site, except where Rocket Farm LLC directs otherwise.</p>
-<p>Property left behind will be handled only as permitted by applicable law. The occupant may be responsible for lawful removal, storage, hauling, cleanup, or disposal costs.</p>
+<h3 id="s2-13"><span class="num">2.13</span>Holding Over</h3>
+<p>Staying on the Site after your right to occupy has ended does not create a new month. A holdover occupant owes a daily occupancy charge equal to one-thirtieth of the monthly rent for each day or part of a day of holdover, plus Rocket Farm's actual costs of recovering possession, in addition to any late charges already owed, and remains bound by every rule in this agreement.</p>
+<h3 id="s2-14"><span class="num">2.14</span>Complete Surrender of the Site</h3>
+<p>A Site is not vacated because you personally leave. Complete surrender requires removing the RV, vehicles, boats, trailers, equipment, outdoor furniture, personal belongings, pets and everything else you brought onto the Site, and leaving the Site clean, unless Rocket Farm directs otherwise in writing. Property left behind is handled under Section 13.5.</p>
 </section>
-<section class="sec" id="s2"><h2><span class="num">2</span>Reservations, Launches &amp; Guest Access</h2>
-<h3 id="s2-1"><span class="num">2.1</span>Rocket Launches Are Not Guaranteed</h3>
-<p>Rocket Farm LLC is an independent private property and is not affiliated with SpaceX, NASA, any launch provider, or any government agency unless specifically stated otherwise. Launches may be delayed, scrubbed, rescheduled, relocated, or canceled for reasons completely outside Rocket Farm LLC's control.</p>
-<p>A reservation purchases access to the reserved Rocket Farm LLC accommodation, site, parking area, or event. It does not guarantee that a rocket will launch or that weather and visibility will be favorable.</p>
-<p>A launch delay, scrub, cancellation, schedule change, or lack of visibility does not automatically entitle a guest to a refund, credit, or cancellation. If Rocket Farm LLC itself cancels access to the property, management will determine the applicable refund or credit based on the reservation terms and circumstances.</p>
-<h3 id="s2-2"><span class="num">2.2</span>Launch Viewing Safety</h3>
+<section class="sec" id="s3"><h2><span class="num">3</span>Reservations, Launches &amp; Guest Access</h2>
+<h3 id="s3-1"><span class="num">3.1</span>Rocket Launches Are Not Guaranteed</h3>
+<p>Rocket Farm is an independent private property and is not affiliated with SpaceX, NASA, any launch provider or any government agency. Launches may be delayed, scrubbed, rescheduled, relocated or canceled for reasons completely outside Rocket Farm's control. A reservation purchases access to the reserved Rocket Farm Site, accommodation, parking area or event. It does not guarantee that a rocket will launch or that weather and visibility will cooperate.</p>
+<p>A launch delay, scrub, cancellation, schedule change or lack of visibility does not entitle a guest to a refund, credit or cancellation. If Rocket Farm itself cancels access to the property, Rocket Farm will refund or credit the unused portion of what you paid for that access.</p>
+<h3 id="s3-2"><span class="num">3.2</span>Launch Viewing Safety</h3>
 <ul>
-<li>Remain inside designated Rocket Farm LLC viewing and guest areas.</li>
-<li>Do not enter restricted government property, launch exclusion zones, closed roads, neighboring private property, or other areas not open to you.</li>
-<li>Obey law enforcement, emergency personnel, launch-related restrictions, and Rocket Farm LLC safety instructions.</li>
-<li>Never point lasers or high-powered lights toward aircraft, rockets, launch facilities, vehicles, or people.</li>
+<li>Remain inside designated Rocket Farm viewing and guest areas.</li>
+<li>Do not enter restricted government property, launch exclusion zones, closed roads, neighboring private property, or any area not open to you.</li>
+<li>Obey law enforcement, emergency personnel, launch-related restrictions and Rocket Farm safety instructions.</li>
+<li>Never point lasers or high-powered lights toward aircraft, rockets, launch facilities, vehicles or people.</li>
 </ul>
-<h3 id="s2-3"><span class="num">2.3</span>Parking</h3>
-<p>Park only in designated areas. Do not block roads, RV sites, gates, fire lanes, emergency access, drainage areas, neighboring property, or other guests. Launch-night parking may require a separate reservation or fee. Unauthorized vehicles may be removed where permitted by law.</p>
-<h3 id="s2-4"><span class="num">2.4</span>Visitors and Registered Occupants</h3>
-<p>Only registered occupants and authorized visitors may use Rocket Farm LLC facilities. Rocket Farm LLC may limit visitors or charge visitor/event fees during high-demand periods. The registered occupant is responsible for the behavior of everyone they invite onto the property.</p>
-<h3 id="s2-5"><span class="num">2.5</span>Cabins and RV Sites</h3>
-<p>Guests are responsible for safely operating their own RVs, vehicles, equipment, hoses, cords, surge protectors, adapters, and connections. Guests may not modify Rocket Farm LLC electrical, water, sewer, septic, structural, or utility infrastructure.</p>
-<p>Cabin occupants may not disable safety equipment, tamper with building systems, remove property, or move indoor furniture outside without permission. Guests may be charged for damage, missing property, smoking damage, or excessive cleaning beyond ordinary use.</p>
+<h3 id="s3-3"><span class="num">3.3</span>Parking and Towing</h3>
+<p>Park only in designated areas. Do not block roads, Sites, gates, fire lanes, emergency access, drainage or other guests. Launch-night parking may require a separate reservation or fee. A vehicle that is unauthorized, abandoned, inoperable, blocking access or parked in violation of these rules may be towed at the owner's expense in the manner Louisiana law allows for private property, after the notice the law requires. Towing signs are posted at the entrance.</p>
+<h3 id="s3-4"><span class="num">3.4</span>Visitors</h3>
+<p>Only registered occupants and authorized visitors may use Rocket Farm facilities. Rocket Farm may limit visitors or charge visitor or event fees during high-demand periods. You are responsible for the conduct of everyone you invite onto the property, and a visitor's violation is your violation.</p>
+<h3 id="s3-5"><span class="num">3.5</span>Your Equipment and Our Infrastructure</h3>
+<p>You are responsible for safely operating your own RV, vehicles, equipment, hoses, cords, surge protectors, adapters and connections. You may not modify Rocket Farm electrical, water, sewer, septic, structural or utility infrastructure. Cabin guests may not disable safety equipment, tamper with building systems, remove property or move indoor furniture outside without permission, and may be charged for damage, missing property, smoking damage or cleaning beyond ordinary use.</p>
 </section>
-<section class="sec" id="s3"><h2><span class="num">3</span>Conduct, Noise &amp; Disruption</h2>
-<h3 id="s3-1"><span class="num">3.1</span>Quiet Hours</h3>
+<section class="sec" id="s4"><h2><span class="num">4</span>Conduct, Noise &amp; Disruption</h2>
+<h3 id="s4-1"><span class="num">4.1</span>Quiet Hours</h3>
 <p class="callout">QUIET HOURS: 10:00 PM TO 7:00 AM DAILY.</p>
-<p>During quiet hours, noise must be kept at a level that cannot reasonably be expected to disturb neighboring sites, cabins, guests, or surrounding property owners.</p>
+<p>During quiet hours, noise must be kept at a level that cannot reasonably be expected to disturb neighboring Sites, cabins, guests or surrounding property owners.</p>
 <ul>
-<li>No excessively loud music, televisions, speakers, parties, yelling, or repeated horn use.</li>
-<li>No unnecessary engine revving, prolonged idling, power tools, construction activity, or excessively loud generators during quiet hours.</li>
+<li>No loud music, televisions, speakers, parties, yelling or repeated horn use.</li>
+<li>No unnecessary engine revving, prolonged idling, power tools, construction activity or loud generators during quiet hours.</li>
 <li>Pets may not be allowed to bark or create repeated uncontrolled noise.</li>
 </ul>
-<h3 id="s3-2"><span class="num">3.2</span>Daytime Noise</h3>
-<p>Quiet hours do not mean unlimited noise is permitted during the day. Rocket Farm LLC may require excessive or disruptive noise to be reduced or stopped at any time.</p>
-<h3 id="s3-3"><span class="num">3.3</span>Launch Events</h3>
-<p>Occupants acknowledge that launch activity may involve rockets, aircraft, crowds, announcements, vehicles, and unusual noise at unusual hours. Normal guest-created noise rules remain in effect unless management announces a temporary event-specific exception.</p>
-<h3 id="s3-4"><span class="num">3.4</span>Disruptive Conduct</h3>
-<p>Conduct that materially interferes with the safety, peace, comfort, privacy, or reasonable enjoyment of other occupants, guests, employees, contractors, neighbors, or visitors is prohibited.</p>
+<h3 id="s4-2"><span class="num">4.2</span>Daytime Noise and Launch Events</h3>
+<p>Quiet hours do not mean unlimited noise during the day; Rocket Farm may require excessive or disruptive noise to be reduced or stopped at any time. Launch activity may involve rockets, aircraft, crowds, announcements, vehicles and unusual noise at unusual hours. Guest-created noise rules remain in effect unless Rocket Farm announces a temporary, event-specific exception.</p>
+<h3 id="s4-3"><span class="num">4.3</span>Disruptive Conduct</h3>
+<p>Conduct that materially interferes with the safety, peace, comfort, privacy or reasonable enjoyment of other occupants, guests, employees, contractors, neighbors or visitors is prohibited, including:</p>
 <ul>
-<li>Fighting, violence, threats, intimidation, or aggressive confrontation.</li>
+<li>Fighting, violence, threats, intimidation or aggressive confrontation.</li>
 <li>Harassment or repeated targeted verbal abuse.</li>
 <li>Disorderly or dangerously intoxicated behavior.</li>
 <li>Reckless driving or dangerous conduct.</li>
-<li>Entering another guest's site, cabin, or belongings without permission.</li>
+<li>Entering another guest's Site, cabin or belongings without permission.</li>
 <li>Intentional property damage or interference with another person's property.</li>
 <li>Repeated disturbance after being asked to stop.</li>
-<li>Refusing reasonable safety or property instructions from Rocket Farm LLC management.</li>
-<li>Illegal activity.</li>
+<li>Refusing reasonable safety or property instructions from Rocket Farm management.</li>
+<li>Illegal activity of any kind, including the manufacture, sale or distribution of controlled substances.</li>
 </ul>
-<h3 id="s3-5"><span class="num">3.5</span>Enforcement</h3>
-<p>Minor violations may result in a verbal or written warning. Rocket Farm LLC is not required to repeatedly warn an occupant about the same conduct. Repeated violations may constitute a material breach. Serious conduct - including violence, credible threats, criminal activity, major property damage, severe harassment, or an immediate safety risk - may result in immediate action and termination where permitted by law.</p>
-<p>Rocket Farm LLC may consider personal observation, complaints, photographs, video, security footage, police reports, written statements, and other reasonably reliable evidence when investigating violations. The identity of a complaining guest does not have to be disclosed.</p>
+<h3 id="s4-4"><span class="num">4.4</span>Enforcement</h3>
+<p>Minor violations may result in a verbal or written warning. Rocket Farm is not required to warn an occupant more than once about the same conduct. Repeated violations are a material breach. Serious conduct, including violence, credible threats, criminal activity, major property damage, severe harassment or an immediate safety risk, may result in immediate termination under Section 13. Rocket Farm may rely on personal observation, complaints, photographs, video, security footage, police reports, written statements and other reasonably reliable evidence, and does not have to disclose the identity of a complaining guest.</p>
 </section>
-<section class="sec" id="s4"><h2><span class="num">4</span>Site Cleanliness &amp; Property Care</h2>
-<h3 id="s4-1"><span class="num">4.1</span>Clean and Orderly Sites</h3>
-<p>Every occupant must keep the assigned site reasonably clean, sanitary, organized, and free from unnecessary debris. Normal outdoor living is fine. A site may not become unsanitary, hazardous, pest-attracting, excessively cluttered, obstructive, damaging to the property, or a nuisance to neighboring guests.</p>
+<section class="sec" id="s5"><h2><span class="num">5</span>Site Cleanliness &amp; Property Care</h2>
+<h3 id="s5-1"><span class="num">5.1</span>Clean and Orderly Sites</h3>
+<p>Keep your Site reasonably clean, sanitary, organized and free of unnecessary debris. Normal outdoor living is fine. A Site may not become unsanitary, hazardous, pest-attracting, excessively cluttered, obstructive, damaging to the property or a nuisance to neighbors.</p>
 <ul>
-<li>Remove household trash, food waste, cardboard, bottles, cans, broken equipment, scrap material, pet waste, construction debris, and unnecessary refuse.</li>
-<li>Keep walkways, roads, utility connections, fire access, and neighboring areas clear.</li>
-<li>Store ordinary camping furniture, grills, coolers, bicycles, and recreational items in a reasonably orderly way.</li>
+<li>Remove household trash, food waste, cardboard, bottles, cans, broken equipment, scrap, pet waste, construction debris and other refuse.</li>
+<li>Keep walkways, roads, utility connections, fire access and neighboring areas clear.</li>
+<li>Store camping furniture, grills, coolers, bicycles and recreational items in a reasonably orderly way.</li>
 </ul>
-<h3 id="s4-2"><span class="num">4.2</span>No Outdoor Storage Yard</h3>
-<p>An RV site is not a junkyard, warehouse, mechanic shop, or long-term storage yard. Without management approval, occupants may not accumulate appliances, mattresses, scrap metal, tires, automobile parts, building materials, broken equipment, commercial inventory, unused machinery, large quantities of tools, or similar items outside.</p>
-<h3 id="s4-3"><span class="num">4.3</span>Trash and Food Waste</h3>
-<p>Household trash must be securely bagged and placed in designated receptacles. Trash may not be burned, dumped in ponds or ditches, thrown on neighboring property, or allowed to accumulate around a site. Food waste, pet food, grease, and garbage must be handled in a way that does not attract wildlife or pests.</p>
-<h3 id="s4-4"><span class="num">4.4</span>Pet Waste</h3>
-<p>Pet waste must be picked up promptly and properly disposed of. Repeated failure to clean up after an animal is a cleanliness violation.</p>
-<h3 id="s4-5"><span class="num">4.5</span>Sewage, Gray Water and Other Waste</h3>
-<p>Do not dump sewage, gray water, oil, grease, chemicals, fuel, wastewater, or other liquids onto the ground, grass, roadway, pond, drainage area, or neighboring property. Wastewater may be discharged only into an approved connection or disposal location.</p>
-<h3 id="s4-6"><span class="num">4.6</span>Vehicle and Equipment Repair</h3>
-<p>Minor emergency maintenance may be permitted. Major engine repair, vehicle dismantling, sanding, painting, welding, fluid changes, restoration work, or commercial repair activity that creates noise, fumes, debris, spills, or hazards requires prior approval.</p>
-<h3 id="s4-7"><span class="num">4.7</span>Cleanup Notices and Charges</h3>
-<p>Rocket Farm LLC may issue a cleanup notice identifying the condition to be corrected and a reasonable deadline. Immediate hazards may require immediate correction. If an occupant fails to correct a violation, or immediate action is reasonably needed to protect people or property, Rocket Farm LLC may arrange lawful cleanup and charge the occupant the reasonable actual cost of labor, hauling, disposal, pest control, equipment rental, sewage cleanup, hazardous cleanup, and resulting damage.</p>
-<h3 id="s4-8"><span class="num">4.8</span>Condition at Departure</h3>
-<p>At departure, remove all trash, personal property, furniture, RV equipment, food, pet waste, vehicles, and debris. Leaving unwanted property behind is not proper disposal.</p>
+<h3 id="s5-2"><span class="num">5.2</span>No Outdoor Storage Yard</h3>
+<p>An RV Site is not a junkyard, warehouse, mechanic shop or storage yard. Without written approval you may not accumulate appliances, mattresses, scrap metal, tires, auto parts, building materials, broken equipment, commercial inventory, machinery, large quantities of tools or similar items outside.</p>
+<h3 id="s5-3"><span class="num">5.3</span>Trash, Food Waste and Pet Waste</h3>
+<p>Household trash must be bagged and placed in the designated receptacles. Trash may not be burned, dumped in ponds or ditches, thrown on neighboring property or left to accumulate. Food waste, pet food, grease and garbage must be handled so they do not attract wildlife or pests. Pet waste must be picked up promptly. Repeated failure to clean up after an animal is a cleanliness violation.</p>
+<h3 id="s5-4"><span class="num">5.4</span>Sewage, Gray Water and Other Waste</h3>
+<p>Never dump sewage, gray water, oil, grease, chemicals, fuel, wastewater or other liquids on the ground, grass, road, pond, drainage area or neighboring property. Wastewater goes only into the approved connection at your Site.</p>
+<h3 id="s5-5"><span class="num">5.5</span>Vehicle and Equipment Repair</h3>
+<p>Minor emergency maintenance is permitted. Major engine repair, dismantling, sanding, painting, welding, fluid changes, restoration work or commercial repair activity that creates noise, fumes, debris, spills or hazards requires prior written approval.</p>
+<h3 id="s5-6"><span class="num">5.6</span>Cleanup Notices and Charges</h3>
+<p>Rocket Farm may issue a cleanup notice identifying the condition to be corrected and a reasonable deadline. Immediate hazards may require immediate correction. If you fail to correct a violation, or immediate action is reasonably needed to protect people or property, Rocket Farm may arrange the cleanup and charge you its actual reasonable cost of labor, hauling, disposal, pest control, equipment rental, sewage or hazardous cleanup, and resulting damage.</p>
+<h3 id="s5-7"><span class="num">5.7</span>Condition at Departure</h3>
+<p>At departure, remove all trash, personal property, furniture, RV equipment, food, pet waste, vehicles and debris. Leaving unwanted property behind is not disposal; it is a cleanup charge and, where the law allows, a claim against the security deposit.</p>
 </section>
-<section class="sec" id="s5"><h2><span class="num">5</span>Equal Access &amp; Non-Discrimination</h2>
-<p>Rocket Farm LLC provides accommodations, sites, parking, services, amenities, and events without unlawful discrimination. Rocket Farm LLC will not deny service, impose different terms, provide inferior service, or otherwise treat a person differently because of a characteristic protected by applicable federal, Louisiana, or local law.</p>
-<p>Protected characteristics include those protected under applicable law, including race, color, creed, religion, national origin or ancestry, sex, qualifying age protections, disability, military status, natural/protective/cultural hairstyle, familial status where housing law applies, and any other status protected by applicable law.</p>
-<p>As a business policy, Rocket Farm LLC also intends to treat guests consistently regardless of sexual orientation, gender identity, marital status, or family composition except where a legitimate legal, safety, occupancy, or operational requirement applies.</p>
-<h3 id="s5-1"><span class="num">5.1</span>Same Rules for Everyone</h3>
+<section class="sec" id="s6"><h2><span class="num">6</span>Equal Access &amp; Non-Discrimination</h2>
+<p>Rocket Farm provides Sites, accommodations, parking, services, amenities and events without unlawful discrimination. Rocket Farm will not deny service, impose different terms, provide inferior service or otherwise treat a person differently because of race, color, creed, religion, national origin or ancestry, sex, age, disability, military status, natural, protective or cultural hairstyle, familial status where housing law applies, or any other characteristic protected by federal, Louisiana or local law. As a business policy, Rocket Farm also treats guests consistently regardless of sexual orientation, gender identity, marital status or family composition except where a legitimate legal, safety, occupancy or operational requirement applies.</p>
+<h3 id="s6-1"><span class="num">6.1</span>Same Rules for Everyone</h3>
 <p class="callout">WE DO NOT DISCRIMINATE AGAINST PEOPLE BECAUSE OF WHO THEY ARE. WE ENFORCE OUR RULES BASED ON WHAT PEOPLE DO.</p>
-<p>Protected status does not excuse nonpayment, unsafe conduct, property damage, excessive noise, harassment, sanitation violations, unauthorized occupants, fraud, or other legitimate rule violations. Likewise, Rocket Farm LLC will not selectively enforce rules against someone because of a protected characteristic.</p>
-<h3 id="s5-2"><span class="num">5.2</span>Disability Accommodations and Service Animals</h3>
-<p>Rocket Farm LLC will comply with applicable disability-access and housing laws, including reasonable modifications or accommodations when legally required. Qualifying service animals will not be treated as ordinary pets when the law requires different treatment. Handlers remain responsible for maintaining control and for damage as permitted by law.</p>
-<h3 id="s5-3"><span class="num">5.3</span>Harassment and Retaliation</h3>
-<p>Rocket Farm LLC will not tolerate unlawful discriminatory harassment or retaliation against a person for making a good-faith discrimination complaint, requesting a legally required accommodation, participating in an investigation, or exercising rights protected by law.</p>
+<p>Protected status does not excuse nonpayment, unsafe conduct, property damage, excessive noise, harassment, sanitation violations, unauthorized occupants, fraud or any other rule violation. Rocket Farm will not selectively enforce rules against anyone because of a protected characteristic.</p>
+<h3 id="s6-2"><span class="num">6.2</span>Disability Accommodations and Service Animals</h3>
+<p>Rocket Farm will comply with applicable disability-access and housing laws, including reasonable modifications or accommodations when the law requires them. Qualifying service animals are not treated as pets where the law requires different treatment. Handlers remain responsible for control of the animal and for damage as the law permits.</p>
+<h3 id="s6-3"><span class="num">6.3</span>Harassment and Retaliation</h3>
+<p>Rocket Farm will not tolerate unlawful discriminatory harassment, or retaliation against a person for making a good-faith discrimination complaint, requesting a legally required accommodation, participating in an investigation or exercising rights protected by law.</p>
 </section>
-<section class="sec" id="s6"><h2><span class="num">6</span>Property Improvement &amp; Ongoing Development Notice</h2>
-<p>Rocket Farm LLC is an actively developing property. We intend to keep improving the grounds, infrastructure, landscaping, utilities, roads, RV sites, cabins, launch-viewing areas, common spaces, and amenities.</p>
-<p>Guests may occasionally observe construction, landscaping, mowing, grading, utility installation, deliveries, contractors, equipment, repairs, cabin or site construction, and other improvement activity.</p>
-<p>Rocket Farm LLC will make reasonable efforts to schedule louder work during normal daytime hours, minimize unnecessary disruption, keep unsafe areas marked, maintain reasonable access to occupied sites, and respect guest privacy and comfort.</p>
-<p>Temporary noise, dust, equipment movement, traffic changes, or restricted areas from normal improvement work do not automatically entitle a guest to a refund, credit, discount, or cancellation. Unusual circumstances that materially interfere with reasonable use may be considered individually.</p>
-<p>Emergency repairs, utility failures, drainage problems, storm damage, safety hazards, and other urgent conditions may require immediate work regardless of the hour. Guest safety and protection of property take priority.</p>
+<section class="sec" id="s7"><h2><span class="num">7</span>Ongoing Development Notice</h2>
+<p>Rocket Farm is an actively developing property. We intend to keep improving the grounds, infrastructure, landscaping, utilities, roads, Sites, cabins, launch-viewing areas, common spaces and amenities, and you may see construction, landscaping, mowing, grading, utility installation, deliveries, contractors, equipment and repairs during your stay.</p>
+<p>Rocket Farm will make reasonable efforts to schedule louder work during normal daytime hours, minimize unnecessary disruption, keep unsafe areas marked, maintain reasonable access to occupied Sites and respect your privacy. Temporary noise, dust, equipment movement, traffic changes or restricted areas from normal improvement work do not entitle you to a refund, credit, discount or cancellation. Emergency repairs, utility failures, drainage problems, storm damage and safety hazards may require immediate work at any hour.</p>
 </section>
-<section class="sec" id="s7"><h2><span class="num">7</span>Electrical Service &amp; Power Outage Action Plan</h2>
-<h3 id="s7-1"><span class="num">7.1</span>If Power Goes Out</h3>
+<section class="sec" id="s8"><h2><span class="num">8</span>Electrical Service &amp; Outage Plan</h2>
+<h3 id="s8-1"><span class="num">8.1</span>If Power Goes Out</h3>
 <ol>
-<li>Check whether nearby sites, cabins, lights, or common areas also appear to have lost power.</li>
-<li>Check the breaker panel inside your RV, camper, or cabin. To reset a tripped breaker, switch it fully OFF, wait a few seconds, then switch it firmly ON once.</li>
-<li>Check the accessible breaker at your site power pedestal. If tripped, switch it fully OFF, wait several seconds, then switch it ON once.</li>
-<li>Make sure your RV power cord, adapter, surge protector, or electrical-management system is properly connected and is not showing a fault condition.</li>
-<li>Reduce electrical load by turning off high-demand appliances such as air conditioners, electric water heaters, space heaters, microwaves, hair dryers, or electric cooking appliances, then try one reset.</li>
+<li>Check whether nearby Sites, cabins, lights or common areas have also lost power.</li>
+<li>Check the breaker panel inside your RV or cabin. To reset a tripped breaker, switch it fully OFF, wait a few seconds, then switch it firmly ON once.</li>
+<li>Check the breaker at your Site pedestal. If tripped, switch it fully OFF, wait several seconds, then ON once.</li>
+<li>Make sure your power cord, adapter, surge protector or electrical-management system is properly connected and not showing a fault.</li>
+<li>Reduce load by turning off high-demand appliances such as air conditioners, electric water heaters, space heaters, microwaves, hair dryers or electric cooking appliances, then try one reset.</li>
 </ol>
-<h3 id="s7-2"><span class="num">7.2</span>Do Not Perform Electrical Repairs</h3>
-<p>Guests may reset accessible breakers and check normal plug connections. Guests may not remove electrical panel covers, alter wiring, replace breakers, bypass safety devices, modify power pedestals, install temporary wiring, or attempt repairs to Rocket Farm LLC electrical infrastructure.</p>
-<h3 id="s7-3"><span class="num">7.3</span>Overnight Power Issues</h3>
-<p class="callout">ROUTINE OVERNIGHT POWER PROBLEMS WILL NORMALLY BE ADDRESSED IN THE MORNING. ROCKET FARM LLC DOES NOT GUARANTEE 24-HOUR MAINTENANCE DISPATCH.</p>
-<p>If a non-emergency electrical issue occurs during the middle of the night, complete the basic troubleshooting steps and notify Rocket Farm LLC. Please do not repeatedly call or expect overnight maintenance for a routine outage, tripped breaker, failed connection, utility outage, or similar non-emergency condition.</p>
-<p>Immediate contact is appropriate for fire, smoke, visible sparking, electrical arcing, melted wiring, a strong burning smell, a downed electrical line, exposed energized equipment, or another condition creating an immediate risk of injury or significant property damage. Call emergency services when appropriate.</p>
-<h3 id="s7-4"><span class="num">7.4</span>Utility Interruptions</h3>
-<p>Rocket Farm LLC cannot guarantee uninterrupted electrical utility service. Temporary outages caused by utility providers, storms, grid conditions, equipment failures, accidents, guest equipment, or circumstances outside Rocket Farm LLC's reasonable control may occur. Temporary power loss does not automatically qualify an occupant for a refund, rent reduction, hotel expense, food-loss reimbursement, or other compensation.</p>
+<h3 id="s8-2"><span class="num">8.2</span>Do Not Perform Electrical Repairs</h3>
+<p>You may reset accessible breakers and check normal plug connections. You may not remove panel covers, alter wiring, replace breakers, bypass safety devices, modify pedestals, install temporary wiring or attempt repairs to Rocket Farm electrical infrastructure. A pedestal damaged by your equipment, adapters or overloading is repaired at your expense.</p>
+<h3 id="s8-3"><span class="num">8.3</span>Overnight Power Issues</h3>
+<p class="callout">ROUTINE OVERNIGHT POWER PROBLEMS WILL NORMALLY BE ADDRESSED IN THE MORNING. ROCKET FARM DOES NOT GUARANTEE 24-HOUR MAINTENANCE DISPATCH.</p>
+<p>For a non-emergency electrical issue in the middle of the night, complete the steps above and notify Rocket Farm. Immediate contact is appropriate for fire, smoke, visible sparking, arcing, melted wiring, a strong burning smell, a downed line, exposed energized equipment or any condition creating an immediate risk of injury or significant property damage. Call 911 first when appropriate.</p>
+<h3 id="s8-4"><span class="num">8.4</span>Utility Interruptions</h3>
+<p>Rocket Farm cannot guarantee uninterrupted electrical service. Outages caused by the utility, storms, grid conditions, equipment failure, accidents, other guests' equipment or circumstances outside Rocket Farm's reasonable control may occur. A temporary outage does not entitle you to a refund, rent reduction, hotel expense, food-loss reimbursement or other compensation. Protect your own equipment with a surge protector or electrical-management system; Rocket Farm is not responsible for damage to your RV or appliances from a utility surge, sag or outage.</p>
 </section>
-<section class="sec" id="s8"><h2><span class="num">8</span>Water Service, Leaks &amp; Outage Policy</h2>
-<h3 id="s8-1"><span class="num">8.1</span>If Water Stops Working</h3>
+<section class="sec" id="s9"><h2><span class="num">9</span>Water Service, Leaks &amp; Outages</h2>
+<h3 id="s9-1"><span class="num">9.1</span>If Water Stops Working</h3>
 <ol>
-<li>Determine whether neighboring sites or cabins also appear to be without water.</li>
-<li>Make sure your RV or site water connection is properly connected.</li>
-<li>Check that your individual water shutoff valve is open.</li>
-<li>Check your hoses, filters, pressure regulator, fittings, and RV equipment for obvious restrictions or problems.</li>
-<li>During freezing weather, determine whether your hose or connection may be frozen.</li>
-<li>Confirm that the problem is not inside your own RV plumbing system.</li>
+<li>Determine whether neighboring Sites are also without water.</li>
+<li>Make sure your Site water connection is properly connected and your individual shutoff valve is open.</li>
+<li>Check your hoses, filters, pressure regulator, fittings and RV equipment for restrictions or problems.</li>
+<li>In freezing weather, determine whether your hose or connection is frozen.</li>
+<li>Confirm that the problem is not inside your own RV plumbing.</li>
 </ol>
-<h3 id="s8-2"><span class="num">8.2</span>Overnight Water Issues</h3>
+<h3 id="s9-2"><span class="num">9.2</span>Overnight Water Issues and Emergencies</h3>
 <p class="callout">ROUTINE OVERNIGHT WATER PROBLEMS WILL NORMALLY BE ADDRESSED IN THE MORNING. MAJOR LEAKS OR FLOODING ARE EMERGENCIES.</p>
-<p>If a non-emergency water issue occurs in the middle of the night, perform the basic checks above and notify Rocket Farm LLC. Unless there is an active major leak, flooding, significant property damage, or immediate safety concern, Rocket Farm LLC will inspect and address the issue during normal morning maintenance hours.</p>
-<h3 id="s8-3"><span class="num">8.3</span>Water Emergencies</h3>
-<p>Immediately report major leaks, broken lines, continuous spraying water, flooding, water entering electrical equipment, a damaged water pedestal, a burst pipe, or another condition that could cause significant property damage. If an accessible individual-site shutoff can safely be closed, close it to limit damage. Do not attempt repairs beyond normal guest-accessible controls.</p>
-<h3 id="s8-4"><span class="num">8.4</span>Guest Equipment and Leaks</h3>
-<p>Occupants are responsible for maintaining their own hoses, pressure regulators, filters, fittings, connections, and internal RV plumbing. Guest equipment that leaks, wastes water, or threatens property may be disconnected or shut off. Guests may be responsible for damage or excessive use caused by their equipment, negligence, improper connections, or failure to report a known leak.</p>
-<h3 id="s8-5"><span class="num">8.5</span>Water Use Rules</h3>
+<p>Immediately report major leaks, broken lines, continuously spraying water, flooding, water entering electrical equipment, a damaged pedestal or a burst pipe. If an accessible individual shutoff can safely be closed, close it to limit damage. Do not attempt repairs beyond normal guest-accessible controls.</p>
+<h3 id="s9-3"><span class="num">9.3</span>Your Equipment and Leaks</h3>
+<p>You are responsible for your hoses, pressure regulators, filters, fittings, connections and internal RV plumbing. Equipment that leaks, wastes water or threatens property may be disconnected or shut off. You are responsible for damage or excess use caused by your equipment, negligence, improper connections or failure to report a known leak.</p>
+<h3 id="s9-4"><span class="num">9.4</span>Water Use Rules</h3>
 <ul>
 <li>Use an appropriate RV water-pressure regulator.</li>
-<li>Do not leave water running unattended except when Rocket Farm LLC specifically directs limited flow for freeze protection.</li>
-<li>Do not fill large pools, conduct commercial washing, perform unrelated irrigation, fill large tanks, or engage in unusually high-volume use without approval.</li>
-<li>Do not alter plumbing, remove backflow protection, bypass shutoff valves, tap another site, or connect equipment that could contaminate the water system.</li>
-<li>Report standing water, unexplained pooling, broken fittings, constant leaks, or other suspected system leaks promptly.</li>
+<li>Do not leave water running unattended except when Rocket Farm directs limited flow for freeze protection.</li>
+<li>Do not fill pools or large tanks, wash vehicles or RVs, run unrelated irrigation or use unusually high volumes without approval.</li>
+<li>Do not alter plumbing, remove backflow protection, bypass shutoff valves, tap another Site or connect anything that could contaminate the water system.</li>
+<li>Report standing water, unexplained pooling, broken fittings and suspected leaks promptly.</li>
 </ul>
-<h3 id="s8-6"><span class="num">8.6</span>Temporary Water Shutdowns</h3>
-<p>Rocket Farm LLC may temporarily interrupt or shut off water for repairs, leak control, construction, utility work, freezing conditions, emergencies, contamination concerns, excessive waste, system upgrades, or other legitimate operational reasons. Temporary water loss does not automatically qualify an occupant for a refund, rent reduction, hotel reimbursement, laundry reimbursement, or other compensation.</p>
+<h3 id="s9-5"><span class="num">9.5</span>Temporary Water Shutdowns</h3>
+<p>Rocket Farm may temporarily interrupt water for repairs, leak control, construction, utility work, freezing conditions, emergencies, contamination concerns, excessive waste or system upgrades. A temporary shutdown does not entitle you to a refund, rent reduction, hotel, laundry or other reimbursement.</p>
 </section>
-<section class="sec" id="s9"><h2><span class="num">9</span>Pets, Children, Fire, Alcohol, Weapons &amp; Drones</h2>
-<h3 id="s9-1"><span class="num">9.1</span>Children</h3>
-<p>Children must be supervised by a responsible adult, especially around roads, moving vehicles, water, drainage areas, wildlife, utilities, equipment, construction, fires, and uneven terrain. Rocket Farm LLC is not a childproof environment.</p>
-<h3 id="s9-2"><span class="num">9.2</span>Pets</h3>
-<p>Pets must remain under the owner's control. Aggressive animals are not permitted. Owners must clean up pet waste and prevent repeated barking or nuisance behavior. Pets should not be left outside unattended for extended periods. Owners are responsible for damage or injury caused by their animals as permitted by law.</p>
-<h3 id="s9-3"><span class="num">9.3</span>Fires and Grills</h3>
-<p>Fires are permitted only in designated fire pits or approved cooking equipment and may be restricted because of burn bans, high winds, drought, or unsafe conditions. Never leave a fire unattended. Fireworks, explosives, homemade rockets, flares, or similar devices are prohibited unless Rocket Farm LLC has specifically authorized a controlled event.</p>
-<h3 id="s9-4"><span class="num">9.4</span>Alcohol</h3>
-<p>Responsible alcohol consumption by persons of legal drinking age is permitted unless otherwise posted. Public intoxication, fighting, impaired driving, threatening conduct, or behavior that creates a safety problem is prohibited.</p>
-<h3 id="s9-5"><span class="num">9.5</span>Weapons</h3>
-<p>Guests must comply with all applicable weapons laws. Discharge of firearms, recreational shooting, or use of weapons on Rocket Farm LLC property is prohibited unless specifically authorized for a lawful designated activity.</p>
-<h3 id="s9-6"><span class="num">9.6</span>Drones</h3>
-<p>Drone operation is not automatically permitted simply because a person is staying at Rocket Farm LLC. Operators are responsible for FAA requirements, temporary flight restrictions, launch-related restrictions, privacy laws, and other applicable rules. Rocket Farm LLC may prohibit drone operation at any time. Never operate a drone in a way that interferes with aircraft, launch operations, emergency personnel, neighboring property, or other guests.</p>
+<section class="sec" id="s10"><h2><span class="num">10</span>Pets, Children, Fire, Alcohol, Weapons &amp; Drones</h2>
+<h3 id="s10-1"><span class="num">10.1</span>Children</h3>
+<p>Children must be supervised by a responsible adult, especially around roads, moving vehicles, water, drainage, wildlife, utilities, equipment, construction, fires and uneven terrain. Rocket Farm is a working rural property, not a childproof environment.</p>
+<h3 id="s10-2"><span class="num">10.2</span>Pets</h3>
+<p>Pets must be registered on the signature page, current on rabies vaccination, and under your control at all times. Aggressive animals are not permitted. You must clean up after your pets, prevent repeated barking and nuisance behavior, and not leave them outside unattended for extended periods. You are responsible for damage or injury caused by your animals.</p>
+<h3 id="s10-3"><span class="num">10.3</span>Fires and Grills</h3>
+<p>Fires are permitted only in the fire ring at your Site or approved cooking equipment and may be restricted during burn bans, high wind, drought or unsafe conditions. Never leave a fire unattended, and put it out completely before you go inside. Fireworks, explosives, homemade rockets, flares and similar devices are prohibited unless Rocket Farm has specifically authorized a controlled event.</p>
+<h3 id="s10-4"><span class="num">10.4</span>Alcohol</h3>
+<p>Responsible drinking by adults of legal age is permitted unless otherwise posted. Public intoxication, fighting, impaired driving, threatening conduct or behavior that creates a safety problem is prohibited.</p>
+<h3 id="s10-5"><span class="num">10.5</span>Weapons</h3>
+<p>Comply with all weapons laws. Discharging a firearm, recreational shooting or the use of any weapon on Rocket Farm property is prohibited unless specifically authorized for a lawful designated activity.</p>
+<h3 id="s10-6"><span class="num">10.6</span>Drones</h3>
+<p>Staying at Rocket Farm does not give you permission to fly a drone. Operators are responsible for FAA requirements, temporary flight restrictions, launch-related restrictions, privacy laws and other applicable rules. Rocket Farm may prohibit drone operation at any time. Never operate a drone in a way that interferes with aircraft, launch operations, emergency personnel, neighboring property or other guests.</p>
 </section>
-<section class="sec" id="s10"><h2><span class="num">10</span>Weather, Emergencies &amp; Natural Conditions</h2>
-<h3 id="s10-1"><span class="num">10.1</span>Weather</h3>
-<p>South Louisiana weather can change quickly. Rain, lightning, high winds, thunderstorms, tropical weather, tornado warnings, flooding, heat, and standing water may affect the property. Guests are responsible for monitoring weather and following emergency instructions.</p>
-<p>Rocket Farm LLC may temporarily close areas, restrict movement, require sheltering, relocate operations, or require evacuation when management reasonably believes conditions are unsafe.</p>
-<h3 id="s10-2"><span class="num">10.2</span>Hurricanes, Tropical Weather and Emergencies</h3>
-<p>Rocket Farm LLC may cancel or modify reservations, events, parking, or property access because of hurricanes, tropical systems, flooding, mandatory evacuation orders, utility failures, or other emergencies. Guest safety takes priority over reservations. Refunds or credits caused by a Rocket Farm LLC closure will be handled according to the reservation terms and circumstances.</p>
+<section class="sec" id="s11"><h2><span class="num">11</span>Weather, Hurricanes &amp; Evacuation</h2>
+<h3 id="s11-1"><span class="num">11.1</span>Weather</h3>
+<p>South Louisiana weather changes fast. Rain, lightning, high wind, thunderstorms, tropical weather, tornado warnings, flooding, heat and standing water may affect the property. You are responsible for monitoring the weather and following emergency instructions. Rocket Farm may temporarily close areas, restrict movement, require sheltering, relocate operations or require evacuation when management reasonably believes conditions are unsafe.</p>
+<h3 id="s11-2"><span class="num">11.2</span>Hurricanes and Mandatory Evacuation</h3>
+<p>Vermilion Parish is a coastal parish. When a mandatory evacuation is ordered for the area, or when Rocket Farm directs evacuation because of a tropical system, you must remove your RV and vehicles from the property. This is one reason your RV must remain road-worthy. An RV, vehicle or belongings left on the property during an evacuation remain there entirely at your risk. Rocket Farm is not responsible for wind, water, flood, debris or storm-surge damage to your RV, vehicles or belongings, and does not provide storm storage, tie-downs or shelter.</p>
+<p>Rocket Farm may cancel or modify reservations, events, parking or property access because of hurricanes, tropical systems, flooding, evacuation orders, utility failures or other emergencies. Guest safety comes before reservations. Rent for a month in which Rocket Farm closes the property for an evacuation is prorated for the days the property is closed; no other compensation is owed.</p>
 </section>
-<section class="sec" id="s11"><h2><span class="num">11</span>Stay at Your Own Risk - Louisiana Marsh Safety Notice</h2>
-<p>Welcome to Rocket Farm LLC. We are glad you are here. But understand where you are: this is rural South Louisiana marsh country. It is beautiful, wild, wet, hot, muddy, buggy, unpredictable, and occasionally something with teeth may be looking back at you.</p>
+<section class="sec" id="s12"><h2><span class="num">12</span>Marsh Country Safety Notice</h2>
+<p>Welcome to Rocket Farm. We are glad you are here. But understand where you are: this is rural South Louisiana marsh country. It is beautiful, wild, wet, hot, muddy, buggy, unpredictable, and occasionally something with teeth may be looking back at you. This section is a warning about natural conditions you will encounter. Read it, take it seriously, and keep your people and pets close.</p>
 <p class="callout">CAJUN GRANDPA RULE: WATCH WHERE YOU PUT YOUR FEET, DO NOT PET ANYTHING YOU DID NOT BRING WITH YOU, AND IF THE WATER STARTS BLINKING AT YOU - BACK UP.</p>
-<h3 id="s11-1"><span class="num">11.1</span>Alligators</h3>
-<p>Alligators may live in or travel through ponds, ditches, canals, marshes, drainage areas, fields, standing water, or other wet areas. Do not approach, feed, chase, touch, or attempt to photograph an alligator from close range. Keep children and pets away from water edges unless directly supervised.</p>
-<p class="callout">IF YOU ARE WONDERING WHETHER YOU ARE TOO CLOSE TO AN ALLIGATOR, YOU PROBABLY ARE.</p>
-<h3 id="s11-2"><span class="num">11.2</span>Snakes</h3>
-<p>Guests may encounter snakes, including species that may be dangerous. Do not attempt to identify a snake by picking it up. Stop, give it room, keep children and pets away, and notify management if necessary.</p>
-<h3 id="s11-3"><span class="num">11.3</span>Bugs, Fire Ants and Other Wildlife</h3>
-<p>Mosquitoes, fire ants, wasps, bees, spiders, flies, gnats, ticks, beetles, frogs, raccoons, armadillos, possums, coyotes, wild hogs, nutria, rodents, birds, turtles, stray animals, and other wildlife may be present. Bug spray and reasonable protective clothing are strongly recommended.</p>
-<p>Do not feed wildlife. Feeding wild animals can make them lose their natural fear of people and create a dangerous condition.</p>
-<p>Fire-ant mounds should be avoided. If you accidentally stand in one, you will understand this rule immediately.</p>
-<h3 id="s11-4"><span class="num">11.4</span>Water, Ponds, Ditches and Marsh Areas</h3>
-<p>Do not assume any pond, ditch, canal, marsh, or standing water is safe for swimming, wading, playing, fishing, or pets. Water depth can change, banks may be unstable, mud may be deeper than it looks, and wildlife may be present even when you cannot see it. Unless Rocket Farm LLC specifically designates an area for recreational use, stay out of the water.</p>
-<h3 id="s11-5"><span class="num">11.5</span>Mud and Soft Ground</h3>
-<p>South Louisiana ground can go from firm to soup after heavy rain. Remain on designated roads, pads, parking areas, and walking areas whenever practical. Do not drive through wet fields or unauthorized areas because they “look solid.” Louisiana mud has embarrassed bigger trucks than yours. Guests may be responsible for damage or recovery costs caused by entering restricted or obviously unsuitable areas.</p>
-<h3 id="s11-6"><span class="num">11.6</span>Uneven Ground</h3>
-<p>Guests may encounter holes, roots, ruts, gravel, soft spots, ditches, wet grass, mud, changes in elevation, and other naturally uneven surfaces. Watch where you walk and use appropriate footwear.</p>
-<h3 id="s11-7"><span class="num">11.7</span>Heat and Humidity</h3>
-<p>Louisiana heat and humidity can be extreme. Drink water, use shade, take breaks, monitor children and vulnerable guests, and know your limits. Heat-related illness can become serious quickly.</p>
-<h3 id="s11-8"><span class="num">11.8</span>Lightning, Floodwater and Severe Weather</h3>
-<p>During lightning, seek appropriate shelter and leave open fields and elevated viewing areas. Floodwater may contain sewage, chemicals, debris, sharp objects, unstable ground, or wildlife. Do not drive through water when you cannot determine the depth or condition underneath.</p>
-<h3 id="s11-9"><span class="num">11.9</span>Nighttime Safety</h3>
-<p>Wildlife is often more active after dark and visibility is worse. Carry a flashlight, remain on established paths, keep pets close, avoid tall grass and water edges, and pay attention to where you step.</p>
-<p class="callout">TWO LITTLE GLOWING EYES NEAR THE WATER ARE NOT AN INVITATION TO GO INVESTIGATE.</p>
-<h3 id="s11-10"><span class="num">11.10</span>Natural Conditions Are Part of the Experience</h3>
-<p>Rocket Farm LLC cannot guarantee that an outdoor rural property will be free of wildlife, insects, mud, rain, standing water, heat, humidity, wind, dust, natural vegetation, uneven ground, or similar rural conditions. Guests voluntarily choose to use the property with knowledge that normal outdoor and marshland hazards may be present.</p>
-<h3 id="s11-11"><span class="num">11.11</span>Use Common Sense</h3>
-<p>If something looks dangerous, feels unstable, has teeth, is hissing, is buzzing angrily, is flooded, is sparking, is smoking, or has a sign telling you not to go there - leave it alone and notify management when appropriate.</p>
+<h3 id="s12-1"><span class="num">12.1</span>Alligators</h3>
+<p>Alligators may live in or travel through ponds, ditches, canals, marshes, drainage areas, fields and standing water. Do not approach, feed, chase, touch or photograph an alligator from close range. Keep children and pets away from water edges unless directly supervised. If you are wondering whether you are too close to an alligator, you are.</p>
+<h3 id="s12-2"><span class="num">12.2</span>Snakes</h3>
+<p>You may encounter snakes, including venomous species. Do not try to identify a snake by picking it up. Stop, give it room, keep children and pets away, and notify management if it is near an occupied area.</p>
+<h3 id="s12-3"><span class="num">12.3</span>Bugs, Fire Ants and Other Wildlife</h3>
+<p>Mosquitoes, fire ants, wasps, bees, spiders, ticks, raccoons, armadillos, possums, coyotes, wild hogs, nutria, rodents, stray animals and other wildlife may be present. Bug spray and protective clothing are strongly recommended. Do not feed wildlife; a fed animal loses its fear of people and becomes dangerous. Avoid fire-ant mounds. If you accidentally stand in one, you will understand this rule immediately.</p>
+<h3 id="s12-4"><span class="num">12.4</span>Water, Ponds, Ditches and Marsh</h3>
+<p>No pond, ditch, canal, marsh or standing water on the property is designated for swimming, wading, playing or pets unless Rocket Farm posts it as such. Depth changes, banks give way, mud is deeper than it looks, and wildlife is present even when you cannot see it. Stay out of the water.</p>
+<h3 id="s12-5"><span class="num">12.5</span>Mud, Soft Ground and Uneven Terrain</h3>
+<p>South Louisiana ground goes from firm to soup after heavy rain. Stay on designated roads, pads, parking and walking areas. Do not drive through wet fields or unauthorized areas because they "look solid"; Louisiana mud has embarrassed bigger trucks than yours, and you pay for recovery and any damage. Expect holes, roots, ruts, gravel, soft spots, ditches, wet grass and changes in elevation. Watch where you walk and wear appropriate footwear.</p>
+<h3 id="s12-6"><span class="num">12.6</span>Heat, Lightning, Floodwater and Night</h3>
+<p>Louisiana heat and humidity can be dangerous: drink water, use shade, take breaks, watch children and vulnerable guests, and know your limits. During lightning, leave open fields and elevated viewing areas and take shelter. Floodwater may contain sewage, chemicals, debris, sharp objects, unstable ground and wildlife; never drive through water when you cannot see the bottom. After dark, wildlife is more active and visibility is worse: carry a flashlight, stay on established paths, keep pets close and avoid tall grass and water edges. Two little glowing eyes near the water are not an invitation to go investigate.</p>
+<h3 id="s12-7"><span class="num">12.7</span>Natural Conditions Are Part of the Experience</h3>
+<p>Rocket Farm cannot make an outdoor rural property free of wildlife, insects, mud, rain, standing water, heat, humidity, wind, dust, vegetation or uneven ground, and does not promise to. You choose to use the property knowing these conditions exist. You agree to follow posted signs and management instructions, to supervise your children, guests and pets, and to take reasonable care for your own safety. Your failure to do so will be considered in any claim to the full extent Louisiana's comparative-fault law allows. If something looks dangerous, feels unstable, has teeth, is hissing, is buzzing angrily, is flooded, is sparking, is smoking or has a sign telling you not to go there, leave it alone and tell management.</p>
 </section>
-<section class="sec" id="s12"><h2><span class="num">12</span>Property, Damage, Personal Belongings &amp; Restricted Areas</h2>
-<h3 id="s12-1"><span class="num">12.1</span>Restricted Areas and Neighboring Property</h3>
-<p>Do not enter restricted, fenced, marked, construction, equipment, utility, drainage, maintenance, marsh, field, or other areas closed to guests. Do not enter neighboring farms, homes, roads, fields, or private property without permission.</p>
-<h3 id="s12-2"><span class="num">12.2</span>Damage Responsibility</h3>
-<p>The registered occupant is responsible, to the extent permitted by law, for damage caused by the occupant, household members, children, pets, guests, visitors, RVs, vehicles, or equipment. Rocket Farm LLC may charge authorized reasonable costs for damage, excessive cleaning, missing property, improper dumping, or other charges allowed by the agreement and applicable law.</p>
-<h3 id="s12-3"><span class="num">12.3</span>Personal Property</h3>
-<p>Guests are responsible for their own vehicles, RVs, equipment, electronics, camping gear, valuables, and personal belongings. Rocket Farm LLC is not responsible for lost, stolen, forgotten, weather-damaged, wildlife-damaged, or otherwise damaged personal property except where responsibility is imposed by law.</p>
-<h3 id="s12-4"><span class="num">12.4</span>Photography and Commercial Activity</h3>
-<p>Ordinary personal photography and video are permitted. Professional filming, commercial photography, organized media production, merchandise sales, vending, commercial tours, or other commercial activity requires prior approval.</p>
-<p>Rocket Farm LLC may photograph or record public/common areas during events or normal business operations. Guests who do not want to intentionally participate in promotional photography should notify management.</p>
-</section>
-<section class="sec" id="s13"><h2><span class="num">13</span>Management Authority, Enforcement &amp; Legal Compliance</h2>
-<p>Not every possible situation can be written into a rule. Rocket Farm LLC management may establish reasonable temporary rules for safety, weather, crowd control, launch operations, emergencies, maintenance, construction, property protection, sanitation, or guest experience.</p>
-<p>Serious or repeated violations may result in termination of occupancy and lawful removal. Rocket Farm LLC will use the procedures required by applicable law. Nothing in this agreement authorizes unlawful self-help removal or permits an occupant to remain after the occupant's lawful right to occupy has ended.</p>
-<p>Where legally recoverable, the occupant may be responsible for court costs, reasonable attorney fees, collection expenses, cleanup costs, and other lawful costs caused by a default or violation.</p>
-<p>If any provision of this agreement is found unenforceable, the remaining provisions are intended to remain in effect to the maximum extent permitted by law.</p>
+<section class="sec" id="s13"><h2><span class="num">13</span>Damage, Belongings, Entry, Enforcement &amp; Legal Terms</h2>
+<h3 id="s13-1"><span class="num">13.1</span>Restricted Areas and Neighboring Property</h3>
+<p>Do not enter restricted, fenced, marked, construction, equipment, utility, drainage, maintenance, marsh, field or other areas closed to guests. Do not enter neighboring farms, homes, roads, fields or private property without the owner's permission.</p>
+<h3 id="s13-2"><span class="num">13.2</span>Responsibility for Damage</h3>
+<p>You are responsible for damage to Rocket Farm property caused by you, your household members, children, pets, guests, visitors, RVs, vehicles or equipment, and for Rocket Farm's actual reasonable cost of repair, excessive cleaning, missing property, improper dumping and other charges this agreement allows. You agree to defend, indemnify and hold Rocket Farm harmless from claims by third parties, including other guests, arising from your conduct or the conduct of anyone you bring onto the property.</p>
+<h3 id="s13-3"><span class="num">13.3</span>Your Property Is Your Responsibility</h3>
+<p>Your RV, vehicles, equipment, electronics, camping gear, valuables and belongings are in your care, not Rocket Farm's. Rocket Farm does not provide security, storage or safekeeping and is not responsible for loss or damage to your property from theft, weather, wildlife, fire, flood, utility surges, other guests or any cause other than Rocket Farm's own fault. Nothing in this agreement limits Rocket Farm's liability for its intentional or gross fault or for physical injury, which Louisiana Civil Code article 2004 does not allow a contract to limit.</p>
+<h3 id="s13-4"><span class="num">13.4</span>Entry and Inspection</h3>
+<p>Rocket Farm may enter the Site, but not the inside of your RV, at reasonable times to read meters, inspect, maintain, repair, show the Site to a prospective occupant near the end of your stay, or enforce these rules, and at any time in an emergency or to address an immediate hazard. Rocket Farm will give reasonable advance notice except in an emergency.</p>
+<h3 id="s13-5"><span class="num">13.5</span>Property Left Behind</h3>
+<p>If you leave property on the Site after your right to occupy ends, Rocket Farm will give written notice to your last known email, phone and forwarding address. Property not removed within ten days after that notice is considered abandoned to the extent Louisiana law allows, and Rocket Farm may remove, store, sell or dispose of it and charge you the reasonable cost. Rocket Farm keeps every right the law gives a lessor over the lessee's movables on the leased premises, including the lessor's privilege under Louisiana Civil Code article 2707.</p>
+<h3 id="s13-6"><span class="num">13.6</span>Photography and Commercial Activity</h3>
+<p>Ordinary personal photography and video are welcome. Professional filming, commercial photography, organized media production, merchandise sales, vending, commercial tours or other commercial activity requires prior written approval. Rocket Farm may photograph or record common areas during events or normal operations; tell management if you do not want to appear in promotional material.</p>
+<h3 id="s13-7"><span class="num">13.7</span>Management Authority and Termination for Cause</h3>
+<p>Not every situation can be written into a rule. Rocket Farm management may set reasonable temporary rules for safety, weather, crowd control, launch operations, emergencies, maintenance, construction, property protection, sanitation or guest experience. A serious violation, a repeated violation after warning, a violation that creates an immediate safety risk, or a material breach of any term of this agreement entitles Rocket Farm to terminate your occupancy by written notice, effective immediately or on the date the notice states. You have waived the notice to vacate under Section 2.7, and Rocket Farm may proceed for possession under Louisiana law at once. Nothing in this agreement authorizes unlawful self-help removal or permits you to remain after your right to occupy has ended.</p>
+<h3 id="s13-8"><span class="num">13.8</span>Costs and Attorney Fees</h3>
+<p>If Rocket Farm has to enforce this agreement, you are responsible for its court costs, reasonable attorney fees, collection expenses, towing and storage charges, cleanup costs and every other cost caused by your default or violation, to the extent the law allows them to be recovered.</p>
+<h3 id="s13-9"><span class="num">13.9</span>Governing Law, Venue and General Terms</h3>
+<ul>
+<li>This agreement is governed by Louisiana law. Any suit relating to it is brought in the courts of Vermilion Parish, Louisiana, and you agree to that venue.</li>
+<li>This document, the signature page and any written addendum are the entire agreement. Oral promises do not count. Changes are effective only in a writing signed or electronically accepted by both parties, except rule changes and rent changes made on notice under Section 2.12.</li>
+<li>Every registered occupant of a Site is jointly and severally liable for everything owed under this agreement.</li>
+<li>Notices to you may be delivered by hand, by posting on your RV door, by email, or by text message to the contacts on the signature page, and are effective when sent. Notices to Rocket Farm go to the email address on the signature page.</li>
+<li>Electronic signatures and electronic acceptance are valid under the Louisiana Uniform Electronic Transactions Act.</li>
+<li>If any provision is found unenforceable, the rest remains in effect to the fullest extent the law allows, and the unenforceable provision is enforced to the greatest extent permitted.</li>
+<li>Rocket Farm's failure to enforce a rule once is not a waiver of that rule or of any other.</li>
+</ul>
 </section>
 <section class="sec" id="s14"><h2><span class="num">14</span>Occupant Acknowledgment</h2>
-<p>By signing below, electronically accepting these terms, or taking possession of a Rocket Farm LLC site, the occupant acknowledges receipt of this agreement and agrees to follow it. The occupant specifically acknowledges the following key terms:</p>
+<p>By signing below, electronically accepting these terms, or taking possession of a Rocket Farm Site, you acknowledge that you received and read this agreement and agree to follow it. You specifically acknowledge and initial each of the following:</p>
 <ul>
-<li>This is month-to-month occupancy, and the agreed departure date for each monthly period is the last calendar day of that month at 11:59 PM unless renewal is accepted.</li>
-<li>Monthly rent is due in full on the 1st, there is no grace period, and rent is late on the 2nd.</li>
-<li>A $55.00-per-calendar-day late-payment penalty begins on the 2nd when monthly rent remains unpaid, subject to applicable law, and it does not count toward the next month's rent.</li>
-<li>Five consecutive delinquent days with no required payment and no written payment plan approved by Rocket Farm LLC constitutes material default and may trigger termination and lawful removal procedures.</li>
+<li>This is month-to-month occupancy. The agreed departure date for each monthly period is the last calendar day of that month at 11:59 PM unless renewal is accepted.</li>
+<li>Rent is due in full on the 1st, there is no grace period, and rent is late on the 2nd. Late charges are $50 on the 2nd plus $10 per day from the 3rd, capped at 20% of the month's rent, and do not roll into the next month.</li>
+<li>Five consecutive delinquent days with no written payment plan approved by Rocket Farm ends this agreement automatically, and I must vacate by 11:59 PM on the 7th.</li>
+<li>I waive the written notice to vacate and the five-day waiting period under Louisiana Code of Civil Procedure article 4701 for every termination under this agreement.</li>
+<li>The security deposit shown on the signature page is held and returned under Louisiana Revised Statutes 9:3251 through 9:3254 and is not my last month's rent.</li>
 <li>Quiet hours are 10:00 PM to 7:00 AM, and disruptive conduct is prohibited at all times.</li>
-<li>The site must remain clean, sanitary, safe, and reasonably orderly.</li>
-<li>Rocket Farm LLC is an actively developing property, and reasonable construction, maintenance, landscaping, and improvement activity may occur during occupancy.</li>
-<li>Routine overnight power or water problems will normally be addressed in the morning; true safety emergencies should be reported immediately.</li>
-<li>Rocket Farm LLC is rural South Louisiana marsh country. Wildlife, insects, mud, water, storms, heat, uneven terrain, and other natural hazards may be present.</li>
-<li>The registered occupant is responsible for the conduct of household members, children, visitors, guests, pets, vehicles, and equipment brought onto the property.</li>
+<li>My RV must stay road-worthy, registered and insured, and I must remove it from the property during a mandatory evacuation.</li>
+<li>Rocket Farm is rural South Louisiana marsh country. Wildlife, insects, mud, water, storms, heat, uneven terrain and other natural hazards are present, and I have read the safety notice in Section 12.</li>
+<li>Routine overnight power or water problems are normally addressed in the morning; true emergencies are reported immediately and 911 is called first when appropriate.</li>
+<li>I am responsible for the conduct of my household members, children, visitors, guests, pets, vehicles and equipment, and for any damage they cause.</li>
 </ul>
-<p class="signoff">The full agreement, including the occupant details and signature page, is signed at check-in. Taking possession of a site or electronically accepting these terms counts as agreeing to them.</p>
+<p class="signoff">The full agreement, including the occupant details, initials and signature page, is signed at check-in. <a href="Rocket_Farm_LLC_Master_Rules_and_Monthly_Site_Agreement.docx" download>Download the signable Word version</a>. Taking possession of a site or electronically accepting these terms counts as agreeing to them.</p>
 </section>
 
       <div class="closing">

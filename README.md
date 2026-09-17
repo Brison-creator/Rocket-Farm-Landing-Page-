@@ -135,9 +135,22 @@ controls. To update the rules, edit the Word document and re-run the generator
 (`build_policies.py`, kept outside the repo) or edit the HTML directly; keep the
 `Updated` date and the sitemap `lastmod` in step.
 
-The document is still marked as an owner working draft. Have Louisiana counsel
-look at the $55-per-day late penalty, the five-day removal rule and the
-occupancy classification before the first occupant signs.
+`policies/Rocket_Farm_LLC_Master_Rules_and_Monthly_Site_Agreement.docx` is the
+signable version (occupant table, initials lines, signature page) and is linked
+from the page. Both are generated from one source (`agreement.py`, kept outside
+the repo) so the web copy and the signed copy never drift.
+
+The agreement was restructured around Louisiana law: late charges are a flat
+$50 plus $10/day capped at 20% of rent and framed as stipulated damages (C.C.
+art. 2005/2012); the five-day rule ends the lease by its own terms and the
+occupant waives the notice to vacate (C.C.P. art. 4701) by separate initials;
+no self-help removal; a refundable security deposit handled under R.S.
+9:3251-3254; no advance release of liability for physical injury (C.C. art.
+2004 makes those null), only warnings, comparative fault and third-party
+indemnity; ten-day termination notice for month-to-month (C.C. art. 2728);
+mandatory-evacuation clause; lessor's privilege (C.C. art. 2707); Vermilion
+Parish venue. It is still not legal advice. Have a Louisiana attorney read it
+once before the first occupant signs.
 
 ## Deploying to therocketfarm.com
 
