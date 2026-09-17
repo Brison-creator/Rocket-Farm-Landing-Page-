@@ -1027,6 +1027,18 @@ header.open .nav-toggle .x{display:block}
 .town-photo figcaption a{color:var(--amber)}
 .loc-list+.dir-btns{margin-top:1.4rem}
 
+/* ---------- Where to eat ---------- */
+.eats{display:grid;gap:2.2rem}
+.eat-group h2{font-size:clamp(1.15rem,2vw,1.4rem);margin-bottom:1rem}
+.eat-list{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+@media (min-width:760px){.eat-list{grid-template-columns:1fr 1fr}}
+.eat{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:rgba(var(--ink-rgb),.02)}
+.eat b{display:block;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-.01em}
+.eat-addr{display:block;font-size:.82rem;color:var(--faint);margin-top:.2rem}
+.eat p{color:var(--muted);font-size:.9rem;margin-top:.45rem;line-height:1.5}
+.eat a{flex:none;font-size:.85rem;color:var(--amber);text-decoration:none;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .8rem;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.eat a:hover{background:var(--amber);color:#1b1102;border-color:transparent}
+
 /* ---------- Sub-page heads ---------- */
 .head h1{font-size:clamp(2rem,5vw,3.3rem);margin-top:.9rem;text-wrap:balance}
 .more{margin-top:clamp(1.6rem,3vw,2.4rem);display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center}
