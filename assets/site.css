@@ -580,29 +580,31 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   background:linear-gradient(180deg,transparent 0%,rgba(72,96,160,.10) 45%,rgba(96,120,190,.2) 80%,rgba(120,140,210,.26) 100%)}
 @media (max-width:760px){.horizon-glow{height:200px;opacity:.75}}
 
-/* ---------- Bayou foreground ----------
-   Silhouettes only, a shade bluer than the horizon so they read as a nearer
-   layer. Moss and cattails sway on the compositor; the gators blink. */
-.bayou{position:absolute;left:0;right:0;bottom:-1px;z-index:-1;height:clamp(150px,17vw,250px);pointer-events:none;overflow:hidden}
-.bayou svg{width:100%;height:100%;display:block}
-.bayou .cyp{fill:#080d19;stroke:rgba(140,160,215,.14);stroke-width:.8}
-.bayou .cyp.far{fill:#0a1020;opacity:.9}
-.bayou .snag{fill:#070b16}
-.bayou .heron{fill:#060a13;stroke:#060a13;stroke-linecap:round}
-.bayou .moss{fill:none;stroke:#0f172b;stroke-width:1.6;stroke-linecap:round;
-  transform-box:fill-box;transform-origin:50% 0;animation:rf-moss 7s ease-in-out infinite alternate}
-.bayou .moss.m1{animation-duration:8.5s;stroke-width:1.3}
-.bayou .moss.m2{animation-duration:6.2s;stroke-width:1.9}
-@keyframes rf-moss{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
-.bayou .reed{fill:#0a0f1d;stroke:#0a0f1d;stroke-width:1.4;stroke-linecap:round;
-  transform-box:fill-box;transform-origin:50% 100%;animation:rf-reed 6s ease-in-out infinite alternate}
-@keyframes rf-reed{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
-.bayou .gator circle{fill:#ffb347;filter:drop-shadow(0 0 2px rgba(255,150,40,.9))}
-.bayou .gator{animation:rf-gator-blink 9s linear infinite}
-.bayou .gator.g2{animation:rf-gator-blink 13s linear infinite,rf-gator-glide 46s ease-in-out infinite alternate;animation-delay:4s,0s}
-@keyframes rf-gator-blink{0%,100%{opacity:.85}47%{opacity:.85}48.5%{opacity:0}50%{opacity:.85}
-  82%{opacity:.85}83.2%{opacity:0}84.4%{opacity:.85}}
-@keyframes rf-gator-glide{from{transform:translateX(0)}to{transform:translateX(-90px)}}
+/* ---------- Farmland foreground ----------
+   Flat Acadiana prairie: rice levees converging on the horizon, irrigation
+   ditches with a green cast and a slow shimmer, a fence line, a few small
+   silhouettes far off. Everything dark, so the type is untouched. */
+.fields{position:absolute;left:0;right:0;bottom:-1px;z-index:-1;height:clamp(150px,17vw,250px);pointer-events:none;overflow:hidden}
+.fields svg{width:100%;height:100%;display:block}
+.fields .land{fill:#06090f}
+.fields .farline{fill:#080d18}
+.fields .rows{fill:none;stroke:rgba(79,176,141,.11);stroke-width:1}
+.fields .ditch{fill:rgba(79,176,141,.2)}
+.fields .ditch-edge{fill:rgba(140,200,170,.24)}
+.fields .ditch-shine{fill:rgba(160,210,190,.10);animation:rf-shine 9s ease-in-out infinite alternate}
+@keyframes rf-shine{from{opacity:.35}to{opacity:1}}
+.fields .fence,.fields .pole{fill:none;stroke:#0b1120;stroke-width:1.6;stroke-linecap:round}
+.fields .wire{fill:none;stroke:rgba(150,170,215,.16);stroke-width:1}
+.fields .wire.thin{stroke-width:.8}
+.fields .bins,.fields .house,.fields .pump{fill:#070b16}
+.fields .window{fill:#ffcf7a;animation:rf-window 6s ease-in-out infinite alternate}
+@keyframes rf-window{from{opacity:.75}to{opacity:1}}
+.fields .egret{fill:#070b16;stroke:#070b16;stroke-linecap:round}
+.fields .tuft{fill:none;stroke:#0a1020;stroke-width:1.3;stroke-linecap:round;
+  transform-box:fill-box;transform-origin:50% 100%;animation:rf-reed 5.5s ease-in-out infinite alternate}
+@keyframes rf-reed{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@media (max-width:760px){.fields{height:150px}}
+@media (prefers-reduced-motion:reduce){.fields .tuft,.fields .ditch-shine,.fields .window{animation:none}}
 
 /* ground mist over the water, two layers drifting opposite ways */
 .mist{position:absolute;left:-20%;right:-20%;bottom:0;height:90px;z-index:-1;pointer-events:none;opacity:.22;
@@ -618,13 +620,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @keyframes rf-mist{from{transform:translate3d(0,0,0)}to{transform:translate3d(6%,-3px,0)}}
 @keyframes rf-mist2{from{transform:translate3d(0,0,0)}to{transform:translate3d(-7%,2px,0)}}
 @media (max-width:760px){
-  .bayou{height:150px}
   .mist{opacity:.14}.mist2{opacity:.1}
   /* filters re-rasterise on every frame on a phone; hold the mist still */
   .mist,.mist2{animation:none}
-  .bayou .moss{animation-duration:9s}
 }
-@media (prefers-reduced-motion:reduce){.bayou .moss,.bayou .reed,.bayou .gator,.mist,.mist2{animation:none}}
+@media (prefers-reduced-motion:reduce){.mist,.mist2{animation:none}}
 /* fireflies live in the trees now, in front of them */
 .fireflies{z-index:0}
 
