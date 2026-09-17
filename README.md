@@ -1,23 +1,42 @@
 # Rocket Farm — landing page
 
-A single-file landing page for **Rocket Farm LLC**, a full-hookup RV park in
-development at 10729 Farmer Road, Kaplan, Louisiana (Vermilion Parish).
+The website for **Rocket Farm LLC**, a full-hookup RV park in development at
+10729 Farmer Road, Kaplan, Louisiana (Vermilion Parish). Static HTML, no build
+step, no framework: GitHub Pages serves the files as they are.
 
-Everything lives in `index.html` — markup, styles and script. No build step, no
-dependencies, no framework. Open the file in a browser and it works.
+## Site structure
 
-## Sections
+Six pages share one stylesheet and one script:
 
-1. **Hero** — positioning and the primary calls to action
-2. **At a glance** — 17 spaces, $650–700/mo, ~30 mi to the launch campus, 2027
-3. **Who it's for** — crews and contractors, launch watchers, sportsmen and families
-4. **The spaces** — interactive site map plus a table of all 17 lots and rates
-5. **Pricing** — the three rate tiers, what's included, and the terms
-6. **The park** — Phase 1 amenities
-7. **What's planned** — Phase 1, Phase 2, and the big-pond view deck
-8. **Location** — the address and approximate drive times
-9. **Waitlist** — interest capture form
-10. **Footer** — contact, development disclaimer, non-affiliation notice
+| URL             | File                    | What's on it                                         |
+|-----------------|-------------------------|------------------------------------------------------|
+| `/`             | `index.html`            | Hero, at-a-glance stats, who it's for, crew and corporate block booking, rate cards, six amenities, location with the town sign, reservation form |
+| `/spaces/`      | `spaces/index.html`     | Interactive site map, every space and its rate, what's included, full amenities |
+| `/plan/`        | `plan/index.html`       | Phase 1, Phase 2 and the view deck                   |
+| `/directions/`  | `directions/index.html` | Louisiana map, distances, live-drive-time links, the gate |
+| `/faq/`         | `faq/index.html`        | The FAQ with matching FAQPage schema, and the park rules behind a lowercase "policy" toggle at the bottom |
+| `/kaplan/`      | `kaplan/index.html`     | Where to eat in Kaplan: local restaurants with map links |
+
+`assets/site.css` holds all styling and `assets/site.js` all behaviour (site
+map, filters, tooltip, scroll reveal, form, mobile menu, day/night sky, crew
+button). Each script block checks for the elements it needs, so it is safe on
+every page. The header and footer are repeated verbatim in each page; when you
+change a nav link, change it in all six files (a search for `nav-links` finds
+them). All internal links and asset paths are root-absolute (`/spaces/`,
+`/img/...`), so pages must be served from the domain root, which GitHub Pages
+does.
+
+## Day and night sky
+
+The site picks a theme from the clock in Central time: daylight (sun over the
+fields, clouds, birds) from 6:00 am to 4:59 pm, the night sky otherwise. An
+inline script in each page's `<head>` sets `data-theme="day"` or `"night"` on
+`<html>` before first paint, and `assets/site.js` re-checks every minute so an
+open tab flips at the boundary. `?sky=day` or `?sky=night` on any URL previews
+a theme; the sun/moon button in the header (or "Switch to … sky" in the phone
+menu) stores a choice in that browser, and the footer offers "Back to
+automatic". Theme colours are CSS tokens (`--ink-rgb`, `--bg-rgb`, and the
+named ones) under `:root[data-theme="day"]` at the end of `site.css`.
 
 ## Editing the lot prices
 
@@ -123,11 +142,11 @@ pick one:
 With either one, delete the form-handling block at the end of the `<script>` —
 it calls `preventDefault()` and would stop the real submission.
 
-## Park rules and the site agreement (sent by email, not published)
+## Park rules and the site agreement
 
-The Master Rules, Policies & Monthly Site Agreement is published as small,
-lowercase fine print at the bottom of the FAQ page (`/faq/#rules`), generated
-from the same source as the Word file. The signable Word file itself stays off
+The Master Rules, Policies & Monthly Site Agreement sits at the bottom of the
+FAQ page (`/faq/#rules`) behind a single lowercase "policy" toggle, as small
+lowercase fine print generated from the same source as the Word file. The signable Word file itself stays off
 the site: when someone submits the reservation form, reply with it attached
 and the invitation below. Keep the file outside this public repo.
 
