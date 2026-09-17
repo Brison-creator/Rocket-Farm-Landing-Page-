@@ -123,55 +123,38 @@ pick one:
 With either one, delete the form-handling block at the end of the `<script>` —
 it calls `preventDefault()` and would stop the real submission.
 
-## Park rules page (`policies/index.html`)
+## Park rules and the site agreement (sent by email, not published)
 
-`https://therocketfarm.com/policies/` is the Master Rules, Policies & Monthly
-Site Agreement rendered as a web page, with a section index, key-terms tiles
-and a print stylesheet (the "Print or save as PDF" link gives a clean
-black-on-white copy). It is generated from the Word document: the occupant
-information block, the signature page and the internal "review with counsel"
-note are left out on purpose, and the page says the signed copy at check-in
-controls. To update the rules, edit the Word document and re-run the generator
-(`build_policies.py`, kept outside the repo) or edit the HTML directly; keep the
-`Updated` date and the sitemap `lastmod` in step.
+The Master Rules, Policies & Monthly Site Agreement is deliberately not on the
+site. When someone submits the reservation form, reply with the Word file
+attached and the invitation below. Keep the file outside this public repo.
 
-`policies/Rocket_Farm_LLC_Master_Rules_and_Monthly_Site_Agreement.docx` is the
-signable version (occupant table, initials lines, signature page) and is linked
-from the page. Both are generated from one source (`agreement.py`, kept outside
-the repo) so the web copy and the signed copy never drift.
+Subject: Your Rocket Farm reservation — next steps
 
-The agreement was restructured around Louisiana law: late charges are a flat
-$50 plus $10/day capped at 20% of rent and framed as stipulated damages (C.C.
-art. 2005/2012); the five-day rule ends the lease by its own terms and the
-occupant waives the notice to vacate (C.C.P. art. 4701) by separate initials;
-no self-help removal; a refundable security deposit handled under R.S.
-9:3251-3254; no advance release of liability for physical injury (C.C. art.
-2004 makes those null), only warnings, comparative fault and third-party
-indemnity; ten-day termination notice for month-to-month (C.C. art. 2728);
-mandatory-evacuation clause; lessor's privilege (C.C. art. 2707); Vermilion
-Parish venue. It is still not legal advice. Have a Louisiana attorney read it
-once before the first occupant signs.
+> Hi [name],
+>
+> Thanks for reaching out about a space at Rocket Farm. We'd be glad to have
+> you. I've attached our park rules and monthly site agreement so you can read
+> exactly how the park runs before you put down a deposit: rent on the 1st,
+> quiet hours 10 PM to 7 AM, keep your site clean, and look out for each other.
+> It's plain English and it's the same for everyone.
+>
+> To hold [space / a 50-amp monthly space] for you, the reservation deposit is
+> $250. It's credited to your first month, refunded in full if we can't
+> deliver the space, and not refundable if you choose to stay somewhere else.
+> [Payment link or instructions.]
+>
+> If anything in the agreement raises a question, reply here or call me at
+> [phone]. Looking forward to seeing you on Farmer Road.
+>
+> [Your name]
+> Rocket Farm LLC · 10729 Farmer Road, Kaplan, LA 70548
 
-## Site structure
-
-The site is six static pages that share one stylesheet and one script:
-
-| URL             | File                    | What's on it                                         |
-|-----------------|-------------------------|------------------------------------------------------|
-| `/`             | `index.html`            | Hero, at-a-glance stats, who it's for, rate cards, six amenities, location teaser, reservation form |
-| `/spaces/`      | `spaces/index.html`     | Interactive site map, every space and its rate, what's included, full amenities |
-| `/plan/`        | `plan/index.html`       | Phase 1, Phase 2 and the view deck                   |
-| `/directions/`  | `directions/index.html` | Louisiana map, distances, live-drive-time links, the gate |
-| `/faq/`         | `faq/index.html`        | The FAQ, with matching FAQPage schema                |
-| `/policies/`    | `policies/index.html`   | Park rules and the monthly site agreement (+ Word file) |
-
-`assets/site.css` holds all styling and `assets/site.js` all behaviour (site
-map, filters, tooltip, scroll reveal, form, mobile menu, rules-page index).
-Each script block checks for the elements it needs, so it is safe on every
-page. The header and footer are repeated verbatim in each page; when you change
-a nav link, change it in all six files (a search for `nav-links` finds them).
-All internal links and asset paths are root-absolute (`/spaces/`, `/img/...`),
-so pages must be served from the domain root, which GitHub Pages does.
+The agreement was restructured around Louisiana law (stipulated late charges
+capped at 20% of rent, a separately initialed waiver of the notice to vacate,
+no self-help removal, a security deposit handled under R.S. 9:3251-3254, no
+advance release for physical injury). It is still not legal advice; have a
+Louisiana attorney read it once before the first occupant signs.
 
 ## Deploying to therocketfarm.com
 
