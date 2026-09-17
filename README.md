@@ -81,7 +81,24 @@ MX and SPF records are already in place. Setting a **catch-all** forwarder as
 well is worth the extra minute, so mail to `hello@`, `info@` or a typo still
 reaches you instead of bouncing.
 
-## The waitlist form
+## Reservations and the deposit
+
+The page now takes reservation requests rather than a waitlist. The form still
+opens a pre-filled email (see below); you reply with deposit instructions.
+
+**To take the $250 on the spot:** create a Stripe Payment Link (or Square /
+PayPal), then set `PAY_LINK` in the script at the bottom of `index.html`. A
+"Pay the $250 deposit" button appears under the form as soon as it is non-empty.
+
+**Deposit terms as published:** $250, credited to the first month, not
+refundable if the guest chooses to stay elsewhere, **refunded in full if Rocket
+Farm does not open or cannot deliver the reserved space.** Keep that last
+clause. A deposit kept when the business fails to deliver is not enforceable,
+is the textbook chargeback case, and reads badly to a lender. The terms appear
+in three places — hero small print, the Reserve section, and the FAQ — so
+change all three together.
+
+## The reservation form
 
 As written, submitting opens a pre-filled email in the visitor's mail app. That
 works, but it loses anyone without mail set up. To collect submissions properly,
