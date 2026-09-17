@@ -79,7 +79,11 @@ a{color:inherit}
 img,svg{display:block;max-width:100%}
 
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
-.eyebrow{font-family:var(--font-display);font-weight:500;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.eyebrow{font-family:var(--font-display);font-weight:500;font-size:.75rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+  text-shadow:0 0 18px rgba(245,165,36,.35)}
+.eyebrow::before{content:"";display:inline-block;width:16px;height:1px;
+  background:var(--amber);vertical-align:3px;margin-right:.7rem;opacity:.7}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:8px;top:8px;z-index:99;background:var(--cream);color:var(--night);padding:10px 16px;border-radius:8px}
@@ -102,6 +106,26 @@ img,svg{display:block;max-width:100%}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(245,165,36,.85)}
 .btn-ghost{border-color:var(--line-strong);color:var(--cream);background:rgba(244,239,230,.03)}
 .btn-ghost:hover{border-color:var(--cream);background:rgba(244,239,230,.08)}
+
+/* The sky does not stop at the hero: a faint fixed starfield sits behind the
+   whole document so every section reads as being outdoors at night. */
+.deepspace{position:fixed;inset:0;z-index:-10;pointer-events:none;
+  background:
+    radial-gradient(1.5px 1.5px at 8% 14%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1.2px 1.2px at 21% 62%,rgba(244,239,230,.4),transparent),
+    radial-gradient(1.6px 1.6px at 34% 28%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.1px 1.1px at 47% 78%,rgba(200,222,255,.42),transparent),
+    radial-gradient(1.4px 1.4px at 58% 18%,rgba(244,239,230,.48),transparent),
+    radial-gradient(1.2px 1.2px at 69% 54%,rgba(255,236,200,.4),transparent),
+    radial-gradient(1.5px 1.5px at 81% 34%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.1px 1.1px at 92% 70%,rgba(244,239,230,.36),transparent),
+    radial-gradient(1.3px 1.3px at 14% 88%,rgba(244,239,230,.4),transparent),
+    radial-gradient(1.2px 1.2px at 63% 92%,rgba(200,222,255,.34),transparent),
+    radial-gradient(1.4px 1.4px at 88% 8%,rgba(244,239,230,.44),transparent);
+  animation:rf-deep 22s ease-in-out infinite alternate}
+@keyframes rf-deep{from{opacity:.5}to{opacity:.95}}
+/* sections float over it */
+.band-alt{background:linear-gradient(180deg,rgba(7,11,24,.86) 0%,rgba(10,16,32,.92) 100%)}
 
 /* ---------- Header ---------- */
 header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -128,7 +152,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
     radial-gradient(90% 60% at 18% 0%,rgba(79,176,141,.12),transparent 60%),
     linear-gradient(180deg,#05080f 0%,var(--night-2) 45%,var(--dusk) 100%);
 }
-.stars{position:absolute;inset:0;z-index:-2;opacity:.85;
+.stars{position:absolute;inset:-22%;z-index:-2;opacity:.85;
   background-image:
     radial-gradient(1.4px 1.4px at 12% 18%,rgba(244,239,230,.9),transparent),
     radial-gradient(1.2px 1.2px at 27% 8%,rgba(244,239,230,.7),transparent),
@@ -142,12 +166,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
     radial-gradient(1.4px 1.4px at 50% 5%,rgba(244,239,230,.8),transparent),
     radial-gradient(1px 1px at 76% 47%,rgba(244,239,230,.45),transparent),
     radial-gradient(1.2px 1.2px at 20% 30%,rgba(244,239,230,.6),transparent);
-  animation:twinkle 7s ease-in-out infinite alternate;
+  animation:twinkle 7s ease-in-out infinite alternate,
+             rf-sky-a 300s ease-in-out infinite alternate;
 }
+@keyframes rf-sky-a{from{transform:translate3d(0,0,0)}to{transform:translate3d(-3.5%,2%,0)}}
 @keyframes twinkle{from{opacity:.55}to{opacity:.95}}
 /* second, denser layer on a different beat so the sky shimmers rather than
    pulsing as one sheet */
-.stars2{position:absolute;inset:0;z-index:-2;opacity:.7;
+.stars2{position:absolute;inset:-22%;z-index:-2;opacity:.7;
   background-image:
     radial-gradient(1.7px 1.7px at 5% 12%,rgba(244,239,230,.95),transparent),
     radial-gradient(1.2px 1.2px at 16% 26%,rgba(244,239,230,.7),transparent),
@@ -163,7 +189,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
     radial-gradient(1.3px 1.3px at 95% 29%,rgba(200,222,255,.78),transparent),
     radial-gradient(1.1px 1.1px at 10% 38%,rgba(244,239,230,.6),transparent),
     radial-gradient(1.4px 1.4px at 38% 6%,rgba(244,239,230,.8),transparent);
-  animation:twinkle2 4.3s ease-in-out .9s infinite alternate}
+  animation:twinkle2 4.3s ease-in-out .9s infinite alternate,
+             rf-sky-b 430s ease-in-out infinite alternate}
+@keyframes rf-sky-b{from{transform:translate3d(0,0,0)}to{transform:translate3d(2.4%,-1.4%,0)}}
 @keyframes twinkle2{from{opacity:.32}to{opacity:.9}}
 /* ---- Launch: rises from behind the treeline on a loop ----
    Sits at z-index -2 so the dark horizon (-1) occludes the pad, which is
@@ -182,13 +210,70 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @media (max-width:760px){.launch{--rw:96px;left:calc(58% - var(--rw) / 2);opacity:.4;
   bottom:calc(18px - 1.587 * var(--rw))}}
 
+/* faint band of galaxy, slowly turning */
+.milky{position:absolute;inset:-30%;z-index:-2;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(60% 18% at 50% 50%,rgba(150,170,220,.13),transparent 70%),
+    radial-gradient(38% 11% at 38% 46%,rgba(214,198,235,.1),transparent 70%),
+    radial-gradient(30% 9% at 64% 55%,rgba(180,205,235,.09),transparent 70%);
+  transform:rotate(-22deg);
+  animation:rf-galaxy 520s linear infinite}
+@keyframes rf-galaxy{from{rotate:0deg}to{rotate:8deg}}
+
+/* meteors: thin streaks on long, offset cycles */
+/* Meteors stay in the top band of the sky, on a shallow path. A bright streak
+   crossing the headline reads as a rendering glitch and drops the contrast
+   behind live type, so they are kept clear of the copy entirely. */
+.meteor{position:absolute;z-index:-2;width:170px;height:2px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(244,239,230,.85) 62%,#fff);
+  border-radius:2px;opacity:0;transform:rotate(7deg);
+  animation:rf-meteor 15s linear infinite}
+/* px offsets, not percentages: the hero's height and the viewport height scale
+   independently, so a vh drop could still dip a streak into the copy. */
+.meteor.m1{top:14px;left:-14%;animation-delay:3s}
+.meteor.m2{top:46px;left:-18%;width:130px;animation-delay:9.5s;animation-duration:19s}
+.meteor.m3{top:76px;left:-12%;width:205px;animation-delay:25s;animation-duration:23s}
+@keyframes rf-meteor{
+  0%      {opacity:0;translate:0 0}
+  1.2%    {opacity:0}
+  2.2%    {opacity:.9}
+  7%      {opacity:.9}
+  9%      {opacity:0;translate:96vw 18px}
+  100%    {opacity:0;translate:96vw 18px}
+}
+/* the phone hero starts its copy much higher, so there is no clear band */
+@media (max-width:760px){.meteor{display:none}}
+@media (prefers-reduced-motion:reduce){.meteor{display:none}}
+
 /* Moon and Mars sit above the veil so they stay crisp while the veil still
    knocks the vehicle back behind the type. */
 .sky-bodies{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.moon{position:absolute;top:5%;right:6%;width:clamp(62px,8vw,112px);height:auto;
-  filter:drop-shadow(0 0 30px rgba(244,239,230,.1))}
-.mars{position:absolute;top:26%;right:23%;width:clamp(22px,2.8vw,42px);height:auto;
-  filter:drop-shadow(0 0 12px rgba(232,98,60,.16))}
+.sky-bodies img{width:100%;height:auto;display:block}
+
+/* The Moon really does librate — a slow wobble plus drift keeps the disc from
+   reading as a sticker. Transform and opacity only, so it all composites. */
+.moon{position:absolute;top:5%;right:6%;width:clamp(62px,8vw,112px);
+  filter:drop-shadow(0 0 34px rgba(244,239,230,.13));
+  animation:rf-drift-moon 210s ease-in-out infinite alternate,
+            rf-librate 96s ease-in-out infinite alternate}
+.moon-base{position:absolute;inset:0;width:100%;height:100%}
+.mars{position:absolute;top:26%;right:23%;width:clamp(22px,2.8vw,42px);
+  filter:drop-shadow(0 0 14px rgba(232,98,60,.2));
+  animation:rf-drift-mars 150s ease-in-out infinite alternate}
+/* a terminator that creeps around the disc, so Mars reads as a lit sphere
+   rather than a flat cut-out */
+.mars-term{position:absolute;inset:0;border-radius:50%;
+  background:linear-gradient(105deg,transparent 42%,rgba(11,18,38,.24) 72%,rgba(11,18,38,.62) 100%);
+  animation:rf-term 120s linear infinite}
+
+@keyframes rf-drift-moon{from{transform:translate3d(0,0,0)}to{transform:translate3d(-2.2%,1.6%,0)}}
+@keyframes rf-librate{
+  0%  {rotate:-1.1deg;scale:1}
+  50% {rotate:.5deg;scale:1.012}
+  100%{rotate:1.2deg;scale:1}
+}
+@keyframes rf-drift-mars{from{transform:translate3d(0,0,0)}to{transform:translate3d(3.4%,-2.4%,0)}}
+@keyframes rf-term{from{rotate:0deg}to{rotate:360deg}}
 @media (max-width:760px){
   /* Phones run the copy full-width, so there is no margin the bodies can sit
      in safely. Drop them behind the veil and let it haze them instead — the
@@ -553,6 +638,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="deepspace" aria-hidden="true"></div>
 
 <header>
   <nav class="wrap nav" aria-label="Primary">
@@ -585,6 +671,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="sky" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
     <div class="stars2" aria-hidden="true"></div>
+    <div class="milky" aria-hidden="true"></div>
+    <div class="meteor m1" aria-hidden="true"></div>
+    <div class="meteor m2" aria-hidden="true"></div>
+    <div class="meteor m3" aria-hidden="true"></div>
 
     <div class="launch-smoke" aria-hidden="true"></div>
     <div class="rf-smokecol" aria-hidden="true">
@@ -647,90 +737,28 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="hero-veil" aria-hidden="true"></div>
 
     <div class="sky-bodies" aria-hidden="true">
-      <!-- Moon, with a small base on the terminator -->
-      <svg class="moon" viewBox="0 0 120 120">
-        <defs>
-          <radialGradient id="mnG" cx=".36" cy=".32" r=".82">
-            <stop offset="0" stop-color="#f3f0e6"/>
-            <stop offset=".58" stop-color="#d9d5c7"/>
-            <stop offset="1" stop-color="#a7a396"/>
-          </radialGradient>
-          <clipPath id="mnClip"><circle cx="60" cy="60" r="50"/></clipPath>
-          <radialGradient id="mnLimb" cx=".42" cy=".38" r=".72">
-            <stop offset=".6" stop-color="#0b1226" stop-opacity="0"/>
-            <stop offset="1" stop-color="#0b1226" stop-opacity=".3"/>
-          </radialGradient>
-          <linearGradient id="mnTerm" x1="0" y1="0" x2=".92" y2=".78">
-            <stop offset=".42" stop-color="#0b1226" stop-opacity="0"/>
-            <stop offset=".74" stop-color="#0b1226" stop-opacity=".16"/>
-            <stop offset="1" stop-color="#0b1226" stop-opacity=".46"/>
-          </linearGradient>
-          <filter id="mnSoft" x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur stdDeviation="3.4"/>
-          </filter>
-          <filter id="mnSoft2" x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur stdDeviation="1.2"/>
-          </filter>
-        </defs>
-        <circle cx="60" cy="60" r="50" fill="url(#mnG)"/>
-        <!-- maria: broad soft darks, not drawn craters -->
-        <g clip-path="url(#mnClip)" filter="url(#mnSoft)">
-          <ellipse cx="46" cy="44" rx="20" ry="15" fill="#a9a598" opacity=".3" transform="rotate(-18 46 44)"/>
-          <ellipse cx="76" cy="68" rx="18" ry="13" fill="#a9a598" opacity=".26" transform="rotate(12 76 68)"/>
-          <ellipse cx="40" cy="76" rx="13" ry="10" fill="#a9a598" opacity=".2"/>
-          <ellipse cx="70" cy="34" rx="9" ry="7" fill="#a9a598" opacity=".18"/>
-        </g>
-        <!-- a few small craters, low contrast -->
-        <g clip-path="url(#mnClip)" filter="url(#mnSoft2)" fill="#9e9a8d" opacity=".26">
-          <circle cx="58" cy="56" r="3.4"/><circle cx="85" cy="50" r="2.4"/>
-          <circle cx="33" cy="60" r="2.1"/><circle cx="64" cy="84" r="2.8"/>
-          <circle cx="50" cy="30" r="1.8"/>
-        </g>
-        <!-- limb darkening + terminator, soft -->
-        <g clip-path="url(#mnClip)">
-          <circle cx="60" cy="60" r="50" fill="url(#mnLimb)"/>
-          <circle cx="60" cy="60" r="50" fill="url(#mnTerm)"/>
-        </g>
-        <!-- the base: a low structure, a mast, and pinpoint lights -->
-        <g clip-path="url(#mnClip)">
-          <path d="M38 41h17v-3.2h-17z" fill="#5f5c53" opacity=".95"/>
-          <path d="M57 41h9v-2.4h-9z" fill="#57544c" opacity=".95"/>
-          <path d="M44.6 37.8V27.4" stroke="#5f5c53" stroke-width="1.1"/>
-          <circle cx="44.6" cy="26.6" r="1.2" fill="#f5a524" opacity=".9"/>
-          <circle cx="41.5" cy="39.4" r=".8" fill="#ffd79a" opacity=".85"/>
-          <circle cx="47.5" cy="39.4" r=".8" fill="#ffd79a" opacity=".85"/>
-          <circle cx="60" cy="39.8" r=".7" fill="#ffd79a" opacity=".7"/>
-        </g>
-      </svg>
+      <!-- Moon: NASA/GSFC Scientific Visualization Studio (public domain),
+           cropped to the disc with a feathered alpha edge. -->
+      <div class="moon">
+        <img src="img/moon.webp" width="360" height="360" alt="" decoding="async">
+        <svg class="moon-base" viewBox="0 0 360 360">
+          <g opacity=".92">
+            <path d="M126 118h34v-7h-34z" fill="#3b3a36"/>
+            <path d="M164 118h18v-5h-18z" fill="#333230"/>
+            <path d="M141 111V90" stroke="#3b3a36" stroke-width="2.4"/>
+            <circle cx="141" cy="87" r="2.8" fill="#f5a524"/>
+            <circle cx="133" cy="114.5" r="1.7" fill="#ffd79a"/>
+            <circle cx="147" cy="114.5" r="1.7" fill="#ffd79a"/>
+            <circle cx="172" cy="115.5" r="1.5" fill="#ffd79a"/>
+          </g>
+        </svg>
+      </div>
 
-      <!-- Mars -->
-      <svg class="mars" viewBox="0 0 100 100">
-        <defs>
-          <radialGradient id="mrG" cx=".38" cy=".33" r=".8">
-            <stop offset="0" stop-color="#cf8663"/>
-            <stop offset=".55" stop-color="#ad6041"/>
-            <stop offset="1" stop-color="#7d4028"/>
-          </radialGradient>
-          <clipPath id="mrClip"><circle cx="50" cy="50" r="42"/></clipPath>
-          <linearGradient id="mrTerm" x1="0" y1="0" x2=".9" y2=".82">
-            <stop offset=".4" stop-color="#0b1226" stop-opacity="0"/>
-            <stop offset=".72" stop-color="#0b1226" stop-opacity=".2"/>
-            <stop offset="1" stop-color="#0b1226" stop-opacity=".55"/>
-          </linearGradient>
-          <filter id="mrSoft" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="3.6"/>
-          </filter>
-        </defs>
-        <circle cx="50" cy="50" r="42" fill="url(#mrG)"/>
-        <g clip-path="url(#mrClip)" filter="url(#mrSoft)">
-          <ellipse cx="38" cy="58" rx="24" ry="14" fill="#6d3620" opacity=".34" transform="rotate(-12 38 58)"/>
-          <ellipse cx="68" cy="40" rx="16" ry="10" fill="#6d3620" opacity=".24" transform="rotate(8 68 40)"/>
-          <ellipse cx="50" cy="13" rx="14" ry="5" fill="#e6ded0" opacity=".42"/>
-        </g>
-        <g clip-path="url(#mrClip)">
-          <circle cx="50" cy="50" r="42" fill="url(#mrTerm)"/>
-        </g>
-      </svg>
+      <!-- Mars: NASA/JPL global colour view PIA00407 (public domain) -->
+      <div class="mars">
+        <img src="img/mars.webp" width="220" height="220" alt="" decoding="async">
+        <span class="mars-term"></span>
+      </div>
     </div>
 
     <svg class="horizon" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
@@ -778,7 +806,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band" id="who">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Who it's for</p>
+        <p class="eyebrow">Crew manifest</p>
         <h2>Crews first. Everybody else welcome.</h2>
         <p>Fourteen of the seventeen spaces are set aside for people working in the area on a monthly basis — that is who this park is for today. The three flexible spaces handle launch weeks, fishing trips and family stays without ever taking a space out from under someone who lives here.</p>
       </div>
@@ -818,7 +846,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band band-alt" id="lots">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">The spaces</p>
+        <p class="eyebrow">Pad assignments</p>
         <h2>All seventeen, and what each one costs.</h2>
         <p>Every space is a true angled pull-through on a compacted limestone pad, 13&nbsp;ft by about 70&nbsp;ft, with water, sewer and separately metered power at the site. Nobody has to back up. Tap a space on the map for its rate.</p>
       </div>
@@ -930,7 +958,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band" id="pricing">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Pricing</p>
+        <p class="eyebrow">Rate card</p>
         <h2>One rate, billed monthly. Power metered at cost.</h2>
         <p>No resort fees and no seasonal surcharge on a monthly space. The only thing that moves is your electric bill, because you're metered individually and pay exactly what you use.</p>
       </div>
@@ -1017,7 +1045,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band band-alt" id="park">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">The park</p>
+        <p class="eyebrow">Ground support</p>
         <h2>A park, not a parking lot.</h2>
         <p>Three interior roads, a gated entrance off Farmer Road, and two and a quarter acres of open Acadiana farmland with a planted hedge on the north line.</p>
       </div>
@@ -1040,7 +1068,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band" id="phases">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">What's planned</p>
+        <p class="eyebrow">Flight plan</p>
         <h2>Built in stages, on land already under contract.</h2>
         <p>Three adjoining parcels on Farmer Road, developed one at a time as demand shows up. Phase 1 stands on its own — everything after it is an addition.</p>
       </div>
@@ -1091,7 +1119,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band band-alt" id="location">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Location</p>
+        <p class="eyebrow">Range &amp; approach</p>
         <h2>10729 Farmer Road, Kaplan, Louisiana.</h2>
       </div>
 
@@ -1171,7 +1199,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   <section class="band signup" id="waitlist">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Waitlist</p>
+        <p class="eyebrow">Get on the manifest</p>
         <h2>Claim a space before they're spoken for.</h2>
         <p>We're in permitting and pre-construction, so there's nothing to book yet. Get on the list and we'll come to you first when spaces are released — tell us which one you want and we'll hold your place in line.</p>
       </div>
@@ -1295,6 +1323,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="disclaimer">
       <p><strong>Rocket Farm is under development.</strong> Spaces, buildings, amenities, rates and opening dates shown on this page are planned and remain subject to final survey, engineering, permitting and agency approval. Rates are not a contract, an offer or a guarantee of availability or price, and the site map is diagrammatic rather than a survey.</p>
       <p>Rocket Farm LLC is an independent, family-owned Louisiana business. It is not affiliated with, endorsed by, sponsored by or otherwise connected to SpaceX or any government agency. Launch timing, cadence and public viewing access are set by others and may change at any time.</p>
+      <p>Moon and Mars imagery courtesy of NASA (GSFC Scientific Visualization Studio; JPL-Caltech), used as public-domain material. NASA does not endorse Rocket Farm.</p>
       <p class="copyright">© <span id="year">2026</span> Rocket Farm LLC. All rights reserved.</p>
     </div>
   </div>
