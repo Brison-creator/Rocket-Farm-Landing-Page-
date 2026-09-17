@@ -1683,7 +1683,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <div class="head reveal">
         <p class="eyebrow">Reserve</p>
         <h2>Coming soon. Reserve your space now.</h2>
-        <p>Spaces will fill up quickly &mdash; there are fourteen monthly spaces and the crews are already asking. Tell us which one you want and we&rsquo;ll hold it with a deposit.</p>
+        <p>Spaces will fill up quickly &mdash; there are fourteen monthly spaces and the crews are already asking. Five quick fields and we&rsquo;ll reply with deposit instructions to hold your space.</p>
         <p class="fine"><strong>Deposit required.</strong> A $250 deposit reserves your space and is credited to your first month. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the space you reserved, your deposit is refunded in full.</p>
       </div>
 
@@ -1713,57 +1713,36 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
               <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
             </div>
             <div class="field">
+              <label for="company">Company <span style="text-transform:none;letter-spacing:0;color:var(--faint)">(if any)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Who you work for">
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(337) 555-0100" required>
+            </div>
+            <div class="field">
               <label for="email">Email</label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             </div>
           </div>
 
-          <div class="row row-2">
-            <div class="field">
-              <label for="interest">What you're after</label>
-              <select id="interest" name="interest">
-                <option>A monthly space — I'm working in the area</option>
-                <option>A nightly space for launch week</option>
-                <option>A fishing or hunting trip</option>
-                <option>A pod or the cabin, once they're built</option>
-                <option>I'm a company housing a crew</option>
-                <option>Something else</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="space">Preferred space <span style="text-transform:none;letter-spacing:0;color:var(--faint)">(optional)</span></label>
-              <select id="space" name="space">
-                <option>No preference</option>
-                <option>Any 50-amp monthly space</option>
-                <option>Any 30-amp monthly space</option>
-                <option>Any nightly space</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row row-2">
-            <div class="field">
-              <label for="when">Roughly when</label>
-              <select id="when" name="when">
-                <option>Not sure yet — just keep me posted</option>
-                <option>2027</option>
-                <option>2028</option>
-                <option>2029 or later</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="rig">Rig length <span style="text-transform:none;letter-spacing:0;color:var(--faint)">(optional)</span></label>
-              <input id="rig" name="rig" type="text" inputmode="numeric" placeholder="e.g. 38 ft fifth wheel">
-            </div>
-          </div>
-
           <div class="field">
-            <label for="message">Anything we should know <span style="text-transform:none;letter-spacing:0;color:var(--faint)">(optional)</span></label>
-            <textarea id="message" name="message" placeholder="How many spaces you need, how long you'd stay, 50 amp or 30…"></textarea>
+            <label for="reason">Reason for your stay</label>
+            <select id="reason" name="reason">
+              <option>Working on Starbase Louisiana</option>
+              <option>Other work in the area</option>
+              <option>Housing a crew for my company</option>
+              <option>Launch watching</option>
+              <option>Fishing or hunting trip</option>
+              <option>Something else</option>
+            </select>
           </div>
 
           <div class="form-foot">
-            <p class="privacy">We'll only use this to contact you about Rocket Farm. No lists, no resale, no spam.</p>
+            <p class="privacy">Goes straight to stay@therocketfarm.com. No lists, no resale, no spam.</p>
             <button class="btn btn-primary" type="submit">Reserve my space</button>
           </div>
         </form>
@@ -2042,26 +2021,27 @@ document.getElementById('year').textContent = new Date().getFullYear();
     e.preventDefault();
 
     var name  = $('name').value.trim();
+    var phone = $('phone').value.trim();
     var email = $('email').value.trim();
-    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    var validPhone = phone.replace(/\D/g, '').length >= 10;
 
-    if (!name || !valid) {
+    var bad = !name ? $('name') : !validPhone ? $('phone') : !validEmail ? $('email') : null;
+    if (bad) {
       msg.className = 'form-msg show';
       msg.style.borderColor = 'rgba(232,98,60,.5)';
       msg.style.background  = 'rgba(232,98,60,.12)';
-      msg.textContent = 'Please add your name and a valid email address.';
-      (name ? $('email') : $('name')).focus();
+      msg.textContent = 'Please add your name, a phone number and a valid email address.';
+      bad.focus();
       return;
     }
 
     var body =
-      'Name: '     + name + '\n' +
-      'Email: '    + email + '\n' +
-      'Interest: ' + $('interest').value + '\n' +
-      'Space: '    + $('space').value + '\n' +
-      'Timing: '   + $('when').value + '\n' +
-      'Rig: '      + ($('rig').value.trim() || '(not given)') + '\n\n' +
-      ($('message').value.trim() || '(no additional notes)');
+      'Name: '    + name + '\n' +
+      'Company: ' + ($('company').value.trim() || '(not given)') + '\n' +
+      'Reason: '  + $('reason').value + '\n' +
+      'Phone: '   + phone + '\n' +
+      'Email: '   + email + '\n';
 
     var href = 'mailto:' + TO +
       '?subject=' + encodeURIComponent('Rocket Farm reservation — ' + name) +
