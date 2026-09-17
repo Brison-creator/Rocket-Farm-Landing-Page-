@@ -36,6 +36,17 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/site.css">
 <script>document.documentElement.classList.add('js');</script>
+<script>
+/* Day sky 6am-5pm Central, night otherwise. ?sky=day|night previews; the
+   header toggle stores a choice for this browser. */
+(function(){try{
+  var q=new URLSearchParams(location.search).get('sky');
+  var pref=q||localStorage.getItem('rf-theme');
+  var h=parseInt(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',hour:'numeric',hourCycle:'h23'}).format(new Date()),10)%24;
+  var day=(pref==='day'||pref==='night')?pref==='day':(h>=6&&h<17);
+  document.documentElement.setAttribute('data-theme',day?'day':'night');
+}catch(e){document.documentElement.setAttribute('data-theme','night')}})();
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -100,7 +111,12 @@
       <a href="/plan/">What's planned</a>
       <a href="/directions/">Directions</a>
       <a href="/faq/">FAQ</a>
+      <a href="#" class="sky-switch" role="button">Switch to day sky</a>
     </div>
+    <button class="theme-toggle" type="button" aria-label="Switch between day and night sky" title="Day / night">
+      <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/></svg>
+      <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
       <svg class="bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -375,6 +391,7 @@
       <p><strong>Rocket Farm is under development.</strong> Spaces, buildings, amenities, rates and opening dates shown on this site are planned and remain subject to final survey, engineering, permitting and agency approval. Rates are not a contract, an offer or a guarantee of availability or price, and the site map is diagrammatic rather than a survey.</p>
       <p>Rocket Farm LLC is an independent, family-owned Louisiana business. It is not affiliated with, endorsed by, sponsored by or otherwise connected to SpaceX or any government agency. Starlink is a trademark of SpaceX, named here only to describe the internet service the park provides. Launch timing, cadence and public viewing access are set by others and may change at any time.</p>
       <p>Moon and Mars imagery courtesy of NASA (GSFC Scientific Visualization Studio; JPL-Caltech), used as public-domain material. NASA does not endorse Rocket Farm.</p>
+      <p class="sky-note">The sky follows Central time: daylight 6 am to 5 pm, stars after. <a href="#" class="sky-reset" hidden>Back to automatic</a></p>
       <p class="copyright">© <span id="year">2026</span> Rocket Farm LLC. All rights reserved.</p>
     </div>
   </div>

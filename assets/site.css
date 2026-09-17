@@ -3,12 +3,19 @@
   --night:#070b18;
   --night-2:#0c1226;
   --dusk:#161f42;
-  --line:rgba(244,239,230,.13);
-  --line-strong:rgba(244,239,230,.26);
+  /* ink = text colour base, bg = background base; the day theme swaps them */
+  --ink-rgb:244,239,230;
+  --bg-rgb:7,11,24;
+  --footer-bg:#05080f;
+  --band-2:#0a1020;
+  --hover-ink:#fff;
+  --tip-bg:rgba(5,8,15,.96);
+  --line:rgba(var(--ink-rgb),.13);
+  --line-strong:rgba(var(--ink-rgb),.26);
 
   --cream:#f4efe6;
-  --muted:rgba(244,239,230,.70);
-  --faint:rgba(244,239,230,.48);
+  --muted:rgba(var(--ink-rgb),.70);
+  --faint:rgba(var(--ink-rgb),.48);
 
   --amber:#f5a524;
   --sunset:#e8623c;
@@ -75,60 +82,60 @@ img,svg{display:block;max-width:100%}
 }
 .btn-primary{background:var(--flame);color:#1b1102;box-shadow:0 8px 28px -10px rgba(245,165,36,.7)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(245,165,36,.85)}
-.btn-ghost{border-color:var(--line-strong);color:var(--cream);background:rgba(244,239,230,.03)}
-.btn-ghost:hover{border-color:var(--cream);background:rgba(244,239,230,.08)}
+.btn-ghost{border-color:var(--line-strong);color:var(--cream);background:rgba(var(--ink-rgb),.03)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(var(--ink-rgb),.08)}
 
 /* The sky does not stop at the hero: a faint fixed starfield sits behind the
    whole document so every section reads as being outdoors at night. */
 .deepspace{position:fixed;inset:0;z-index:-10;pointer-events:none;
   background:
-    radial-gradient(1.5px 1.5px at 8% 14%,rgba(244,239,230,.55),transparent),
-    radial-gradient(1.2px 1.2px at 21% 62%,rgba(244,239,230,.4),transparent),
-    radial-gradient(1.6px 1.6px at 34% 28%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.5px 1.5px at 8% 14%,rgba(var(--ink-rgb),.55),transparent),
+    radial-gradient(1.2px 1.2px at 21% 62%,rgba(var(--ink-rgb),.4),transparent),
+    radial-gradient(1.6px 1.6px at 34% 28%,rgba(var(--ink-rgb),.5),transparent),
     radial-gradient(1.1px 1.1px at 47% 78%,rgba(200,222,255,.42),transparent),
-    radial-gradient(1.4px 1.4px at 58% 18%,rgba(244,239,230,.48),transparent),
+    radial-gradient(1.4px 1.4px at 58% 18%,rgba(var(--ink-rgb),.48),transparent),
     radial-gradient(1.2px 1.2px at 69% 54%,rgba(255,236,200,.4),transparent),
-    radial-gradient(1.5px 1.5px at 81% 34%,rgba(244,239,230,.5),transparent),
-    radial-gradient(1.1px 1.1px at 92% 70%,rgba(244,239,230,.36),transparent),
-    radial-gradient(1.3px 1.3px at 14% 88%,rgba(244,239,230,.4),transparent),
+    radial-gradient(1.5px 1.5px at 81% 34%,rgba(var(--ink-rgb),.5),transparent),
+    radial-gradient(1.1px 1.1px at 92% 70%,rgba(var(--ink-rgb),.36),transparent),
+    radial-gradient(1.3px 1.3px at 14% 88%,rgba(var(--ink-rgb),.4),transparent),
     radial-gradient(1.2px 1.2px at 63% 92%,rgba(200,222,255,.34),transparent),
-    radial-gradient(1.4px 1.4px at 88% 8%,rgba(244,239,230,.44),transparent),
-    radial-gradient(1px 1px at 4% 42%,rgba(244,239,230,.34),transparent),
+    radial-gradient(1.4px 1.4px at 88% 8%,rgba(var(--ink-rgb),.44),transparent),
+    radial-gradient(1px 1px at 4% 42%,rgba(var(--ink-rgb),.34),transparent),
     radial-gradient(1.2px 1.2px at 27% 6%,rgba(255,236,200,.4),transparent),
-    radial-gradient(1px 1px at 41% 52%,rgba(244,239,230,.3),transparent),
-    radial-gradient(1.3px 1.3px at 74% 84%,rgba(244,239,230,.38),transparent),
+    radial-gradient(1px 1px at 41% 52%,rgba(var(--ink-rgb),.3),transparent),
+    radial-gradient(1.3px 1.3px at 74% 84%,rgba(var(--ink-rgb),.38),transparent),
     radial-gradient(1px 1px at 96% 48%,rgba(200,222,255,.34),transparent),
-    radial-gradient(1.1px 1.1px at 52% 4%,rgba(244,239,230,.36),transparent),
-    radial-gradient(1px 1px at 33% 72%,rgba(244,239,230,.3),transparent),
+    radial-gradient(1.1px 1.1px at 52% 4%,rgba(var(--ink-rgb),.36),transparent),
+    radial-gradient(1px 1px at 33% 72%,rgba(var(--ink-rgb),.3),transparent),
     radial-gradient(1.2px 1.2px at 85% 60%,rgba(255,236,200,.36),transparent);
   animation:rf-deep 22s ease-in-out infinite alternate}
 @keyframes rf-deep{from{opacity:.5}to{opacity:.95}}
 .deepspace::after{content:"";position:absolute;inset:-6%;
   background:
-    radial-gradient(1.3px 1.3px at 12% 30%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.3px 1.3px at 12% 30%,rgba(var(--ink-rgb),.5),transparent),
     radial-gradient(1px 1px at 26% 80%,rgba(200,222,255,.42),transparent),
-    radial-gradient(1.5px 1.5px at 39% 12%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1.5px 1.5px at 39% 12%,rgba(var(--ink-rgb),.55),transparent),
     radial-gradient(1.1px 1.1px at 55% 64%,rgba(255,236,200,.4),transparent),
-    radial-gradient(1.2px 1.2px at 66% 36%,rgba(244,239,230,.46),transparent),
+    radial-gradient(1.2px 1.2px at 66% 36%,rgba(var(--ink-rgb),.46),transparent),
     radial-gradient(1px 1px at 78% 86%,rgba(200,222,255,.38),transparent),
-    radial-gradient(1.4px 1.4px at 90% 22%,rgba(244,239,230,.5),transparent),
-    radial-gradient(1px 1px at 5% 58%,rgba(244,239,230,.34),transparent),
+    radial-gradient(1.4px 1.4px at 90% 22%,rgba(var(--ink-rgb),.5),transparent),
+    radial-gradient(1px 1px at 5% 58%,rgba(var(--ink-rgb),.34),transparent),
     radial-gradient(1.2px 1.2px at 48% 92%,rgba(255,236,200,.4),transparent),
-    radial-gradient(1px 1px at 72% 6%,rgba(244,239,230,.36),transparent),
+    radial-gradient(1px 1px at 72% 6%,rgba(var(--ink-rgb),.36),transparent),
     radial-gradient(1.3px 1.3px at 94% 70%,rgba(200,222,255,.4),transparent),
-    radial-gradient(1px 1px at 18% 48%,rgba(244,239,230,.3),transparent),
-    radial-gradient(1.1px 1.1px at 60% 18%,rgba(244,239,230,.34),transparent),
+    radial-gradient(1px 1px at 18% 48%,rgba(var(--ink-rgb),.3),transparent),
+    radial-gradient(1.1px 1.1px at 60% 18%,rgba(var(--ink-rgb),.34),transparent),
     radial-gradient(1px 1px at 84% 50%,rgba(255,236,200,.32),transparent),
-    radial-gradient(1.2px 1.2px at 33% 66%,rgba(244,239,230,.4),transparent);
+    radial-gradient(1.2px 1.2px at 33% 66%,rgba(var(--ink-rgb),.4),transparent);
   animation:rf-deep2 17s ease-in-out infinite alternate,rf-deep-drift 240s linear infinite alternate}
 @keyframes rf-deep2{from{opacity:.25}to{opacity:1}}
 @keyframes rf-deep-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-2.5%,1.5%,0)}}
 @media (prefers-reduced-motion:reduce){.deepspace,.deepspace::after{animation:none;opacity:.7}}
 /* sections float over it */
-.band-alt{background:linear-gradient(180deg,rgba(7,11,24,.86) 0%,rgba(10,16,32,.92) 100%)}
+.band-alt{background:linear-gradient(180deg,rgba(var(--bg-rgb),.86) 0%,rgba(10,16,32,.92) 100%)}
 
 /* ---------- Header ---------- */
-header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:50;background:rgba(var(--bg-rgb),.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:68px}
 .nav .btn{flex:none;padding:.7rem 1.1rem;font-size:.85rem}
 @media (min-width:600px){.nav .btn{padding:.85rem 1.5rem;font-size:.95rem}}
@@ -158,18 +165,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 .stars{position:absolute;inset:-22%;z-index:-2;opacity:.85;
   background-image:
-    radial-gradient(1.4px 1.4px at 12% 18%,rgba(244,239,230,.9),transparent),
-    radial-gradient(1.2px 1.2px at 27% 8%,rgba(244,239,230,.7),transparent),
-    radial-gradient(1.6px 1.6px at 41% 26%,rgba(244,239,230,.85),transparent),
-    radial-gradient(1.1px 1.1px at 58% 12%,rgba(244,239,230,.6),transparent),
-    radial-gradient(1.5px 1.5px at 69% 31%,rgba(244,239,230,.8),transparent),
-    radial-gradient(1.2px 1.2px at 83% 16%,rgba(244,239,230,.7),transparent),
-    radial-gradient(1.3px 1.3px at 92% 34%,rgba(244,239,230,.75),transparent),
-    radial-gradient(1px 1px at 7% 40%,rgba(244,239,230,.5),transparent),
-    radial-gradient(1.1px 1.1px at 35% 44%,rgba(244,239,230,.55),transparent),
-    radial-gradient(1.4px 1.4px at 50% 5%,rgba(244,239,230,.8),transparent),
-    radial-gradient(1px 1px at 76% 47%,rgba(244,239,230,.45),transparent),
-    radial-gradient(1.2px 1.2px at 20% 30%,rgba(244,239,230,.6),transparent);
+    radial-gradient(1.4px 1.4px at 12% 18%,rgba(var(--ink-rgb),.9),transparent),
+    radial-gradient(1.2px 1.2px at 27% 8%,rgba(var(--ink-rgb),.7),transparent),
+    radial-gradient(1.6px 1.6px at 41% 26%,rgba(var(--ink-rgb),.85),transparent),
+    radial-gradient(1.1px 1.1px at 58% 12%,rgba(var(--ink-rgb),.6),transparent),
+    radial-gradient(1.5px 1.5px at 69% 31%,rgba(var(--ink-rgb),.8),transparent),
+    radial-gradient(1.2px 1.2px at 83% 16%,rgba(var(--ink-rgb),.7),transparent),
+    radial-gradient(1.3px 1.3px at 92% 34%,rgba(var(--ink-rgb),.75),transparent),
+    radial-gradient(1px 1px at 7% 40%,rgba(var(--ink-rgb),.5),transparent),
+    radial-gradient(1.1px 1.1px at 35% 44%,rgba(var(--ink-rgb),.55),transparent),
+    radial-gradient(1.4px 1.4px at 50% 5%,rgba(var(--ink-rgb),.8),transparent),
+    radial-gradient(1px 1px at 76% 47%,rgba(var(--ink-rgb),.45),transparent),
+    radial-gradient(1.2px 1.2px at 20% 30%,rgba(var(--ink-rgb),.6),transparent);
   animation:twinkle 7s ease-in-out infinite alternate,
              rf-sky-a 300s ease-in-out infinite alternate;
 }
@@ -179,20 +186,20 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    pulsing as one sheet */
 .stars2{position:absolute;inset:-22%;z-index:-2;opacity:.7;
   background-image:
-    radial-gradient(1.7px 1.7px at 5% 12%,rgba(244,239,230,.95),transparent),
-    radial-gradient(1.2px 1.2px at 16% 26%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1.7px 1.7px at 5% 12%,rgba(var(--ink-rgb),.95),transparent),
+    radial-gradient(1.2px 1.2px at 16% 26%,rgba(var(--ink-rgb),.7),transparent),
     radial-gradient(1.4px 1.4px at 23% 44%,rgba(255,236,200,.8),transparent),
-    radial-gradient(1.1px 1.1px at 31% 16%,rgba(244,239,230,.65),transparent),
-    radial-gradient(1.9px 1.9px at 44% 34%,rgba(244,239,230,.98),transparent),
+    radial-gradient(1.1px 1.1px at 31% 16%,rgba(var(--ink-rgb),.65),transparent),
+    radial-gradient(1.9px 1.9px at 44% 34%,rgba(var(--ink-rgb),.98),transparent),
     radial-gradient(1.2px 1.2px at 52% 22%,rgba(200,222,255,.75),transparent),
-    radial-gradient(1.5px 1.5px at 61% 8%,rgba(244,239,230,.85),transparent),
-    radial-gradient(1.1px 1.1px at 66% 41%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.5px 1.5px at 61% 8%,rgba(var(--ink-rgb),.85),transparent),
+    radial-gradient(1.1px 1.1px at 66% 41%,rgba(var(--ink-rgb),.6),transparent),
     radial-gradient(1.8px 1.8px at 74% 24%,rgba(255,236,200,.9),transparent),
-    radial-gradient(1.2px 1.2px at 81% 45%,rgba(244,239,230,.7),transparent),
-    radial-gradient(1.6px 1.6px at 88% 9%,rgba(244,239,230,.88),transparent),
+    radial-gradient(1.2px 1.2px at 81% 45%,rgba(var(--ink-rgb),.7),transparent),
+    radial-gradient(1.6px 1.6px at 88% 9%,rgba(var(--ink-rgb),.88),transparent),
     radial-gradient(1.3px 1.3px at 95% 29%,rgba(200,222,255,.78),transparent),
-    radial-gradient(1.1px 1.1px at 10% 38%,rgba(244,239,230,.6),transparent),
-    radial-gradient(1.4px 1.4px at 38% 6%,rgba(244,239,230,.8),transparent);
+    radial-gradient(1.1px 1.1px at 10% 38%,rgba(var(--ink-rgb),.6),transparent),
+    radial-gradient(1.4px 1.4px at 38% 6%,rgba(var(--ink-rgb),.8),transparent);
   animation:twinkle2 4.3s ease-in-out .9s infinite alternate,
              rf-sky-b 430s ease-in-out infinite alternate}
 @keyframes rf-sky-b{from{transform:translate3d(0,0,0)}to{transform:translate3d(2.4%,-1.4%,0)}}
@@ -200,34 +207,34 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 /* third, densest layer: small, fast, out of phase with the other two */
 .stars3{position:absolute;inset:-22%;z-index:-2;opacity:.75;
   background-image:
-    radial-gradient(1px 1px at 3% 22%,rgba(244,239,230,.8),transparent),
-    radial-gradient(1.3px 1.3px at 9% 51%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1px 1px at 3% 22%,rgba(var(--ink-rgb),.8),transparent),
+    radial-gradient(1.3px 1.3px at 9% 51%,rgba(var(--ink-rgb),.7),transparent),
     radial-gradient(1px 1px at 13% 7%,rgba(255,236,200,.75),transparent),
     radial-gradient(1.2px 1.2px at 19% 33%,rgba(200,222,255,.7),transparent),
-    radial-gradient(1px 1px at 26% 61%,rgba(244,239,230,.6),transparent),
-    radial-gradient(1.4px 1.4px at 29% 14%,rgba(244,239,230,.85),transparent),
-    radial-gradient(1px 1px at 35% 48%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1px 1px at 26% 61%,rgba(var(--ink-rgb),.6),transparent),
+    radial-gradient(1.4px 1.4px at 29% 14%,rgba(var(--ink-rgb),.85),transparent),
+    radial-gradient(1px 1px at 35% 48%,rgba(var(--ink-rgb),.55),transparent),
     radial-gradient(1.1px 1.1px at 41% 19%,rgba(255,236,200,.7),transparent),
-    radial-gradient(1px 1px at 47% 66%,rgba(244,239,230,.6),transparent),
-    radial-gradient(1.3px 1.3px at 49% 3%,rgba(244,239,230,.8),transparent),
+    radial-gradient(1px 1px at 47% 66%,rgba(var(--ink-rgb),.6),transparent),
+    radial-gradient(1.3px 1.3px at 49% 3%,rgba(var(--ink-rgb),.8),transparent),
     radial-gradient(1px 1px at 55% 39%,rgba(200,222,255,.65),transparent),
-    radial-gradient(1.2px 1.2px at 58% 57%,rgba(244,239,230,.7),transparent),
-    radial-gradient(1px 1px at 63% 13%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.2px 1.2px at 58% 57%,rgba(var(--ink-rgb),.7),transparent),
+    radial-gradient(1px 1px at 63% 13%,rgba(var(--ink-rgb),.6),transparent),
     radial-gradient(1.5px 1.5px at 68% 30%,rgba(255,236,200,.85),transparent),
-    radial-gradient(1px 1px at 72% 52%,rgba(244,239,230,.55),transparent),
-    radial-gradient(1.2px 1.2px at 77% 6%,rgba(244,239,230,.75),transparent),
+    radial-gradient(1px 1px at 72% 52%,rgba(var(--ink-rgb),.55),transparent),
+    radial-gradient(1.2px 1.2px at 77% 6%,rgba(var(--ink-rgb),.75),transparent),
     radial-gradient(1px 1px at 84% 38%,rgba(200,222,255,.7),transparent),
-    radial-gradient(1.3px 1.3px at 86% 60%,rgba(244,239,230,.7),transparent),
-    radial-gradient(1px 1px at 91% 17%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.3px 1.3px at 86% 60%,rgba(var(--ink-rgb),.7),transparent),
+    radial-gradient(1px 1px at 91% 17%,rgba(var(--ink-rgb),.6),transparent),
     radial-gradient(1.1px 1.1px at 96% 44%,rgba(255,236,200,.75),transparent),
-    radial-gradient(1px 1px at 6% 78%,rgba(244,239,230,.5),transparent),
-    radial-gradient(1.2px 1.2px at 22% 84%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1px 1px at 6% 78%,rgba(var(--ink-rgb),.5),transparent),
+    radial-gradient(1.2px 1.2px at 22% 84%,rgba(var(--ink-rgb),.6),transparent),
     radial-gradient(1px 1px at 38% 90%,rgba(200,222,255,.55),transparent),
-    radial-gradient(1.1px 1.1px at 53% 81%,rgba(244,239,230,.6),transparent),
-    radial-gradient(1px 1px at 66% 94%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.1px 1.1px at 53% 81%,rgba(var(--ink-rgb),.6),transparent),
+    radial-gradient(1px 1px at 66% 94%,rgba(var(--ink-rgb),.5),transparent),
     radial-gradient(1.3px 1.3px at 79% 76%,rgba(255,236,200,.7),transparent),
-    radial-gradient(1px 1px at 93% 88%,rgba(244,239,230,.55),transparent),
-    radial-gradient(1.1px 1.1px at 16% 96%,rgba(244,239,230,.5),transparent);
+    radial-gradient(1px 1px at 93% 88%,rgba(var(--ink-rgb),.55),transparent),
+    radial-gradient(1.1px 1.1px at 16% 96%,rgba(var(--ink-rgb),.5),transparent);
   animation:twinkle3 2.6s ease-in-out .4s infinite alternate,
              rf-sky-c 380s ease-in-out infinite alternate}
 @keyframes twinkle3{from{opacity:.25}to{opacity:.95}}
@@ -237,11 +244,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   background-image:
     radial-gradient(2px 2px at 11% 9%,rgba(255,246,225,.9),transparent),
     radial-gradient(1.8px 1.8px at 30% 37%,rgba(214,232,255,.85),transparent),
-    radial-gradient(2.1px 2.1px at 48% 14%,rgba(244,239,230,.95),transparent),
+    radial-gradient(2.1px 2.1px at 48% 14%,rgba(var(--ink-rgb),.95),transparent),
     radial-gradient(1.7px 1.7px at 64% 44%,rgba(255,240,210,.8),transparent),
-    radial-gradient(2px 2px at 79% 21%,rgba(244,239,230,.9),transparent),
+    radial-gradient(2px 2px at 79% 21%,rgba(var(--ink-rgb),.9),transparent),
     radial-gradient(1.8px 1.8px at 93% 40%,rgba(214,232,255,.85),transparent),
-    radial-gradient(1.9px 1.9px at 21% 57%,rgba(244,239,230,.8),transparent),
+    radial-gradient(1.9px 1.9px at 21% 57%,rgba(var(--ink-rgb),.8),transparent),
     radial-gradient(1.7px 1.7px at 57% 64%,rgba(255,246,225,.75),transparent);
   animation:twinkle4 6.8s ease-in-out 1.6s infinite alternate,
              rf-sky-d 520s ease-in-out infinite alternate}
@@ -251,9 +258,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 /* a handful of bright stars with a soft cross flare, each on its own beat */
 .bstar{position:absolute;z-index:-2;width:14px;height:14px;pointer-events:none;
   background:
-    radial-gradient(circle,rgba(255,255,255,1) 0,rgba(255,255,255,.9) 14%,rgba(244,239,230,.3) 30%,transparent 52%),
-    linear-gradient(90deg,transparent 0,rgba(244,239,230,.55) 50%,transparent 100%),
-    linear-gradient(0deg,transparent 0,rgba(244,239,230,.55) 50%,transparent 100%);
+    radial-gradient(circle,rgba(255,255,255,1) 0,rgba(255,255,255,.9) 14%,rgba(var(--ink-rgb),.3) 30%,transparent 52%),
+    linear-gradient(90deg,transparent 0,rgba(var(--ink-rgb),.55) 50%,transparent 100%),
+    linear-gradient(0deg,transparent 0,rgba(var(--ink-rgb),.55) 50%,transparent 100%);
   background-size:100% 100%,100% 1px,1px 100%;
   background-position:center,center,center;background-repeat:no-repeat;
   animation:rf-bstar 3.4s ease-in-out infinite alternate}
@@ -358,7 +365,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 /* one lone satellite, brighter, on a slow diagonal over the right half of
    the sky with a slow flash as it tumbles */
 .sat-one{position:absolute;z-index:-2;top:86%;left:58%;width:3px;height:3px;border-radius:50%;
-  background:#fff;box-shadow:0 0 6px 2px rgba(244,239,230,.55);pointer-events:none;opacity:0;
+  background:#fff;box-shadow:0 0 6px 2px rgba(var(--ink-rgb),.55);pointer-events:none;opacity:0;
   animation:rf-satone 74s linear infinite,rf-satflash 5.5s ease-in-out infinite;animation-delay:31s,0s}
 @keyframes rf-satone{
   0%   {opacity:0;translate:0 0}
@@ -476,7 +483,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    crossing the headline reads as a rendering glitch and drops the contrast
    behind live type, so they are kept clear of the copy entirely. */
 .meteor{position:absolute;z-index:-2;width:170px;height:2px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,rgba(244,239,230,.85) 62%,#fff);
+  background:linear-gradient(90deg,transparent,rgba(var(--ink-rgb),.85) 62%,#fff);
   border-radius:2px;opacity:0;transform:rotate(7deg);
   animation:rf-meteor 15s linear infinite}
 /* px offsets, not percentages: the hero's height and the viewport height scale
@@ -513,7 +520,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    reading as a sticker. Transform and opacity only, so it all composites. */
 .moon{position:absolute;top:5%;right:6%;width:clamp(66px,8.4vw,120px);
   filter:brightness(1.24) contrast(1.06)
-         drop-shadow(0 0 14px rgba(244,239,230,.3))
+         drop-shadow(0 0 14px rgba(var(--ink-rgb),.3))
          drop-shadow(0 0 38px rgba(214,226,255,.16));
   animation:rf-drift-moon 210s ease-in-out infinite alternate,
             rf-librate 96s ease-in-out infinite alternate}
@@ -544,18 +551,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
      corners on phones, both in the clear band above the headline. */
   .moon{top:1.1%;right:4%;width:70px}
   .mars{top:1.8%;right:auto;left:6%;width:28px}
-  .hero-copy{text-shadow:0 1px 3px rgba(7,11,24,.96),0 2px 16px rgba(7,11,24,.9)}
-  .hero-copy::before{background:rgba(7,11,24,.58)}
+  .hero-copy{text-shadow:0 1px 3px rgba(var(--bg-rgb),.96),0 2px 16px rgba(var(--bg-rgb),.9)}
+  .hero-copy::before{background:rgba(var(--bg-rgb),.58)}
   .launch{opacity:.6}
 }
 
 /* veil: protects the type where it sits, thins out to the right */
 .hero-veil{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(7,11,24,.93) 0%,rgba(7,11,24,.8) 32%,
-    rgba(7,11,24,.42) 56%,rgba(7,11,24,.12) 78%,transparent 100%)}
+  background:linear-gradient(100deg,rgba(var(--bg-rgb),.93) 0%,rgba(var(--bg-rgb),.8) 32%,
+    rgba(var(--bg-rgb),.42) 56%,rgba(var(--bg-rgb),.12) 78%,transparent 100%)}
 @media (max-width:760px){
-  .hero-veil{background:linear-gradient(180deg,rgba(7,11,24,.82) 0%,
-    rgba(7,11,24,.8) 46%,rgba(7,11,24,.58) 74%,rgba(7,11,24,.3) 100%)}
+  .hero-veil{background:linear-gradient(180deg,rgba(var(--bg-rgb),.82) 0%,
+    rgba(var(--bg-rgb),.8) 46%,rgba(var(--bg-rgb),.58) 74%,rgba(var(--bg-rgb),.3) 100%)}
 }
 
 .launch-rise{will-change:transform;animation:rf-rise 22s linear infinite}
@@ -629,7 +636,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   position:absolute;z-index:-2;left:calc(65% - var(--sw) / 2);
   bottom:calc(14px - var(--sw) / 2);
   width:var(--sw);aspect-ratio:1;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle at 50% 62%,rgba(244,239,230,.5),rgba(244,239,230,.16) 42%,transparent 70%);
+  background:radial-gradient(circle at 50% 62%,rgba(var(--ink-rgb),.5),rgba(var(--ink-rgb),.16) 42%,transparent 70%);
   opacity:0;will-change:transform,opacity;animation:rf-smoke 22s linear infinite}
 @media (max-width:760px){.launch-smoke{--sw:190px;left:calc(58% - var(--sw) / 2)}}
 @keyframes rf-smoke{
@@ -703,12 +710,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .fireflies{z-index:0}
 
 .hero-copy{max-width:790px;position:relative;
-  text-shadow:0 1px 3px rgba(7,11,24,.96),0 2px 20px rgba(7,11,24,.85)}
+  text-shadow:0 1px 3px rgba(var(--bg-rgb),.96),0 2px 20px rgba(var(--bg-rgb),.85)}
 /* A uniform, feathered backing rather than a radial one: the radial left the
    far end of the headline uncovered, and that is exactly where the vehicle
    flies. Blurring the pseudo-element gives a soft edge with no visible box. */
 .hero-copy::before{content:"";position:absolute;inset:-7% 7% -9% -11%;z-index:-1;
-  pointer-events:none;border-radius:56px;background:rgba(7,11,24,.34);
+  pointer-events:none;border-radius:56px;background:rgba(var(--bg-rgb),.34);
   filter:blur(30px)}
 .hero-copy>*{position:relative}
 .hero h1{font-size:var(--h1);margin:0;text-wrap:balance}
@@ -719,12 +726,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);margin-top:1.4rem;max-width:51ch}
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;list-style:none;padding:0}
-.tags li{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .95rem;background:rgba(244,239,230,.04)}
+.tags li{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .95rem;background:rgba(var(--ink-rgb),.04)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
 .soon{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1rem;
   font-family:var(--font-display);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--amber);border:1px solid rgba(245,165,36,.45);border-radius:999px;padding:.42rem .9rem .42rem .7rem;
-  background:rgba(7,11,24,.92);max-width:100%;white-space:nowrap}
+  background:rgba(var(--bg-rgb),.92);max-width:100%;white-space:nowrap}
 .soon-long{display:inline}.soon-short{display:none}
 /* phones: a shorter label so the pill stays one line and clear of the Moon,
    and Mars lifts above the pill's row */
@@ -742,7 +749,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .hero-fine{margin-top:1.1rem}
 
 /* ---------- Stat strip ---------- */
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(7,11,24,.5)}
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(var(--bg-rgb),.5)}
 .stats-grid{display:grid;grid-template-columns:repeat(2,1fr)}
 @media (min-width:860px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
 .stat{padding:1.8rem 1.4rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -753,7 +760,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 
 /* ---------- Sections ---------- */
 .band{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
-.band-alt{background:linear-gradient(180deg,var(--night) 0%,#0a1020 100%)}
+.band-alt{background:linear-gradient(180deg,var(--night) 0%,var(--band-2) 100%)}
 .head{max-width:66ch;margin-bottom:clamp(2rem,4vw,3rem)}
 .head h2{font-size:var(--h2);margin-top:.9rem;text-wrap:balance}
 .head p{color:var(--muted);margin-top:1rem}
@@ -761,7 +768,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 /* Audience cards */
 .cards{display:grid;gap:1.1rem;grid-template-columns:1fr}
 @media (min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
-.card{border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(244,239,230,.055),rgba(244,239,230,.015));padding:1.7rem;display:flex;flex-direction:column;gap:.85rem;transition:border-color .2s ease,transform .2s ease}
+.card{border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(var(--ink-rgb),.055),rgba(var(--ink-rgb),.015));padding:1.7rem;display:flex;flex-direction:column;gap:.85rem;transition:border-color .2s ease,transform .2s ease}
 .card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
 .card-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(245,165,36,.13);border:1px solid rgba(245,165,36,.3)}
 .card-icon svg{width:20px;height:20px;stroke:var(--amber);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -774,7 +781,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .chip{
   font-family:var(--font-display);font-weight:500;font-size:.8rem;
   padding:.5rem 1rem;border-radius:999px;cursor:pointer;
-  border:1px solid var(--line-strong);background:rgba(244,239,230,.04);color:var(--muted);
+  border:1px solid var(--line-strong);background:rgba(var(--ink-rgb),.04);color:var(--muted);
   transition:all .15s ease;
 }
 .chip:hover{color:var(--cream);border-color:var(--cream)}
@@ -782,7 +789,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.45rem;vertical-align:1px}
 .dot-50{background:var(--amber)}.dot-30{background:var(--sky-blue)}.dot-night{background:var(--marsh)}
 
-.map-frame{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(170deg,rgba(79,176,141,.06),rgba(7,11,24,.5));overflow:hidden}
+.map-frame{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(170deg,rgba(79,176,141,.06),rgba(var(--bg-rgb),.5));overflow:hidden}
 .map-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
 .map-scroll svg{width:100%;min-width:660px;height:auto;display:block}
 .map-hint{font-size:.8rem;color:var(--faint);padding:.7rem 1.1rem;border-top:1px solid var(--line)}
@@ -794,19 +801,19 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .lot[data-amps="30"] .pad{fill:rgba(107,168,232,.16);stroke:var(--sky-blue)}
 .lot[data-term="nightly"] .pad{fill:rgba(79,176,141,.18);stroke:var(--marsh);stroke-dasharray:5 3}
 .lot .num{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;fill:var(--cream);text-anchor:middle;pointer-events:none;letter-spacing:.02em}
-.lot:hover .pad,.lot.active .pad{fill:rgba(244,239,230,.42);stroke-width:2.6}
+.lot:hover .pad,.lot.active .pad{fill:rgba(var(--ink-rgb),.42);stroke-width:2.6}
 .lot.dim{opacity:.16}
 .lot:focus{outline:none}
 .lot:focus-visible .pad{stroke:var(--cream);stroke-width:3}
-.road{fill:rgba(244,239,230,.07)}
-.road-edge{stroke:rgba(244,239,230,.18);stroke-width:1;stroke-dasharray:7 7;fill:none}
-.map-label{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:500;fill:rgba(244,239,230,.45);letter-spacing:.14em;text-transform:uppercase}
-.parcel{fill:none;stroke:rgba(244,239,230,.22);stroke-width:1.5}
+.road{fill:rgba(var(--ink-rgb),.07)}
+.road-edge{stroke:rgba(var(--ink-rgb),.18);stroke-width:1;stroke-dasharray:7 7;fill:none}
+.map-label{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:500;fill:rgba(var(--ink-rgb),.45);letter-spacing:.14em;text-transform:uppercase}
+.parcel{fill:none;stroke:rgba(var(--ink-rgb),.22);stroke-width:1.5}
 .hedge{stroke:var(--marsh);stroke-width:3;stroke-linecap:round;opacity:.5;fill:none}
 
 .tip{
   position:absolute;pointer-events:none;opacity:0;transform:translateX(-50%);
-  background:rgba(5,8,15,.96);border:1px solid var(--line-strong);border-radius:12px;
+  background:var(--tip-bg);border:1px solid var(--line-strong);border-radius:12px;
   padding:.7rem .9rem;min-width:172px;z-index:5;
   box-shadow:0 18px 40px -14px rgba(0,0,0,.9);transition:opacity .13s ease;
 }
@@ -840,7 +847,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 /* ---------- Pricing tiers ---------- */
 .tiers{display:grid;gap:1.1rem;grid-template-columns:1fr}
 @media (min-width:800px){.tiers{grid-template-columns:repeat(3,1fr)}}
-.tier{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.8rem;background:rgba(244,239,230,.025);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.tier{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.8rem;background:rgba(var(--ink-rgb),.025);display:flex;flex-direction:column;position:relative;overflow:hidden}
 .tier-flag{position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber)}
 .tier[data-t="30"] .tier-flag{background:var(--sky-blue)}
 .tier[data-t="night"] .tier-flag{background:var(--marsh)}
@@ -858,7 +865,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 
 .included{display:grid;gap:1.1rem;grid-template-columns:1fr;margin-top:1.6rem}
 @media (min-width:780px){.included{grid-template-columns:1fr 1fr}}
-.inc-box{border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;background:rgba(244,239,230,.02)}
+.inc-box{border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;background:rgba(var(--ink-rgb),.02)}
 .inc-box h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:.9rem}
 .inc-box ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.92rem;color:var(--muted)}
 .inc-box li{padding-left:1.5rem;position:relative}
@@ -870,7 +877,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .amenities{display:grid;gap:.9rem;grid-template-columns:1fr}
 @media (min-width:620px){.amenities{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:980px){.amenities{grid-template-columns:repeat(3,1fr)}}
-.amenity{display:flex;gap:.85rem;align-items:flex-start;padding:1.1rem 1.15rem;border:1px solid var(--line);border-radius:var(--radius);background:rgba(244,239,230,.02)}
+.amenity{display:flex;gap:.85rem;align-items:flex-start;padding:1.1rem 1.15rem;border:1px solid var(--line);border-radius:var(--radius);background:rgba(var(--ink-rgb),.02)}
 .amenity svg{width:18px;height:18px;flex:none;margin-top:.3rem;stroke:var(--marsh);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .amenity strong{display:block;font-family:var(--font-display);font-weight:700;font-size:.97rem;letter-spacing:-.01em}
 .amenity span{display:block;color:var(--faint);font-size:.88rem;margin-top:.2rem}
@@ -878,7 +885,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 /* ---------- Phases ---------- */
 .phases{display:grid;gap:1.1rem;grid-template-columns:1fr}
 @media (min-width:820px){.phases{grid-template-columns:repeat(3,1fr)}}
-.phase{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.7rem;background:rgba(244,239,230,.02);position:relative;overflow:hidden}
+.phase{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.7rem;background:rgba(var(--ink-rgb),.02);position:relative;overflow:hidden}
 .phase::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--flame)}
 .phase[data-later]::before{background:var(--line-strong)}
 .phase-when{font-family:var(--font-display);font-weight:500;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
@@ -904,7 +911,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .loc-list li{padding-left:1.4rem;position:relative;color:var(--muted)}
 .loc-list li::before{content:"";position:absolute;left:0;top:.6rem;width:7px;height:7px;border-radius:50%;background:var(--amber)}
 .loc-list b{color:var(--cream);font-weight:600}
-.dist-card{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.6rem;background:linear-gradient(180deg,rgba(79,176,141,.07),rgba(244,239,230,.015))}
+.dist-card{border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.6rem;background:linear-gradient(180deg,rgba(79,176,141,.07),rgba(var(--ink-rgb),.015))}
 .dist-card h3{font-size:1.05rem;margin-bottom:1rem}
 .dist-row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px dashed var(--line);font-size:.93rem}
 .dist-row:last-of-type{border-bottom:0}
@@ -939,7 +946,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
   width:9px;height:9px;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);
   rotate:45deg;transition:rotate .18s ease}
 .faq-item[open] summary::after{rotate:225deg}
-.faq-item summary:hover h3{color:#fff}
+.faq-item summary:hover h3{color:var(--hover-ink)}
 .faq-item > p{color:var(--muted);font-size:.97rem;padding:0 1.5rem 1.35rem 0;margin:0;max-width:72ch}
 
 /* Touch targets: phones get at least 44px of height on every control, which
@@ -954,16 +961,16 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 }
 
 .signup{border-top:1px solid var(--line)}
-.form-shell{border:1px solid var(--line-strong);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(245,165,36,.07),rgba(244,239,230,.02));padding:clamp(1.5rem,4vw,2.6rem)}
+.form-shell{border:1px solid var(--line-strong);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(245,165,36,.07),rgba(var(--ink-rgb),.02));padding:clamp(1.5rem,4vw,2.6rem)}
 form{display:grid;gap:1.1rem}
 .row{display:grid;gap:1.1rem;grid-template-columns:1fr}
 @media (min-width:680px){.row-2{grid-template-columns:1fr 1fr}}
 .field{display:grid;gap:.45rem}
 label{font-family:var(--font-display);font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 /* 16px minimum, otherwise iOS Safari zooms the viewport on focus */
-input,select,textarea{font:inherit;font-size:1rem;color:var(--cream);background:rgba(7,11,24,.6);border:1px solid var(--line-strong);border-radius:10px;padding:.8rem .9rem;width:100%;transition:border-color .15s ease}
-input::placeholder,textarea::placeholder{color:rgba(244,239,230,.35)}
-input:hover,select:hover,textarea:hover{border-color:rgba(244,239,230,.4)}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--cream);background:rgba(var(--bg-rgb),.6);border:1px solid var(--line-strong);border-radius:10px;padding:.8rem .9rem;width:100%;transition:border-color .15s ease}
+input::placeholder,textarea::placeholder{color:rgba(var(--ink-rgb),.35)}
+input:hover,select:hover,textarea:hover{border-color:rgba(var(--ink-rgb),.4)}
 textarea{resize:vertical;min-height:96px}
 select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f4efe6' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .95rem center;background-size:12px;padding-right:2.4rem}
 select option{background:#0c1226;color:var(--cream)}
@@ -974,7 +981,7 @@ select option{background:#0c1226;color:var(--cream)}
 .form-msg a{color:var(--amber);font-weight:600}
 
 /* ---------- Footer ---------- */
-footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,6vw,4rem) 0 2.5rem}
+footer{border-top:1px solid var(--line);background:var(--footer-bg);padding:clamp(2.5rem,6vw,4rem) 0 2.5rem}
 .foot-top{display:grid;gap:2rem;grid-template-columns:1fr}
 @media (min-width:760px){.foot-top{grid-template-columns:1.3fr 1fr 1fr}}
 .foot-col h4{font-family:var(--font-display);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 .9rem;font-weight:500}
@@ -982,11 +989,11 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 .foot-col a:hover{color:var(--cream)}
 .foot-col a+a{margin-top:.5rem}
 .disclaimer{margin-top:clamp(2rem,5vw,3rem);padding-top:1.6rem;border-top:1px solid var(--line);display:grid;gap:.85rem}
-.disclaimer p{font-size:.78rem;color:rgba(244,239,230,.38);line-height:1.6;max-width:92ch}
+.disclaimer p{font-size:.78rem;color:rgba(var(--ink-rgb),.38);line-height:1.6;max-width:92ch}
 .copyright{margin-top:1.4rem;font-size:.8rem;color:var(--faint)}
 
 /* ---------- Mobile menu ---------- */
-.nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:10px;background:rgba(244,239,230,.03);color:var(--cream);cursor:pointer;flex:none;margin-left:auto;padding:0}
+.nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:10px;background:rgba(var(--ink-rgb),.03);color:var(--cream);cursor:pointer;flex:none;margin-left:auto;padding:0}
 .nav-toggle svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .nav-toggle .x{display:none}
 header.open .nav-toggle .bars{display:none}
@@ -994,7 +1001,7 @@ header.open .nav-toggle .x{display:block}
 .nav-links a[aria-current="page"]{color:var(--cream)}
 @media (max-width:999px){
   .nav-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;
-    background:rgba(7,11,24,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:.3rem var(--gutter) .6rem}
+    background:rgba(var(--bg-rgb),.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:.3rem var(--gutter) .6rem}
   header.open .nav-links{display:flex}
   .nav-links a{padding:.9rem 0;min-height:48px;display:flex;align-items:center;border-bottom:1px solid var(--line);font-size:1rem}
   .nav-links a:last-child{border-bottom:0}
@@ -1018,11 +1025,124 @@ header.open .nav-toggle .x{display:block}
 .fine-print h2{font-size:.82rem;font-weight:500;letter-spacing:.14em;color:var(--faint);margin-bottom:.9rem}
 .fine-print h3{font-size:.8rem;font-weight:700;color:var(--muted);margin-top:1.6rem;letter-spacing:.02em}
 .fine-print h4{font-size:.74rem;font-weight:600;color:var(--muted);margin-top:.9rem}
-.fine-print p,.fine-print li{font-size:.72rem;line-height:1.6;color:rgba(244,239,230,.5)}
+.fine-print p,.fine-print li{font-size:.72rem;line-height:1.6;color:rgba(var(--ink-rgb),.5)}
 .fine-print p{margin-top:.45rem}
 .fine-print ul,.fine-print ol{margin:.4rem 0 0;padding-left:1.2rem;display:grid;gap:.25rem}
-.fine-print .fp-intro{color:rgba(244,239,230,.6)}
+.fine-print .fp-intro{color:rgba(var(--ink-rgb),.6)}
 .fine-print .fp-deal,.fine-print .fp-close{color:var(--muted);font-family:var(--font-display);font-weight:500;letter-spacing:.03em;margin-top:.8rem;
   border-left:2px solid rgba(245,165,36,.5);padding-left:.8rem}
 .fine-print .fp-note{margin-top:1.4rem;border-top:1px dashed var(--line);padding-top:.9rem}
 @media print{.fine-print{text-transform:none;color:#222}.fine-print p,.fine-print li,.fine-print h2,.fine-print h3,.fine-print h4{color:#222}}
+
+/* ====================================================================
+   DAY. From 6am to 5pm Central the sky is daylight: sun over the fields.
+   Set by the inline script in <head> as data-theme on <html>.
+   ==================================================================== */
+:root[data-theme="day"]{
+  --night:#eaf2fb;--night-2:#f4f8fc;--dusk:#dbe8f5;
+  --ink-rgb:16,32,58;--bg-rgb:234,242,251;
+  --footer-bg:#dfe9f4;--band-2:#e2ecf7;--hover-ink:#000;--tip-bg:rgba(255,255,255,.97);
+  --line:rgba(16,32,58,.12);--line-strong:rgba(16,32,58,.28);
+  --cream:#10203a;--muted:rgba(16,32,58,.74);--faint:rgba(16,32,58,.52);
+  --amber:#a8690a;--sunset:#c8501f;--marsh:#2f7f5e;--sky-blue:#2f6fc0;
+  --flame:linear-gradient(100deg,#f5a524,#e8623c);
+  color-scheme:light}
+[data-theme="day"] .eyebrow{text-shadow:none}
+[data-theme="day"] .stat-num{background:linear-gradient(100deg,#c97a08,#c8501f);-webkit-background-clip:text;background-clip:text}
+[data-theme="day"] .btn-primary{color:#1b1102}
+[data-theme="day"] .chip[aria-pressed="true"]{color:#1b1102}
+[data-theme="day"] header{background:rgba(234,242,251,.82)}
+[data-theme="day"] .hero-copy{text-shadow:0 1px 2px rgba(234,242,251,.9),0 2px 18px rgba(234,242,251,.8)}
+[data-theme="day"] .hero-copy::before{background:rgba(234,242,251,.5)}
+[data-theme="day"] .tagline{color:#a8690a}
+[data-theme="day"] .soon{background:rgba(255,255,255,.85);border-color:rgba(168,105,10,.5)}
+[data-theme="day"] .la-map path:first-of-type{fill:rgba(16,32,58,.06);stroke:rgba(16,32,58,.45)}
+[data-theme="day"] #sitemap > rect:first-of-type{fill:rgba(16,32,58,.06)}
+[data-theme="day"] #sitemap > line{stroke:rgba(16,32,58,.3)}
+[data-theme="day"] .lot:hover .pad,[data-theme="day"] .lot.active .pad{fill:rgba(16,32,58,.22)}
+[data-theme="day"] .tip{box-shadow:0 18px 40px -14px rgba(16,32,58,.35)}
+[data-theme="day"] .form-shell{background:linear-gradient(180deg,rgba(245,165,36,.12),rgba(255,255,255,.6))}
+[data-theme="day"] input,[data-theme="day"] select,[data-theme="day"] textarea{background-color:rgba(255,255,255,.85)}
+[data-theme="day"] .wordmark svg path[fill="#f4efe6"]{fill:#10203a}
+[data-theme="day"] select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2310203a' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+[data-theme="day"] .fine-print p,[data-theme="day"] .fine-print li{color:rgba(16,32,58,.6)}
+[data-theme="day"] .disclaimer p{color:rgba(16,32,58,.5)}
+
+/* the daytime sky */
+[data-theme="day"] .sky{background:
+    radial-gradient(70% 50% at 50% 100%,rgba(255,255,255,.55),transparent 70%),
+    linear-gradient(180deg,#2f7fd0 0%,#63aae6 30%,#a9d3f2 62%,#dcedf9 88%,#eef6fc 100%)}
+[data-theme="day"] .stars,[data-theme="day"] .stars2,[data-theme="day"] .stars3,[data-theme="day"] .stars4,
+[data-theme="day"] .bstar,[data-theme="day"] .milky,[data-theme="day"] .nebula,[data-theme="day"] .meteor,
+[data-theme="day"] .sat-train,[data-theme="day"] .sat-one,[data-theme="day"] .fireflies,[data-theme="day"] .mist,
+[data-theme="day"] .horizon-glow,[data-theme="day"] .moon,[data-theme="day"] .mars,[data-theme="day"] .deepspace{display:none}
+[data-theme="day"] .hero-veil{background:linear-gradient(100deg,rgba(234,242,251,.9) 0%,rgba(234,242,251,.72) 32%,rgba(234,242,251,.3) 56%,rgba(234,242,251,.06) 78%,transparent 100%)}
+@media (max-width:760px){
+  [data-theme="day"] .hero-veil{background:linear-gradient(180deg,rgba(234,242,251,.78) 0%,rgba(234,242,251,.72) 46%,rgba(234,242,251,.45) 74%,rgba(234,242,251,.15) 100%)}
+  [data-theme="day"] .hero-copy::before{background:rgba(234,242,251,.62)}
+}
+
+/* sun, clouds, birds: in the markup always, shown only by day */
+.sun,.cloud,.birds{display:none}
+[data-theme="day"] .sun,[data-theme="day"] .cloud,[data-theme="day"] .birds{display:block}
+.sun{position:absolute;z-index:-2;top:7%;right:14%;width:clamp(90px,11vw,170px);aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#fffdf3 0 38%,#ffe9a3 48%,rgba(255,214,120,.55) 60%,rgba(255,200,90,0) 72%);
+  box-shadow:0 0 60px 20px rgba(255,236,170,.6),0 0 160px 60px rgba(255,220,140,.35);
+  animation:rf-sun 16s ease-in-out infinite alternate}
+.sun::before{content:"";position:absolute;inset:-70%;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,240,190,.28) 0 6deg,transparent 6deg 15deg);
+  -webkit-mask:radial-gradient(circle,transparent 28%,#000 34%,transparent 72%);mask:radial-gradient(circle,transparent 28%,#000 34%,transparent 72%);
+  animation:rf-rays 140s linear infinite}
+@keyframes rf-sun{from{transform:scale(1)}to{transform:scale(1.04)}}
+@keyframes rf-rays{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@media (max-width:760px){.sun{top:1.5%;right:6%;width:84px}}
+.cloud{position:absolute;z-index:-2;left:-30%;height:22px;width:120px;border-radius:999px;background:rgba(255,255,255,.92);pointer-events:none;
+  filter:drop-shadow(0 8px 14px rgba(40,90,150,.18));animation:rf-cloud 260s linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;bottom:4px;border-radius:50%;background:inherit}
+.cloud::before{left:22%;width:52px;height:52px}
+.cloud::after{left:52%;width:38px;height:38px}
+.cloud.c1{top:9%;scale:1.6;animation-delay:-40s}
+.cloud.c2{top:22%;scale:1.1;animation-delay:-140s;animation-duration:320s;opacity:.9}
+.cloud.c3{top:5%;scale:.8;animation-delay:-220s;animation-duration:200s;opacity:.8}
+.cloud.c4{top:34%;scale:1.3;animation-delay:-90s;animation-duration:380s;opacity:.85}
+@keyframes rf-cloud{from{transform:translate3d(0,0,0)}to{transform:translate3d(160vw,0,0)}}
+@media (max-width:760px){.cloud{scale:.7}.cloud.c4{display:none}}
+.birds{position:absolute;z-index:-2;top:16%;left:-10%;width:90px;pointer-events:none;animation:rf-birds 70s linear infinite;animation-delay:8s}
+.birds svg{width:100%;height:auto;display:block;overflow:visible}
+.birds path{fill:none;stroke:#2b3d5a;stroke-width:1.6;stroke-linecap:round;transform-box:fill-box;transform-origin:50% 50%;animation:rf-flap .9s ease-in-out infinite alternate}
+.birds path:nth-child(2){animation-delay:.2s}.birds path:nth-child(3){animation-delay:.45s}
+@keyframes rf-flap{from{transform:scaleY(.4)}to{transform:scaleY(1.2)}}
+@keyframes rf-birds{0%{opacity:0;transform:translate3d(0,0,0)}4%{opacity:1}60%{opacity:1}64%{opacity:0;transform:translate3d(120vw,-60px,0)}100%{opacity:0;transform:translate3d(120vw,-60px,0)}}
+@media (prefers-reduced-motion:reduce){.sun,.sun::before,.cloud,.birds,.birds path{animation:none}}
+
+/* the fields by day */
+[data-theme="day"] .horizon path{fill:#4c8c38}
+[data-theme="day"] .fields .land{fill:#5a9d43}
+[data-theme="day"] .fields .farline{fill:#2e6a2b}
+[data-theme="day"] .fields .rows{stroke:rgba(255,255,255,.22)}
+[data-theme="day"] .fields .ditch{fill:#3f8fc4}
+[data-theme="day"] .fields .ditch-edge{fill:rgba(255,255,255,.5)}
+[data-theme="day"] .fields .ditch-shine{fill:rgba(255,255,255,.45)}
+[data-theme="day"] .fields .fence,[data-theme="day"] .fields .pole{stroke:#3a4a2c}
+[data-theme="day"] .fields .wire{stroke:rgba(30,45,70,.35)}
+[data-theme="day"] .fields .bins,[data-theme="day"] .fields .house,[data-theme="day"] .fields .pump{fill:#5c6b58}
+[data-theme="day"] .fields .window{display:none}
+[data-theme="day"] .fields .egret{fill:#fbfbf6;stroke:#fbfbf6}
+[data-theme="day"] .fields .tuft{stroke:#3c7a2e}
+[data-theme="day"] .launch{opacity:1}
+[data-theme="day"] .ufo-beam{opacity:0!important}
+[data-theme="day"] .ufo-cow{fill:#3a3126;stroke:none}
+
+/* header toggle */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:10px;background:rgba(var(--ink-rgb),.03);color:var(--cream);cursor:pointer;flex:none;padding:0;margin-left:auto}
+.theme-toggle svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .ic-sun{display:none}
+@media (max-width:440px){.theme-toggle{display:none}}
+.sky-switch{display:none}
+@media (max-width:999px){.sky-switch{display:flex}}
+[data-theme="day"] .theme-toggle .ic-sun{display:block}
+[data-theme="day"] .theme-toggle .ic-moon{display:none}
+.nav-toggle{margin-left:0}
+@media (min-width:1000px){.theme-toggle{margin-left:0}}
+.sky-note{font-size:.78rem;color:var(--faint)}
+.sky-note a{color:var(--amber)}

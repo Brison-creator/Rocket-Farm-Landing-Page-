@@ -297,3 +297,36 @@ var yr = document.getElementById('year'); if (yr) yr.textContent = new Date().ge
   }, { rootMargin: '-40% 0px -55% 0px' });
   secs.forEach(function (s) { if (s) io.observe(s); });
 })();
+
+/* ------------------------------------------------------------------
+   7. Day / night sky: re-check the Central-time clock each minute unless
+      the visitor has chosen one with the header toggle.
+------------------------------------------------------------------ */
+(function () {
+  var root = document.documentElement;
+  function hourCT() {
+    return parseInt(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', hour: 'numeric', hourCycle: 'h23' }).format(new Date()), 10) % 24;
+  }
+  function stored() { try { return localStorage.getItem('rf-theme'); } catch (e) { return null; } }
+  function apply() {
+    var pref = stored();
+    var day = (pref === 'day' || pref === 'night') ? pref === 'day' : (function () { var h = hourCT(); return h >= 6 && h < 17; })();
+    root.setAttribute('data-theme', day ? 'day' : 'night');
+    var reset = document.querySelector('.sky-reset'); if (reset) reset.hidden = !pref;
+    var sw = document.querySelector('.sky-switch'); if (sw) sw.textContent = day ? 'Switch to night sky' : 'Switch to day sky';
+  }
+  function flip(e) {
+    if (e) e.preventDefault();
+    var next = root.getAttribute('data-theme') === 'day' ? 'night' : 'day';
+    try { localStorage.setItem('rf-theme', next); } catch (x) {}
+    apply();
+  }
+  [].forEach.call(document.querySelectorAll('.theme-toggle,.sky-switch'), function (el) { el.addEventListener('click', flip); });
+  var reset = document.querySelector('.sky-reset');
+  if (reset) reset.addEventListener('click', function (e) { e.preventDefault(); try { localStorage.removeItem('rf-theme'); } catch (x) {} apply(); });
+  if (!new URLSearchParams(location.search).get('sky')) { apply(); setInterval(apply, 60000); }
+  else {
+    var r = document.querySelector('.sky-reset'); if (r) r.hidden = true;
+    var sw2 = document.querySelector('.sky-switch'); if (sw2) sw2.textContent = root.getAttribute('data-theme') === 'day' ? 'Switch to night sky' : 'Switch to day sky';
+  }
+})();
