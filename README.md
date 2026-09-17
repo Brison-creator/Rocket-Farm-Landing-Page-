@@ -125,9 +125,11 @@ it calls `preventDefault()` and would stop the real submission.
 
 ## Park rules and the site agreement (sent by email, not published)
 
-The Master Rules, Policies & Monthly Site Agreement is deliberately not on the
-site. When someone submits the reservation form, reply with the Word file
-attached and the invitation below. Keep the file outside this public repo.
+The Master Rules, Policies & Monthly Site Agreement is published as small,
+lowercase fine print at the bottom of the FAQ page (`/faq/#rules`), generated
+from the same source as the Word file. The signable Word file itself stays off
+the site: when someone submits the reservation form, reply with it attached
+and the invitation below. Keep the file outside this public repo.
 
 Subject: Your Rocket Farm reservation — next steps
 
