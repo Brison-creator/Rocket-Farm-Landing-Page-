@@ -85,8 +85,12 @@ reaches you instead of bouncing.
 
 The page now takes reservation requests rather than a waitlist. The form asks
 for five things only — name, company, reason for the stay, phone and email —
-and opens a pre-filled email to stay@therocketfarm.com (see below); you reply
-with deposit instructions.
+and opens a pre-filled email (see below); you reply with deposit instructions.
+The destination is the `TO` variable in the form-handling script at the bottom
+of `index.html`. It currently points at the owner's personal inbox because the
+stay@therocketfarm.com forwarder has not been created yet; once it exists at
+Namecheap, set `TO` back to `stay@therocketfarm.com` so the branded address is
+the only one visitors ever see.
 
 **To take the $250 on the spot:** create a Stripe Payment Link (or Square /
 PayPal), then set `PAY_LINK` in the script at the bottom of `index.html`. A

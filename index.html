@@ -1742,7 +1742,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
           </div>
 
           <div class="form-foot">
-            <p class="privacy">Goes straight to stay@therocketfarm.com. No lists, no resale, no spam.</p>
+            <p class="privacy">Goes straight to us. No lists, no resale, no spam.</p>
             <button class="btn btn-primary" type="submit">Reserve my space</button>
           </div>
         </form>
@@ -2010,7 +2010,10 @@ document.getElementById('year').textContent = new Date().getFullYear();
      attribute, not the "name" input. */
   var $ = function (id) { return document.getElementById(id); };
 
-  var TO = 'stay@therocketfarm.com'; // must be a live mailbox
+  /* Where reservations land. Assembled at runtime so scrapers reading the
+     raw HTML don't harvest it. Swap back to 'stay@therocketfarm.com' once
+     that forwarder exists at Namecheap. */
+  var TO = ['admin', 'nohm.app'].join('@');
   var PAY_LINK = '';                     // e.g. 'https://buy.stripe.com/xxxx' — leave empty until it exists
   if (PAY_LINK) {
     var pr = document.getElementById('pay-row'), pl = document.getElementById('pay-link');
