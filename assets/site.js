@@ -330,3 +330,15 @@ var yr = document.getElementById('year'); if (yr) yr.textContent = new Date().ge
     var sw2 = document.querySelector('.sky-switch'); if (sw2) sw2.textContent = root.getAttribute('data-theme') === 'day' ? 'Switch to night sky' : 'Switch to day sky';
   }
 })();
+
+/* ------------------------------------------------------------------
+   8. Crew booking button pre-selects the reason on the form
+------------------------------------------------------------------ */
+(function () {
+  var a = document.querySelector('[data-reason]'), sel = document.getElementById('reason');
+  if (!a || !sel) return;
+  a.addEventListener('click', function () {
+    var want = a.getAttribute('data-reason');
+    [].forEach.call(sel.options, function (o) { if (o.text === want) sel.value = o.value; });
+  });
+})();
