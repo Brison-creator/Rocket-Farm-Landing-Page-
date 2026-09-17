@@ -273,8 +273,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    the base is 0.376 x (width x 6.4286) = 2.418 x width above the element's
    bottom edge. Deriving the offset keeps the engines on the treeline. */
 .launch{--rw:clamp(54px,6.8vw,104px);
-  position:absolute;z-index:-2;left:calc(61% - var(--rw) / 2);width:var(--rw);
-  bottom:calc(30px - 2.418 * var(--rw));pointer-events:none;opacity:.95}
+  position:absolute;z-index:-2;left:calc(65% - var(--rw) / 2);width:var(--rw);
+  bottom:calc(30px - 2.418 * var(--rw));pointer-events:none;opacity:1}
 @media (max-width:760px){.launch{--rw:72px;left:calc(58% - var(--rw) / 2);opacity:.8;
   bottom:calc(18px - 2.418 * var(--rw))}}
 
@@ -320,18 +320,22 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 
 /* The Moon really does librate — a slow wobble plus drift keeps the disc from
    reading as a sticker. Transform and opacity only, so it all composites. */
-.moon{position:absolute;top:5%;right:6%;width:clamp(62px,8vw,112px);
-  filter:drop-shadow(0 0 34px rgba(244,239,230,.13));
+.moon{position:absolute;top:5%;right:6%;width:clamp(66px,8.4vw,120px);
+  filter:brightness(1.22) contrast(1.06)
+         drop-shadow(0 0 16px rgba(244,239,230,.34))
+         drop-shadow(0 0 54px rgba(214,226,255,.2));
   animation:rf-drift-moon 210s ease-in-out infinite alternate,
             rf-librate 96s ease-in-out infinite alternate}
 .moon-base{position:absolute;inset:0;width:100%;height:100%}
-.mars{position:absolute;top:26%;right:23%;width:clamp(22px,2.8vw,42px);
-  filter:drop-shadow(0 0 14px rgba(232,98,60,.2));
+.mars{position:absolute;top:26%;right:23%;width:clamp(26px,3.2vw,48px);
+  filter:brightness(1.3) saturate(1.16)
+         drop-shadow(0 0 12px rgba(255,146,92,.4))
+         drop-shadow(0 0 34px rgba(232,98,60,.22));
   animation:rf-drift-mars 150s ease-in-out infinite alternate}
 /* a terminator that creeps around the disc, so Mars reads as a lit sphere
    rather than a flat cut-out */
 .mars-term{position:absolute;inset:0;border-radius:50%;
-  background:linear-gradient(105deg,transparent 42%,rgba(11,18,38,.24) 72%,rgba(11,18,38,.62) 100%);
+  background:linear-gradient(105deg,transparent 48%,rgba(11,18,38,.16) 76%,rgba(11,18,38,.44) 100%);
   animation:rf-term 120s linear infinite}
 
 @keyframes rf-drift-moon{from{transform:translate3d(0,0,0)}to{transform:translate3d(-2.2%,1.6%,0)}}
@@ -343,13 +347,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @keyframes rf-drift-mars{from{transform:translate3d(0,0,0)}to{transform:translate3d(3.4%,-2.4%,0)}}
 @keyframes rf-term{from{rotate:0deg}to{rotate:360deg}}
 @media (max-width:760px){
-  /* Phones run the copy full-width, so there is no margin the bodies can sit
-     in safely. Drop them behind the veil and let it haze them instead — the
-     alternative is type sitting on a lit moon. */
-  .sky-bodies{z-index:-2}
-  .moon{top:1.2%;right:4%;width:58px}
-  .mars{top:8%;right:32%;width:22px}
-  .hero-copy{text-shadow:0 1px 14px rgba(7,11,24,.6)}
+  /* The copy carries its own backing now, so the bodies sit in front of the
+     veil on phones too and read at full brightness. */
+  .moon{top:1.2%;right:4%;width:74px}
+  .mars{top:7.5%;right:30%;width:30px}
+  .hero-copy{text-shadow:0 1px 3px rgba(7,11,24,.96),0 2px 16px rgba(7,11,24,.9)}
+  .hero-copy::before{background:rgba(7,11,24,.58)}
+  .launch{opacity:.6}
 }
 
 /* veil: protects the type where it sits, thins out to the right */
@@ -380,23 +384,33 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 
 /* plume grows downward out of the engine skirt */
-.rf-plume{transform-box:fill-box;transform-origin:50% 0%;opacity:0;
+.rf-plume{opacity:0;filter:saturate(1.12);
   animation:rf-plume 22s linear infinite}
+/* only the tail lengthens; the throat stays welded to the bells */
+.rf-plume-far{transform-box:fill-box;transform-origin:50% 0%;
+  animation:rf-tail 22s linear infinite}
 @keyframes rf-plume{
-  0%,11% {opacity:0;transform:scale(.5,.12)}
-  14%    {opacity:1;transform:scale(1,.65)}
-  19%    {opacity:1;transform:scale(1.08,1.6)}
-  60%    {opacity:1;transform:scale(1,2.3)}
-  80%    {opacity:1;transform:scale(.88,2.3)}
-  85%    {opacity:0;transform:scale(.88,2.3)}
+  0%,11% {opacity:0}
+  13.5%  {opacity:.8}
+  18%    {opacity:1}
+  80%    {opacity:1}
+  85%    {opacity:0}
   100%   {opacity:0}
+}
+@keyframes rf-tail{
+  0%,11% {transform:scaleY(.18)}
+  15%    {transform:scaleY(.55)}
+  22%    {transform:scaleY(.86)}
+  40%    {transform:scaleY(1)}
+  80%    {transform:scaleY(1.06)}
+  100%   {transform:scaleY(1.06)}
 }
 /* engine flicker rides on opacity so it does not fight the scale above */
 .rf-core{animation:rf-flicker .16s steps(2,end) infinite}
 @keyframes rf-flicker{from{opacity:.98}to{opacity:.74}}
 
 /* rolling smoke column: three billows on staggered delays */
-.rf-smokecol{position:absolute;z-index:-2;left:calc(61% - 150px);bottom:-40px;
+.rf-smokecol{position:absolute;z-index:-2;left:calc(65% - 150px);bottom:-40px;
   width:300px;height:340px;pointer-events:none;opacity:.75}
 @media (max-width:760px){.rf-smokecol{left:calc(58% - 105px);width:210px;height:250px;opacity:.55}}
 .rf-puff{position:absolute;bottom:0;border-radius:50%;filter:blur(7px);
@@ -419,7 +433,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 
 /* ignition cloud at the pad */
   .launch-smoke{--sw:clamp(150px,20vw,260px);
-  position:absolute;z-index:-2;left:calc(61% - var(--sw) / 2);
+  position:absolute;z-index:-2;left:calc(65% - var(--sw) / 2);
   bottom:calc(14px - var(--sw) / 2);
   width:var(--sw);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:radial-gradient(circle at 50% 62%,rgba(244,239,230,.5),rgba(244,239,230,.16) 42%,transparent 70%);
@@ -441,12 +455,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 .horizon{position:absolute;left:0;right:0;bottom:-1px;z-index:-1;width:100%;height:auto}
 
-.hero-copy{max-width:790px;position:relative}
+.hero-copy{max-width:790px;position:relative;
+  text-shadow:0 1px 3px rgba(7,11,24,.96),0 2px 20px rgba(7,11,24,.85)}
 /* A uniform, feathered backing rather than a radial one: the radial left the
    far end of the headline uncovered, and that is exactly where the vehicle
    flies. Blurring the pseudo-element gives a soft edge with no visible box. */
-.hero-copy::before{content:"";position:absolute;inset:-7% -9% -9% -11%;z-index:-1;
-  pointer-events:none;border-radius:56px;background:rgba(7,11,24,.56);
+.hero-copy::before{content:"";position:absolute;inset:-7% 7% -9% -11%;z-index:-1;
+  pointer-events:none;border-radius:56px;background:rgba(7,11,24,.34);
   filter:blur(30px)}
 .hero-copy>*{position:relative}
 .hero h1{font-size:var(--h1);margin:0;text-wrap:balance}
@@ -455,7 +470,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   margin-top:1.15rem;max-width:34ch;text-wrap:balance;
   background:linear-gradient(100deg,var(--amber),var(--sunset));
   -webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);margin-top:1.4rem;max-width:62ch}
+.hero .lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);margin-top:1.4rem;max-width:51ch}
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;list-style:none;padding:0}
 .tags li{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .95rem;background:rgba(244,239,230,.04)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
@@ -791,52 +806,91 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
               <stop offset=".74" stop-color="#0b1226" stop-opacity="0"/>
               <stop offset="1"   stop-color="#0b1226" stop-opacity=".3"/>
             </linearGradient>
-            <!-- plume: white-hot core through to a diffuse, scattered tail -->
+            <!-- plume: bright blue-white throat, white-hot core, warm mid,
+                 diffuse scattered tail, plus a broad bloom for the light it
+                 throws into the air around it -->
+            <radialGradient id="rfThroat" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="#ffffff"/>
+              <stop offset=".3"  stop-color="#e8f4ff"/>
+              <stop offset=".62" stop-color="#ffe7b0" stop-opacity=".8"/>
+              <stop offset="1"   stop-color="#ffb060" stop-opacity="0"/>
+            </radialGradient>
             <linearGradient id="rfCoreG" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0"   stop-color="#ffffff"/>
-              <stop offset=".18" stop-color="#fff6de"/>
-              <stop offset=".46" stop-color="#ffd089"/>
-              <stop offset=".78" stop-color="#ff9a52" stop-opacity=".5"/>
-              <stop offset="1"   stop-color="#ff7a3c" stop-opacity="0"/>
+              <stop offset=".05" stop-color="#eaf5ff"/>
+              <stop offset=".12" stop-color="#fff0d8"/>
+              <stop offset=".26" stop-color="#ffdcae"/>
+              <stop offset=".42" stop-color="#ffb877"/>
+              <stop offset=".60" stop-color="#ff9354" stop-opacity=".95"/>
+              <stop offset=".78" stop-color="#fb7440" stop-opacity=".62"/>
+              <stop offset=".92" stop-color="#ef5f30" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
             </linearGradient>
             <linearGradient id="rfMidG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#ffe3bb" stop-opacity="1"/>
-              <stop offset=".4"  stop-color="#ffab6c" stop-opacity=".78"/>
-              <stop offset=".8"  stop-color="#f4713f" stop-opacity=".34"/>
+              <stop offset="0"   stop-color="#fff0d8"/>
+              <stop offset=".2"  stop-color="#ffc48a" stop-opacity="1"/>
+              <stop offset=".48" stop-color="#ff9250" stop-opacity=".9"/>
+              <stop offset=".78" stop-color="#f76d3c" stop-opacity=".5"/>
               <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
             </linearGradient>
             <linearGradient id="rfOuterG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#ffc48c" stop-opacity=".72"/>
-              <stop offset=".45" stop-color="#f4884c" stop-opacity=".4"/>
-              <stop offset="1"   stop-color="#d4542c" stop-opacity="0"/>
+              <stop offset="0"   stop-color="#ffdcac" stop-opacity=".95"/>
+              <stop offset=".3"  stop-color="#ff9a5e" stop-opacity=".7"/>
+              <stop offset=".65" stop-color="#e85b2c" stop-opacity=".34"/>
+              <stop offset="1"   stop-color="#c8431c" stop-opacity="0"/>
             </linearGradient>
-            <filter id="rfSoftPlume" x="-70%" y="-12%" width="240%" height="130%">
-              <feGaussianBlur stdDeviation="9"/>
+            <radialGradient id="rfBloom" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="#ffb066" stop-opacity=".5"/>
+              <stop offset=".45" stop-color="#ff8f44" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="rfBloomF" x="-90%" y="-40%" width="280%" height="190%">
+              <feGaussianBlur stdDeviation="26"/>
             </filter>
-            <filter id="rfMidPlume" x="-50%" y="-10%" width="200%" height="125%">
-              <feGaussianBlur stdDeviation="4"/>
+            <filter id="rfSoftPlume" x="-80%" y="-14%" width="260%" height="140%">
+              <feGaussianBlur stdDeviation="11"/>
             </filter>
-            <filter id="rfCorePlume" x="-40%" y="-8%" width="180%" height="120%">
-              <feGaussianBlur stdDeviation="1.4"/>
+            <filter id="rfMidPlume" x="-60%" y="-12%" width="220%" height="132%">
+              <feGaussianBlur stdDeviation="5"/>
+            </filter>
+            <filter id="rfCorePlume" x="-50%" y="-10%" width="200%" height="124%">
+              <feGaussianBlur stdDeviation="1.8"/>
+            </filter>
+            <filter id="rfThroatF" x="-140%" y="-140%" width="380%" height="380%">
+              <feGaussianBlur stdDeviation="7"/>
             </filter>
           </defs>
 
           <!-- ============ PLUME (drawn first; the skirt overlaps its mouth) -->
           <g class="rf-plume">
-            <path filter="url(#rfSoftPlume)" fill="url(#rfOuterG)"
-                  d="M48 558 C34 660 22 760 14 886 L126 886 C118 760 106 660 92 558 Z"/>
-            <path filter="url(#rfMidPlume)" fill="url(#rfMidG)"
-                  d="M54 558 C46 650 38 742 32 868 L108 868 C102 742 94 650 86 558 Z"/>
-            <g class="rf-core" filter="url(#rfCorePlume)">
-              <path fill="url(#rfCoreG)"
-                    d="M60 556 C57 620 55 680 52 812 L88 812 C85 680 83 620 80 556 Z"/>
-              <!-- shock diamonds down the core -->
-              <g fill="#fffdf4" opacity=".85">
-                <ellipse cx="70" cy="596" rx="7.5" ry="4"/>
-                <ellipse cx="70" cy="636" rx="6.2" ry="3.4"/>
-                <ellipse cx="70" cy="676" rx="5" ry="2.8"/>
-                <ellipse cx="70" cy="714" rx="3.8" ry="2.2"/>
+            <g class="rf-plume-far">
+              <!-- broad bloom: the light the plume throws into the air -->
+              <ellipse cx="70" cy="650" rx="86" ry="150" fill="url(#rfBloom)" filter="url(#rfBloomF)"/>
+              <!-- diffuse outer tail, flaring as it expands into thinner air -->
+              <path filter="url(#rfSoftPlume)" fill="url(#rfOuterG)"
+                    d="M50 556 C40 640 27 730 12 894 L128 894 C113 730 100 640 90 556 Z"/>
+              <!-- warm mid plume -->
+              <path filter="url(#rfMidPlume)" fill="url(#rfMidG)"
+                    d="M56 556 C50 628 43 700 34 836 L106 836 C97 700 90 628 84 556 Z"/>
+            </g>
+            <g class="rf-core">
+              <!-- white-hot core -->
+              <path filter="url(#rfCorePlume)" fill="url(#rfCoreG)"
+                    d="M61 554 C59 610 57 662 53 768 L87 768 C83 662 81 610 79 554 Z"/>
+              <!-- shock diamonds, tight and bright near the throat -->
+              <g fill="#ffffff">
+                <ellipse cx="70" cy="584" rx="8.2" ry="4.4" opacity=".95"/>
+                <ellipse cx="70" cy="606" rx="7" ry="3.8" opacity=".88"/>
+                <ellipse cx="70" cy="628" rx="5.9" ry="3.2" opacity=".78"/>
+                <ellipse cx="70" cy="652" rx="4.8" ry="2.7" opacity=".66"/>
+                <ellipse cx="70" cy="678" rx="3.8" ry="2.2" opacity=".5"/>
+                <ellipse cx="70" cy="706" rx="2.9" ry="1.7" opacity=".34"/>
               </g>
+              <!-- throat: the hottest, tightest point, right at the bells -->
+              <ellipse cx="70" cy="578" rx="27" ry="12" fill="url(#rfThroat)" opacity=".8" filter="url(#rfThroatF)"/>
+              <ellipse cx="70" cy="574" rx="11" ry="5" fill="#ffffff" opacity=".9" filter="url(#rfCorePlume)"/>
+            </g>
+          </g>
             </g>
           </g>
 
@@ -868,8 +922,9 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
             <path d="M58 562 h13 l2 12 h-17 Z"/>
             <path d="M74 562 h13 l2 12 h-17 Z"/>
           </g>
-          <!-- hot glow where the bells meet the plume -->
-          <ellipse cx="70" cy="572" rx="30" ry="8" fill="#ffb066" opacity=".5" filter="url(#rfMidPlume)"/>
+          <!-- light spill from the plume onto the skirt and engine bay -->
+          <ellipse cx="70" cy="550" rx="50" ry="20" fill="#ff9c50" opacity=".62" filter="url(#rfMidPlume)"/>
+          <ellipse cx="70" cy="564" rx="34" ry="11" fill="#ffd9a2" opacity=".8" filter="url(#rfMidPlume)"/>
         </svg>
       </div>
     </div>
