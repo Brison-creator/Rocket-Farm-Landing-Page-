@@ -84,6 +84,8 @@ img,svg{display:block;max-width:100%}
   text-shadow:0 0 18px rgba(245,165,36,.35)}
 .eyebrow::before{content:"";display:inline-block;width:16px;height:1px;
   background:var(--amber);vertical-align:3px;margin-right:.7rem;opacity:.7}
+/* the dash costs a line on phones */
+@media (max-width:480px){.eyebrow::before{display:none}.eyebrow{letter-spacing:.16em}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:8px;top:8px;z-index:99;background:var(--cream);color:var(--night);padding:10px 16px;border-radius:8px}
