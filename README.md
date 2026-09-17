@@ -152,6 +152,27 @@ mandatory-evacuation clause; lessor's privilege (C.C. art. 2707); Vermilion
 Parish venue. It is still not legal advice. Have a Louisiana attorney read it
 once before the first occupant signs.
 
+## Site structure
+
+The site is six static pages that share one stylesheet and one script:
+
+| URL             | File                    | What's on it                                         |
+|-----------------|-------------------------|------------------------------------------------------|
+| `/`             | `index.html`            | Hero, at-a-glance stats, who it's for, rate cards, six amenities, location teaser, reservation form |
+| `/spaces/`      | `spaces/index.html`     | Interactive site map, every space and its rate, what's included, full amenities |
+| `/plan/`        | `plan/index.html`       | Phase 1, Phase 2 and the view deck                   |
+| `/directions/`  | `directions/index.html` | Louisiana map, distances, live-drive-time links, the gate |
+| `/faq/`         | `faq/index.html`        | The FAQ, with matching FAQPage schema                |
+| `/policies/`    | `policies/index.html`   | Park rules and the monthly site agreement (+ Word file) |
+
+`assets/site.css` holds all styling and `assets/site.js` all behaviour (site
+map, filters, tooltip, scroll reveal, form, mobile menu, rules-page index).
+Each script block checks for the elements it needs, so it is safe on every
+page. The header and footer are repeated verbatim in each page; when you change
+a nav link, change it in all six files (a search for `nav-links` finds them).
+All internal links and asset paths are root-absolute (`/spaces/`, `/img/...`),
+so pages must be served from the domain root, which GitHub Pages does.
+
 ## Deploying to therocketfarm.com
 
 The repo already contains everything the deploy needs:
