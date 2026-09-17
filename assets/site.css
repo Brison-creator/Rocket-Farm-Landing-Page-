@@ -1022,7 +1022,11 @@ header.open .nav-toggle .x{display:block}
    Small and lowercase by request; still readable and still selectable. */
 .fine-print{border-top:1px solid var(--line);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,5rem);text-transform:lowercase}
 .fine-print .wrap{max-width:820px}
-.fine-print h2{font-size:.82rem;font-weight:500;letter-spacing:.14em;color:var(--faint);margin-bottom:.9rem}
+.fine-print summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;min-height:44px;font-size:.8rem;font-weight:500;letter-spacing:.14em;color:var(--faint)}
+.fine-print summary::-webkit-details-marker{display:none}
+.fine-print summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.fine-print details[open] summary::after{transform:rotate(225deg) translateY(-1px)}
+.fine-print summary:hover{color:var(--muted)}
 .fine-print h3{font-size:.8rem;font-weight:700;color:var(--muted);margin-top:1.6rem;letter-spacing:.02em}
 .fine-print h4{font-size:.74rem;font-weight:600;color:var(--muted);margin-top:.9rem}
 .fine-print p,.fine-print li{font-size:.72rem;line-height:1.6;color:rgba(var(--ink-rgb),.5)}
