@@ -534,6 +534,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;list-style:none;padding:0}
 .tags li{font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .95rem;background:rgba(244,239,230,.04)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+.soon{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1rem;
+  font-family:var(--font-display);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);border:1px solid rgba(245,165,36,.45);border-radius:999px;padding:.42rem .9rem .42rem .7rem;
+  background:rgba(245,165,36,.08)}
+.soon-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);
+  animation:rf-soon 1.8s ease-in-out infinite alternate}
+@keyframes rf-soon{from{opacity:.45}to{opacity:1}}
+.fine{font-size:.78rem;line-height:1.55;color:var(--faint);max-width:60ch}
+.fine a{color:var(--amber)}
+.hero-fine{margin-top:1.1rem}
 
 /* ---------- Stat strip ---------- */
 .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(7,11,24,.5)}
@@ -721,7 +731,8 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .dist-row span{color:var(--muted)}
 .dist-row b{font-family:var(--font-display);white-space:nowrap}
 
-/* ---------- Waitlist ---------- */
+/* ---------- Reserve ---------- */
+.pay-row{margin:1rem 0 0}
 .faq{max-width:78ch;border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line)}
 .faq-item summary{list-style:none;cursor:pointer;padding:1.15rem 2.4rem 1.15rem 0;position:relative}
@@ -811,7 +822,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   "makesOffer": [
     {"@type":"Offer","name":"50-amp monthly RV space","price":"700","priceCurrency":"USD",
      "description":"Monthly full-hookup pull-through RV space with a 50/30/20 amp metered pedestal, plus electricity billed at cost.",
-     "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":11}},
+     "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":11},"priceSpecification":{"@type":"PriceSpecification","name":"Reservation deposit","price":"250","priceCurrency":"USD"}},
     {"@type":"Offer","name":"30-amp monthly RV space","price":"650","priceCurrency":"USD",
      "description":"Monthly full-hookup pull-through RV space with a 30/20 amp metered pedestal, plus electricity billed at cost.",
      "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":3}},
@@ -842,7 +853,15 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       "name": "When does Rocket Farm open?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so there is nothing to book yet \u2014 join the waitlist and we will come to you first when spaces are released."
+        "text": "Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so you cannot move in yet \u2014 but you can reserve a space with a deposit and we will come to you first when spaces are released."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reserve a space, and is there a deposit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tell us which space you want using the form on this page and we will reply with deposit instructions. A $250 deposit reserves your space and is credited to your first month. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the space you reserved, your deposit is refunded in full."
       }
     },
     {
@@ -931,8 +950,8 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <a href="#directions">Directions</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a class="btn btn-primary" href="#waitlist">
-      <span class="cta-long">Join the waitlist</span><span class="cta-short">Waitlist</span>
+    <a class="btn btn-primary" href="#reserve">
+      <span class="cta-long">Reserve your space</span><span class="cta-short">Reserve</span>
     </a>
   </nav>
 </header>
@@ -1146,6 +1165,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 
     <div class="wrap">
      <div class="hero-copy">
+      <p class="soon"><span class="soon-dot" aria-hidden="true"></span>Coming soon &middot; Phase 1 targeted 2027</p>
       <h1>Bring your camper. Stay thirty miles from the pad.</h1>
       <p class="tagline">Full-hookup RV park in Kaplan, Louisiana — built for the people building the future.</p>
       <p class="lede">
@@ -1161,9 +1181,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
         <li>Explore</li>
       </ul>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#lots">See every space &amp; rate</a>
-        <a class="btn btn-ghost" href="#waitlist">Get on the waitlist</a>
+        <a class="btn btn-primary" href="#reserve">Reserve your space now</a>
+        <a class="btn btn-ghost" href="#lots">See every space &amp; rate</a>
       </div>
+      <p class="fine hero-fine">Spaces will fill up quickly. Deposit required &mdash; $250, credited to your first month; not refundable if you choose to stay elsewhere. <a href="#reserve">Full terms</a>.</p>
      </div>
     </div>
   </section>
@@ -1413,8 +1434,8 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <p class="terms reveal">
         Monthly rates assume a 30-day minimum stay and a current registration and insurance on the rig.
         Rates shown are the planned opening rates for Phase 1 and are not yet a contract — they remain
-        subject to final construction cost, utility rates and permitting. Get on the waitlist and we'll
-        confirm your space and rate in writing before you commit to anything.
+        subject to final construction cost, utility rates and permitting. Reserve a space and we&rsquo;ll
+        confirm your space and rate in writing before you commit to anything. A $250 deposit reserves your space and is credited to your first month. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the space you reserved, your deposit is refunded in full.
       </p>
     </div>
   </section>
@@ -1586,7 +1607,11 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <div class="faq reveal">
         <details class="faq-item">
           <summary><h3>When does Rocket Farm open?</h3></summary>
-          <p>Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so there is nothing to book yet — join the waitlist and we will come to you first when spaces are released.</p>
+          <p>Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so you cannot move in yet — but you can reserve a space with a deposit and we will come to you first when spaces are released.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>How do I reserve a space, and is there a deposit?</h3></summary>
+          <p>Tell us which space you want using the form on this page and we will reply with deposit instructions. A $250 deposit reserves your space and is credited to your first month. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the space you reserved, your deposit is refunded in full.</p>
         </details>
         <details class="faq-item">
           <summary><h3>How much is a monthly RV space in Kaplan?</h3></summary>
@@ -1621,12 +1646,13 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   </section>
 
   <!-- ============ WAITLIST ============ -->
-  <section class="band signup" id="waitlist">
+  <section class="band signup" id="reserve">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Get on the manifest</p>
-        <h2>Claim a space before they're spoken for.</h2>
-        <p>We're in permitting and pre-construction, so there's nothing to book yet. Get on the list and we'll come to you first when spaces are released — tell us which one you want and we'll hold your place in line.</p>
+        <p class="eyebrow">Reserve</p>
+        <h2>Coming soon. Reserve your space now.</h2>
+        <p>Spaces will fill up quickly &mdash; there are fourteen monthly spaces and the crews are already asking. Tell us which one you want and we&rsquo;ll hold it with a deposit.</p>
+        <p class="fine"><strong>Deposit required.</strong> A $250 deposit reserves your space and is credited to your first month. It is not refundable if you choose to stay somewhere else. If Rocket Farm does not open, or cannot deliver the space you reserved, your deposit is refunded in full.</p>
       </div>
 
       <div class="form-shell reveal">
@@ -1706,9 +1732,14 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 
           <div class="form-foot">
             <p class="privacy">We'll only use this to contact you about Rocket Farm. No lists, no resale, no spam.</p>
-            <button class="btn btn-primary" type="submit">Join the waitlist</button>
+            <button class="btn btn-primary" type="submit">Reserve my space</button>
           </div>
         </form>
+        <!-- Set PAY_LINK in the script below to a Stripe Payment Link (or Square /
+             PayPal) and this button appears so the deposit can be paid on the spot. -->
+        <p class="pay-row" id="pay-row" hidden>
+          <a class="btn btn-ghost" id="pay-link" href="#" target="_blank" rel="noopener">Pay the $250 deposit</a>
+        </p>
 
         <div class="form-msg" id="form-msg" role="status" aria-live="polite"></div>
       </div>
@@ -1741,7 +1772,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
         <h4>Get in touch</h4>
         <a href="mailto:stay@therocketfarm.com">stay@therocketfarm.com</a>
         <a href="#lots">See every space &amp; rate</a>
-        <a href="#waitlist">Join the waitlist</a>
+        <a href="#reserve">Reserve your space</a>
       </div>
     </div>
 
@@ -1969,6 +2000,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
   var $ = function (id) { return document.getElementById(id); };
 
   var TO = 'stay@therocketfarm.com'; // must be a live mailbox
+  var PAY_LINK = '';                     // e.g. 'https://buy.stripe.com/xxxx' — leave empty until it exists
+  if (PAY_LINK) {
+    var pr = document.getElementById('pay-row'), pl = document.getElementById('pay-link');
+    if (pr && pl) { pl.href = PAY_LINK; pr.hidden = false; }
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1996,14 +2032,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
       ($('message').value.trim() || '(no additional notes)');
 
     var href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent('Rocket Farm waitlist — ' + name) +
+      '?subject=' + encodeURIComponent('Rocket Farm reservation — ' + name) +
       '&body='    + encodeURIComponent(body);
 
     msg.className = 'form-msg show';
     msg.style.borderColor = '';
     msg.style.background  = '';
     msg.innerHTML = 'Thanks, ' + name.replace(/[<>&]/g, '') +
-      ' — your email app should be opening with the details filled in. ' +
+      ' — your email app should be opening with the details filled in. We reply with deposit instructions to hold your space. ' +
       'If it didn\'t, send them to <a href="mailto:' + TO + '">' + TO + '</a>.';
 
     window.location.href = href;
