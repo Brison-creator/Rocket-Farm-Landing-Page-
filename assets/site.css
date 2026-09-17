@@ -443,7 +443,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 70%,transparent 100%);
   animation:rf-beam 48s linear infinite;animation-delay:6s}
 @keyframes rf-beam{0%,38%{opacity:0;transform:scaleY(.2)}40%{opacity:.72;transform:scaleY(1)}50%{opacity:.72;transform:scaleY(1)}52%,100%{opacity:0;transform:scaleY(.2)}}
-.ufo-cow{position:absolute;left:0;bottom:14px;width:34px;translate:calc(-50% + clamp(32px,3.75vw,59px)) 0;fill:#1b2438;stroke:rgba(190,225,255,.55);stroke-width:.8;overflow:visible;
+.ufo-cow{position:absolute;left:0;bottom:14px;width:34px;max-width:none;translate:calc(-50% + clamp(32px,3.75vw,59px)) 0;fill:#1b2438;stroke:rgba(190,225,255,.55);stroke-width:.8;overflow:visible;
   animation:rf-cow 48s ease-in-out infinite;animation-delay:6s}
 @keyframes rf-cow{
   0%,40%  {opacity:1;transform:translateY(0) rotate(0)}
