@@ -121,7 +121,15 @@ img,svg{display:block;max-width:100%}
     radial-gradient(1.1px 1.1px at 92% 70%,rgba(244,239,230,.36),transparent),
     radial-gradient(1.3px 1.3px at 14% 88%,rgba(244,239,230,.4),transparent),
     radial-gradient(1.2px 1.2px at 63% 92%,rgba(200,222,255,.34),transparent),
-    radial-gradient(1.4px 1.4px at 88% 8%,rgba(244,239,230,.44),transparent);
+    radial-gradient(1.4px 1.4px at 88% 8%,rgba(244,239,230,.44),transparent),
+    radial-gradient(1px 1px at 4% 42%,rgba(244,239,230,.34),transparent),
+    radial-gradient(1.2px 1.2px at 27% 6%,rgba(255,236,200,.4),transparent),
+    radial-gradient(1px 1px at 41% 52%,rgba(244,239,230,.3),transparent),
+    radial-gradient(1.3px 1.3px at 74% 84%,rgba(244,239,230,.38),transparent),
+    radial-gradient(1px 1px at 96% 48%,rgba(200,222,255,.34),transparent),
+    radial-gradient(1.1px 1.1px at 52% 4%,rgba(244,239,230,.36),transparent),
+    radial-gradient(1px 1px at 33% 72%,rgba(244,239,230,.3),transparent),
+    radial-gradient(1.2px 1.2px at 85% 60%,rgba(255,236,200,.36),transparent);
   animation:rf-deep 22s ease-in-out infinite alternate}
 @keyframes rf-deep{from{opacity:.5}to{opacity:.95}}
 /* sections float over it */
@@ -193,6 +201,58 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
              rf-sky-b 430s ease-in-out infinite alternate}
 @keyframes rf-sky-b{from{transform:translate3d(0,0,0)}to{transform:translate3d(2.4%,-1.4%,0)}}
 @keyframes twinkle2{from{opacity:.32}to{opacity:.9}}
+/* third, densest layer: small, fast, out of phase with the other two */
+.stars3{position:absolute;inset:-22%;z-index:-2;opacity:.75;
+  background-image:
+    radial-gradient(1px 1px at 3% 22%,rgba(244,239,230,.8),transparent),
+    radial-gradient(1.3px 1.3px at 9% 51%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1px 1px at 13% 7%,rgba(255,236,200,.75),transparent),
+    radial-gradient(1.2px 1.2px at 19% 33%,rgba(200,222,255,.7),transparent),
+    radial-gradient(1px 1px at 26% 61%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.4px 1.4px at 29% 14%,rgba(244,239,230,.85),transparent),
+    radial-gradient(1px 1px at 35% 48%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1.1px 1.1px at 41% 19%,rgba(255,236,200,.7),transparent),
+    radial-gradient(1px 1px at 47% 66%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.3px 1.3px at 49% 3%,rgba(244,239,230,.8),transparent),
+    radial-gradient(1px 1px at 55% 39%,rgba(200,222,255,.65),transparent),
+    radial-gradient(1.2px 1.2px at 58% 57%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1px 1px at 63% 13%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.5px 1.5px at 68% 30%,rgba(255,236,200,.85),transparent),
+    radial-gradient(1px 1px at 72% 52%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1.2px 1.2px at 77% 6%,rgba(244,239,230,.75),transparent),
+    radial-gradient(1px 1px at 84% 38%,rgba(200,222,255,.7),transparent),
+    radial-gradient(1.3px 1.3px at 86% 60%,rgba(244,239,230,.7),transparent),
+    radial-gradient(1px 1px at 91% 17%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1.1px 1.1px at 96% 44%,rgba(255,236,200,.75),transparent),
+    radial-gradient(1px 1px at 6% 78%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.2px 1.2px at 22% 84%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1px 1px at 38% 90%,rgba(200,222,255,.55),transparent),
+    radial-gradient(1.1px 1.1px at 53% 81%,rgba(244,239,230,.6),transparent),
+    radial-gradient(1px 1px at 66% 94%,rgba(244,239,230,.5),transparent),
+    radial-gradient(1.3px 1.3px at 79% 76%,rgba(255,236,200,.7),transparent),
+    radial-gradient(1px 1px at 93% 88%,rgba(244,239,230,.55),transparent),
+    radial-gradient(1.1px 1.1px at 16% 96%,rgba(244,239,230,.5),transparent);
+  animation:twinkle3 2.6s ease-in-out .4s infinite alternate,
+             rf-sky-c 380s ease-in-out infinite alternate}
+@keyframes twinkle3{from{opacity:.25}to{opacity:.95}}
+@keyframes rf-sky-c{from{transform:translate3d(0,0,0)}to{transform:translate3d(-1.6%,-2.2%,0)}}
+
+/* a handful of bright stars with a soft cross flare, each on its own beat */
+.bstar{position:absolute;z-index:-2;width:14px;height:14px;pointer-events:none;
+  background:
+    radial-gradient(circle,rgba(255,255,255,1) 0,rgba(255,255,255,.9) 14%,rgba(244,239,230,.3) 30%,transparent 52%),
+    linear-gradient(90deg,transparent 0,rgba(244,239,230,.55) 50%,transparent 100%),
+    linear-gradient(0deg,transparent 0,rgba(244,239,230,.55) 50%,transparent 100%);
+  background-size:100% 100%,100% 1px,1px 100%;
+  background-position:center,center,center;background-repeat:no-repeat;
+  animation:rf-bstar 3.4s ease-in-out infinite alternate}
+.bstar.s1{top:12%;left:22%;animation-delay:.2s}
+.bstar.s2{top:31%;left:6%;width:10px;height:10px;animation-delay:1.3s;animation-duration:4.1s}
+.bstar.s3{top:8%;left:44%;width:11px;height:11px;animation-delay:2.1s;animation-duration:2.9s}
+.bstar.s4{top:22%;left:71%;animation-delay:.8s;animation-duration:3.8s}
+.bstar.s5{top:44%;left:88%;width:9px;height:9px;animation-delay:1.7s;animation-duration:4.6s}
+.bstar.s6{top:56%;left:3%;width:9px;height:9px;animation-delay:2.6s}
+@keyframes rf-bstar{from{opacity:.35;scale:.8}to{opacity:1;scale:1.15}}
 /* ---- Launch: rises from behind the treeline on a loop ----
    Sits at z-index -2 so the dark horizon (-1) occludes the pad, which is
    what makes it read as a real liftoff. Only transform and opacity are
@@ -204,11 +264,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 /* Sits behind the copy and hazed back — it is thirty miles off, so reading it
    through atmosphere is truer than a crisp foreground object anyway. The veil
    below keeps the type legible over it. */
-.launch{--rw:clamp(74px,9.5vw,140px);
-  position:absolute;z-index:-2;left:calc(53% - var(--rw) / 2);width:var(--rw);
-  bottom:calc(30px - 1.587 * var(--rw));pointer-events:none;opacity:.5}
-@media (max-width:760px){.launch{--rw:96px;left:calc(58% - var(--rw) / 2);opacity:.4;
-  bottom:calc(18px - 1.587 * var(--rw))}}
+/* viewBox is 140x900 and the engine skirt sits at y=562, i.e. 62.4% down, so
+   the base is 0.376 x (width x 6.4286) = 2.418 x width above the element's
+   bottom edge. Deriving the offset keeps the engines on the treeline. */
+.launch{--rw:clamp(54px,6.8vw,104px);
+  position:absolute;z-index:-2;left:calc(61% - var(--rw) / 2);width:var(--rw);
+  bottom:calc(30px - 2.418 * var(--rw));pointer-events:none;opacity:.95}
+@media (max-width:760px){.launch{--rw:72px;left:calc(58% - var(--rw) / 2);opacity:.8;
+  bottom:calc(18px - 2.418 * var(--rw))}}
 
 /* faint band of galaxy, slowly turning */
 .milky{position:absolute;inset:-30%;z-index:-2;pointer-events:none;opacity:.5;
@@ -286,8 +349,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 
 /* veil: protects the type where it sits, thins out to the right */
 .hero-veil{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(7,11,24,.94) 0%,rgba(7,11,24,.86) 34%,
-    rgba(7,11,24,.6) 58%,rgba(7,11,24,.2) 80%,transparent 100%)}
+  background:linear-gradient(100deg,rgba(7,11,24,.93) 0%,rgba(7,11,24,.8) 32%,
+    rgba(7,11,24,.42) 56%,rgba(7,11,24,.12) 78%,transparent 100%)}
 @media (max-width:760px){
   .hero-veil{background:linear-gradient(180deg,rgba(7,11,24,.82) 0%,
     rgba(7,11,24,.8) 46%,rgba(7,11,24,.58) 74%,rgba(7,11,24,.3) 100%)}
@@ -328,7 +391,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @keyframes rf-flicker{from{opacity:.98}to{opacity:.74}}
 
 /* rolling smoke column: three billows on staggered delays */
-.rf-smokecol{position:absolute;z-index:-2;left:calc(53% - 150px);bottom:-40px;
+.rf-smokecol{position:absolute;z-index:-2;left:calc(61% - 150px);bottom:-40px;
   width:300px;height:340px;pointer-events:none;opacity:.75}
 @media (max-width:760px){.rf-smokecol{left:calc(58% - 105px);width:210px;height:250px;opacity:.55}}
 .rf-puff{position:absolute;bottom:0;border-radius:50%;filter:blur(7px);
@@ -350,8 +413,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 
 /* ignition cloud at the pad */
-.launch-smoke{--sw:clamp(150px,20vw,260px);
-  position:absolute;z-index:-2;left:calc(53% - var(--sw) / 2);
+  .launch-smoke{--sw:clamp(150px,20vw,260px);
+  position:absolute;z-index:-2;left:calc(61% - var(--sw) / 2);
   bottom:calc(14px - var(--sw) / 2);
   width:var(--sw);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:radial-gradient(circle at 50% 62%,rgba(244,239,230,.5),rgba(244,239,230,.16) 42%,transparent 70%);
@@ -373,7 +436,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 .horizon{position:absolute;left:0;right:0;bottom:-1px;z-index:-1;width:100%;height:auto}
 
-.hero-copy{max-width:790px}
+.hero-copy{max-width:790px;position:relative}
+/* A uniform, feathered backing rather than a radial one: the radial left the
+   far end of the headline uncovered, and that is exactly where the vehicle
+   flies. Blurring the pseudo-element gives a soft edge with no visible box. */
+.hero-copy::before{content:"";position:absolute;inset:-7% -9% -9% -11%;z-index:-1;
+  pointer-events:none;border-radius:56px;background:rgba(7,11,24,.56);
+  filter:blur(30px)}
+.hero-copy>*{position:relative}
 .hero h1{font-size:var(--h1);margin:1.1rem 0 0;text-wrap:balance}
 .tagline{font-family:var(--font-display);font-weight:500;
   font-size:clamp(1.15rem,2.5vw,1.6rem);letter-spacing:-.01em;line-height:1.3;
@@ -671,6 +741,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="sky" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
     <div class="stars2" aria-hidden="true"></div>
+    <div class="stars3" aria-hidden="true"></div>
+    <div class="bstar s1" aria-hidden="true"></div><div class="bstar s2" aria-hidden="true"></div>
+    <div class="bstar s3" aria-hidden="true"></div><div class="bstar s4" aria-hidden="true"></div>
+    <div class="bstar s5" aria-hidden="true"></div><div class="bstar s6" aria-hidden="true"></div>
     <div class="milky" aria-hidden="true"></div>
     <div class="meteor m1" aria-hidden="true"></div>
     <div class="meteor m2" aria-hidden="true"></div>
@@ -682,54 +756,112 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     </div>
     <div class="launch" aria-hidden="true">
       <div class="launch-rise">
-        <svg viewBox="0 0 120 560" role="presentation">
+        <svg viewBox="0 0 140 900" role="presentation">
           <defs>
-            <linearGradient id="rfBody" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"   stop-color="#7d8798"/>
-              <stop offset=".34" stop-color="#cdd5e0"/>
-              <stop offset=".62" stop-color="#a9b3c2"/>
-              <stop offset="1"   stop-color="#6b7486"/>
+            <!-- polished stainless barrel: rim light, specular, core, shadow -->
+            <linearGradient id="rfSteel" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"    stop-color="#565f6e"/>
+              <stop offset=".06"  stop-color="#8f99a8"/>
+              <stop offset=".17"  stop-color="#c3ccd8"/>
+              <stop offset=".29"  stop-color="#eef2f7"/>
+              <stop offset=".40"  stop-color="#cdd5e0"/>
+              <stop offset=".54"  stop-color="#9ea8b7"/>
+              <stop offset=".70"  stop-color="#798393"/>
+              <stop offset=".86"  stop-color="#5d6674"/>
+              <stop offset="1"    stop-color="#8a94a3"/>
             </linearGradient>
-            <linearGradient id="rfFlame" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#fff6dc"/>
-              <stop offset=".22" stop-color="#f5a524"/>
-              <stop offset=".62" stop-color="#e8623c"/>
+            <linearGradient id="rfNose" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"   stop-color="#4f5765"/>
+              <stop offset=".3"  stop-color="#b9c2ce"/>
+              <stop offset=".46" stop-color="#e6ebf1"/>
+              <stop offset=".64" stop-color="#a8b2c0"/>
+              <stop offset="1"   stop-color="#5a6270"/>
+            </linearGradient>
+            <linearGradient id="rfShade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"   stop-color="#0b1226" stop-opacity=".34"/>
+              <stop offset=".26" stop-color="#0b1226" stop-opacity="0"/>
+              <stop offset=".74" stop-color="#0b1226" stop-opacity="0"/>
+              <stop offset="1"   stop-color="#0b1226" stop-opacity=".3"/>
+            </linearGradient>
+            <!-- plume: white-hot core through to a diffuse, scattered tail -->
+            <linearGradient id="rfCoreG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0"   stop-color="#ffffff"/>
+              <stop offset=".18" stop-color="#fff6de"/>
+              <stop offset=".46" stop-color="#ffd089"/>
+              <stop offset=".78" stop-color="#ff9a52" stop-opacity=".5"/>
+              <stop offset="1"   stop-color="#ff7a3c" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="rfMidG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0"   stop-color="#ffe3bb" stop-opacity="1"/>
+              <stop offset=".4"  stop-color="#ffab6c" stop-opacity=".78"/>
+              <stop offset=".8"  stop-color="#f4713f" stop-opacity=".34"/>
               <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
             </linearGradient>
+            <linearGradient id="rfOuterG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0"   stop-color="#ffc48c" stop-opacity=".72"/>
+              <stop offset=".45" stop-color="#f4884c" stop-opacity=".4"/>
+              <stop offset="1"   stop-color="#d4542c" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="rfSoftPlume" x="-70%" y="-12%" width="240%" height="130%">
+              <feGaussianBlur stdDeviation="9"/>
+            </filter>
+            <filter id="rfMidPlume" x="-50%" y="-10%" width="200%" height="125%">
+              <feGaussianBlur stdDeviation="4"/>
+            </filter>
+            <filter id="rfCorePlume" x="-40%" y="-8%" width="180%" height="120%">
+              <feGaussianBlur stdDeviation="1.4"/>
+            </filter>
           </defs>
 
-          <!-- plume first so the engine skirt overlaps its mouth -->
+          <!-- ============ PLUME (drawn first; the skirt overlaps its mouth) -->
           <g class="rf-plume">
-            <path d="M45 366 C49 418 53 452 60 502 C67 452 71 418 75 366 Z" fill="url(#rfFlame)"/>
-            <path class="rf-core" d="M52 366 C55 400 57 422 60 448 C63 422 65 400 68 366 Z" fill="#fff4d6"/>
+            <path filter="url(#rfSoftPlume)" fill="url(#rfOuterG)"
+                  d="M48 558 C34 660 22 760 14 886 L126 886 C118 760 106 660 92 558 Z"/>
+            <path filter="url(#rfMidPlume)" fill="url(#rfMidG)"
+                  d="M54 558 C46 650 38 742 32 868 L108 868 C102 742 94 650 86 558 Z"/>
+            <g class="rf-core" filter="url(#rfCorePlume)">
+              <path fill="url(#rfCoreG)"
+                    d="M60 556 C57 620 55 680 52 812 L88 812 C85 680 83 620 80 556 Z"/>
+              <!-- shock diamonds down the core -->
+              <g fill="#fffdf4" opacity=".85">
+                <ellipse cx="70" cy="596" rx="7.5" ry="4"/>
+                <ellipse cx="70" cy="636" rx="6.2" ry="3.4"/>
+                <ellipse cx="70" cy="676" rx="5" ry="2.8"/>
+                <ellipse cx="70" cy="714" rx="3.8" ry="2.2"/>
+              </g>
+            </g>
           </g>
 
-          <!-- vehicle: stainless barrel, welded rings, aft engine bay -->
-          <path d="M36 300 L8 372 L36 350 Z" fill="#9aa5ba"/>
-          <path d="M84 300 L112 372 L84 350 Z" fill="#79839a"/>
-          <path d="M60 8 C76 50 84 82 84 114 L84 356 L36 356 L36 114 C36 82 44 50 60 8 Z" fill="url(#rfBody)"/>
-          <!-- specular band, restrained -->
-          <path d="M49 96 C49 74 53 44 60 16 C63 44 65 74 65 96 L65 356 L49 356 Z"
-                fill="#ffffff" opacity=".13"/>
-          <!-- weld rings down the barrel -->
-          <g stroke="#6d7789" stroke-width="1.4" opacity=".4">
-            <path d="M37 150h46M37 184h46M37 218h46M37 252h46M37 286h46M37 320h46"/>
+          <!-- ============ VEHICLE -->
+          <!-- aft fins, behind the barrel -->
+          <path d="M22 436 L2 556 L22 540 Z" fill="#7d8797"/>
+          <path d="M118 436 L138 556 L118 540 Z" fill="#5e6776"/>
+          <!-- nose cone -->
+          <path d="M70 18 C92 62 108 110 108 154 L32 154 C32 110 48 62 70 18 Z" fill="url(#rfNose)"/>
+          <!-- barrel -->
+          <rect x="32" y="152" width="76" height="390" fill="url(#rfSteel)"/>
+          <!-- weld rings: a light/dark pair each, like rolled stainless -->
+          <g opacity=".5">
+            <path d="M32 190h76M32 228h76M32 266h76M32 304h76M32 342h76M32 380h76M32 418h76M32 456h76M32 494h76"
+                  stroke="#4b5462" stroke-width="1.5"/>
+            <path d="M32 192h76M32 230h76M32 268h76M32 306h76M32 344h76M32 382h76M32 420h76M32 458h76M32 496h76"
+                  stroke="#f0f4f9" stroke-width=".8" opacity=".5"/>
           </g>
-          <!-- aft engine bay, darker -->
-          <path d="M36 330 L84 330 L84 356 L36 356 Z" fill="#59637a" opacity=".85"/>
-          <!-- forward flaps -->
-          <path d="M36 122 L16 164 L36 156 Z" fill="#aeb9cb"/>
-          <path d="M84 122 L104 164 L84 156 Z" fill="#8b95aa"/>
-          <!-- skirt + three bells -->
-          <path d="M38 356 L82 356 L78 374 L42 374 Z" fill="#4e5668"/>
-          <g fill="#3c4353">
-            <path d="M44 374 h10 l2 10 h-14 Z"/>
-            <path d="M55 374 h10 l2 10 h-14 Z"/>
-            <path d="M66 374 h10 l2 10 h-14 Z"/>
+          <!-- environment shading down both limbs -->
+          <rect x="32" y="152" width="76" height="390" fill="url(#rfShade)"/>
+          <path d="M70 18 C92 62 108 110 108 154 L32 154 C32 110 48 62 70 18 Z" fill="url(#rfShade)" opacity=".38"/>
+          <!-- aft engine bay -->
+          <rect x="32" y="500" width="76" height="42" fill="#3f4756"/>
+          <rect x="32" y="500" width="76" height="42" fill="url(#rfShade)" opacity=".8"/>
+          <!-- skirt + engine bells -->
+          <path d="M33 542 L107 542 L101 562 L39 562 Z" fill="#2f3542"/>
+          <g fill="#242a35">
+            <path d="M42 562 h13 l2 12 h-17 Z"/>
+            <path d="M58 562 h13 l2 12 h-17 Z"/>
+            <path d="M74 562 h13 l2 12 h-17 Z"/>
           </g>
-          <!-- markings -->
-          <rect x="54" y="196" width="12" height="3" rx="1.5" fill="#5d6779" opacity=".7"/>
-          <rect x="50" y="60" width="4" height="22" rx="2" fill="#ffffff" opacity=".18"/>
+          <!-- hot glow where the bells meet the plume -->
+          <ellipse cx="70" cy="572" rx="30" ry="8" fill="#ffb066" opacity=".5" filter="url(#rfMidPlume)"/>
         </svg>
       </div>
     </div>
@@ -1137,14 +1269,14 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
           <circle cx="348.5" cy="697.8" r="10" fill="#f5a524"/>
           <text class="la-lbl" x="382.5" y="703.8">ROCKET FARM</text>
           <text class="la-lbl dim" x="382.5" y="731.8">KAPLAN &middot; VERMILION PARISH</text>
-          <text class="la-lbl dim" x="344.5" y="843.8">~30 MI SOUTH</text>
+          <text class="la-lbl dim" x="344.5" y="843.8">~30 MI TO STARBASE LOUISIANA (ANNOUNCED)</text>
         </svg>
         <figcaption>Southwest Louisiana — far enough inland to stay dry, close enough to drive to work.</figcaption>
       </figure>
 
       <div class="loc reveal">
         <ul class="loc-list">
-          <li><b>Close to the work, not in the middle of it.</b> Roughly thirty miles north of the planned launch campus — near enough for a daily commute, far enough that road closures on launch day don't box you in.</li>
+          <li><b>About 30 miles from the announced Starbase Louisiana site.</b> Louisiana Economic Development puts the planned launch campus at Pecan Island, roughly thirty miles due south of the park by bearing. Near enough for a daily commute, far enough that road closures on launch day don't box you in. The gate location and access roads aren't final yet, so we'll publish a road distance and drive time once they are.</li>
           <li><b>Real town, five minutes out.</b> Kaplan has groceries, fuel, hardware and a hospital. You're not driving an hour for a gallon of milk.</li>
           <li><b>Sportsman's paradise, literally.</b> Vermilion Parish markets year-round coastal fishing and nationally known duck and goose hunting, with public boat launches and guides nearby.</li>
           <li><b>High and dry.</b> The property sits in FEMA Zone X, unshaded — outside the mapped special flood hazard area.</li>
@@ -1177,11 +1309,12 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
           <div class="dist-row"><span>Abbeville</span><b>~15 mi · 20 min</b></div>
           <div class="dist-row"><span>Lafayette</span><b>~30 mi · 40 min</b></div>
           <div class="dist-row"><span>Lake Charles</span><b>~70 mi · 1 hr 15</b></div>
-          <div class="dist-row"><span>Planned launch campus</span><b>~30 mi south</b></div>
+          <div class="dist-row"><span>Starbase Louisiana (announced site, Pecan Island)</span><b>~30 mi south</b></div>
           <p class="privacy" style="margin-top:1rem">
             Distances and times are approximate and offered only for planning — tap
-            <em>Directions</em> above for a live time from wherever you are. Road access to the
-            launch site is set by others and may change.
+            <em>Directions</em> above for a live time from wherever you are. The Starbase gate
+            and its access roads are not final; that figure is straight-line bearing, not a
+            road route, and access on launch days is set by others.
           </p>
 
           <div class="gate-note">
