@@ -20,9 +20,11 @@ Six pages share one stylesheet and one script:
 `assets/site.css` holds all styling and `assets/site.js` all behaviour (site
 map, filters, tooltip, scroll reveal, form, mobile menu, day/night sky, crew
 button). Each script block checks for the elements it needs, so it is safe on
-every page. The header and footer are repeated verbatim in each page; when you
-change a nav link, change it in all six files (a search for `nav-links` finds
-them). All internal links and asset paths are root-absolute (`/spaces/`,
+every page. The header and footer live once each in `partials/header.html` and
+`partials/footer.html`; `python3 build.py` stamps them into every page between
+the `<!-- header -->` and `<!-- footer -->` markers, setting the current-page
+highlight and the reserve link for each page. Edit a partial, run the build,
+commit all of it. All internal links and asset paths are root-absolute (`/spaces/`,
 `/img/...`), so pages must be served from the domain root, which GitHub Pages
 does.
 

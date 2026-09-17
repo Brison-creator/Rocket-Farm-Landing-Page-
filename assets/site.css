@@ -985,6 +985,8 @@ select option{background:#0c1226;color:var(--cream)}
 footer{border-top:1px solid var(--line);background:var(--footer-bg);padding:clamp(2.5rem,6vw,4rem) 0 2.5rem}
 .foot-top{display:grid;gap:2rem;grid-template-columns:1fr}
 @media (min-width:760px){.foot-top{grid-template-columns:1.3fr 1fr 1fr}}
+@media (min-width:760px){.foot-top.foot-4{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+@media (min-width:480px) and (max-width:759px){.foot-top.foot-4{grid-template-columns:1fr 1fr}.foot-top.foot-4 .foot-col:first-child{grid-column:1/-1}}
 .foot-col h4{font-family:var(--font-display);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 .9rem;font-weight:500}
 .foot-col p,.foot-col a{color:var(--muted);font-size:.93rem;text-decoration:none;display:block}
 .foot-col a:hover{color:var(--cream)}
