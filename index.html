@@ -186,9 +186,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
    knocks the vehicle back behind the type. */
 .sky-bodies{position:absolute;inset:0;z-index:-1;pointer-events:none}
 .moon{position:absolute;top:5%;right:6%;width:clamp(62px,8vw,112px);height:auto;
-  filter:drop-shadow(0 0 26px rgba(244,239,230,.22))}
+  filter:drop-shadow(0 0 30px rgba(244,239,230,.1))}
 .mars{position:absolute;top:26%;right:23%;width:clamp(22px,2.8vw,42px);height:auto;
-  filter:drop-shadow(0 0 14px rgba(232,98,60,.35))}
+  filter:drop-shadow(0 0 12px rgba(232,98,60,.16))}
 @media (max-width:760px){
   /* Phones run the copy full-width, so there is no margin the bodies can sit
      in safely. Drop them behind the veil and let it haze them instead — the
@@ -246,7 +246,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 .rf-smokecol{position:absolute;z-index:-2;left:calc(53% - 150px);bottom:-40px;
   width:300px;height:340px;pointer-events:none;opacity:.75}
 @media (max-width:760px){.rf-smokecol{left:calc(58% - 105px);width:210px;height:250px;opacity:.55}}
-.rf-puff{position:absolute;bottom:0;border-radius:50%;
+.rf-puff{position:absolute;bottom:0;border-radius:50%;filter:blur(7px);
   background:radial-gradient(circle at 46% 58%,rgba(244,239,230,.42),rgba(226,220,208,.18) 46%,transparent 72%);
   will-change:transform,opacity;opacity:0;animation:rf-puff 22s linear infinite}
 .rf-puff.a{left:14%;width:46%;aspect-ratio:1;animation-delay:0s}
@@ -448,6 +448,14 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .phase-rate b{color:var(--cream);font-family:var(--font-display)}
 
 /* ---------- Location ---------- */
+.la-map{margin:0 0 clamp(2rem,4vw,3rem);max-width:430px}
+.la-map svg{width:100%;height:auto;display:block}
+.la-lbl{font-family:var(--font-display);font-weight:500;font-size:26px;
+  letter-spacing:.1em;fill:var(--cream)}
+.la-lbl.dim{font-size:21px;fill:var(--faint)}
+.la-map figcaption{font-size:.85rem;color:var(--faint);margin-top:.9rem;max-width:42ch}
+@media (min-width:900px){.la-map{max-width:390px;float:none}}
+
 .loc{display:grid;gap:clamp(1.5rem,4vw,3rem);grid-template-columns:1fr;align-items:start}
 .loc>*{min-width:0}
 @media (min-width:900px){.loc{grid-template-columns:1.05fr .95fr}}
@@ -587,10 +595,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
         <svg viewBox="0 0 120 560" role="presentation">
           <defs>
             <linearGradient id="rfBody" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"   stop-color="#8e99ad"/>
-              <stop offset=".34" stop-color="#e9eef6"/>
-              <stop offset=".62" stop-color="#c2ccdc"/>
-              <stop offset="1"   stop-color="#79839a"/>
+              <stop offset="0"   stop-color="#7d8798"/>
+              <stop offset=".34" stop-color="#cdd5e0"/>
+              <stop offset=".62" stop-color="#a9b3c2"/>
+              <stop offset="1"   stop-color="#6b7486"/>
             </linearGradient>
             <linearGradient id="rfFlame" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0"   stop-color="#fff6dc"/>
@@ -610,9 +618,9 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
           <path d="M36 300 L8 372 L36 350 Z" fill="#9aa5ba"/>
           <path d="M84 300 L112 372 L84 350 Z" fill="#79839a"/>
           <path d="M60 8 C76 50 84 82 84 114 L84 356 L36 356 L36 114 C36 82 44 50 60 8 Z" fill="url(#rfBody)"/>
-          <!-- specular band -->
+          <!-- specular band, restrained -->
           <path d="M49 96 C49 74 53 44 60 16 C63 44 65 74 65 96 L65 356 L49 356 Z"
-                fill="#ffffff" opacity=".22"/>
+                fill="#ffffff" opacity=".13"/>
           <!-- weld rings down the barrel -->
           <g stroke="#6d7789" stroke-width="1.4" opacity=".4">
             <path d="M37 150h46M37 184h46M37 218h46M37 252h46M37 286h46M37 320h46"/>
@@ -648,27 +656,50 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
             <stop offset="1" stop-color="#a7a396"/>
           </radialGradient>
           <clipPath id="mnClip"><circle cx="60" cy="60" r="50"/></clipPath>
+          <radialGradient id="mnLimb" cx=".42" cy=".38" r=".72">
+            <stop offset=".6" stop-color="#0b1226" stop-opacity="0"/>
+            <stop offset="1" stop-color="#0b1226" stop-opacity=".3"/>
+          </radialGradient>
+          <linearGradient id="mnTerm" x1="0" y1="0" x2=".92" y2=".78">
+            <stop offset=".42" stop-color="#0b1226" stop-opacity="0"/>
+            <stop offset=".74" stop-color="#0b1226" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#0b1226" stop-opacity=".46"/>
+          </linearGradient>
+          <filter id="mnSoft" x="-25%" y="-25%" width="150%" height="150%">
+            <feGaussianBlur stdDeviation="3.4"/>
+          </filter>
+          <filter id="mnSoft2" x="-25%" y="-25%" width="150%" height="150%">
+            <feGaussianBlur stdDeviation="1.2"/>
+          </filter>
         </defs>
         <circle cx="60" cy="60" r="50" fill="url(#mnG)"/>
-        <g clip-path="url(#mnClip)" fill="#9b9789" opacity=".42">
-          <circle cx="44" cy="48" r="9"/><circle cx="72" cy="38" r="5.5"/>
-          <circle cx="80" cy="66" r="11"/><circle cx="52" cy="80" r="6.5"/>
-          <circle cx="34" cy="68" r="4"/><circle cx="64" cy="58" r="3"/>
+        <!-- maria: broad soft darks, not drawn craters -->
+        <g clip-path="url(#mnClip)" filter="url(#mnSoft)">
+          <ellipse cx="46" cy="44" rx="20" ry="15" fill="#a9a598" opacity=".3" transform="rotate(-18 46 44)"/>
+          <ellipse cx="76" cy="68" rx="18" ry="13" fill="#a9a598" opacity=".26" transform="rotate(12 76 68)"/>
+          <ellipse cx="40" cy="76" rx="13" ry="10" fill="#a9a598" opacity=".2"/>
+          <ellipse cx="70" cy="34" rx="9" ry="7" fill="#a9a598" opacity=".18"/>
         </g>
-        <!-- terminator: limb falls away to the lower right -->
+        <!-- a few small craters, low contrast -->
+        <g clip-path="url(#mnClip)" filter="url(#mnSoft2)" fill="#9e9a8d" opacity=".26">
+          <circle cx="58" cy="56" r="3.4"/><circle cx="85" cy="50" r="2.4"/>
+          <circle cx="33" cy="60" r="2.1"/><circle cx="64" cy="84" r="2.8"/>
+          <circle cx="50" cy="30" r="1.8"/>
+        </g>
+        <!-- limb darkening + terminator, soft -->
         <g clip-path="url(#mnClip)">
-          <ellipse cx="86" cy="76" rx="52" ry="52" fill="#0b1226" opacity=".26"/>
+          <circle cx="60" cy="60" r="50" fill="url(#mnLimb)"/>
+          <circle cx="60" cy="60" r="50" fill="url(#mnTerm)"/>
         </g>
-        <!-- the base: two habs, a mast and lit windows -->
-        <g>
-          <path d="M38 40a8 8 0 0 1 16 0z" fill="#59564e"/>
-          <path d="M56 41a5.5 5.5 0 0 1 11 0z" fill="#4e4b44"/>
-          <rect x="53" y="38" width="5" height="3" fill="#59564e"/>
-          <path d="M45.4 40V28" stroke="#59564e" stroke-width="1.6"/>
-          <circle cx="45.4" cy="26.6" r="1.9" fill="#f5a524"/>
-          <circle cx="43" cy="37" r="1.1" fill="#ffd79a"/>
-          <circle cx="48" cy="37" r="1.1" fill="#ffd79a"/>
-          <circle cx="60.5" cy="38.6" r="1" fill="#ffd79a"/>
+        <!-- the base: a low structure, a mast, and pinpoint lights -->
+        <g clip-path="url(#mnClip)">
+          <path d="M38 41h17v-3.2h-17z" fill="#5f5c53" opacity=".95"/>
+          <path d="M57 41h9v-2.4h-9z" fill="#57544c" opacity=".95"/>
+          <path d="M44.6 37.8V27.4" stroke="#5f5c53" stroke-width="1.1"/>
+          <circle cx="44.6" cy="26.6" r="1.2" fill="#f5a524" opacity=".9"/>
+          <circle cx="41.5" cy="39.4" r=".8" fill="#ffd79a" opacity=".85"/>
+          <circle cx="47.5" cy="39.4" r=".8" fill="#ffd79a" opacity=".85"/>
+          <circle cx="60" cy="39.8" r=".7" fill="#ffd79a" opacity=".7"/>
         </g>
       </svg>
 
@@ -676,17 +707,28 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <svg class="mars" viewBox="0 0 100 100">
         <defs>
           <radialGradient id="mrG" cx=".38" cy=".33" r=".8">
-            <stop offset="0" stop-color="#ef8452"/>
-            <stop offset=".55" stop-color="#cf5c34"/>
-            <stop offset="1" stop-color="#963d22"/>
+            <stop offset="0" stop-color="#cf8663"/>
+            <stop offset=".55" stop-color="#ad6041"/>
+            <stop offset="1" stop-color="#7d4028"/>
           </radialGradient>
           <clipPath id="mrClip"><circle cx="50" cy="50" r="42"/></clipPath>
+          <linearGradient id="mrTerm" x1="0" y1="0" x2=".9" y2=".82">
+            <stop offset=".4" stop-color="#0b1226" stop-opacity="0"/>
+            <stop offset=".72" stop-color="#0b1226" stop-opacity=".2"/>
+            <stop offset="1" stop-color="#0b1226" stop-opacity=".55"/>
+          </linearGradient>
+          <filter id="mrSoft" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3.6"/>
+          </filter>
         </defs>
         <circle cx="50" cy="50" r="42" fill="url(#mrG)"/>
+        <g clip-path="url(#mrClip)" filter="url(#mrSoft)">
+          <ellipse cx="38" cy="58" rx="24" ry="14" fill="#6d3620" opacity=".34" transform="rotate(-12 38 58)"/>
+          <ellipse cx="68" cy="40" rx="16" ry="10" fill="#6d3620" opacity=".24" transform="rotate(8 68 40)"/>
+          <ellipse cx="50" cy="13" rx="14" ry="5" fill="#e6ded0" opacity=".42"/>
+        </g>
         <g clip-path="url(#mrClip)">
-          <path d="M22 58c10-7 20-3 29 2s18 4 27-3c-6 16-22 26-40 22-9-2-15-9-16-21z" fill="#8c3520" opacity=".45"/>
-          <ellipse cx="50" cy="13" rx="17" ry="7" fill="#f6efe2" opacity=".85"/>
-          <ellipse cx="72" cy="66" rx="34" ry="34" fill="#0b1226" opacity=".22"/>
+          <circle cx="50" cy="50" r="42" fill="url(#mrTerm)"/>
         </g>
       </svg>
     </div>
@@ -1052,6 +1094,25 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
         <p class="eyebrow">Location</p>
         <h2>10729 Farmer Road, Kaplan, Louisiana.</h2>
       </div>
+
+      <figure class="la-map">
+        <svg viewBox="0 0 1000 947" role="img"
+             aria-label="Outline of Louisiana with Rocket Farm marked in Vermilion Parish, about thirty miles north of the planned launch site on the coast.">
+          <path d="M0.0,75.5 L0.0,0.0 L570.6,3.5 L561.1,20.6 L568.7,27.6 L576.9,23.5 L576.8,9.0 L584.8,8.1 L590.8,26.7 L574.7,40.8 L570.9,54.0 L571.1,63.0 L592.7,68.7 L573.3,87.4 L575.5,97.6 L585.5,105.3 L580.5,124.0 L604.7,142.4 L603.5,153.1 L623.6,159.7 L602.6,186.0 L595.8,179.7 L570.9,190.3 L570.7,204.7 L594.3,203.7 L598.0,209.6 L554.3,265.9 L536.4,270.2 L524.6,303.0 L523.3,319.6 L509.3,323.3 L508.8,330.1 L520.9,337.2 L499.8,346.9 L504.3,370.2 L496.2,384.6 L502.6,399.7 L489.6,406.7 L483.7,431.4 L492.5,454.6 L487.6,462.5 L477.2,467.3 L855.7,466.6 L833.0,544.4 L840.1,566.2 L864.6,594.0 L875.2,620.0 L872.5,632.0 L879.6,648.3 L886.6,656.7 L896.1,656.7 L873.0,666.5 L865.6,673.5 L864.5,680.9 L855.2,685.2 L858.1,692.5 L837.8,688.5 L830.1,697.5 L832.7,708.8 L840.6,714.1 L855.8,708.1 L858.8,710.9 L852.8,713.4 L852.9,719.8 L859.1,726.5 L869.1,730.2 L878.5,728.1 L882.9,722.4 L884.8,699.8 L900.7,690.7 L904.6,680.2 L917.1,687.0 L926.3,685.9 L914.2,700.6 L924.9,706.9 L927.1,719.0 L937.6,716.3 L945.9,700.0 L950.4,698.0 L950.6,704.2 L956.9,704.8 L954.3,715.8 L944.6,715.9 L936.2,724.6 L953.3,727.0 L924.0,735.8 L934.3,747.0 L945.1,743.0 L946.4,754.9 L923.6,747.4 L915.2,758.3 L916.0,768.5 L895.0,757.8 L871.0,756.5 L872.3,765.4 L894.3,774.8 L903.9,785.4 L871.3,774.2 L873.0,782.8 L864.4,785.3 L867.5,795.6 L861.2,810.5 L874.1,816.7 L883.2,828.6 L891.3,822.1 L895.3,824.7 L899.3,840.5 L905.5,834.7 L909.4,838.9 L932.6,841.6 L930.6,849.0 L944.0,847.4 L952.4,858.2 L960.4,849.5 L964.5,851.3 L967.4,859.8 L980.3,872.0 L980.2,882.2 L994.4,878.8 L1000.0,888.2 L990.8,893.4 L995.4,899.0 L987.8,913.6 L976.0,913.9 L966.4,927.9 L955.3,911.7 L949.6,910.6 L948.7,916.4 L937.6,920.9 L918.5,947.2 L919.2,937.9 L933.8,920.6 L929.8,913.1 L919.7,909.8 L918.9,900.3 L904.4,880.1 L861.9,861.3 L831.5,857.8 L830.8,851.1 L838.3,838.8 L832.8,832.3 L835.0,822.6 L831.6,819.3 L815.2,830.6 L799.3,822.8 L794.6,845.8 L799.9,861.7 L781.7,869.8 L782.8,874.2 L787.8,881.6 L793.3,880.9 L811.6,869.6 L767.3,905.5 L732.7,916.5 L755.4,904.4 L755.3,900.1 L746.2,896.9 L741.8,889.4 L742.1,884.5 L748.0,882.5 L735.8,865.8 L724.9,871.4 L722.6,883.4 L708.1,885.3 L703.7,879.8 L712.4,868.9 L700.6,862.6 L686.3,866.0 L685.1,873.0 L693.9,878.0 L690.6,882.6 L676.1,881.5 L673.5,900.1 L650.3,903.7 L642.4,915.2 L650.1,918.5 L675.4,914.5 L635.4,920.8 L630.7,907.9 L611.2,888.1 L603.5,890.7 L584.9,886.5 L577.9,879.9 L548.2,872.6 L537.5,859.1 L545.6,857.9 L554.1,844.3 L564.3,844.3 L559.6,828.9 L552.3,826.5 L547.7,818.5 L536.9,817.5 L532.8,810.7 L520.1,810.6 L514.8,803.9 L498.2,806.9 L493.7,783.5 L474.8,783.3 L480.8,765.4 L478.0,758.1 L454.3,756.8 L433.2,767.2 L428.8,765.4 L434.0,743.1 L427.2,736.5 L394.0,751.2 L375.6,768.6 L383.0,786.0 L412.1,789.2 L420.5,783.4 L432.4,783.3 L449.9,796.5 L462.3,799.2 L451.7,809.4 L450.7,816.8 L440.6,820.2 L396.0,794.7 L373.7,795.3 L343.8,806.6 L283.0,796.0 L212.0,764.7 L161.9,750.0 L71.3,757.0 L40.7,770.1 L28.7,751.4 L30.2,734.8 L65.7,682.9 L69.0,664.4 L64.0,630.1 L55.0,621.4 L56.6,608.2 L68.4,597.0 L66.0,581.4 L60.1,573.9 L95.2,509.2 L101.6,484.6 L101.4,425.3 L88.1,426.8 L85.0,406.8 L73.7,397.9 L79.8,381.0 L68.9,372.5 L62.2,354.3 L48.6,343.6 L41.3,331.5 L45.7,301.7 L40.3,281.9 L0.1,236.0 L0.0,75.5 Z" fill="rgba(244,239,230,.045)"
+                stroke="rgba(244,239,230,.34)" stroke-width="3.2"
+                stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          <!-- indicative bearing south to the launch site: ~184 deg true, ~30 mi -->
+          <path d="M348.5,723.8 L348.5,793.8" stroke="#f5a524" stroke-width="3"
+                stroke-dasharray="9 8" opacity=".75"/>
+          <path d="M339.5,789.8 L348.5,809.8 L357.5,789.8 Z" fill="#f5a524" opacity=".75"/>
+          <circle cx="348.5" cy="697.8" r="21" fill="none" stroke="#f5a524" stroke-width="2.5" opacity=".45"/>
+          <circle cx="348.5" cy="697.8" r="10" fill="#f5a524"/>
+          <text class="la-lbl" x="382.5" y="703.8">ROCKET FARM</text>
+          <text class="la-lbl dim" x="382.5" y="731.8">KAPLAN &middot; VERMILION PARISH</text>
+          <text class="la-lbl dim" x="344.5" y="843.8">~30 MI SOUTH</text>
+        </svg>
+        <figcaption>Southwest Louisiana — far enough inland to stay dry, close enough to drive to work.</figcaption>
+      </figure>
 
       <div class="loc reveal">
         <ul class="loc-list">
