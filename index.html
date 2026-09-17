@@ -84,8 +84,8 @@ img,svg{display:block;max-width:100%}
   text-shadow:0 0 18px rgba(245,165,36,.35)}
 .eyebrow::before{content:"";display:inline-block;width:16px;height:1px;
   background:var(--amber);vertical-align:3px;margin-right:.7rem;opacity:.7}
-/* the dash costs a line on phones */
-@media (max-width:480px){.eyebrow::before{display:none}.eyebrow{letter-spacing:.16em}}
+/* the dash costs a line on the narrowest phones */
+@media (max-width:400px){.eyebrow::before{display:none}.eyebrow{letter-spacing:.16em}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:8px;top:8px;z-index:99;background:var(--cream);color:var(--night);padding:10px 16px;border-radius:8px}
@@ -144,11 +144,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 @media (min-width:600px){.nav .btn{padding:.85rem 1.5rem;font-size:.95rem}}
 .cta-short{display:inline}.cta-long{display:none}
 @media (min-width:480px){.cta-short{display:none}.cta-long{display:inline}}
-.wordmark{display:flex;align-items:center;gap:.62rem;
-  font-family:var(--font-display);font-weight:500;
-  font-size:clamp(.76rem,3vw,.94rem);letter-spacing:.2em;
-  text-transform:uppercase;text-decoration:none;flex:none;white-space:nowrap}
+.wordmark{display:flex;align-items:center;gap:.66rem;
+  font-family:var(--font-display);text-decoration:none;flex:none;white-space:nowrap}
 .wordmark svg{width:17px;height:24px;flex:none}
+.wordmark-txt{display:flex;flex-direction:column;gap:.18em;line-height:1}
+.wordmark-name{font-weight:500;font-size:clamp(.76rem,3vw,.94rem);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
+.wordmark-loc{font-weight:500;font-size:clamp(.5rem,1.9vw,.58rem);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
 .nav-links{display:none;gap:1.75rem;align-items:center}
 .nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--cream)}
@@ -446,7 +449,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
   pointer-events:none;border-radius:56px;background:rgba(7,11,24,.56);
   filter:blur(30px)}
 .hero-copy>*{position:relative}
-.hero h1{font-size:var(--h1);margin:1.1rem 0 0;text-wrap:balance}
+.hero h1{font-size:var(--h1);margin:0;text-wrap:balance}
 .tagline{font-family:var(--font-display);font-weight:500;
   font-size:clamp(1.15rem,2.5vw,1.6rem);letter-spacing:-.01em;line-height:1.3;
   margin-top:1.15rem;max-width:34ch;text-wrap:balance;
@@ -720,7 +723,10 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
         <path d="M8.9 19.6 6.1 26.4l2.8-1.7zm6.2 0 2.8 6.8-2.8-1.7z" fill="#f4efe6" opacity=".55"/>
         <path d="M10.3 25h3.4L12 32.4z" fill="#f5a524"/>
       </svg>
-      Rocket&nbsp;Farm
+      <span class="wordmark-txt">
+        <span class="wordmark-name">Rocket&nbsp;Farm</span>
+        <span class="wordmark-loc">Kaplan, Louisiana</span>
+      </span>
     </a>
     <div class="nav-links">
       <a href="#who">Who it's for</a>
@@ -901,7 +907,6 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
 
     <div class="wrap">
      <div class="hero-copy">
-      <p class="eyebrow">Kaplan, Louisiana &nbsp;·&nbsp; Vermilion Parish</p>
       <h1>Seventeen spaces. Thirty miles from the pad.</h1>
       <p class="tagline">Built for the people building the future.</p>
       <p class="lede">
