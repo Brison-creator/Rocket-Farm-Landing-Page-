@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# No crawl-delay: the site is a single static page.
 Sitemap: https://therocketfarm.com/sitemap.xml

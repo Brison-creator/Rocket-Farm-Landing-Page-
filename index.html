@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rocket Farm — 17 full-hookup RV spaces from $650/mo | Kaplan, Louisiana</title>
-<meta name="description" content="Rocket Farm is a 17-space full-hookup RV park in development in Kaplan, Louisiana — thirty miles north of the state's new launch campus. Monthly spaces from $650, nightly from $55. See every lot and its rate.">
+<title>RV Park in Kaplan, LA | Rocket Farm — Monthly from $650</title>
+<meta name="description" content="Full-hookup RV park in Kaplan, Louisiana. 17 pull-through spaces, monthly from $650 plus metered electric, nightly from $55. ~30 mi from Starbase Louisiana.">
 <meta name="theme-color" content="#070b18">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="geo.placename" content="Kaplan, Vermilion Parish, Louisiana">
+<meta name="geo.region" content="US-LA">
 
 <link rel="canonical" href="https://therocketfarm.com/">
 
@@ -20,13 +23,21 @@
 <meta property="og:image:alt" content="Rocket Farm — seventeen full-hookup RV spaces in Kaplan, Louisiana.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rocket Farm — RV park in Kaplan, Louisiana">
+<meta name="twitter:description" content="17 full-hookup pull-through RV spaces. Monthly from $650 plus metered electric. About 30 miles from Starbase Louisiana.">
 <meta name="twitter:image" content="https://therocketfarm.com/og.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070b18'/%3E%3Cpath d='M50 18c9 10 13 22 13 34l-7 6H44l-7-6c0-12 4-24 13-34z' fill='%23f5a524'/%3E%3Cpath d='M44 62h12l-6 20-6-20z' fill='%23e8623c'/%3E%3C/svg%3E">
 
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts must not block first paint on a phone: fetched as a preload and
+     promoted to a stylesheet on load, with a plain link for no-JS. The
+     fallback stack renders immediately either way. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 
 <style>
 :root{
@@ -311,6 +322,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.8);backdrop-fil
 }
 /* the phone hero starts its copy much higher, so there is no clear band */
 @media (max-width:760px){.meteor{display:none}}
+/* Phones: the tail is heavily blurred, and animating its scale re-rasterises
+   those filters every frame. Hold it static and let opacity do the ignition. */
+@media (max-width:760px){
+  .rf-plume-far{animation:none;transform:scaleY(1)}
+  .moon,.mars{will-change:transform}
+}
 @media (prefers-reduced-motion:reduce){.meteor{display:none}}
 
 /* Moon and Mars sit above the veil so they stay crisp while the veil still
@@ -662,6 +679,30 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .dist-row b{font-family:var(--font-display);white-space:nowrap}
 
 /* ---------- Waitlist ---------- */
+.faq{max-width:78ch;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;padding:1.15rem 2.4rem 1.15rem 0;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary h3{font-size:clamp(1rem,1.5vw,1.09rem);font-weight:700;display:inline;
+  letter-spacing:-.01em;color:var(--cream)}
+.faq-item summary::after{content:"";position:absolute;right:.5rem;top:1.55rem;
+  width:9px;height:9px;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);
+  rotate:45deg;transition:rotate .18s ease}
+.faq-item[open] summary::after{rotate:225deg}
+.faq-item summary:hover h3{color:#fff}
+.faq-item > p{color:var(--muted);font-size:.97rem;padding:0 1.5rem 1.35rem 0;margin:0;max-width:72ch}
+
+/* Touch targets: phones get at least 44px of height on every control, which
+   is the mobile-usability floor search engines check and thumbs care about. */
+@media (max-width:760px){
+  .chip{min-height:44px;display:inline-flex;align-items:center}
+  .dir-from a{min-height:44px;display:inline-flex;align-items:center}
+  .wordmark{padding-block:.6rem}
+  .faq-item summary{padding-block:1.25rem}
+  .nav-links a{padding-block:.5rem}
+  .foot-col a{min-height:44px;display:flex;align-items:center}
+}
+
 .signup{border-top:1px solid var(--line)}
 .form-shell{border:1px solid var(--line-strong);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(245,165,36,.07),rgba(244,239,230,.02));padding:clamp(1.5rem,4vw,2.6rem)}
 form{display:grid;gap:1.1rem}
@@ -669,7 +710,8 @@ form{display:grid;gap:1.1rem}
 @media (min-width:680px){.row-2{grid-template-columns:1fr 1fr}}
 .field{display:grid;gap:.45rem}
 label{font-family:var(--font-display);font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-input,select,textarea{font:inherit;font-size:.98rem;color:var(--cream);background:rgba(7,11,24,.6);border:1px solid var(--line-strong);border-radius:10px;padding:.8rem .9rem;width:100%;transition:border-color .15s ease}
+/* 16px minimum, otherwise iOS Safari zooms the viewport on focus */
+input,select,textarea{font:inherit;font-size:1rem;color:var(--cream);background:rgba(7,11,24,.6);border:1px solid var(--line-strong);border-radius:10px;padding:.8rem .9rem;width:100%;transition:border-color .15s ease}
 input::placeholder,textarea::placeholder{color:rgba(244,239,230,.35)}
 input:hover,select:hover,textarea:hover{border-color:rgba(244,239,230,.4)}
 textarea{resize:vertical;min-height:96px}
@@ -712,6 +754,25 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
   },
   "email": "stay@therocketfarm.com",
   "priceRange": "$55-$700",
+  "@id": "https://therocketfarm.com/#campground",
+  "areaServed": [
+    {"@type":"AdministrativeArea","name":"Vermilion Parish, Louisiana"},
+    {"@type":"City","name":"Kaplan, Louisiana"},
+    {"@type":"City","name":"Abbeville, Louisiana"},
+    {"@type":"City","name":"Lafayette, Louisiana"}
+  ],
+  "knowsAbout": ["full hookup RV sites","monthly RV spaces","workforce RV housing","launch viewing"],
+  "makesOffer": [
+    {"@type":"Offer","name":"50-amp monthly RV space","price":"700","priceCurrency":"USD",
+     "description":"Monthly full-hookup pull-through RV space with a 50/30/20 amp metered pedestal, plus electricity billed at cost.",
+     "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":11}},
+    {"@type":"Offer","name":"30-amp monthly RV space","price":"650","priceCurrency":"USD",
+     "description":"Monthly full-hookup pull-through RV space with a 30/20 amp metered pedestal, plus electricity billed at cost.",
+     "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":3}},
+    {"@type":"Offer","name":"Nightly RV space","price":"55","priceCurrency":"USD",
+     "description":"Nightly full-hookup pull-through RV space held back for short stays.",
+     "availability":"https://schema.org/PreOrder","eligibleQuantity":{"@type":"QuantitativeValue","value":3}}
+  ],
   "currenciesAccepted": "USD",
   "isAccessibleForFree": false,
   "amenityFeature": [
@@ -722,6 +783,78 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     { "@type": "LocationFeatureSpecification", "name": "Gated entrance", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Fire ring and picnic table", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Monthly rates available", "value": true }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When does Rocket Farm open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so there is nothing to book yet \u2014 join the waitlist and we will come to you first when spaces are released."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is a monthly RV space in Kaplan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Planned opening rates are $700 a month for the eleven 50-amp spaces and $650 a month for the 30-amp spaces, plus electricity metered at each space and billed at cost. Monthly rates assume a 30-day minimum stay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far is Rocket Farm from the Starbase Louisiana launch site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 30 miles. Louisiana Economic Development puts the announced launch campus at Pecan Island, roughly thirty miles due south of the park by bearing. The gate and its access roads are not final, so that figure is straight-line distance rather than a road route."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the RV spaces have full hookups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every one of the seventeen spaces has water, sewer and separately metered power at the site \u2014 50/30/20 amp GFCI pedestals at eleven spaces and 30/20 amp at six. Pads are angled pull-throughs, roughly 13 ft by 70 ft, so nobody has to back up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stay just a few nights instead of a month?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three of the seventeen spaces are held back for short stays at $55 a night, so a monthly tenant never loses their space to turnover. Launch weeks are priced per event with a minimum stay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the park in a flood zone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The property sits in FEMA Zone X, unshaded, which is outside the mapped special flood hazard area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where exactly is Rocket Farm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "10729 Farmer Road, Kaplan, Louisiana 70548, in Vermilion Parish. The entrance is mid-way along the Farmer Road frontage on the west side of the property \u2014 one gated drive over a culvert, with the sign at the road."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Rocket Farm affiliated with SpaceX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Rocket Farm LLC is an independent, family-owned Louisiana business and is not affiliated with, endorsed by or sponsored by SpaceX or any government agency."
+      }
+    }
   ]
 }
 </script>
@@ -750,6 +883,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
       <a href="#phases">What's planned</a>
       <a href="#location">Location</a>
       <a href="#directions">Directions</a>
+      <a href="#faq">FAQ</a>
     </div>
     <a class="btn btn-primary" href="#waitlist">
       <span class="cta-long">Join the waitlist</span><span class="cta-short">Waitlist</span>
@@ -1001,7 +1135,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Crew manifest</p>
-        <h2>Crews first. Everybody else welcome.</h2>
+        <h2>Monthly RV spaces for crews first. Everybody else welcome.</h2>
         <p>Fourteen of the seventeen spaces are set aside for people working in the area on a monthly basis — that is who this park is for today. The three flexible spaces handle launch weeks, fishing trips and family stays without ever taking a space out from under someone who lives here.</p>
       </div>
 
@@ -1041,7 +1175,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Pad assignments</p>
-        <h2>All seventeen, and what each one costs.</h2>
+        <h2>All seventeen RV spaces, and what each one costs.</h2>
         <p>Every space is a true angled pull-through on a compacted limestone pad, 13&nbsp;ft by about 70&nbsp;ft, with water, sewer and separately metered power at the site. Nobody has to back up. Tap a space on the map for its rate.</p>
       </div>
 
@@ -1153,7 +1287,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Rate card</p>
-        <h2>One rate, billed monthly. Power metered at cost.</h2>
+        <h2>Monthly RV rates. One rate, power metered at cost.</h2>
         <p>No resort fees and no seasonal surcharge on a monthly space. The only thing that moves is your electric bill, because you're metered individually and pay exactly what you use.</p>
       </div>
 
@@ -1240,7 +1374,7 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">Ground support</p>
-        <h2>A park, not a parking lot.</h2>
+        <h2>Full hookups at every space. A park, not a parking lot.</h2>
         <p>Three interior roads, a gated entrance off Farmer Road, and two and a quarter acres of open Acadiana farmland with a planted hedge on the north line.</p>
       </div>
 
@@ -1386,6 +1520,52 @@ footer{border-top:1px solid var(--line);background:#05080f;padding:clamp(2.5rem,
             Road is a parish road, so take it slow past the neighbours.</span>
           </div>
         </aside>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FAQ ============ -->
+  <section class="band" id="faq">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Common questions</p>
+        <h2>Questions we get asked about the park.</h2>
+        <p>Rates, hookups, how far it is from the launch site, and when you can actually park here.</p>
+      </div>
+      <div class="faq reveal">
+        <details class="faq-item">
+          <summary><h3>When does Rocket Farm open?</h3></summary>
+          <p>Phase 1 is targeted to open in 2027. The park is in permitting and pre-construction now, so there is nothing to book yet — join the waitlist and we will come to you first when spaces are released.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>How much is a monthly RV space in Kaplan?</h3></summary>
+          <p>Planned opening rates are $700 a month for the eleven 50-amp spaces and $650 a month for the 30-amp spaces, plus electricity metered at each space and billed at cost. Monthly rates assume a 30-day minimum stay.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>How far is Rocket Farm from the Starbase Louisiana launch site?</h3></summary>
+          <p>About 30 miles. Louisiana Economic Development puts the announced launch campus at Pecan Island, roughly thirty miles due south of the park by bearing. The gate and its access roads are not final, so that figure is straight-line distance rather than a road route.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Do the RV spaces have full hookups?</h3></summary>
+          <p>Yes. Every one of the seventeen spaces has water, sewer and separately metered power at the site — 50/30/20 amp GFCI pedestals at eleven spaces and 30/20 amp at six. Pads are angled pull-throughs, roughly 13 ft by 70 ft, so nobody has to back up.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Can I stay just a few nights instead of a month?</h3></summary>
+          <p>Three of the seventeen spaces are held back for short stays at $55 a night, so a monthly tenant never loses their space to turnover. Launch weeks are priced per event with a minimum stay.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Is the park in a flood zone?</h3></summary>
+          <p>No. The property sits in FEMA Zone X, unshaded, which is outside the mapped special flood hazard area.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Where exactly is Rocket Farm?</h3></summary>
+          <p>10729 Farmer Road, Kaplan, Louisiana 70548, in Vermilion Parish. The entrance is mid-way along the Farmer Road frontage on the west side of the property — one gated drive over a culvert, with the sign at the road.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Is Rocket Farm affiliated with SpaceX?</h3></summary>
+          <p>No. Rocket Farm LLC is an independent, family-owned Louisiana business and is not affiliated with, endorsed by or sponsored by SpaceX or any government agency.</p>
+        </details>
       </div>
     </div>
   </section>

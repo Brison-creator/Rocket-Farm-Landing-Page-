@@ -174,6 +174,49 @@ labelled as such on the page.
    be dropped straight into the links, which removes the geocoding guesswork
    entirely.
 
+## SEO
+
+The page is built mobile-first for search, since that is how Google indexes.
+
+**Head:** title is 56 characters so it survives a mobile SERP; description is
+155, down from 208 where it was being truncated. `robots` carries
+`max-image-preview:large` so the share image can appear full-width on phones.
+Canonical, Open Graph and Twitter titles/descriptions are all set, plus an
+apple-touch-icon.
+
+**Fonts do not block first paint.** The Google Fonts stylesheet is fetched as a
+`preload` and promoted with `media="print" onload="this.media='all'"`, with a
+plain `<link>` in `<noscript>`. That takes a render-blocking request off the
+critical path, which is the single biggest lever on mobile LCP here.
+
+**Mobile usability:** form fields are 16px, below which iOS Safari zooms the
+viewport on focus. Every touch target is at least 44px high at 320-430px. No
+horizontal overflow at any width from 320px up.
+
+**Structured data:** two JSON-LD blocks — a `Campground` with address, price
+range, `areaServed`, amenity list and three `Offer` entries carrying the real
+per-tier rates, and a `FAQPage` mirroring the visible FAQ. The schema questions
+and the on-page questions are generated from one list so they cannot drift;
+mismatched FAQ markup is what earns a manual action.
+
+Worth being honest about `FAQPage`: since Google's 2023 change, FAQ rich
+results are largely limited to authoritative government and health sites, so
+do not expect the accordion to show as stars in the SERP. It earns its place as
+real content answering real long-tail queries — "how much is a monthly RV space
+in Kaplan", "how far is X from the Starbase Louisiana launch site" — and that
+copy is also what AI answer engines quote.
+
+**Not set: `geo` coordinates.** `10729 Farmer Road` is absent from
+OpenStreetMap, and a latitude/longitude guessed from the town centre would pin
+the business in the wrong field. The postal address is enough for Google.
+Create a Google Business Profile for the authoritative pin, or send surveyed
+coordinates and `geo` can be added properly.
+
+**After launch, do these three things:** verify the domain in Google Search
+Console and submit `sitemap.xml`; create the Google Business Profile (for a
+local business this outranks anything on-page for map results); and run the
+Rich Results Test on the live URL to confirm both JSON-LD blocks parse.
+
 ## Search and social
 
 - `<link rel="canonical">`, `og:url`, `og:image` and `twitter:image` all use
