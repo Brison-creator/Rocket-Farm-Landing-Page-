@@ -1184,3 +1184,99 @@ header.open .nav-toggle .x{display:block}
 @media (min-width:1000px){.theme-toggle{margin-left:0}}
 .sky-note{font-size:.78rem;color:var(--faint)}
 .sky-note a{color:var(--amber)}
+
+/* ====================================================================
+   MOON HERO + NIGHT CHAPTERS (Oct 2026 redesign)
+   The hero, the dream and the family band are always deep space, in both
+   themes: .force-night pins the night tokens on those sections so the
+   day palette never reaches them. The rest of the page still follows
+   Central time.
+   ==================================================================== */
+.force-night,[data-theme="day"] .force-night{
+  --night:#070b18;--night-2:#0c1226;--dusk:#161f42;--band-2:#0a1020;
+  --ink-rgb:244,239,230;--bg-rgb:7,11,24;
+  --line:rgba(244,239,230,.13);--line-strong:rgba(244,239,230,.26);
+  --cream:#f4efe6;--muted:rgba(244,239,230,.72);--faint:rgba(244,239,230,.5);
+  --amber:#f5a524;--sunset:#e8623c;--marsh:#4fb08d;--sky-blue:#6ba8e8;--hover-ink:#fff;
+  --flame:linear-gradient(100deg,#f5a524,#e8623c);
+  color-scheme:dark;color:var(--cream)}
+[data-theme="day"] .force-night :is(.stars,.stars2,.stars3,.stars4,.bstar,.milky,.nebula,.meteor,.sat-one){display:block}
+[data-theme="day"] .force-night .sat-train{display:flex}
+[data-theme="day"] .force-night .eyebrow{text-shadow:0 0 18px rgba(245,165,36,.35)}
+[data-theme="day"] .force-night .tagline{color:transparent}
+[data-theme="day"] .force-night .soon{background:rgba(7,11,24,.92);border-color:rgba(245,165,36,.45)}
+/* the Moon hero sits on open sky, so its copy needs no backing shadow; a
+   shadow also paints over gradient lettering and muddies it */
+.hero-copy-moon,[data-theme="day"] .force-night .hero-copy-moon{text-shadow:none}
+
+/* ---------- the Moon hero ---------- */
+.hero-moon{padding:clamp(.25rem,1.5vw,1.25rem) 0 clamp(3rem,7vw,5rem);background:#03050c}
+.hero-moon .sky,[data-theme="day"] .hero-moon .sky{background:
+    radial-gradient(70% 55% at 50% 42%,rgba(70,96,170,.22),transparent 70%),
+    radial-gradient(55% 40% at 16% 6%,rgba(107,168,232,.10),transparent 70%),
+    linear-gradient(180deg,#02030a 0%,#05081a 58%,#070b18 100%)}
+.moon-stage{position:relative;width:min(1120px,100%);margin-inline:auto}
+.moon-art{width:100%;height:auto;
+  -webkit-mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+          mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%)}
+/* phones: let the Moon run wider than the screen so the lettering is big
+   enough to read; the hero clips the overflow */
+@media (max-width:760px){
+  .moon-stage{width:128vw;margin-left:-14vw}
+  .moon-art{-webkit-mask:none;mask:none}
+}
+.hero-copy-moon{max-width:820px;margin:clamp(-3.5rem,-4vw,-1.25rem) auto 0;text-align:center}
+.hero-copy-moon::before{display:none}
+.hero-copy-moon h1{font-size:clamp(1.85rem,4.4vw,3.25rem)}
+.hero-copy-moon .tagline{margin-inline:auto}
+.hero-intro{font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--muted);margin:1.2rem auto 0;max-width:58ch}
+.hero-copy-moon .hero-cta{justify-content:center}
+.hero-copy-moon .fine{margin-inline:auto}
+
+/* ---------- the dream ---------- */
+.dream,.family{isolation:isolate;overflow:hidden}
+.dream{background:
+    radial-gradient(80% 55% at 50% 0%,rgba(46,66,140,.30),transparent 72%),
+    linear-gradient(180deg,#03050c 0%,#070b18 100%)}
+.road{list-style:none;margin:0 0 clamp(1.6rem,4vw,2.4rem);padding:0;display:grid;gap:.9rem;grid-template-columns:1fr}
+@media (min-width:760px){.road{grid-template-columns:1fr 1fr}}
+.road li{display:grid;gap:.3rem;border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.1rem 1.3rem;background:rgba(244,239,230,.03)}
+.road li:first-child{border-color:rgba(245,165,36,.5);background:rgba(245,165,36,.07)}
+.road-when{font-family:var(--font-display);font-weight:500;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.road b{font-family:var(--font-display);font-size:1.15rem;line-height:1.25}
+.road li>span:last-child{color:var(--muted);font-size:.93rem}
+.dream-grid{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:620px){.dream-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:980px){.dream-grid{grid-template-columns:repeat(3,1fr)}}
+.dream-card{position:relative;display:flex;flex-direction:column;gap:.7rem;
+  border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.4rem 1.35rem 1.5rem;
+  background:linear-gradient(180deg,rgba(244,239,230,.06),rgba(244,239,230,.015))}
+.dream-card h3{font-size:1.16rem}
+.dream-card p{color:var(--muted);font-size:.95rem}
+.dream-card.star{border-color:rgba(245,165,36,.55);
+  background:radial-gradient(120% 90% at 100% 0%,rgba(245,165,36,.16),transparent 60%),linear-gradient(180deg,rgba(244,239,230,.07),rgba(244,239,230,.02));
+  box-shadow:0 18px 50px -24px rgba(245,165,36,.45)}
+.dream-card .tag{position:absolute;top:1.15rem;right:1.15rem;font-family:var(--font-display);font-weight:500;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(245,165,36,.45);border-radius:999px;padding:.28rem .62rem}
+.dream-fine{margin-top:1.4rem}
+
+/* ---------- who we are ---------- */
+.family{background:
+    radial-gradient(60% 75% at 14% 50%,rgba(107,168,232,.13),transparent 70%),
+    linear-gradient(180deg,#070b18 0%,#05070f 100%);
+  border-top:1px solid var(--line)}
+.family-wrap{display:grid;gap:clamp(1.8rem,4vw,3.5rem);align-items:center;grid-template-columns:1fr}
+@media (min-width:900px){.family-wrap{grid-template-columns:1.05fr 1fr}}
+.family-logo img{width:100%;max-width:560px;height:auto;margin-inline:auto;filter:drop-shadow(0 22px 50px rgba(107,168,232,.2))}
+.family-copy h2{font-size:var(--h2);margin-top:.9rem;text-wrap:balance}
+.family-copy p{color:var(--muted);margin-top:1rem;max-width:56ch}
+.family-copy i[lang="fr"]{color:var(--cream)}
+
+/* ---------- logo in the header and footer ---------- */
+.brand-logo{height:44px;width:auto}
+@media (min-width:600px){.brand-logo{height:50px}}
+.foot-brand{display:inline-block;margin-bottom:1rem}
+.foot-logo{width:min(240px,100%);height:auto}
+/* the logo is drawn white for the night sky; by day it is shown as a
+   negative so it reads on the light header and footer */
+[data-theme="day"] .brand-logo,[data-theme="day"] .foot-logo{filter:invert(1) hue-rotate(180deg)}

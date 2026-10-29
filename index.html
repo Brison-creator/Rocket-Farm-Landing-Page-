@@ -208,15 +208,7 @@
 <header id="site-header">
   <nav class="wrap nav" aria-label="Primary">
     <a class="wordmark" href="/" aria-label="Rocket Farm home">
-      <svg viewBox="0 0 24 34" role="img" aria-label="Rocket Farm RV Park for SpaceX Contractors in Kaplan Louisiana">
-        <path d="M12 1.6c2.1 4.4 3.1 7.7 3.1 10.9V25H8.9V12.5c0-3.2 1-6.5 3.1-10.9z" fill="#f4efe6"/>
-        <path d="M8.9 19.6 6.1 26.4l2.8-1.7zm6.2 0 2.8 6.8-2.8-1.7z" fill="#f4efe6" opacity=".55"/>
-        <path d="M10.3 25h3.4L12 32.4z" fill="#f5a524"/>
-      </svg>
-      <span class="wordmark-txt">
-        <span class="wordmark-name">Rocket&nbsp;Farm</span>
-        <span class="wordmark-loc">Kaplan, Louisiana</span>
-      </span>
+      <img class="brand-logo" src="/img/logo-mark.webp" width="380" height="150" alt="Rocket Farm RV Park for SpaceX Contractors in Kaplan Louisiana" decoding="async">
     </a>
     <div class="nav-links" id="nav-links">
       <a href="/spaces/">Spaces &amp; rates</a>
@@ -242,13 +234,9 @@
 <!-- /header -->
 
 <main id="main">
-<section class="hero" id="top">
+<section class="hero hero-moon force-night" id="top">
     <div class="sky" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
-    <div class="sun" aria-hidden="true"></div>
-    <div class="cloud c1" aria-hidden="true"></div><div class="cloud c2" aria-hidden="true"></div>
-    <div class="cloud c3" aria-hidden="true"></div><div class="cloud c4" aria-hidden="true"></div>
-    <div class="birds" aria-hidden="true"><svg viewBox="0 0 90 30"><path d="M4 14q7-8 14 0"/><path d="M34 8q7-8 14 0"/><path d="M62 18q7-8 14 0"/></svg></div>
     <div class="stars2" aria-hidden="true"></div>
     <div class="stars3" aria-hidden="true"></div>
     <div class="stars4" aria-hidden="true"></div>
@@ -272,15 +260,6 @@
          blinking its way over the right half -->
     <div class="sat-train" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="sat-one" aria-hidden="true"></div>
-    <!-- the saucer: darts around the sky, hovers, and now and then drops a
-         beam on the field. Nobody has explained it yet. -->
-    <div class="ufo-scene" aria-hidden="true">
-      <div class="ufo-beam"></div>
-      <svg class="ufo-cow" viewBox="0 0 40 26">
-        <path d="M6 18c-2 0-3-1-3-3v-5c0-2 1-3 3-3h3l3-4h4l2 3h8c3 0 5 2 5 5v6c0 1-1 2-2 2h-1v6h-3v-6H12v6H9v-6z"/>
-        <path d="M32 8l4-2-1 4z"/>
-      </svg>
-    </div>
     <div class="ufo" aria-hidden="true">
       <svg viewBox="0 0 140 56">
         <defs>
@@ -305,237 +284,24 @@
         </g>
       </svg>
     </div>
-    <!-- fireflies along the treeline: it is a Louisiana marsh, after all -->
-    <div class="fireflies" aria-hidden="true">
-      <i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i><i class="f5"></i><i class="f6"></i>
-      <i class="f7"></i><i class="f8"></i><i class="f9"></i><i class="f10"></i><i class="f11"></i><i class="f12"></i>
+
+    <div class="moon-stage">
+      <img class="moon-art" src="/img/rocket-farm-moon.webp"
+           srcset="/img/rocket-farm-moon-900.webp 900w, /img/rocket-farm-moon.webp 1536w"
+           sizes="(max-width: 760px) 128vw, min(1120px, 100vw)"
+           width="1536" height="855" fetchpriority="high" decoding="async"
+           alt="Rocket Farm, le port d&rsquo;attache au cosmos. Kaplan, Louisiana, established 2026, lettered across the Moon with the Earth rising over its edge.">
     </div>
-
-    <div class="launch-smoke" aria-hidden="true"></div>
-    <div class="rf-smokecol" aria-hidden="true">
-      <div class="rf-puff a"></div><div class="rf-puff b"></div><div class="rf-puff c"></div>
-    </div>
-    <div class="launch" aria-hidden="true">
-      <div class="launch-rise">
-        <svg viewBox="0 0 140 900" role="presentation">
-          <defs>
-            <!-- polished stainless barrel: rim light, specular, core, shadow -->
-            <linearGradient id="rfSteel" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"    stop-color="#565f6e"/>
-              <stop offset=".06"  stop-color="#8f99a8"/>
-              <stop offset=".17"  stop-color="#c3ccd8"/>
-              <stop offset=".29"  stop-color="#eef2f7"/>
-              <stop offset=".40"  stop-color="#cdd5e0"/>
-              <stop offset=".54"  stop-color="#9ea8b7"/>
-              <stop offset=".70"  stop-color="#798393"/>
-              <stop offset=".86"  stop-color="#5d6674"/>
-              <stop offset="1"    stop-color="#8a94a3"/>
-            </linearGradient>
-            <linearGradient id="rfNose" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"   stop-color="#4f5765"/>
-              <stop offset=".3"  stop-color="#b9c2ce"/>
-              <stop offset=".46" stop-color="#e6ebf1"/>
-              <stop offset=".64" stop-color="#a8b2c0"/>
-              <stop offset="1"   stop-color="#5a6270"/>
-            </linearGradient>
-            <linearGradient id="rfShade" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"   stop-color="#0b1226" stop-opacity=".34"/>
-              <stop offset=".26" stop-color="#0b1226" stop-opacity="0"/>
-              <stop offset=".74" stop-color="#0b1226" stop-opacity="0"/>
-              <stop offset="1"   stop-color="#0b1226" stop-opacity=".3"/>
-            </linearGradient>
-            <!-- plume: bright blue-white throat, white-hot core, warm mid,
-                 diffuse scattered tail, plus a broad bloom for the light it
-                 throws into the air around it -->
-            <radialGradient id="rfThroat" cx=".5" cy=".5" r=".5">
-              <stop offset="0"   stop-color="#ffffff"/>
-              <stop offset=".3"  stop-color="#e8f4ff"/>
-              <stop offset=".62" stop-color="#ffe7b0" stop-opacity=".8"/>
-              <stop offset="1"   stop-color="#ffb060" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="rfCoreG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#ffffff"/>
-              <stop offset=".05" stop-color="#eaf5ff"/>
-              <stop offset=".12" stop-color="#fff0d8"/>
-              <stop offset=".26" stop-color="#ffdcae"/>
-              <stop offset=".42" stop-color="#ffb877"/>
-              <stop offset=".60" stop-color="#ff9354" stop-opacity=".95"/>
-              <stop offset=".78" stop-color="#fb7440" stop-opacity=".62"/>
-              <stop offset=".92" stop-color="#ef5f30" stop-opacity=".22"/>
-              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="rfMidG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#fff0d8"/>
-              <stop offset=".2"  stop-color="#ffc48a" stop-opacity="1"/>
-              <stop offset=".48" stop-color="#ff9250" stop-opacity=".9"/>
-              <stop offset=".78" stop-color="#f76d3c" stop-opacity=".5"/>
-              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="rfOuterG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#ffdcac" stop-opacity=".95"/>
-              <stop offset=".3"  stop-color="#ff9a5e" stop-opacity=".7"/>
-              <stop offset=".65" stop-color="#e85b2c" stop-opacity=".34"/>
-              <stop offset="1"   stop-color="#c8431c" stop-opacity="0"/>
-            </linearGradient>
-            <radialGradient id="rfBloom" cx=".5" cy=".5" r=".5">
-              <stop offset="0"   stop-color="#ffb066" stop-opacity=".5"/>
-              <stop offset=".45" stop-color="#ff8f44" stop-opacity=".22"/>
-              <stop offset="1"   stop-color="#e8623c" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="rfBloomF" x="-90%" y="-40%" width="280%" height="190%">
-              <feGaussianBlur stdDeviation="26"/>
-            </filter>
-            <filter id="rfSoftPlume" x="-80%" y="-14%" width="260%" height="140%">
-              <feGaussianBlur stdDeviation="11"/>
-            </filter>
-            <filter id="rfMidPlume" x="-60%" y="-12%" width="220%" height="132%">
-              <feGaussianBlur stdDeviation="5"/>
-            </filter>
-            <filter id="rfCorePlume" x="-50%" y="-10%" width="200%" height="124%">
-              <feGaussianBlur stdDeviation="1.8"/>
-            </filter>
-            <filter id="rfThroatF" x="-140%" y="-140%" width="380%" height="380%">
-              <feGaussianBlur stdDeviation="7"/>
-            </filter>
-          </defs>
-
-          <!-- ============ PLUME (drawn first; the skirt overlaps its mouth) -->
-          <g class="rf-plume">
-            <g class="rf-plume-far">
-              <!-- broad bloom: the light the plume throws into the air -->
-              <ellipse cx="70" cy="650" rx="86" ry="150" fill="url(#rfBloom)" filter="url(#rfBloomF)"/>
-              <!-- diffuse outer tail, flaring as it expands into thinner air -->
-              <path filter="url(#rfSoftPlume)" fill="url(#rfOuterG)"
-                    d="M50 556 C40 640 27 730 12 894 L128 894 C113 730 100 640 90 556 Z"/>
-              <!-- warm mid plume -->
-              <path filter="url(#rfMidPlume)" fill="url(#rfMidG)"
-                    d="M56 556 C50 628 43 700 34 836 L106 836 C97 700 90 628 84 556 Z"/>
-            </g>
-            <g class="rf-core">
-              <!-- white-hot core -->
-              <path filter="url(#rfCorePlume)" fill="url(#rfCoreG)"
-                    d="M61 554 C59 610 57 662 53 768 L87 768 C83 662 81 610 79 554 Z"/>
-              <!-- shock diamonds, tight and bright near the throat -->
-              <g fill="#ffffff">
-                <ellipse cx="70" cy="584" rx="8.2" ry="4.4" opacity=".95"/>
-                <ellipse cx="70" cy="606" rx="7" ry="3.8" opacity=".88"/>
-                <ellipse cx="70" cy="628" rx="5.9" ry="3.2" opacity=".78"/>
-                <ellipse cx="70" cy="652" rx="4.8" ry="2.7" opacity=".66"/>
-                <ellipse cx="70" cy="678" rx="3.8" ry="2.2" opacity=".5"/>
-                <ellipse cx="70" cy="706" rx="2.9" ry="1.7" opacity=".34"/>
-              </g>
-              <!-- throat: the hottest, tightest point, right at the bells -->
-              <ellipse cx="70" cy="578" rx="27" ry="12" fill="url(#rfThroat)" opacity=".8" filter="url(#rfThroatF)"/>
-              <ellipse cx="70" cy="574" rx="11" ry="5" fill="#ffffff" opacity=".9" filter="url(#rfCorePlume)"/>
-            </g>
-          </g>
-            </g>
-          </g>
-
-          <!-- ============ VEHICLE -->
-          <!-- aft fins, behind the barrel -->
-          <path d="M22 436 L2 556 L22 540 Z" fill="#7d8797"/>
-          <path d="M118 436 L138 556 L118 540 Z" fill="#5e6776"/>
-          <!-- nose cone -->
-          <path d="M70 18 C92 62 108 110 108 154 L32 154 C32 110 48 62 70 18 Z" fill="url(#rfNose)"/>
-          <!-- barrel -->
-          <rect x="32" y="152" width="76" height="390" fill="url(#rfSteel)"/>
-          <!-- weld rings: a light/dark pair each, like rolled stainless -->
-          <g opacity=".5">
-            <path d="M32 190h76M32 228h76M32 266h76M32 304h76M32 342h76M32 380h76M32 418h76M32 456h76M32 494h76"
-                  stroke="#4b5462" stroke-width="1.5"/>
-            <path d="M32 192h76M32 230h76M32 268h76M32 306h76M32 344h76M32 382h76M32 420h76M32 458h76M32 496h76"
-                  stroke="#f0f4f9" stroke-width=".8" opacity=".5"/>
-          </g>
-          <!-- environment shading down both limbs -->
-          <rect x="32" y="152" width="76" height="390" fill="url(#rfShade)"/>
-          <path d="M70 18 C92 62 108 110 108 154 L32 154 C32 110 48 62 70 18 Z" fill="url(#rfShade)" opacity=".38"/>
-          <!-- aft engine bay -->
-          <rect x="32" y="500" width="76" height="42" fill="#3f4756"/>
-          <rect x="32" y="500" width="76" height="42" fill="url(#rfShade)" opacity=".8"/>
-          <!-- skirt + engine bells -->
-          <path d="M33 542 L107 542 L101 562 L39 562 Z" fill="#2f3542"/>
-          <g fill="#242a35">
-            <path d="M42 562 h13 l2 12 h-17 Z"/>
-            <path d="M58 562 h13 l2 12 h-17 Z"/>
-            <path d="M74 562 h13 l2 12 h-17 Z"/>
-          </g>
-          <!-- light spill from the plume onto the skirt and engine bay -->
-          <ellipse cx="70" cy="550" rx="50" ry="20" fill="#ff9c50" opacity=".62" filter="url(#rfMidPlume)"/>
-          <ellipse cx="70" cy="564" rx="34" ry="11" fill="#ffd9a2" opacity=".8" filter="url(#rfMidPlume)"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="hero-veil" aria-hidden="true"></div>
-
-    <div class="sky-bodies" aria-hidden="true">
-      <!-- Moon: NASA/GSFC Scientific Visualization Studio (public domain),
-           cropped to the disc with a feathered alpha edge. -->
-      <div class="moon">
-        <img src="/img/moon.webp" width="360" height="360" alt="" decoding="async">
-        <svg class="moon-base" viewBox="0 0 360 360">
-          <g opacity=".92">
-            <path d="M126 118h34v-7h-34z" fill="#3b3a36"/>
-            <path d="M164 118h18v-5h-18z" fill="#333230"/>
-            <path d="M141 111V90" stroke="#3b3a36" stroke-width="2.4"/>
-            <circle cx="141" cy="87" r="2.8" fill="#f5a524"/>
-            <circle cx="133" cy="114.5" r="1.7" fill="#ffd79a"/>
-            <circle cx="147" cy="114.5" r="1.7" fill="#ffd79a"/>
-            <circle cx="172" cy="115.5" r="1.5" fill="#ffd79a"/>
-          </g>
-        </svg>
-      </div>
-
-      <!-- Mars: NASA/JPL global colour view PIA00407 (public domain) -->
-      <div class="mars">
-        <img src="/img/mars.webp" width="220" height="220" alt="" decoding="async">
-        <span class="mars-term"></span>
-      </div>
-    </div>
-
-    <svg class="horizon" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 108c120-3 240 2 360 0s240-4 360-1 240 3 360 0 240-3 360-1v44H0z" fill="#05080f"/>
-    </svg>
-
-    <!-- foreground: open Acadiana farmland. Rice levees running to the horizon,
-         green irrigation ditches, a fence line, grain bins and a farmhouse
-         light far off, an egret in the near ditch. -->
-    <div class="fields" aria-hidden="true">
-      <svg viewBox="0 0 1440 230" preserveAspectRatio="xMinYMax slice">
-        <path class="farline" d="M20.0 118.0 L26.2 109.9 L32.3 111.7 L38.5 111.5 L44.7 111.2 L50.8 112.7 L57.0 118.0Z M143.3 118.0 L150.7 112.2 L158.1 111.3 L165.5 112.2 L172.9 109.1 L180.4 109.6 L187.8 118.0Z M222.4 118.0 L232.2 108.9 L242.1 109.1 L252.0 111.3 L261.9 112.0 L271.7 109.5 L281.6 118.0Z M318.2 118.0 L322.5 114.4 L326.8 113.1 L331.2 113.2 L335.5 112.0 L339.8 112.9 L344.2 118.0Z M444.6 118.0 L451.1 111.2 L457.6 111.9 L464.1 109.0 L470.6 109.0 L477.1 109.7 L483.6 118.0Z M591.4 118.0 L596.7 113.7 L601.9 114.3 L607.1 112.3 L612.3 113.3 L617.5 112.1 L622.7 118.0Z M695.2 118.0 L704.9 112.5 L714.6 111.5 L724.3 108.3 L734.0 110.3 L743.7 108.0 L753.4 118.0Z M827.2 118.0 L830.7 110.1 L834.2 112.1 L837.7 112.8 L841.2 111.9 L844.7 109.4 L848.2 118.0Z M961.6 118.0 L965.4 114.1 L969.3 114.3 L973.1 112.1 L976.9 113.9 L980.7 112.8 L984.6 118.0Z M1063.8 118.0 L1068.1 112.3 L1072.5 110.1 L1076.8 112.3 L1081.1 111.1 L1085.5 111.9 L1089.8 118.0Z M1149.5 118.0 L1159.3 111.3 L1169.1 108.7 L1178.9 111.7 L1188.7 110.9 L1198.5 108.8 L1208.2 118.0Z M1308.8 118.0 L1312.6 110.9 L1316.3 110.7 L1320.0 108.2 L1323.7 110.4 L1327.4 110.5 L1331.1 118.0Z M1369.1 118.0 L1372.8 112.4 L1376.4 111.0 L1380.0 111.9 L1383.7 111.6 L1387.3 109.7 L1390.9 118.0Z"/>
-        <rect class="land" x="0" y="118" width="1440" height="112"/>
-        <path class="rows" d="M680.0 124 L-1600.0 230 M684.0 124 L-1482.0 230 M688.0 124 L-1364.0 230 M692.0 124 L-1246.0 230 M696.0 124 L-1128.0 230 M700.0 124 L-1010.0 230 M704.0 124 L-892.0 230 M708.0 124 L-774.0 230 M712.0 124 L-656.0 230 M716.0 124 L-538.0 230 M720.0 124 L-420.0 230 M724.0 124 L-302.0 230 M728.0 124 L-184.0 230 M732.0 124 L-66.0 230 M736.0 124 L52.0 230 M740.0 124 L170.0 230 M744.0 124 L288.0 230 M748.0 124 L406.0 230 M752.0 124 L524.0 230 M756.0 124 L642.0 230 M760.0 124 L760.0 230 M764.0 124 L878.0 230 M768.0 124 L996.0 230 M772.0 124 L1114.0 230 M776.0 124 L1232.0 230 M780.0 124 L1350.0 230 M784.0 124 L1468.0 230 M788.0 124 L1586.0 230 M792.0 124 L1704.0 230 M796.0 124 L1822.0 230 M800.0 124 L1940.0 230 M804.0 124 L2058.0 230 M808.0 124 L2176.0 230 M812.0 124 L2294.0 230 M816.0 124 L2412.0 230 M820.0 124 L2530.0 230 M824.0 124 L2648.0 230 M828.0 124 L2766.0 230 M832.0 124 L2884.0 230 M836.0 124 L3002.0 230 M840.0 124 L3120.0 230"/>
-        <g class="ditches"><rect class="ditch" x="0" y="140" width="1440" height="4"/><rect class="ditch-edge" x="0" y="139" width="1440" height="1"/><rect class="ditch-shine" x="0" y="141" width="1440" height="2"/><rect class="ditch" x="0" y="176" width="1440" height="7"/><rect class="ditch-edge" x="0" y="175" width="1440" height="1"/><rect class="ditch-shine" x="0" y="177" width="1440" height="5"/><rect class="ditch" x="0" y="222" width="1440" height="11"/><rect class="ditch-edge" x="0" y="221" width="1440" height="1"/><rect class="ditch-shine" x="0" y="223" width="1440" height="9"/></g>
-        <path class="ditch" d="M842 122 L868 122 L1010 230 L972 230 Z"/>
-        <path class="fence" d="M24 226 V212 M70 226 V211 M116 226 V210 M162 226 V212 M208 226 V211 M254 226 V210 M300 226 V212 M346 226 V211 M392 226 V210 M438 226 V212 M484 226 V211 M530 226 V210 M576 226 V212 M622 226 V211 M668 226 V210 M714 226 V212 M760 226 V211 M806 226 V210 M852 226 V212 M898 226 V211 M944 226 V210 M990 226 V212 M1036 226 V211 M1082 226 V210 M1128 226 V212 M1174 226 V211 M1220 226 V210 M1266 226 V212 M1312 226 V211 M1358 226 V210 M1404 226 V212"/>
-        <path class="wire" d="M0 214 Q 720 217 1440 214"/>
-        <path class="pole" d="M180 158 V92 M172 98 h16 M470 158 V92 M462 98 h16 M760 158 V92 M752 98 h16 M1050 158 V92 M1042 98 h16 M1340 158 V92 M1332 98 h16"/>
-        <path class="wire thin" d="M180 98 Q 325 104 470 98 M470 98 Q 615 104 760 98 M760 98 Q 905 104 1050 98 M1050 98 Q 1195 104 1340 98"/>
-        <g class="bins"><path d="M1200 118 v-22 h30 v22z M1200 96 l15 -9 15 9z M1236 118 v-18 h24 v18z M1236 100 l12 -7 12 7z"/></g>
-<g class="house"><path d="M1290 118 v-16 h34 v16z M1288 102 l19 -12 19 12z M1300 118 v-8 h6 v8z"/><rect class="window" x="1309" y="107" width="5" height="5"/></g>
-        <g class="pump"><path d="M600 176 v-14 h18 v14z M598 162 l11 -7 11 7z M612 176 v-24 h2 v24z"/></g>
-        <g class="egret"><path d="M330 204 c-5 0-8 4-8 8 0 5 5 8 11 8h4l-3 5 1 1 4-5 2 0-1 5h1l2-5c6-1 11-5 11-10 0-3-2-6-4-7-2-4-6-6-11-6-2 0-4 1-6 2v-13c0-3 2-6 5-7l7-3-1-2-9 3c-4 2-6 5-6 9v14h-2z"/><path d="M340 220 v15 M345 220 v15" stroke-width="1.4"/></g>
-        <g class="tufts"><path class="tuft" style="animation-delay:0.9s" d="M10.9 230 l-3 -11.9 M10.9 230 l0 -14.9 M10.9 230 l3 -12.7"/><path class="tuft" style="animation-delay:4.1s" d="M33.8 230 l-3 -12.2 M33.8 230 l0 -15.3 M33.8 230 l3 -13.0"/><path class="tuft" style="animation-delay:3.7s" d="M63.0 230 l-3 -7.6 M63.0 230 l0 -9.5 M63.0 230 l3 -8.1"/><path class="tuft" style="animation-delay:4.8s" d="M99.3 230 l-3 -7.7 M99.3 230 l0 -9.6 M99.3 230 l3 -8.1"/><path class="tuft" style="animation-delay:2.1s" d="M126.6 230 l-3 -10.3 M126.6 230 l0 -12.8 M126.6 230 l3 -10.9"/><path class="tuft" style="animation-delay:4.8s" d="M145.2 230 l-3 -6.6 M145.2 230 l0 -8.3 M145.2 230 l3 -7.1"/><path class="tuft" style="animation-delay:1.3s" d="M174.9 230 l-3 -10.9 M174.9 230 l0 -13.6 M174.9 230 l3 -11.6"/><path class="tuft" style="animation-delay:1.5s" d="M209.9 230 l-3 -10.2 M209.9 230 l0 -12.8 M209.9 230 l3 -10.9"/><path class="tuft" style="animation-delay:0.3s" d="M230.1 230 l-3 -11.0 M230.1 230 l0 -13.8 M230.1 230 l3 -11.7"/><path class="tuft" style="animation-delay:4.3s" d="M258.7 230 l-3 -10.0 M258.7 230 l0 -12.5 M258.7 230 l3 -10.6"/><path class="tuft" style="animation-delay:4.6s" d="M291.4 230 l-3 -8.2 M291.4 230 l0 -10.2 M291.4 230 l3 -8.7"/><path class="tuft" style="animation-delay:1.3s" d="M314.4 230 l-3 -6.5 M314.4 230 l0 -8.1 M314.4 230 l3 -6.9"/><path class="tuft" style="animation-delay:0.9s" d="M345.3 230 l-3 -6.8 M345.3 230 l0 -8.5 M345.3 230 l3 -7.2"/><path class="tuft" style="animation-delay:0.7s" d="M372.4 230 l-3 -10.1 M372.4 230 l0 -12.6 M372.4 230 l3 -10.7"/><path class="tuft" style="animation-delay:4.9s" d="M400.3 230 l-3 -12.1 M400.3 230 l0 -15.1 M400.3 230 l3 -12.9"/><path class="tuft" style="animation-delay:2.9s" d="M431.9 230 l-3 -10.8 M431.9 230 l0 -13.5 M431.9 230 l3 -11.5"/><path class="tuft" style="animation-delay:0.1s" d="M453.7 230 l-3 -6.6 M453.7 230 l0 -8.3 M453.7 230 l3 -7.0"/><path class="tuft" style="animation-delay:4.8s" d="M490.9 230 l-3 -10.9 M490.9 230 l0 -13.6 M490.9 230 l3 -11.6"/><path class="tuft" style="animation-delay:2.4s" d="M508.3 230 l-3 -10.5 M508.3 230 l0 -13.1 M508.3 230 l3 -11.1"/><path class="tuft" style="animation-delay:5.0s" d="M544.8 230 l-3 -8.4 M544.8 230 l0 -10.6 M544.8 230 l3 -9.0"/><path class="tuft" style="animation-delay:3.7s" d="M564.9 230 l-3 -9.9 M564.9 230 l0 -12.4 M564.9 230 l3 -10.5"/><path class="tuft" style="animation-delay:3.5s" d="M602.8 230 l-3 -11.1 M602.8 230 l0 -13.9 M602.8 230 l3 -11.8"/><path class="tuft" style="animation-delay:1.8s" d="M629.5 230 l-3 -12.3 M629.5 230 l0 -15.3 M629.5 230 l3 -13.0"/><path class="tuft" style="animation-delay:4.4s" d="M656.2 230 l-3 -12.2 M656.2 230 l0 -15.2 M656.2 230 l3 -12.9"/><path class="tuft" style="animation-delay:4.3s" d="M681.0 230 l-3 -11.5 M681.0 230 l0 -14.3 M681.0 230 l3 -12.2"/><path class="tuft" style="animation-delay:1.9s" d="M710.9 230 l-3 -10.4 M710.9 230 l0 -13.0 M710.9 230 l3 -11.0"/><path class="tuft" style="animation-delay:0.4s" d="M739.0 230 l-3 -10.3 M739.0 230 l0 -12.9 M739.0 230 l3 -10.9"/><path class="tuft" style="animation-delay:4.4s" d="M767.7 230 l-3 -12.8 M767.7 230 l0 -15.9 M767.7 230 l3 -13.6"/><path class="tuft" style="animation-delay:3.7s" d="M796.7 230 l-3 -8.9 M796.7 230 l0 -11.1 M796.7 230 l3 -9.4"/><path class="tuft" style="animation-delay:4.2s" d="M823.0 230 l-3 -9.2 M823.0 230 l0 -11.5 M823.0 230 l3 -9.8"/><path class="tuft" style="animation-delay:0.1s" d="M845.0 230 l-3 -11.2 M845.0 230 l0 -14.0 M845.0 230 l3 -11.9"/><path class="tuft" style="animation-delay:1.2s" d="M879.2 230 l-3 -9.5 M879.2 230 l0 -11.8 M879.2 230 l3 -10.1"/><path class="tuft" style="animation-delay:3.1s" d="M908.4 230 l-3 -9.6 M908.4 230 l0 -12.0 M908.4 230 l3 -10.2"/><path class="tuft" style="animation-delay:0.1s" d="M939.0 230 l-3 -8.0 M939.0 230 l0 -10.0 M939.0 230 l3 -8.5"/><path class="tuft" style="animation-delay:1.0s" d="M959.6 230 l-3 -10.7 M959.6 230 l0 -13.4 M959.6 230 l3 -11.4"/><path class="tuft" style="animation-delay:3.3s" d="M986.0 230 l-3 -12.2 M986.0 230 l0 -15.2 M986.0 230 l3 -13.0"/><path class="tuft" style="animation-delay:1.6s" d="M1017.3 230 l-3 -12.1 M1017.3 230 l0 -15.1 M1017.3 230 l3 -12.9"/><path class="tuft" style="animation-delay:2.2s" d="M1048.0 230 l-3 -7.7 M1048.0 230 l0 -9.6 M1048.0 230 l3 -8.1"/><path class="tuft" style="animation-delay:4.4s" d="M1077.7 230 l-3 -12.3 M1077.7 230 l0 -15.3 M1077.7 230 l3 -13.0"/><path class="tuft" style="animation-delay:1.6s" d="M1100.6 230 l-3 -10.1 M1100.6 230 l0 -12.7 M1100.6 230 l3 -10.8"/><path class="tuft" style="animation-delay:4.2s" d="M1125.6 230 l-3 -9.6 M1125.6 230 l0 -12.0 M1125.6 230 l3 -10.2"/><path class="tuft" style="animation-delay:4.8s" d="M1162.2 230 l-3 -11.0 M1162.2 230 l0 -13.7 M1162.2 230 l3 -11.6"/><path class="tuft" style="animation-delay:2.3s" d="M1183.3 230 l-3 -7.5 M1183.3 230 l0 -9.4 M1183.3 230 l3 -8.0"/><path class="tuft" style="animation-delay:2.1s" d="M1211.3 230 l-3 -7.8 M1211.3 230 l0 -9.7 M1211.3 230 l3 -8.3"/><path class="tuft" style="animation-delay:1.6s" d="M1243.5 230 l-3 -9.6 M1243.5 230 l0 -12.0 M1243.5 230 l3 -10.2"/><path class="tuft" style="animation-delay:2.3s" d="M1274.1 230 l-3 -12.7 M1274.1 230 l0 -15.9 M1274.1 230 l3 -13.5"/><path class="tuft" style="animation-delay:4.4s" d="M1292.9 230 l-3 -6.6 M1292.9 230 l0 -8.3 M1292.9 230 l3 -7.0"/><path class="tuft" style="animation-delay:2.9s" d="M1320.5 230 l-3 -10.9 M1320.5 230 l0 -13.7 M1320.5 230 l3 -11.6"/><path class="tuft" style="animation-delay:0.1s" d="M1351.7 230 l-3 -11.5 M1351.7 230 l0 -14.3 M1351.7 230 l3 -12.2"/><path class="tuft" style="animation-delay:0.1s" d="M1377.6 230 l-3 -9.3 M1377.6 230 l0 -11.6 M1377.6 230 l3 -9.9"/><path class="tuft" style="animation-delay:0.7s" d="M1414.0 230 l-3 -7.9 M1414.0 230 l0 -9.9 M1414.0 230 l3 -8.4"/><path class="tuft" style="animation-delay:2.2s" d="M1432.6 230 l-3 -10.4 M1432.6 230 l0 -13.0 M1432.6 230 l3 -11.1"/></g>
-      </svg>
-    </div>
-    <div class="mist" aria-hidden="true"></div>
-    <div class="mist mist2" aria-hidden="true"></div>
 
     <div class="wrap">
-     <div class="hero-copy">
+     <div class="hero-copy hero-copy-moon">
       <p class="soon"><span class="soon-dot" aria-hidden="true"></span><span class="soon-long">Coming soon &middot; Phase 1 targeted 2027</span><span class="soon-short">Coming soon &middot; 2027</span></p>
       <h1>SpaceX Crew &amp; Contractor RV Park | Kaplan, LA</h1>
       <h2 class="tagline">Your Home Base 30 Miles From the Pad — Built for the Crews Building the Future.</h2>
-      <p class="lede">Looking for a premium long-term RV park near Kaplan, LA? Bring your rig to Rocket Farm. Located on Farmer Road just 30 miles from the pad, our dedicated contractor campground offers spacious monthly camper spots with full-hookup RV sites, metered electric power, and level pull-through pads. Stay closely connected with high-speed, free Starlink Wi-Fi while enjoying a quiet setting that is a quick 5-minute commute to downtown Kaplan groceries, restaurants, and conveniences. Lock in your crew's housing today.</p>
-      <ul class="tags">
-        <li>Stay</li>
-        <li>Watch</li>
-        <li>Explore</li>
-      </ul>
+      <p class="hero-intro">We&rsquo;re starting simple: seventeen full-hookup RV spaces, so the crews working this coast have a place to call home. Then we build the rest &mdash; cabins, a general store, a fire pit, and a little observatory where kids can see the planets for themselves.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#reserve">Reserve your space now</a>
-        <a class="btn btn-ghost" href="/spaces/">See every space &amp; rate</a>
+        <a class="btn btn-ghost" href="#dream">See where it&rsquo;s going</a>
       </div>
       <p class="fine hero-fine">Spaces will fill up quickly. Deposit required &mdash; $250, credited to your first month; not refundable if you choose to stay elsewhere. <a href="#reserve">Full terms</a>.</p>
      </div>
@@ -548,7 +314,7 @@
         <div class="stat"><div class="stat-num">17</div><div class="stat-label">Full-hookup spaces &mdash; 14 monthly, 3 nightly</div></div>
         <div class="stat"><div class="stat-num">$650&ndash;700</div><div class="stat-label">Per month, plus metered electric</div></div>
         <div class="stat"><div class="stat-num">~30 mi</div><div class="stat-label">North of the planned Louisiana launch site</div></div>
-        <div class="stat"><div class="stat-num">2027</div><div class="stat-label">Targeted opening &mdash; 23 spaces after Phase&nbsp;2</div></div>
+        <div class="stat"><div class="stat-num">2027</div><div class="stat-label">Targeted opening &mdash; 24 spaces at full build-out</div></div>
       </div>
     </div>
   </section>
@@ -556,9 +322,10 @@
 <section class="band" id="who">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Crew manifest</p>
-        <h2>Monthly RV spaces for crews first. Everybody else welcome.</h2>
-        <p>Fourteen of the seventeen spaces are set aside for people working in the area on a monthly basis — that is who this park is for today. The three flexible spaces handle launch weeks, fishing trips and family stays without ever taking a space out from under someone who lives here.</p>
+        <p class="eyebrow">Phase 1 &middot; Where it starts</p>
+        <h2>Starting simple, so the crews have a place to call home.</h2>
+        <p>Before the cabins and the telescopes, there&rsquo;s work to do on this coast &mdash; and the people doing it need somewhere decent to live. So Phase 1 is basic on purpose: seventeen full-hookup, pull-through RV spaces with metered power, water and sewer at every site, free Starlink Wi-Fi and a gated entrance. Fourteen are monthly spaces for crews; three stay flexible for launch weeks, fishing trips and family stays.</p>
+        <p>Looking for a premium long-term RV park near Kaplan, LA? Bring your rig to Rocket Farm. Located on Farmer Road just 30 miles from the pad, our dedicated contractor campground offers spacious monthly camper spots with full-hookup RV sites, metered electric power, and level pull-through pads. Stay closely connected with high-speed, free Starlink Wi-Fi while enjoying a quiet setting that is a quick 5-minute commute to downtown Kaplan groceries, restaurants, and conveniences. Lock in your crew's housing today.</p>
       </div>
 
       <div class="cards reveal">
@@ -588,6 +355,78 @@
           <p>Vermilion Parish runs on year-round coastal fishing and nationally known duck and goose hunting. Redfish, flounder and speckled trout in reach, public launches close by, and room to clean your catch.</p>
           <div class="note">Open season, every season &middot; <a href="https://louisianaoutdoors.com/licenses-and-permits" target="_blank" rel="noopener">Fishing licenses &rarr;</a></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE DREAM ============ -->
+  <section class="band dream force-night" id="dream" aria-labelledby="dream-title">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="stars3" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">The dream &middot; Where it&rsquo;s going</p>
+        <h2 id="dream-title">A family campground built around the night sky.</h2>
+        <p>The RV spaces are the first piece. This is the whole picture we&rsquo;re building toward on Farmer Road: a place families drive to on purpose, where the kids stay up late because the sky is too good to miss.</p>
+      </div>
+
+      <ol class="road reveal" aria-label="How Rocket Farm grows">
+        <li><span class="road-when">First &middot; Phase 1, targeted 2027</span><b>17 full-hookup RV spaces</b><span>Built first, for the crews and contractors.</span></li>
+        <li><span class="road-when">Then &middot; the family campground</span><b>24 sites, cabins, store &amp; observatory</b><span>Everything below, added as Phase 1 finds its feet.</span></li>
+      </ol>
+
+      <div class="dream-grid reveal">
+        <article class="dream-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 17h20M4 17V9l6-4 6 4v8M9 17v-4h3v4"/><circle cx="17.5" cy="19" r="2"/><circle cx="6.5" cy="19" r="2"/></svg></div>
+          <h3>24 RV sites</h3>
+          <p>Full hookups for crews, travelers and families, growing out from the first seventeen.</p>
+        </article>
+        <article class="dream-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20L12 4l9 16"/><path d="M6.5 20L12 10l5.5 10"/><path d="M10 20v-4h4v4"/><path d="M2 20h20"/></svg></div>
+          <h3>4 A-frame cabins</h3>
+          <p>Little A-frames facing the pond, each with a covered porch and a loft the kids will fight over.</p>
+        </article>
+        <article class="dream-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12l8-6 8 6"/><path d="M6 11v5h12v-5"/><path d="M10 16v-3h4v3"/><path d="M7 16v5M17 16v5M12 16v5"/></svg></div>
+          <h3>A family cabin</h3>
+          <p>Three bedrooms up on stilts, with a big deck for the whole crew to watch the sky from.</p>
+        </article>
+        <article class="dream-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l2-5h14l2 5"/><path d="M3 9h18"/><path d="M5 9v11h14V9"/><path d="M10 20v-5h4v5"/><path d="M6 9c0 1.4 1 2 2 2s2-.6 2-2c0 1.4 1 2 2 2s2-.6 2-2c0 1.4 1 2 2 2s2-.6 2-2"/></svg></div>
+          <h3>General store</h3>
+          <p>Ice, snacks and supplies, plus laundry and hot showers right on site.</p>
+        </article>
+        <article class="dream-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c2.5 3 4.5 4.8 4.5 8.3a4.5 4.5 0 0 1-9 0c0-2.1 1-3.4 2.2-4.5.1 1.8 1 2.9 2.3 3.1C11.5 7.6 11 5.3 12 3z"/><path d="M4 21l16-4M4 17l16 4"/></svg></div>
+          <h3>The fire pit</h3>
+          <p>One big fire where everybody ends up after dark. S&rsquo;mores strongly encouraged.</p>
+        </article>
+        <article class="dream-card star">
+          <span class="tag">For the kids</span><div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11l11-5 2 4.5-11 5z"/><path d="M15 6l3-1.3 2 4.5-3 1.3"/><path d="M10 14l-3.5 7M10 14l3.5 7M10 14v7"/><circle cx="20" cy="3" r=".9"/></svg></div>
+          <h3>Mini observatory</h3>
+          <p>Our advanced telescopes, pointed up. Kids can see Saturn&rsquo;s rings and Jupiter&rsquo;s moons with their own eyes.</p>
+        </article>
+      </div>
+      <p class="fine dream-fine">Everything in this section is planned, not built yet. Timing depends on Phase 1, permits and approvals. <a href="/plan/">See the full plan &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ============ WHO WE ARE ============ -->
+  <section class="band family force-night" id="family" aria-labelledby="family-title">
+    <div class="wrap family-wrap reveal">
+      <div class="family-logo">
+        <img src="/img/logo-full.webp" width="1100" height="488" loading="lazy" decoding="async"
+             alt="Rocket Farm logo: a rocket climbing through the letters, over the motto Le port d&rsquo;attache au cosmos.">
+      </div>
+      <div class="family-copy">
+        <p class="eyebrow">Who we are</p>
+        <h2 id="family-title">A family of seven, not a corporation.</h2>
+        <p>We love Louisiana. Rocket Farm is our family&rsquo;s project &mdash; not a fund, not a chain, not a corporation. When you call, you get us.</p>
+        <p>Our motto is in French, for the Cajun country we&rsquo;re building in: <i lang="fr">le port d&rsquo;attache au cosmos</i> &mdash; your home port to the cosmos. Somewhere to come back to, under a sky full of stars.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#reserve">Reserve your space</a>
+          <a class="btn btn-ghost" href="mailto:stay@therocketfarm.com">Say hello</a>
+        </div>
       </div>
     </div>
   </section>
@@ -820,15 +659,10 @@
   <div class="wrap">
     <div class="foot-top foot-4">
       <div class="foot-col">
-        <a class="wordmark" href="/" style="margin-bottom:1rem">
-          <svg viewBox="0 0 24 34" aria-hidden="true">
-        <path d="M12 1.6c2.1 4.4 3.1 7.7 3.1 10.9V25H8.9V12.5c0-3.2 1-6.5 3.1-10.9z" fill="#f4efe6"/>
-        <path d="M8.9 19.6 6.1 26.4l2.8-1.7zm6.2 0 2.8 6.8-2.8-1.7z" fill="#f4efe6" opacity=".55"/>
-        <path d="M10.3 25h3.4L12 32.4z" fill="#f5a524"/>
-      </svg>
-          Rocket&nbsp;Farm
+        <a class="foot-brand" href="/" aria-label="Rocket Farm home">
+          <img class="foot-logo" src="/img/logo-full.webp" width="1100" height="488" loading="lazy" decoding="async" alt="Rocket Farm, le port d&rsquo;attache au cosmos">
         </a>
-        <p>A field full of people looking up.<br>A family-owned campground in development in Vermilion Parish, Louisiana.</p>
+        <p>A field full of people looking up.<br>A family campground in development in Vermilion Parish, Louisiana &mdash; run by a family of seven, not a corporation.</p>
         <p style="margin-top:.8rem">10729 Farmer Road<br>Kaplan, LA 70548</p>
       </div>
 
@@ -859,7 +693,6 @@
     <div class="disclaimer">
       <p><strong>Rocket Farm is under development.</strong> Spaces, buildings, amenities, rates and opening dates shown on this site are planned and remain subject to final survey, engineering, permitting and agency approval. Rates are not a contract, an offer or a guarantee of availability or price, and the site map is diagrammatic rather than a survey.</p>
       <p>Rocket Farm LLC is an independent, family-owned Louisiana business. It is not affiliated with, endorsed by, sponsored by or otherwise connected to SpaceX or any government agency. Starlink is a trademark of SpaceX, named here only to describe the internet service the park provides. Launch timing, cadence and public viewing access are set by others and may change at any time.</p>
-      <p>Moon and Mars imagery courtesy of NASA (GSFC Scientific Visualization Studio; JPL-Caltech), used as public-domain material. NASA does not endorse Rocket Farm.</p>
       <p class="sky-note">The sky follows Central time: daylight 6 am to 5 pm, stars after.</p>
       <p class="copyright">© <span id="year">2026</span> Rocket Farm LLC. All rights reserved.</p>
     </div>
