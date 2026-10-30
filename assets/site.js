@@ -230,8 +230,8 @@ var yr = document.getElementById('year'); if (yr) yr.textContent = new Date().ge
     var bad = !name ? $('name') : !validPhone ? $('phone') : !validEmail ? $('email') : null;
     if (bad) {
       msg.className = 'form-msg show';
-      msg.style.borderColor = 'rgba(232,98,60,.5)';
-      msg.style.background  = 'rgba(232,98,60,.12)';
+      msg.style.borderColor = 'rgba(124,124,124,.5)';
+      msg.style.background  = 'rgba(124,124,124,.12)';
       msg.textContent = 'Please add your name, a phone number and a valid email address.';
       bad.focus();
       return;
@@ -309,7 +309,7 @@ var yr = document.getElementById('year'); if (yr) yr.textContent = new Date().ge
   function stored() { try { return localStorage.getItem('rf-theme'); } catch (e) { return null; } }
   function apply() {
     var pref = stored();
-    var day = (pref === 'day' || pref === 'night') ? pref === 'day' : (function () { var h = hourCT(); return h >= 6 && h < 17; })();
+    var day = false; // the site is always under a night sky
     root.setAttribute('data-theme', day ? 'day' : 'night');
     var reset = document.querySelector('.sky-reset'); if (reset) reset.hidden = !pref;
     var sw = document.querySelector('.sky-switch'); if (sw) sw.textContent = day ? 'Switch to night sky' : 'Switch to day sky';
