@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------------
    1. Site map — generated from the lot table so the two can't drift.
-      The table is the single source of truth for every rate.
+      The table is the single source of truth for every space.
 ------------------------------------------------------------------ */
 (function () {
   var layer = document.getElementById('lot-layer');
@@ -41,9 +41,8 @@
       g.setAttribute('role', 'button');
 
       var svc = tr.getAttribute('data-amps') === '50' ? '50/30/20 amp' : '30/20 amp';
-      var per = tr.getAttribute('data-term') === 'nightly' ? 'per night' : 'per month';
-      g.setAttribute('aria-label',
-        'Space ' + lot + ', ' + svc + ', $' + tr.getAttribute('data-price') + ' ' + per);
+      var per = tr.getAttribute('data-term') === 'nightly' ? 'nightly' : 'monthly';
+      g.setAttribute('aria-label', 'Space ' + lot + ', ' + svc + ', ' + per);
 
       var pad = document.createElementNS(NS, 'path');
       pad.setAttribute('class', 'pad');
@@ -75,7 +74,7 @@
       tr: tr,
       lot: lot,
       svc: tr.getAttribute('data-amps') === '50' ? '50 / 30 / 20 amp' : '30 / 20 amp',
-      price: '$' + tr.getAttribute('data-price') + (nightly ? ' / night' : ' / month')
+      price: nightly ? 'Nightly space' : 'Monthly space'
     };
   }
 
@@ -253,7 +252,7 @@ var yr = document.getElementById('year'); if (yr) yr.textContent = new Date().ge
     msg.style.borderColor = '';
     msg.style.background  = '';
     msg.innerHTML = 'Thanks, ' + name.replace(/[<>&]/g, '') +
-      ' — your email app should be opening with the details filled in. We reply with deposit instructions to hold your space. ' +
+      ' — your email app should be opening with the details filled in. We will get back to you personally, and you will hear rates first. ' +
       'If it didn\'t, send them to <a href="mailto:' + TO + '">' + TO + '</a>.';
 
     window.location.href = href;

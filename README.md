@@ -40,55 +40,33 @@ menu) stores a choice in that browser, and the footer offers "Back to
 automatic". Theme colours are CSS tokens (`--ink-rgb`, `--bg-rgb`, and the
 named ones) under `:root[data-theme="day"]` at the end of `site.css`.
 
-## Editing the lot prices
+## Editing the spaces
 
-**The lot table in `index.html` is the single source of truth.** The site map is
-generated from it at page load, so the map, the tooltips and the filter counts
-can never disagree with the table. To change a rate, edit that row and nothing
-else:
+**The lot table in `spaces/index.html` is the single source of truth.** The site
+map is generated from it at page load, so the map, the tooltips and the filter
+counts can never disagree with the table. Each row looks like this:
 
 ```html
-<tr data-lot="A5" data-row="A" data-amps="50" data-term="monthly" data-price="700">
-  <td class="lot-id">A5</td>
-  ...
-  <td class="rate">$700 <small>/ mo</small></td>
+<tr data-lot="A5" data-row="A" data-amps="50" data-term="monthly">
+  <td class="lot-id">A5</td> ...
 </tr>
 ```
-
-Change **both** `data-price` (drives the map tooltip) and the `<td class="rate">`
-cell (what a visitor reads in the table). The other attributes control behaviour:
 
 | Attribute   | Values                | Effect                                        |
 |-------------|-----------------------|-----------------------------------------------|
 | `data-lot`  | e.g. `A5`             | Label on the map and in the table             |
 | `data-row`  | `A` or `B`            | Which row of the map the space is drawn in    |
 | `data-amps` | `50` or `30`          | Colour on the map, service shown in the table |
-| `data-term` | `monthly` or `nightly`| Colour, filter grouping, "/mo" vs "/night"    |
-| `data-price`| a number              | Price in the map tooltip                      |
+| `data-term` | `monthly` or `nightly`| Colour, filter grouping, tooltip label        |
 
-Adding or removing a `<tr>` adds or removes a pad on the map automatically — the
-row spacing recalculates. If you do, update the hard-coded counts in the filter
-chips, the `.tally` line, the tier cards and the stat strip, which are plain text.
+Adding or removing a `<tr>` adds or removes a pad on the map automatically. If
+you do, update the hard-coded counts in the filter chips, the `.tally` line and
+the stat strip on the home page, which are plain text.
 
-### Note on the tiering
-
-The Phase 1 binder underwrites a **flat $700/month** across 14 monthly sites.
-This page instead tiers on the only real spec difference between the lots —
-electrical service:
-
-- 11 spaces with 50/30/20 amp pedestals → **$700/mo**
-- 3 monthly spaces with 30/20 amp pedestals → **$650/mo**
-- 3 spaces held back for nightly use → **$55/night**
-
-This tiering reduces stabilised monthly tenant revenue slightly against the
-binder's flat-$700 base case, by well under a single site's annual rent. The
-effect on coverage is marginal and stays comfortably inside the binder's own
-downside case. The figures live in the financing binder and the companion
-spreadsheet, which are deliberately not in this repository — run the comparison
-there before you commit to a rate card.
-
-To revert to flat $700, set `data-price="700"` and the rate cell to `$700` on
-rows A3, A4 and B2, and update the "30-amp monthly" tier card.
+**Rates are deliberately not on the site** while pricing is being reworked.
+When they are set, add them in one place and decide whether they also belong
+in the FAQ answer "How much is a monthly RV space in Kaplan?" (keep its visible
+text and its JSON-LD text identical).
 
 ## Contact address
 
@@ -102,28 +80,21 @@ MX and SPF records are already in place. Setting a **catch-all** forwarder as
 well is worth the extra minute, so mail to `hello@`, `info@` or a typo still
 reaches you instead of bouncing.
 
-## Reservations and the deposit
+## Reservations
 
-The page now takes reservation requests rather than a waitlist. The form asks
-for five things only — name, company, reason for the stay, phone and email —
-and opens a pre-filled email (see below); you reply with deposit instructions.
-The destination is the `TO` variable in the form-handling script at the bottom
-of `index.html`. It currently points at the owner's personal inbox because the
-stay@therocketfarm.com forwarder has not been created yet; once it exists at
-Namecheap, set `TO` back to `stay@therocketfarm.com` so the branded address is
-the only one visitors ever see.
+The form asks for five things only — name, company, reason for the stay, phone
+and email — and opens a pre-filled email (see below). Nothing is collected or
+charged; the reply carries rates and terms once they are set. The destination
+is the `TO` variable in the form-handling block of `assets/site.js`. Once the
+stay@therocketfarm.com forwarder exists at Namecheap, point `TO` there so the
+branded address is the only one visitors ever see.
 
-**To take the $250 on the spot:** create a Stripe Payment Link (or Square /
-PayPal), then set `PAY_LINK` in the script at the bottom of `index.html`. A
-"Pay the $250 deposit" button appears under the form as soon as it is non-empty.
-
-**Deposit terms as published:** $250, credited to the first month, not
-refundable if the guest chooses to stay elsewhere, **refunded in full if Rocket
-Farm does not open or cannot deliver the reserved space.** Keep that last
-clause. A deposit kept when the business fails to deliver is not enforceable,
-is the textbook chargeback case, and reads badly to a lender. The terms appear
-in three places — hero small print, the Reserve section, and the FAQ — so
-change all three together.
+**If a deposit is ever taken online:** create a Stripe Payment Link (or Square /
+PayPal) and set `PAY_LINK` in `assets/site.js`; a "Pay your deposit" button
+appears under the form. Whatever the terms, keep the promise that a deposit is
+refunded in full if Rocket Farm does not open or cannot deliver the space. A
+deposit kept when the business fails to deliver is not enforceable and is the
+textbook chargeback case.
 
 ## The reservation form
 
@@ -158,14 +129,13 @@ Subject: Your Rocket Farm reservation — next steps
 >
 > Thanks for reaching out about a space at Rocket Farm. We'd be glad to have
 > you. I've attached our park rules and monthly site agreement so you can read
-> exactly how the park runs before you put down a deposit: rent on the 1st,
+> exactly how the park runs before you commit to anything: rent on the 1st,
 > quiet hours 10 PM to 7 AM, keep your site clean, and look out for each other.
 > It's plain English and it's the same for everyone.
 >
-> To hold [space / a 50-amp monthly space] for you, the reservation deposit is
-> $250. It's credited to your first month, refunded in full if we can't
-> deliver the space, and not refundable if you choose to stay somewhere else.
-> [Payment link or instructions.]
+> Here are our rates and how to hold a space: [current rates and
+> reservation terms]. If we can't deliver the space, any deposit comes back
+> in full.
 >
 > If anything in the agreement raises a question, reply here or call me at
 > [phone]. Looking forward to seeing you on Farmer Road.
@@ -174,7 +144,7 @@ Subject: Your Rocket Farm reservation — next steps
 > Rocket Farm LLC · 10729 Farmer Road, Kaplan, LA 70548
 
 The agreement was restructured around Louisiana law (stipulated late charges
-capped at 20% of rent, a separately initialed waiver of the notice to vacate,
+set on the signature page and capped at 20% of rent, a separately initialed waiver of the notice to vacate,
 no self-help removal, a security deposit handled under R.S. 9:3251-3254, no
 advance release for physical injury). It is still not legal advice; have a
 Louisiana attorney read it once before the first occupant signs.
@@ -272,9 +242,8 @@ critical path, which is the single biggest lever on mobile LCP here.
 viewport on focus. Every touch target is at least 44px high at 320-430px. No
 horizontal overflow at any width from 320px up.
 
-**Structured data:** two JSON-LD blocks — a `Campground` with address, price
-range, `areaServed`, amenity list and three `Offer` entries carrying the real
-per-tier rates, and a `FAQPage` mirroring the visible FAQ. The schema questions
+**Structured data:** two JSON-LD blocks — a `Campground` with address,
+`areaServed` and amenity list (no prices while rates are reworked), and a `FAQPage` mirroring the visible FAQ. The schema questions
 and the on-page questions are generated from one list so they cannot drift;
 mismatched FAQ markup is what earns a manual action.
 

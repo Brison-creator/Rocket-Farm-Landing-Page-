@@ -5,7 +5,7 @@ Pages mark the slots with <!-- header --> ... <!-- /header --> and
 <!-- footer --> ... <!-- /footer -->."""
 import re, os
 ROOT = os.path.dirname(os.path.abspath(__file__))
-PAGES = ['index.html', 'spaces/index.html', 'plan/index.html', 'directions/index.html', 'faq/index.html', 'kaplan/index.html', '404.html']
+PAGES = ['index.html', 'spaces/index.html', 'plan/index.html', 'directions/index.html', 'faq/index.html', 'kaplan/index.html', 'starbase-louisiana/index.html', '404.html']
 hdr = open(os.path.join(ROOT, 'partials/header.html'), encoding='utf-8').read().rstrip('\n')
 ftr = open(os.path.join(ROOT, 'partials/footer.html'), encoding='utf-8').read().rstrip('\n')
 LOGO_ALT = 'Rocket Farm RV Park for SpaceX Contractors in Kaplan Louisiana'

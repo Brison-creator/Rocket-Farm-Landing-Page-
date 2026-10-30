@@ -867,7 +867,7 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .included{display:grid;gap:1.1rem;grid-template-columns:1fr;margin-top:1.6rem}
 @media (min-width:780px){.included{grid-template-columns:1fr 1fr}}
 .inc-box{border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;background:rgba(var(--ink-rgb),.02)}
-.inc-box h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:.9rem}
+.inc-box h3,.inc-box h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:.9rem}
 .inc-box ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.92rem;color:var(--muted)}
 .inc-box li{padding-left:1.5rem;position:relative}
 .inc-box li::before{content:"✓";position:absolute;left:0;top:-.05rem;color:var(--marsh);font-weight:700}
@@ -941,13 +941,13 @@ tr[data-term="nightly"] .pill::before{background:var(--marsh)}
 .faq-item{border-bottom:1px solid var(--line)}
 .faq-item summary{list-style:none;cursor:pointer;padding:1.15rem 2.4rem 1.15rem 0;position:relative}
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary h2{font-size:clamp(1rem,1.5vw,1.09rem);font-weight:700;display:inline;
+.faq-item summary h2,.faq-item summary h3{font-size:clamp(1rem,1.5vw,1.09rem);font-weight:700;display:inline;
   letter-spacing:-.01em;color:var(--cream)}
 .faq-item summary::after{content:"";position:absolute;right:.5rem;top:1.55rem;
   width:9px;height:9px;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);
   rotate:45deg;transition:rotate .18s ease}
 .faq-item[open] summary::after{rotate:225deg}
-.faq-item summary:hover h2{color:var(--hover-ink)}
+.faq-item summary:hover h2,.faq-item summary:hover h3{color:var(--hover-ink)}
 .faq-item > p{color:var(--muted);font-size:.97rem;padding:0 1.5rem 1.35rem 0;margin:0;max-width:72ch}
 
 /* Touch targets: phones get at least 44px of height on every control, which
@@ -1281,3 +1281,7 @@ header.open .nav-toggle .x{display:block}
    negative so it reads on the light header and footer */
 [data-theme="day"] .brand-logo,[data-theme="day"] .foot-logo{filter:invert(1) hue-rotate(180deg)}
 .family-copy p a{color:var(--amber);white-space:nowrap}
+
+/* Starbase page: small heads over the distance list and the park list */
+.sb-h2{font-size:clamp(1.05rem,1.6vw,1.2rem);margin:0 0 .9rem}
+.loc-list+.dir-btns{margin-top:1.4rem}

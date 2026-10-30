@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://therocketfarm.com/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <image:image>
       <image:loc>https://therocketfarm.com/og.png</image:loc>
       <image:title>Rocket Farm — RV park in Kaplan, Louisiana</image:title>
@@ -14,16 +14,20 @@
     </image:image>
   </url>
   <url>
+    <loc>https://therocketfarm.com/starbase-louisiana/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://therocketfarm.com/spaces/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://therocketfarm.com/plan/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://therocketfarm.com/directions/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <image:image>
       <image:loc>https://therocketfarm.com/img/kaplan-sign.webp</image:loc>
       <image:title>City of Kaplan welcome sign</image:title>
@@ -31,10 +35,10 @@
   </url>
   <url>
     <loc>https://therocketfarm.com/faq/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://therocketfarm.com/kaplan/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
 </urlset>
