@@ -1302,3 +1302,7 @@ header.open .nav-toggle .x{display:block}
   box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(0,0,0,.25),0 1px 0 rgba(0,0,0,.6),0 16px 30px -12px rgba(0,0,0,.95)}
 .btn-primary:active,.btn-ghost:active{transform:translateY(0);
   box-shadow:inset 0 2px 4px rgba(0,0,0,.35),0 1px 0 rgba(0,0,0,.6)}
+
+/* the gator line under the hero tagline */
+.gators{margin:.35rem 0 0;font-family:var(--font-display);font-style:italic;font-weight:500;
+  font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:.01em;color:#cfcfcf}
