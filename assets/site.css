@@ -1306,3 +1306,9 @@ header.open .nav-toggle .x{display:block}
 /* the gator line under the hero tagline */
 .gators{margin:.35rem 0 0;font-family:var(--font-display);font-style:italic;font-weight:500;
   font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:.01em;color:#cfcfcf}
+
+/* owners on the land (plan page) */
+.owners-photo{margin:0 0 2.2rem;max-width:720px}
+.owners-photo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line-strong);display:block}
+.owners-photo figcaption{font-size:.92rem;color:var(--faint);margin-top:.7rem}
+.owners-photo figcaption b{color:rgb(var(--ink-rgb))}
